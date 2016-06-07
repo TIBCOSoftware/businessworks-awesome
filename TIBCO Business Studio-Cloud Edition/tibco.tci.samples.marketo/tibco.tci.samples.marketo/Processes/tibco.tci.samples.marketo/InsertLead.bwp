@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process exitOnStandardFault="no"
+    name="tibco.tci.samples.marketo.InsertLead"
+    suppressJoinFailure="yes"
+    targetNamespace="http://xmlns.example.com/20160412225912"
+    xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:info="http://www.tibco.com/bw/process/info"
+    xmlns:ns="http://xmlns.example.com/20160412225912PLT"
+    xmlns:ns0="http://www.tibco.com/pe/EngineTypes"
+    xmlns:ns1="http://tns.tibco.com/bw/activity/plugin/upsert+7b333af7-9a05-41d5-bb13-569eccde29cd+input"
+    xmlns:ns2="http://tns.tibco.com/bw/activity/plugin/upsert+7b333af7-9a05-41d5-bb13-569eccde29cd+output"
+    xmlns:ns3="http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+input"
+    xmlns:ns4="http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+output"
+    xmlns:ns5="http://www.tibco.com/pe/WriteToLogActivitySchema"
+    xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
+    xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
+    xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
+    xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <tibex:Types>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.tibco.com/pe/EngineTypes"
+            xmlns:tns="http://www.tibco.com/pe/EngineTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="ErrorReport">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="StackTrace" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Msg" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="FullClass" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Class" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessStack" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="MsgCode" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Data" type="tns:anydata"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="FaultDetail">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ActivityName" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Data" type="tns:anydata"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Msg" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="MsgCode" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessStack" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="StackTrace" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="ProcessContext">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="JobId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessInstanceId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0"
+                        name="CustomJobId" type="xs:string"/>
+                    <!--xs:element name="RestartedFromCheckpoint" form="unqualified" block="extension restriction substitution" type="xs:boolean"/-->
+                    <!--xs:element minOccurs="0" maxOccurs="unbounded" name="TrackingInfo" form="unqualified" block="extension restriction substitution" type="xs:string"/-->
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="anydata">
+                <xs:sequence>
+                    <xs:any namespace="##any" processContents="lax"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="ErrorReport" type="tns:ErrorReport"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="FaultDetail" type="tns:FaultDetail"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="ProcessContext" type="tns:ProcessContext"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="CorrelationValue" type="xs:string"/>
+        </xs:schema>
+        <schema attributeFormDefault="unqualified"
+            elementFormDefault="unqualified"
+            targetNamespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"
+            version="" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions">
+            <complexType name="ActivityExceptionType">
+                <sequence>
+                    <element name="msg" type="string"/>
+                    <element minOccurs="0" name="msgCode" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityException" type="tns:ActivityExceptionType"/>
+            <complexType name="ActivityTimedOutExceptionType">
+                <complexContent>
+                    <extension base="tns:ActivityExceptionType"/>
+                </complexContent>
+            </complexType>
+            <element name="ActivityTimedOutException" type="tns:ActivityTimedOutExceptionType"/>
+        </schema>
+        <schema elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+input"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+input">
+            <!-- Endpoints for Leads -->
+            <element name="CreateMultipleLeadsRequest" type="tns:ParamCreateMultipleLeads"/>
+            <element name="CreateMultipleLeadsResponse" type="tns:SuccessCreateMultipleLeads"/>
+            <complexType name="ParamCreateMultipleLeads">
+                <sequence>
+                    <element minOccurs="0" name="action" type="string"/>
+                    <element minOccurs="0" name="lookupField" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="1"
+                        name="input" type="tns:InputFields"/>
+                    <element minOccurs="0" name="asyncProcessing" type="boolean"/>
+                    <element minOccurs="0" name="partitionName" type="string"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessCreateMultipleLeads">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="result" type="tns:ResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="InputFields">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="0" name="email" type="string"/>
+                    <element maxOccurs="1" minOccurs="0"
+                        name="firstName" type="string"/>
+                    <element maxOccurs="1" minOccurs="0"
+                        name="postalCode" type="string"/>
+                </sequence>
+            </complexType>
+            <complexType name="ResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="integer"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <complexType name="Reasons">
+                <sequence>
+                    <element minOccurs="0" name="code" type="string"/>
+                    <element minOccurs="0" name="message" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="AssociateLeadRequest" type="tns:ParamAssociateLead"/>
+            <element name="AssociateLeadResponse" type="tns:SuccessAssociateLead"/>
+            <complexType name="ParamAssociateLead">
+                <sequence>
+                    <element minOccurs="1" name="id" type="integer"/>
+                    <element minOccurs="1" name="cookie" type="string"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessAssociateLead">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="errors" type="tns:Errors"/>
+                </sequence>
+            </complexType>
+            <complexType name="Errors">
+                <sequence>
+                    <element minOccurs="0" name="code" type="string"/>
+                    <element minOccurs="0" name="message" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="MergeLeadRequest" type="tns:ParamMergeLead"/>
+            <element name="MergeLeadResponse" type="tns:SuccessMergeLead"/>
+            <complexType name="ParamMergeLead">
+                <sequence>
+                    <element minOccurs="1" name="id" type="integer"/>
+                    <element name="leadIds" type="tns:MultipleLeadId"/>
+                    <element minOccurs="0" name="mergeInCRM" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="MultipleLeadId">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="1"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessMergeLead">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="errors" type="tns:Errors"/>
+                </sequence>
+            </complexType>
+            <!-- Endpoints for Lists -->
+            <element name="AddLeadToListRequest" type="tns:ParamAddLeadToList"/>
+            <element name="AddLeadToListResponse" type="tns:SuccessAddLeadToList"/>
+            <complexType name="ParamAddLeadToList">
+                <sequence>
+                    <element minOccurs="1" name="listId" type="string"/>
+                    <element minOccurs="1" name="Ids" type="tns:AddLeadInputFields"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessAddLeadToList">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="result" type="tns:AddLeadResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="AddLeadInputFields">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="AddLeadResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="integer"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <element name="RemoveLeadFromListRequest" type="tns:ParamRemoveLeadFromList"/>
+            <element name="RemoveLeadFromListResponse" type="tns:SuccessRemoveLeadFromList"/>
+            <complexType name="ParamRemoveLeadFromList">
+                <sequence>
+                    <element minOccurs="1" name="listId" type="string"/>
+                    <element minOccurs="1" name="Ids" type="tns:RemoveLeadInputFields"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessRemoveLeadFromList">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="result" type="tns:RemoveLeadResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="RemoveLeadInputFields">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="RemoveLeadResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="integer"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <!-- Endpoints for Campaigns -->
+            <element name="ScheduleCampaignRequest" type="tns:ParamScheduleCampaign"/>
+            <element name="ScheduleCampaignResponse" type="tns:SuccessScheduleCampaign"/>
+            <complexType name="ParamScheduleCampaign">
+                <sequence>
+                    <element minOccurs="1" name="id" type="string"/>
+                    <element minOccurs="0" name="input" type="tns:ScheduleCampaignInput"/>
+                </sequence>
+            </complexType>
+            <complexType name="ScheduleCampaignInput">
+                <sequence>
+                    <element minOccurs="0" name="runAt" type="dateTime"/>
+                    <element minOccurs="0" name="cloneToProgramName" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="tokens" type="tns:Token"/>
+                </sequence>
+            </complexType>
+            <complexType name="CampaignResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="string"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessScheduleCampaign">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="result" type="tns:CampaignResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <element name="RequestCampaignRequest" type="tns:ParamRequestCampaign"/>
+            <element name="RequestCampaignResponse" type="tns:SuccessRequestCampaign"/>
+            <complexType name="ParamRequestCampaign">
+                <sequence>
+                    <element minOccurs="1" name="id" type="string"/>
+                    <element name="input" type="tns:RequestCampaignInput"/>
+                </sequence>
+            </complexType>
+            <complexType name="RequestCampaignInput">
+                <sequence>
+                    <element name="leads" type="tns:Lead"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="tokens" type="tns:Token"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessRequestCampaign">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="result" type="tns:CampaignResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="Lead">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="Token">
+                <sequence>
+                    <element minOccurs="0" name="name" type="string"/>
+                    <element minOccurs="0" name="value" type="string"/>
+                </sequence>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+output"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+output">
+            <!-- Endpoints for Leads -->
+            <element name="CreateMultipleLeadsRequest" type="tns:ParamCreateMultipleLeads"/>
+            <element name="CreateMultipleLeadsResponse" type="tns:SuccessCreateMultipleLeads"/>
+            <complexType name="ParamCreateMultipleLeads">
+                <sequence>
+                    <element minOccurs="0" name="action" type="string"/>
+                    <element minOccurs="0" name="lookupField" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="1"
+                        name="input" type="tns:InputFields"/>
+                    <element minOccurs="0" name="asyncProcessing" type="boolean"/>
+                    <element minOccurs="0" name="partitionName" type="string"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessCreateMultipleLeads">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="result" type="tns:ResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="InputFields">
+                <sequence>
+                    <element minOccurs="0" name="email" type="string"/>
+                    <element minOccurs="0" name="firstName" type="string"/>
+                    <element minOccurs="0" name="postalCode" type="string"/>
+                </sequence>
+            </complexType>
+            <complexType name="ResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="integer"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <complexType name="Reasons">
+                <sequence>
+                    <element minOccurs="0" name="code" type="string"/>
+                    <element minOccurs="0" name="message" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="AssociateLeadRequest" type="tns:ParamAssociateLead"/>
+            <element name="AssociateLeadResponse" type="tns:SuccessAssociateLead"/>
+            <complexType name="ParamAssociateLead">
+                <sequence>
+                    <element minOccurs="1" name="id" type="integer"/>
+                    <element minOccurs="1" name="cookie" type="string"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessAssociateLead">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="errors" type="tns:Errors"/>
+                </sequence>
+            </complexType>
+            <complexType name="Errors">
+                <sequence>
+                    <element minOccurs="0" name="code" type="string"/>
+                    <element minOccurs="0" name="message" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="MergeLeadRequest" type="tns:ParamMergeLead"/>
+            <element name="MergeLeadResponse" type="tns:SuccessMergeLead"/>
+            <complexType name="ParamMergeLead">
+                <sequence>
+                    <element minOccurs="1" name="id" type="integer"/>
+                    <element name="leadIds" type="tns:MultipleLeadId"/>
+                    <element minOccurs="0" name="mergeInCRM" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="MultipleLeadId">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="1"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessMergeLead">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="errors" type="tns:Errors"/>
+                </sequence>
+            </complexType>
+            <!-- Endpoints for Lists -->
+            <element name="AddLeadToListRequest" type="tns:ParamAddLeadToList"/>
+            <element name="AddLeadToListResponse" type="tns:SuccessAddLeadToList"/>
+            <complexType name="ParamAddLeadToList">
+                <sequence>
+                    <element minOccurs="1" name="listId" type="string"/>
+                    <element minOccurs="1" name="Ids" type="tns:AddLeadInputFields"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessAddLeadToList">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="result" type="tns:AddLeadResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="AddLeadInputFields">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="AddLeadResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="integer"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <element name="RemoveLeadFromListRequest" type="tns:ParamRemoveLeadFromList"/>
+            <element name="RemoveLeadFromListResponse" type="tns:SuccessRemoveLeadFromList"/>
+            <complexType name="ParamRemoveLeadFromList">
+                <sequence>
+                    <element minOccurs="1" name="listId" type="string"/>
+                    <element minOccurs="1" name="Ids" type="tns:RemoveLeadInputFields"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessRemoveLeadFromList">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="result" type="tns:RemoveLeadResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="RemoveLeadInputFields">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="RemoveLeadResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="integer"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <!-- Endpoints for Campaigns -->
+            <element name="ScheduleCampaignRequest" type="tns:ParamScheduleCampaign"/>
+            <element name="ScheduleCampaignResponse" type="tns:SuccessScheduleCampaign"/>
+            <complexType name="ParamScheduleCampaign">
+                <sequence>
+                    <element minOccurs="1" name="id" type="string"/>
+                    <element minOccurs="0" name="input" type="tns:ScheduleCampaignInput"/>
+                </sequence>
+            </complexType>
+            <complexType name="ScheduleCampaignInput">
+                <sequence>
+                    <element minOccurs="0" name="runAt" type="dateTime"/>
+                    <element minOccurs="0" name="cloneToProgramName" type="string"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="tokens" type="tns:Token"/>
+                </sequence>
+            </complexType>
+            <complexType name="CampaignResultFields">
+                <sequence>
+                    <element minOccurs="0" name="id" type="string"/>
+                    <element minOccurs="0" name="status" type="string"/>
+                    <element minOccurs="0" name="reasons" type="tns:Reasons"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessScheduleCampaign">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="result" type="tns:CampaignResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <element name="RequestCampaignRequest" type="tns:ParamRequestCampaign"/>
+            <element name="RequestCampaignResponse" type="tns:SuccessRequestCampaign"/>
+            <complexType name="ParamRequestCampaign">
+                <sequence>
+                    <element minOccurs="1" name="id" type="string"/>
+                    <element name="input" type="tns:RequestCampaignInput"/>
+                </sequence>
+            </complexType>
+            <complexType name="RequestCampaignInput">
+                <sequence>
+                    <element name="leads" type="tns:Lead"/>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="tokens" type="tns:Token"/>
+                </sequence>
+            </complexType>
+            <complexType name="SuccessRequestCampaign">
+                <sequence>
+                    <element minOccurs="0" name="requestId" type="string"/>
+                    <element minOccurs="0" name="result" type="tns:CampaignResultFields"/>
+                    <element minOccurs="0" name="success" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="Lead">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0"
+                        name="id" type="integer"/>
+                </sequence>
+            </complexType>
+            <complexType name="Token">
+                <sequence>
+                    <element minOccurs="0" name="name" type="string"/>
+                    <element minOccurs="0" name="value" type="string"/>
+                </sequence>
+            </complexType>
+        </schema>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.tibco.com/pe/WriteToLogActivitySchema"
+            xmlns:tns="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="LogParametersType">
+                <xs:sequence>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="msgCode" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="loggerName" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="logLevel" type="xs:string"/>
+                    <xs:element form="unqualified" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ActivityInput" type="tns:LogParametersType"/>
+        </xs:schema>
+        <wsdl:definitions
+            targetNamespace="http://xmlns.example.com/20160412225912PLT"
+            xmlns:extns="http://tns.tibco.com/bw/REST"
+            xmlns:extns1="http://xmlns.example.com/Resource/parameters"
+            xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+            xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
+            xmlns:tns="http://xmlns.example.com/20160412225912PLT"
+            xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <plnk:partnerLinkType name="partnerLinkType">
+                <plnk:role name="use" portType="tns:resource"/>
+            </plnk:partnerLinkType>
+            <wsdl:import namespace="http://tns.tibco.com/bw/REST"/>
+            <wsdl:import namespace="http://xmlns.example.com/Resource/parameters"/>
+            <wsdl:message name="getRequest">
+                <wsdl:part element="extns:httpHeaders"
+                    name="httpHeaders" tibex:source="bw.rest"/>
+                <wsdl:part element="extns1:resourceGetParameters"
+                    name="parameters" tibex:source="bw.rest"/>
+            </wsdl:message>
+            <wsdl:message name="getResponse">
+                <wsdl:part name="item" type="xsd:string"/>
+            </wsdl:message>
+            <wsdl:message name="get4XXFaultMessage">
+                <wsdl:part element="extns:client4XXError" name="clientError"/>
+            </wsdl:message>
+            <wsdl:message name="get5XXFaultMessage">
+                <wsdl:part element="extns:server5XXError" name="serverError"/>
+            </wsdl:message>
+            <wsdl:portType name="resource"
+                tibex:bw.rest.apipath="/resource"
+                tibex:bw.rest.basepath="Resource"
+                tibex:bw.rest.resource="Service Descriptors/tibco.tci.samples.marketo.InsertLead-Resource.json"
+                tibex:bw.rest.resource.source="generated" tibex:source="bw.rest.service">
+                <wsdl:documentation>Summary about the new REST service.</wsdl:documentation>
+                <wsdl:operation name="get">
+                    <wsdl:input message="tns:getRequest" name="getInput"/>
+                    <wsdl:output message="tns:getResponse" name="getOutput"/>
+                    <wsdl:fault message="tns:get4XXFaultMessage" name="clientFault"/>
+                    <wsdl:fault message="tns:get5XXFaultMessage" name="serverFault"/>
+                </wsdl:operation>
+            </wsdl:portType>
+        </wsdl:definitions>
+    </tibex:Types>
+    <tibex:ProcessInfo callable="false" createdBy="lpeddu"
+        createdOn="Tue Apr 12 22:59:12 PDT 2016" description=""
+        modifiers="public" productVersion="1.0.0 V72 2016-04-06"
+        scalable="true" singleton="true" stateless="true" type="IT"/>
+    <tibex:ProcessInterface context="" input="" output=""/>
+    <tibex:ProcessTemplateConfigurations/>
+    <notation:Diagram measurementUnit="Pixel" type="BWProcess"
+        xmlns:bwnotation="http://tns.tibco.com/bw/runtime/BWNotation"
+        xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <children type="2001">
+            <children type="5001">
+                <element href="//0/@process"/>
+            </children>
+            <children type="3001">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <children type="3002">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <children type="3003">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <children type="3004">
+                <children type="4018">
+                    <children type="3018">
+                        <children type="4020">
+                            <children type="3020">
+                                <children type="4005">
+                                    <children type="3007">
+                                    <children type="4010">
+                                    <children type="5002">
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    </children>
+                                    <children type="3010">
+                                    <children type="4013">
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    <layoutConstraint
+                                    height="34"
+                                    width="34" x="9"
+                                    xsi:type="notation:Bounds" y="55"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    </children>
+                                    <children type="3011">
+                                    <children type="4011">
+                                    <children type="3012">
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint
+                                    xsi:type="notation:Bounds" y="40"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    </children>
+                                    <children type="3013">
+                                    <children type="4018">
+                                    <children type="3018">
+
+                                    <children type="4020">
+
+                                    <children type="3020">
+
+                                    <children type="4005">
+
+                                    <children type="3007">
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
+
+                                    <layoutConstraint
+                                    x="230"
+                                    xsi:type="notation:Bounds" y="41"/>
+                                    </children>
+
+                                    <children type="4002 bw.marketorest.Upsert">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.3"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.3"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.3"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.3"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.3"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="26"
+                                    xsi:type="notation:Bounds" y="41"/>
+                                    </children>
+
+                                    <children type="4002 bw.generalactivities.log">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".SF NS Text"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".SF NS Text"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".SF NS Text"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".SF NS Text"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".SF NS Text"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.4"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="137"
+                                    xsi:type="notation:Bounds" y="41"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:DrawerStyle"/>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
+
+                                    <layoutConstraint
+                                    height="157"
+                                    width="381" xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+
+                                    <layoutConstraint
+                                    height="157"
+                                    width="384"
+                                    x="15" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+                                    </children>
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+
+                                    <layoutConstraint
+                                    height="181"
+                                    width="424" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    </children>
+                                    <children type="3016">
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint
+                                    xsi:type="notation:Bounds" y="40"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    </children>
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    <layoutConstraint
+                                    height="200"
+                                    width="486"
+                                    x="2" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    </children>
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    <layoutConstraint
+                                    height="230" width="561" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:DrawerStyle"/>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity"/>
+                                    </children>
+                                    <styles
+                                    fontName=".Helvetica Neue DeskInterface"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity"/>
+                                    <layoutConstraint height="384"
+                                    width="515" xsi:type="notation:Bounds"/>
+                                </children>
+                                <styles xsi:type="notation:SortingStyle"/>
+                                <styles xsi:type="notation:FilteringStyle"/>
+                                <element href="//0/@process/@activity"/>
+                            </children>
+                            <styles
+                                fontName=".Helvetica Neue DeskInterface"
+                                lineColor="0" xsi:type="notation:ShapeStyle"/>
+                            <styles xsi:type="bwnotation:BackgroundStyle"/>
+                            <styles xsi:type="bwnotation:ResizingStyle"/>
+                            <element href="//0/@process/@activity"/>
+                            <layoutConstraint height="365" width="444"
+                                x="30" xsi:type="notation:Bounds" y="20"/>
+                        </children>
+                        <styles xsi:type="notation:SortingStyle"/>
+                        <styles xsi:type="notation:FilteringStyle"/>
+                        <element href="//0/@process/@activity"/>
+                    </children>
+                    <styles fontName=".Helvetica Neue DeskInterface"
+                        lineColor="0" xsi:type="notation:ShapeStyle"/>
+                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                    <element href="//0/@process/@activity"/>
+                    <layoutConstraint height="409" width="519" xsi:type="notation:Bounds"/>
+                </children>
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <styles fontName=".Helvetica Neue DeskInterface"
+                lineColor="0" xsi:type="notation:ShapeStyle"/>
+            <element href="//0/@process"/>
+            <layoutConstraint height="460" width="860" xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:DiagramStyle"/>
+        <element href="//0"/>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName=".Helvetica Neue DeskInterface" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
+            <bendpoints points="[25, -2, -172, 15]$[173, -15, -24, 2]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName=".SF NS Text" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+    </notation:Diagram>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://xmlns.example.com/Resource/parameters"/>
+    <bpws:partnerLinks>
+        <bpws:partnerLink myRole="use" name="resource"
+            partnerLinkType="ns:partnerLinkType" sca-bpel:ignore="false" sca-bpel:service="resource"/>
+    </bpws:partnerLinks>
+    <bpws:variables>
+        <bpws:variable element="ns0:ProcessContext"
+            name="_processContext" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns:getRequest" name="get" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns:getResponse" name="getOut-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns3:CreateMultipleLeadsRequest"
+            name="Upsert-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns4:CreateMultipleLeadsResponse"
+            name="Upsert" sca-bpel:internal="true"/>
+        <bpws:variable name="marketoConnProperty"
+            sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
+            sca-bpel:property="yes"
+            sca-bpel:sharedResourceType="{http://ns.tibco.com/bw/sharedresource/marketorest}MarketoRest" type="xsd:string">
+            <bpws:from>
+                <bpws:literal>tibco.tci.samples.marketo.NewMarketoResource</bpws:literal>
+            </bpws:from>
+        </bpws:variable>
+        <bpws:variable element="ns5:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
+    </bpws:variables>
+    <bpws:extensions>
+        <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
+        <bpws:extension mustUnderstand="no" namespace="http://www.tibco.com/bw/process/info"/>
+        <bpws:extension mustUnderstand="no" namespace="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"/>
+        <bpws:extension mustUnderstand="no" namespace="http://docs.oasis-open.org/ns/opencsa/sca/200912"/>
+        <bpws:extension mustUnderstand="no" namespace="http://ns.tibco.com/bw/property"/>
+        <bpws:extension mustUnderstand="no" namespace="http://www.tibco.com/bpel/2007/extensions"/>
+    </bpws:extensions>
+    <bpws:scope name="scope">
+        <bpws:flow name="flow">
+            <bpws:links/>
+            <bpws:pick createInstance="yes" name="pick" tibex:xpdlId="b4cb833e-9c28-47cf-93d3-cd6f914ad89e">
+                <bpws:onMessage operation="get" partnerLink="resource"
+                    portType="ns:resource"
+                    tibex:xpdlId="f456347a-56b7-45c7-84ed-e3c008d8d45d" variable="get">
+                    <bpws:scope name="scope1">
+                        <bpws:flow name="flow1">
+                            <bpws:links>
+                                <bpws:link name="UpsertTogetOut" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="LogTogetOut" tibex:linkType="SUCCESS"/>
+                            </bpws:links>
+                            <bpws:empty name="OnMessageStart"
+                                tibex:constructor="onMessageStart" tibex:xpdlId="222cea0a-c5b1-447e-bd68-396d7b8fa2da"/>
+                            <bpws:empty name="OnMessageEnd"
+                                tibex:constructor="onMessageEnd" tibex:xpdlId="14cc52ec-a04e-4bb0-bfa2-aaafce02bfcc"/>
+                            <bpws:reply name="getOut" operation="get"
+                                partnerLink="resource"
+                                portType="ns:resource"
+                                tibex:xpdlId="f2bdf0ea-3e76-4d16-aeb1-4ae40f1051d6" variable="getOut-input">
+                                <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20160412225912PLT" xmlns:tns1="http://tns.tibco.com/bw/activity/plugin/upsert+7b333af7-9a05-41d5-bb13-569eccde29cd+output" xmlns:tns2="http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+output" version="2.0"&gt;&lt;xsl:param name="Upsert"/&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns:getResponse&gt;&lt;item&gt;&lt;xsl:value-of select="concat(&amp;quot;Lead &amp;quot;, $Upsert/tns2:result[1]/tns2:status)"/&gt;&lt;/item&gt;&lt;/tns:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+                                <tibex:inputBindings>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20160412225912PLT&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/activity/plugin/upsert+7b333af7-9a05-41d5-bb13-569eccde29cd+output&quot; xmlns:tns2=&quot;http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+output&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;Upsert&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;item>&#xa;            &lt;xsl:value-of select=&quot;concat(&amp;quot;Lead &amp;quot;, $Upsert/tns2:result[1]/tns2:status)&quot;/>&#xa;        &lt;/item>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                </tibex:inputBindings>
+                                <bpws:targets>
+                                    <bpws:target linkName="LogTogetOut"/>
+                                </bpws:targets>
+                            </bpws:reply>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+input&quot; xmlns:tns1=&quot;http://xmlns.example.com/Resource/parameters&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;get&quot;/>&lt;xsl:template name=&quot;Upsert-input&quot; match=&quot;/&quot;>&lt;tns:CreateMultipleLeadsRequest>&lt;tns:input>&lt;xsl:if test=&quot;$get/parameters/tns1:resourceGetParameters/tns1:Email&quot;>&lt;tns:email>&lt;xsl:value-of select=&quot;$get/parameters/tns1:resourceGetParameters/tns1:Email&quot;/>&lt;/tns:email>&lt;/xsl:if>&lt;xsl:if test=&quot;$get/parameters/tns1:resourceGetParameters/tns1:FirstName&quot;>&lt;tns:firstName>&lt;xsl:value-of select=&quot;$get/parameters/tns1:resourceGetParameters/tns1:FirstName&quot;/>&lt;/tns:firstName>&lt;/xsl:if>&lt;/tns:input>&lt;/tns:CreateMultipleLeadsRequest>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Upsert-input"
+                                    name="Upsert"
+                                    outputVariable="Upsert"
+                                    tibex:xpdlId="89fece70-5130-4eb6-a57b-1f860dda1414" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:sources>
+                                    <bpws:source linkName="UpsertTogetOut"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+input&quot; xmlns:tns1=&quot;http://xmlns.example.com/Resource/parameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;Upsert-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:CreateMultipleLeadsRequest>&#xa;            &lt;tns:input>&#xa;                &lt;xsl:if test=&quot;$get.parameters/tns1:Email&quot;>&#xa;                    &lt;tns:email>&#xa;                        &lt;xsl:value-of select=&quot;$get.parameters/tns1:Email&quot;/>&#xa;                    &lt;/tns:email>&#xa;                &lt;/xsl:if>&#xa;                &lt;xsl:if test=&quot;$get.parameters/tns1:FirstName&quot;>&#xa;                    &lt;tns:firstName>&#xa;                        &lt;xsl:value-of select=&quot;$get.parameters/tns1:FirstName&quot;/>&#xa;                    &lt;/tns:firstName>&#xa;                &lt;/xsl:if>&#xa;            &lt;/tns:input>&#xa;        &lt;/tns:CreateMultipleLeadsRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.marketorest.Upsert"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:marketorest="http://ns.tibco.com/bw/palette/marketorest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/marketorest#//Upsert"/>
+                                    <value
+                                    Objects="Leads"
+                                    Operations="Multiple Leads"
+                                    marketoConnection="marketoConnProperty"
+                                    timeout="30000" xsi:type="marketorest:Upsert"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+output&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Upsert&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;The lead was &amp;quot;,$Upsert/tns1:result[1]/tns1:status,&amp;quot; in Marketo with ID &amp;quot;,xsd:string($Upsert/tns1:result[1]/tns1:id))&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Log-input" name="Log"
+                                    tibex:xpdlId="33418e17-46dc-4260-9a68-15b174c32c1c" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="UpsertTogetOut"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="LogTogetOut"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/activity/plugin/upsert+89fece70-5130-4eb6-a57b-1f860dda1414+output&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Upsert&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;The lead was &amp;quot;,$Upsert/tns1:result[1]/tns1:status,&amp;quot; in Marketo with ID &amp;quot;,xsd:string($Upsert/tns1:result[1]/tns1:id))&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.log"
+                                    version="6.0.0.001"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
+                                    <value role="Info"
+                                    suppressJobInfo="true" xsi:type="generalactivities:Log"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                        </bpws:flow>
+                    </bpws:scope>
+                </bpws:onMessage>
+            </bpws:pick>
+        </bpws:flow>
+    </bpws:scope>
+</bpws:process>

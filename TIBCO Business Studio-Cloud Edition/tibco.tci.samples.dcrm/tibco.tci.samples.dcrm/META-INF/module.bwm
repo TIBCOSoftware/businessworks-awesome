@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_6muc4AE-EeaX9tAh5n_IgA" targetNamespace="http://tns.tibco.com/bw/composite/tibco.tci.samples.dcrm" name="tibco.tci.samples.dcrm" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_d8jUAQHZEeaahJjngZfjcA" name="resource" promote="ComponentCreateAccount/resource">
+    <sca:interface.wsdl xmi:id="_d8j7EAHZEeaahJjngZfjcA" interface="http://xmlns.example.com/20160413174012PLT#wsdl.interface(resource)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_d8lwQAHZEeaahJjngZfjcA" name="RestService" path="/resource" docBasePath="http://localhost:7777/tibco.tci.samples.dcrm" docResourcePath="Resource" basePath="/" connector="tibco.tci.samples.dcrm.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/dcrm.CreateAccount-Resource.json">
+      <operation xmi:id="_d8m-YAHZEeaahJjngZfjcA" operationName="get" nickname="get-resource" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_sl_CkAHZEeaahJjngZfjcA">
+          <parameterMapping xmi:id="_sl_CkQHZEeaahJjngZfjcA" parameterName="AccountNum" parameterType="Query"/>
+          <parameterMapping xmi:id="_uiE70AHZEeaahJjngZfjcA" parameterName="AccountName" parameterType="Query"/>
+          <parameterMapping xmi:id="_v_et8AHZEeaahJjngZfjcA" parameterName="Address" parameterType="Query"/>
+        </parameters>
+      </operation>
+      <parameters xmi:id="_d9RswAHZEeaahJjngZfjcA"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_d8m-YQHZEeaahJjngZfjcA" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_6vnTIAE-EeaX9tAh5n_IgA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_6vtZwAE-EeaX9tAh5n_IgA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_6vun4AE-EeaX9tAh5n_IgA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_6vwdEAE-EeaX9tAh5n_IgA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_6vySQAE-EeaX9tAh5n_IgA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_6vzgYAE-EeaX9tAh5n_IgA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_cqSa4AHZEeaahJjngZfjcA" name="ComponentCreateAccount" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_cqTB8AHZEeaahJjngZfjcA" processName="tibco.tci.samples.dcrm.CreateAccount"/>
+    <sca:service xmi:id="_d8is8AHZEeaahJjngZfjcA" name="resource">
+      <sca:interface.wsdl xmi:id="_d8jUAAHZEeaahJjngZfjcA" interface="http://xmlns.example.com/20160413174012PLT#wsdl.interface(resource)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

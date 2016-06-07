@@ -1,0 +1,73 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "CurrencyConverter",
+    "x-lastModified": "Mar 23, 2016 15:43PM PST"
+  },
+  "basePath": "/"
+  ,
+  "paths": {
+    "/conversionrate/{fromcurrency}/{tocurrency}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/currency"
+            }
+          },
+          "default": {
+            "description": "default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fromcurrency",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "tocurrency",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "currency": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "id": "http://tibco.com",
+      "type": "object",
+      "properties": {
+        "fromCurrency": {
+          "id": "http://tibco.com/fromCurrency",
+          "type": "string"
+        },
+        "toCurrency": {
+          "id": "http://tibco.com/toCurrency",
+          "type": "string"
+        },
+        "conversionRate": {
+          "id": "http://tibco.com/conversionRate",
+          "type": "string"
+        },
+        "conversionDate": {
+          "id": "http://tibco.com/conversionDate",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
