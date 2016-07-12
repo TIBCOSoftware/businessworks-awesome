@@ -5,6 +5,7 @@ _Note: This tutorial also requires a valid login to TIBCO Mashery_
 
 ## Requesting access to the TIBCO Mashery API
 In order to get access to the TIBCO Mashery API you'll need an account which you can create on the Mashery Support site.
+
 1. Go to http://support.mashery.com and click the `Register` button at the top right of the screen to create a new account for TIBCO Mashery
 
   ![alt text](https://d2wh20haedxe3f.cloudfront.net/sites/default/files/1-register_for_account_0.png)
