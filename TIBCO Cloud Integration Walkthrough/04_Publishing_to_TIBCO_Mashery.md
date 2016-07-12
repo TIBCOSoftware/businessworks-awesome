@@ -13,10 +13,10 @@ In order to get access to the TIBCO Mashery API you'll need an account which you
   ![alt text](https://d2wh20haedxe3f.cloudfront.net/sites/default/files/2-create_new_api_key.png)
 1. When you register a new application to get a key it is important to check the 'Issue a new Key' since you'll need that later on in the process
 
-  ![alt text](https://d2wh20haedxe3f.cloudfront.net/sites/default/files/3-register_new_application.png)
-1. Your application will now be registered and you should receive an email with the key as well. In order to get access to the TIBCO Mashery API you need to work with your TIBCO Mashery Customer Success Team to be able to access the `V3 API`
+  ![alt text](https://d2wh20haedxe3f.cloudfront.net/sites/default/files/3-1.png)
+1. Your application will now be registered and you should receive an email with the key as well.
 
-  ![alt text](https://d2wh20haedxe3f.cloudfront.net/sites/default/files/4-application_registered-2.png)
+  ![alt text](https://d2wh20haedxe3f.cloudfront.net/sites/default/files/4-1.png)
 1. Once that is done, you're good to go for the second part of the tutorial
 
 ## Sending the API endpoint to Mashery
