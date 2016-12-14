@@ -1,0 +1,162 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio SMS PostSMS",
+    "description" : "Twilio SMS PostSMS"
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/sms/postsms" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-sms-postsms",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/SendSMSInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a SendSMSOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/SendSMSOutput"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "SendSMSInput" : {
+      "type" : "object",
+      "required" : [ "Choice", "To", "From", "AccountSid" ],
+      "properties" : {
+        "AccountSid" : {
+          "type" : "string"
+        },
+        "To" : {
+          "type" : "string"
+        },
+        "From" : {
+          "type" : "string"
+        },
+        "Choice" : {
+          "$ref" : "#/definitions/Choice"
+        },
+        "StatusCallBack" : {
+          "type" : "string"
+        }
+      }
+    },
+    "subresource_uris" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "media" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Choice" : {
+      "type" : "object",
+      "required" : [ "MediaURL", "Body" ],
+      "properties" : {
+        "Body" : {
+          "type" : "string"
+        },
+        "MediaURL" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SendSMSOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "sid" : {
+          "type" : "string"
+        },
+        "date_created" : {
+          "type" : "string"
+        },
+        "date_updated" : {
+          "type" : "string"
+        },
+        "date_sent" : {
+          "type" : "string"
+        },
+        "account_sid" : {
+          "type" : "string"
+        },
+        "to" : {
+          "type" : "string"
+        },
+        "from" : {
+          "type" : "string"
+        },
+        "messaging_service_sid" : {
+          "type" : "string"
+        },
+        "body" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "num_segments" : {
+          "type" : "string"
+        },
+        "num_media" : {
+          "type" : "string"
+        },
+        "direction" : {
+          "type" : "string"
+        },
+        "api_version" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "string"
+        },
+        "price_unit" : {
+          "type" : "string"
+        },
+        "error_code" : {
+          "type" : "string"
+        },
+        "error_message" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "subresource_uris" : {
+          "$ref" : "#/definitions/subresource_uris"
+        }
+      }
+    }
+  }
+}

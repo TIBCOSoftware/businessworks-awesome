@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.connector.tibco.com/twilio/authy/totp" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.connector.tibco.com/twilio/authy/totp">
+<element name="APIKey" type="string"/>
+
+    <element name="AuthyId" type="string"/>
+    
+    <element name="RequestSMSInput" type="tns:RequestSMSCallInputType"/>
+    <element name="RequestSMSOutput" type="tns:RequestSMSCallOutputType"/>
+     <element name="RequestCallTokenOutput" type="tns:RequestSMSCallOutputType"/>
+    
+    
+    <complexType name="RequestSMSCallOutputType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="success" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="cellphone" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="device" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="ignored" type="string"/>
+    </sequence>
+  </complexType>
+    
+    
+
+    <complexType name="RequestSMSCallInputType">
+    	<sequence>
+    		<element ref="tns:AuthyId" />
+
+    		<element ref="tns:APIKey" ></element>
+    	</sequence>
+    </complexType>
+    
+
+    <element name="Token" type="string"></element>
+
+    <element name="VerifyTokenInput" type="tns:VerifyTokenInputType"></element>
+        <element name="VerifyTokenOutput" type="tns:VerifyTokenOutputType"></element>
+    
+
+    <complexType name="VerifyTokenInputType">
+    	<sequence>
+    		<element ref="tns:Token"></element>
+    		<element ref="tns:AuthyId"></element>
+            <element ref="tns:APIKey" ></element>
+        </sequence>
+    </complexType>
+    
+    <complexType name="VerifyTokenOutputType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="success" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="token" type="string"/>
+    </sequence>
+  </complexType>
+
+
+
+    <element name="UserStatusInput" type="tns:UserStatusInputType"></element>
+
+    <complexType name="UserStatusInputType">
+    	<sequence>
+    		<element ref="tns:AuthyId"></element>
+    		<element ref="tns:APIKey" ></element>
+    	</sequence>
+    </complexType>
+
+    <element name="DeleteUserInput" type="tns:DeleteUserInputType"></element>
+
+    <complexType name="DeleteUserInputType">
+    	<sequence>
+    		<element ref="tns:AuthyId"></element>
+    		<element ref="tns:APIKey" ></element>
+    		<element name="UserIp" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="AddUserInput" type="tns:AddUserInputType"></element>
+    
+    <complexType name="AddUserOutputType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="user">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="success" type="boolean"/>
+    </sequence>
+  </complexType>
+
+    <complexType name="AddUserInputType">
+    	<sequence>
+    		<element name="Email" type="string"></element>
+    		<element name="CellPhone" type="string"></element>
+    		<element name="CountyCode" type="string"></element>
+    		<element ref="tns:APIKey"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="RequestCallTokenInput" type="tns:RequestSMSCallInputType"></element>
+
+    <element name="ApplicationDetailInput" type="tns:ApplicationDetailInputType"></element>
+
+    <complexType name="ApplicationDetailInputType">
+    	<sequence>
+    		<element ref="tns:APIKey" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="AppicationStatsInput" type="tns:AppicationStatsInputType"></element>
+
+    <complexType name="AppicationStatsInputType">
+    	<sequence>
+    		<element ref="tns:APIKey" ></element>
+    	</sequence>
+    </complexType>
+
+    <element name="AddUserOutput" type="tns:AddUserOutputType"></element>
+        
+        <element name="AppicationStatsOutput" type="tns:AppicationStatsOutputType"></element>
+    
+    
+    <complexType name="AppicationStatsOutputType">
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="stats">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="sms_count" type="integer" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="calls_count" type="integer" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="users_count" type="integer" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="auths_count" type="integer" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="month" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="api_calls_count" type="integer" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="year" type="integer" nillable="true"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="count" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="total_users" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="app_id" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="success" type="boolean"/>
+    </sequence>
+  </complexType>
+  
+          <element name="UserStatusOutput" type="tns:UserStatusOutputType"></element>
+  
+  <complexType name="UserStatusOutputType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="status">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="authy_id" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="confirmed" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="registered" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="country_code" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="phone_number" type="string"/>
+            <element maxOccurs="unbounded" minOccurs="0" name="devices" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="has_hard_token" type="boolean" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_disabled" type="boolean" nillable="true"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="success" type="boolean"/>
+    </sequence>
+  </complexType>
+  
+  
+ <element name="AppicationDetailOutput" type="tns:AppicationDetailOutputType"></element> 
+  <complexType name="AppicationDetailOutputType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="app">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="plan" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_enabled" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="app_id" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="onetouch_enabled" type="boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="success" type="boolean"/>
+    </sequence>
+  </complexType>
+  
+  <complexType name="DeleteUserOutputType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="success" type="boolean"/>
+    </sequence>
+  </complexType>
+  <element name="DeleteUserOutput" type="tns:DeleteUserOutputType"/>
+  
+</schema>

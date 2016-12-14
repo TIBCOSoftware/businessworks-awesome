@@ -1,0 +1,1023 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GoogleCalendarAPI",
+    "x-lastModified": "Aug 17, 2016 23:01PM PST"
+  },
+  "paths": {
+    "/getCalendar": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns metadata for a user's calendar.",
+        "tags": []
+      }
+    },
+    "/deleteCalendar": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars.",
+        "tags": [
+          "Calendar"
+        ]
+      }
+    },
+    "/clearCalendar": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account."
+      }
+    },
+    "/updateCalendar": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"calendar#calendar\",\n  \"etag\": etag,\n  \"id\": string,\n  \"summary\": string,\n  \"description\": string,\n  \"location\": string,\n  \"timeZone\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates metadata for a calendar.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Calendar"
+        ]
+      }
+    },
+    "/stopChannel": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": 'A UUID or similar unique string that identifies this channel.',\n  \"resourceId\": 'An opaque ID that identifies the resource being watched on this channel. Stable across different API versions.'\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Stop watching resources through this channel.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/getColors": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Returns the color definitions for calendars and events.",
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/getCalendarList": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained using OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns an entry on the user's calendar list.",
+        "tags": [
+          "CalendarList"
+        ]
+      }
+    },
+    "/insertCalendar": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"calendar#calendar\",\n  \"etag\": etag,\n  \"id\": string,\n  \"summary\": string,\n  \"description\": string,\n  \"location\": string,\n  \"timeZone\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates a secondary calendar.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Calendar"
+        ]
+      }
+    },
+    "/deleteCalendarList": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes an entry on the user's calendar list.",
+        "tags": [
+          "CalendarList"
+        ]
+      }
+    },
+    "/insertCalendarList": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"calendar#calendarListEntry\",\n  \"etag\": etag,\n  \"id\": string,\n  \"summary\": string,\n  \"description\": string,\n  \"location\": string,\n  \"timeZone\": string,\n  \"summaryOverride\": string,\n  \"colorId\": string,\n  \"backgroundColor\": string,\n  \"foregroundColor\": string,\n  \"hidden\": boolean,\n  \"selected\": boolean,\n  \"accessRole\": string,\n  \"defaultReminders\": [\n    {\n      \"method\": string,\n      \"minutes\": integer\n    }\n  ],\n  \"notificationSettings\": {\n    \"notifications\": [\n      {\n        \"type\": string,\n        \"method\": string\n      }\n    ]\n  },\n  \"primary\": boolean,\n  \"deleted\": boolean\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Adds an entry to the user's calendar list",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "CalendarList"
+        ]
+      }
+    },
+    "/listCalendarList": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"calendar#calendarList\",\n  \"etag\": etag,\n  \"nextPageToken\": string,\n  \"nextSyncToken\": string,\n  \"items\": [\n    calendarList Resource\n  ]\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "minAccessRole",
+            "in": "query",
+            "description": "The minimum access role for the user in the returned entries. Optional. The default is no restriction. \n\nAcceptable values are:\n\"freeBusyReader\": The user can read free/busy information.\n\"owner\": The user can read and modify events and access control lists.\n\"reader\": The user can read events that are not private.\n\"writer\": The user can read and modify events.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "Token specifying which result page to return.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "showDeleted",
+            "in": "query",
+            "description": "Whether to include deleted calendar list entries in the result.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "showHidden",
+            "in": "query",
+            "description": "Whether to show hidden entries",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "syncToken",
+            "in": "query",
+            "description": "Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False. \nTo ensure client state consistency minAccessRole query parameter cannot be specified together with nextSyncToken. \nIf the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. \nLearn more about incremental synchronization. \nOptional. The default is to return all entries.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": false,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns entries on the user's calendar list",
+        "tags": [
+          "CalendarList"
+        ]
+      }
+    },
+    "/updateCalendarList": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "colorRgbFormat",
+            "in": "query",
+            "description": "Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"calendar#calendarListEntry\",\n  \"etag\": etag,\n  \"id\": string,\n  \"summary\": string,\n  \"description\": string,\n  \"location\": string,\n  \"timeZone\": string,\n  \"summaryOverride\": string,\n  \"colorId\": string,\n  \"backgroundColor\": string,\n  \"foregroundColor\": string,\n  \"hidden\": boolean,\n  \"selected\": boolean,\n  \"accessRole\": string,\n  \"defaultReminders\": [\n    {\n      \"method\": string,\n      \"minutes\": integer\n    }\n  ],\n  \"notificationSettings\": {\n    \"notifications\": [\n      {\n        \"type\": string,\n        \"method\": string\n      }\n    ]\n  },\n  \"primary\": boolean,\n  \"deleted\": boolean\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates an entry on the user's calendar list.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "CalendarList"
+        ]
+      }
+    },
+    "/deleteEvents": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "eventId",
+            "in": "query",
+            "description": "Event identifier.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "sendNotifications",
+            "in": "query",
+            "description": "Whether to send notifications about the deletion of the event.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes an event.",
+        "tags": [
+          "Events"
+        ]
+      }
+    },
+    "/getEvents": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"calendar#event\",\n  \"etag\": etag,\n  \"id\": string,\n  \"status\": string,\n  \"htmlLink\": string,\n  \"created\": datetime,\n  \"updated\": datetime,\n  \"summary\": string,\n  \"description\": string,\n  \"location\": string,\n  \"colorId\": string,\n  \"creator\": {\n    \"id\": string,\n    \"email\": string,\n    \"displayName\": string,\n    \"self\": boolean\n  },\n  \"organizer\": {\n    \"id\": string,\n    \"email\": string,\n    \"displayName\": string,\n    \"self\": boolean\n  },\n  \"start\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"end\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"endTimeUnspecified\": boolean,\n  \"recurrence\": [\n    string\n  ],\n  \"recurringEventId\": string,\n  \"originalStartTime\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"transparency\": string,\n  \"visibility\": string,\n  \"iCalUID\": string,\n  \"sequence\": integer,\n  \"attendees\": [\n    {\n      \"id\": string,\n      \"email\": string,\n      \"displayName\": string,\n      \"organizer\": boolean,\n      \"self\": boolean,\n      \"resource\": boolean,\n      \"optional\": boolean,\n      \"responseStatus\": string,\n      \"comment\": string,\n      \"additionalGuests\": integer\n    }\n  ],\n  \"attendeesOmitted\": boolean,\n  \"extendedProperties\": {\n    \"private\": {\n      (key): string\n    },\n    \"shared\": {\n      (key): string\n    }\n  },\n  \"hangoutLink\": string,\n  \"gadget\": {\n    \"type\": string,\n    \"title\": string,\n    \"link\": string,\n    \"iconLink\": string,\n    \"width\": integer,\n    \"height\": integer,\n    \"display\": string,\n    \"preferences\": {\n      (key): string\n    }\n  },\n  \"anyoneCanAddSelf\": boolean,\n  \"guestsCanInviteOthers\": boolean,\n  \"guestsCanModify\": boolean,\n  \"guestsCanSeeOtherGuests\": boolean,\n  \"privateCopy\": boolean,\n  \"locked\": boolean,\n  \"reminders\": {\n    \"useDefault\": boolean,\n    \"overrides\": [\n      {\n        \"method\": string,\n        \"minutes\": integer\n      }\n    ]\n  },\n  \"source\": {\n    \"url\": string,\n    \"title\": string\n  },\n  \"attachments\": [\n    {\n      \"fileUrl\": string,\n      \"title\": string,\n      \"mimeType\": string,\n      \"iconLink\": string,\n      \"fileId\": string\n    }\n  ]\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "eventId",
+            "in": "query",
+            "description": "Event identifier.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "alwaysIncludeEmail",
+            "in": "query",
+            "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "maxAttendees",
+            "in": "query",
+            "description": "The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "timeZone",
+            "in": "query",
+            "description": "Time zone used in the response. Optional. The default is the time zone of the calendar.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns an event.",
+        "tags": [
+          "Events"
+        ]
+      }
+    },
+    "/insertEvent": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"calendar#event\",\n  \"etag\": etag,\n  \"id\": string,\n  \"status\": string,\n  \"htmlLink\": string,\n  \"created\": datetime,\n  \"updated\": datetime,\n  \"summary\": string,\n  \"description\": string,\n  \"location\": string,\n  \"colorId\": string,\n  \"creator\": {\n    \"id\": string,\n    \"email\": string,\n    \"displayName\": string,\n    \"self\": boolean\n  },\n  \"organizer\": {\n    \"id\": string,\n    \"email\": string,\n    \"displayName\": string,\n    \"self\": boolean\n  },\n  \"start\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"end\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"endTimeUnspecified\": boolean,\n  \"recurrence\": [\n    string\n  ],\n  \"recurringEventId\": string,\n  \"originalStartTime\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"transparency\": string,\n  \"visibility\": string,\n  \"iCalUID\": string,\n  \"sequence\": integer,\n  \"attendees\": [\n    {\n      \"id\": string,\n      \"email\": string,\n      \"displayName\": string,\n      \"organizer\": boolean,\n      \"self\": boolean,\n      \"resource\": boolean,\n      \"optional\": boolean,\n      \"responseStatus\": string,\n      \"comment\": string,\n      \"additionalGuests\": integer\n    }\n  ],\n  \"attendeesOmitted\": boolean,\n  \"extendedProperties\": {\n    \"private\": {\n      (key): string\n    },\n    \"shared\": {\n      (key): string\n    }\n  },\n  \"hangoutLink\": string,\n  \"gadget\": {\n    \"type\": string,\n    \"title\": string,\n    \"link\": string,\n    \"iconLink\": string,\n    \"width\": integer,\n    \"height\": integer,\n    \"display\": string,\n    \"preferences\": {\n      (key): string\n    }\n  },\n  \"anyoneCanAddSelf\": boolean,\n  \"guestsCanInviteOthers\": boolean,\n  \"guestsCanModify\": boolean,\n  \"guestsCanSeeOtherGuests\": boolean,\n  \"privateCopy\": boolean,\n  \"locked\": boolean,\n  \"reminders\": {\n    \"useDefault\": boolean,\n    \"overrides\": [\n      {\n        \"method\": string,\n        \"minutes\": integer\n      }\n    ]\n  },\n  \"source\": {\n    \"url\": string,\n    \"title\": string\n  },\n  \"attachments\": [\n    {\n      \"fileUrl\": string,\n      \"title\": string,\n      \"mimeType\": string,\n      \"iconLink\": string,\n      \"fileId\": string\n    }\n  ]\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxAttendees",
+            "in": "query",
+            "description": "The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "sendNotifications",
+            "in": "query",
+            "description": "Whether to send notifications about the creation of the new event.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "supportsAttachments",
+            "in": "query",
+            "description": "Whether API client performing operation supports event attachments.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"calendar#event\",\n  \"etag\": etag,\n  \"id\": string,\n  \"status\": string,\n  \"htmlLink\": string,\n  \"created\": datetime,\n  \"updated\": datetime,\n  \"summary\": string,\n  \"description\": string,\n  \"location\": string,\n  \"colorId\": string,\n  \"creator\": {\n    \"id\": string,\n    \"email\": string,\n    \"displayName\": string,\n    \"self\": boolean\n  },\n  \"organizer\": {\n    \"id\": string,\n    \"email\": string,\n    \"displayName\": string,\n    \"self\": boolean\n  },\n  \"start\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"end\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"endTimeUnspecified\": boolean,\n  \"recurrence\": [\n    string\n  ],\n  \"recurringEventId\": string,\n  \"originalStartTime\": {\n    \"date\": date,\n    \"dateTime\": datetime,\n    \"timeZone\": string\n  },\n  \"transparency\": string,\n  \"visibility\": string,\n  \"iCalUID\": string,\n  \"sequence\": integer,\n  \"attendees\": [\n    {\n      \"id\": string,\n      \"email\": string,\n      \"displayName\": string,\n      \"organizer\": boolean,\n      \"self\": boolean,\n      \"resource\": boolean,\n      \"optional\": boolean,\n      \"responseStatus\": string,\n      \"comment\": string,\n      \"additionalGuests\": integer\n    }\n  ],\n  \"attendeesOmitted\": boolean,\n  \"extendedProperties\": {\n    \"private\": {\n      (key): string\n    },\n    \"shared\": {\n      (key): string\n    }\n  },\n  \"hangoutLink\": string,\n  \"gadget\": {\n    \"type\": string,\n    \"title\": string,\n    \"link\": string,\n    \"iconLink\": string,\n    \"width\": integer,\n    \"height\": integer,\n    \"display\": string,\n    \"preferences\": {\n      (key): string\n    }\n  },\n  \"anyoneCanAddSelf\": boolean,\n  \"guestsCanInviteOthers\": boolean,\n  \"guestsCanModify\": boolean,\n  \"guestsCanSeeOtherGuests\": boolean,\n  \"privateCopy\": boolean,\n  \"locked\": boolean,\n  \"reminders\": {\n    \"useDefault\": boolean,\n    \"overrides\": [\n      {\n        \"method\": string,\n        \"minutes\": integer\n      }\n    ]\n  },\n  \"source\": {\n    \"url\": string,\n    \"title\": string\n  },\n  \"attachments\": [\n    {\n      \"fileUrl\": string,\n      \"title\": string,\n      \"mimeType\": string,\n      \"iconLink\": string,\n      \"fileId\": string\n    }\n  ]\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates an event.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Events"
+        ]
+      }
+    },
+    "/getInstances": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "eventId",
+            "in": "query",
+            "description": "Recurring event identifier.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns instances of the specified recurring event.",
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/listEvents": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "tags": [
+          "Events"
+        ]
+      }
+    },
+    "/listACL": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"calendar#acl\",\n  \"etag\": etag,\n  \"nextPageToken\": string,\n  \"nextSyncToken\": string,\n  \"items\": [\n    acl Resource\n  ]\n}\n"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "Token specifying which result page to return.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "showDeleted",
+            "in": "query",
+            "description": "Whether to include deleted ACLs in the result. Deleted ACLs are represented by role equal to \"none\". Deleted ACLs will always be included if syncToken is provided.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "syncToken",
+            "in": "query",
+            "description": "Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. All entries deleted since the previous list request will always be in the result set and it is not allowed to set showDeleted to False. \nIf the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. \nLearn more about incremental synchronization.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns the rules in the access control list for the calendar.",
+        "tags": [
+          "ACL"
+        ]
+      }
+    },
+    "/deleteACL": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "ruleId",
+            "in": "query",
+            "description": "ACL rule identifier.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": false,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes an access control rule.",
+        "tags": [
+          "ACL"
+        ]
+      }
+    },
+    "/insertACL": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"calendar#aclRule\",\n  \"etag\": etag,\n  \"id\": string,\n  \"scope\": {\n    \"type\": string,\n    \"value\": string\n  },\n  \"role\": string\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"calendar#aclRule\",\n  \"etag\": etag,\n  \"id\": string,\n  \"scope\": {\n    \"type\": string,\n    \"value\": string\n  },\n  \"role\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates an access control rule",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "ACL"
+        ]
+      }
+    },
+    "/watchACL": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"api#channel\",\n  \"id\": string,\n  \"resourceId\": string,\n  \"resourceUri\": string,\n  \"token\": string,\n  \"expiration\": long\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "calendarId",
+            "in": "query",
+            "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": string,\n  \"token\": string,\n  \"type\": string,\n  \"address\": string,\n  \"params\": {\n    \"ttl\": string\n  }\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Watch for changes to ACL resources.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "ACL"
+        ]
+      }
+    }
+  }
+}

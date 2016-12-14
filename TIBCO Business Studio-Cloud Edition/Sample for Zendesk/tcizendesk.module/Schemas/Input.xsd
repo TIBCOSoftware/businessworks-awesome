@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/Input" elementFormDefault="qualified" targetNamespace="http://www.example.org/Input">
+    
+    <complexType name="getticket">
+    	<sequence>
+    		<element name="sessionId" type="string"/>    		
+    	</sequence>
+    </complexType>
+    <complexType name="deleteticket">
+    	<sequence>
+    		<element name="sessionId" type="string"/>    		
+    	</sequence>
+    </complexType>
+    
+	
+
+    <complexType name="zendeskticketpriority">
+    	<sequence>
+    		<element name="Priority">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="urgent"/>
+    					<minLength value="1"/>
+    					<enumeration value="high"/>
+    					<enumeration value="normal"/>
+    					<enumeration value="low"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    
+
+    
+</schema>

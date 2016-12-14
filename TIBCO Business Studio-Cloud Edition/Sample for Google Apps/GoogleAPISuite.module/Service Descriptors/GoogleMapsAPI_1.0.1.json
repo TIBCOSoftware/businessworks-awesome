@@ -1,0 +1,444 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.1",
+    "title": "GoogleMapsAPI",
+    "x-lastModified": "Aug 17, 2016 06:50AM PST"
+  },
+  "paths": {
+    "/geocode": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "Address",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Your application's API key.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "tags": [
+          "Geocode"
+        ],
+        "description": "Convert address into latitude,longitude coordinates"
+      }
+    },
+    "/reverseGeocode": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "latlng",
+            "in": "query",
+            "description": "Latitude and longitude as- latitude,longitude",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Application API Key",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Converting geographic coordinates into a human-readable address.",
+        "tags": [
+          "Geocode"
+        ]
+      }
+    },
+    "/getDirections": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "Start address",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "destination",
+            "in": "query",
+            "description": "Destination Address",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Application API Key",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "tags": [
+          "Directions"
+        ],
+        "description": "Get directions between origin and destination"
+      }
+    },
+    "/getDistanceMatrix": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "origins",
+            "in": "query",
+            "description": "Start location",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "destinations",
+            "in": "query",
+            "description": "Destination location",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Application API Key",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Get distance and duration between origin and destination",
+        "tags": [
+          "DistanceMatrix"
+        ]
+      }
+    },
+    "/getElevation": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "locations",
+            "in": "query",
+            "description": "Location given as - latitude,longitude",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Application API Key",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Get elevation data of a location",
+        "tags": [
+          "Elevation"
+        ]
+      }
+    },
+    "/getGeolocation": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Application API Key",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"homeMobileCountryCode\": 310,\n  \"homeMobileNetworkCode\": 410,\n  \"radioType\": \"gsm\",\n  \"carrier\": \"Vodafone\",\n  \"considerIp\": \"true\",\n  \"cellTowers\": [\n    // See the Cell Tower Objects section in google documentation.\n  ],\n  \"wifiAccessPoints\": [\n    // See the WiFi Access Point Objects section in google documentation.\n  ]\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Returns a location and accuracy radius based on information about cell towers and WiFi nodes that the mobile client can detect.",
+        "tags": [
+          "Geolocation"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/nearbyPlaceSearch": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Your application's API key.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "The latitude/longitude around which to retrieve place information. This must be specified as - latitude,longitude.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "Defines the distance (in meters) within which to return place results. The maximum allowed radius is 50 000 meters. Note that radius must not be included if rankby=distance (described under Optional parameters below) is specified.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Restricts the results to places matching the specified type. Only one type may be specified (if more than one type is provided, all types following the first entry are ignored)",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "A Nearby Search lets you search for places within a specified area. You can refine your search request by supplying keywords or specifying the type of place you are searching for.",
+        "tags": [
+          "Places"
+        ]
+      }
+    },
+    "/textPlaceSearch": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The text string on which to search, for example: \"restaurant\". The Google Places service will return candidate matches based on this string and order the results based on their perceived relevance.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Your application's API key.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "The latitude/longitude around which to retrieve place information. This must be specified as latitude,longitude. If you specify a location parameter, you must also specify a radius parameter.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "Defines the distance (in meters) within which to bias place results. The maximum allowed radius is 50 000 meters. Results inside of this region will be ranked higher than results outside of the search circle; however, prominent results from outside of the search radius may be included.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Returns information about a set of places based on a string — for example \"pizza in New York\" or \"shoe stores near Ottawa\".",
+        "tags": [
+          "Places"
+        ]
+      }
+    },
+    "/radarPlaceSearch": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Application API Key",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "The latitude/longitude around which to retrieve place information. This must be specified as latitude,longitude.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "Defines the distance (in meters) within which to return place results. The maximum allowed radius is 50 000 meters.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Restricts the results to places matching the specified type. Only one type may be specified (if more than one type is provided, all types following the first entry are ignored).",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Allows you to search for up to 200 places at once, but with less detail than is typically returned from a Text Search or Nearby Search request.",
+        "tags": [
+          "Places"
+        ]
+      }
+    },
+    "/getPlaceDetails": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Application API Key",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "placeid",
+            "in": "query",
+            "description": "A textual identifier that uniquely identifies a place, returned from a Place Search.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Request more details about a particular establishment or point of interest",
+        "tags": [
+          "Places"
+        ]
+      }
+    }
+  }
+}

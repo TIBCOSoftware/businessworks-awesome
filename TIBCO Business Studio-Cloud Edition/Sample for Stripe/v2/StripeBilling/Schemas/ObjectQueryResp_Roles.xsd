@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        
+        <xs:element name="result">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="total_items" minOccurs="0"/>
+              <xs:element type="xs:byte" name="total_pages" minOccurs="0"/>
+              <xs:element type="xs:byte" name="items_per_page" minOccurs="0"/>
+              <xs:element type="xs:byte" name="current_page" minOccurs="0"/>
+              <xs:element name="items" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                          <xs:element type="xs:int" name="id" minOccurs="0"/>
+						  <xs:element type="xs:dateTime" name="created" minOccurs="0"/>
+                          <xs:element type="xs:dateTime" name="updated" minOccurs="0"/>
+                          <xs:element type="xs:string" name="name" minOccurs="0"/>
+                          <xs:element type="xs:string" name="description" minOccurs="0"/>
+                          <xs:element type="xs:string" name="uuid" minOccurs="0"/>
+						  <xs:element type="xs:string" name="is_predefined" minOccurs="0"/>
+                          <xs:element type="xs:string" name="is_assignable" minOccurs="0"/>
+                          <xs:element type="xs:string" name="object_type" minOccurs="0"/>
+                          
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      <xs:element type="xs:string" name="error" minOccurs="0" nillable="true"/>
+        <xs:element type="xs:byte" name="id" minOccurs="0"/>
+	  </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

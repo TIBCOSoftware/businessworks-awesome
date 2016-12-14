@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_g00skEQPEeaMUKUGpiTY_A" targetNamespace="http://tns.tibco.com/bw/composite/StripeBilling" name="StripeBilling" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_9YZ2AlqxEeaPFtzUzVdyOg" name="account" promote="ComponentplugIn/account">
+    <sca:interface.wsdl xmi:id="_9YadE1qxEeaPFtzUzVdyOg" interface="http://xmlns.example.com/20160805121136PLT#wsdl.interface(account)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9YbEIFqxEeaPFtzUzVdyOg" name="RestService2" path="/account/{customerId}/{companyId}" docBasePath="http://localhost:7777/StripeBilling" docResourcePath="Account" basePath="/" connector="stripebilling.Stripe" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Stripe_1.0.0_plugin.json">
+      <operation xmi:id="_9YbEIVqxEeaPFtzUzVdyOg" operationName="post" nickname="postaccount" httpMethod="POST" notes="" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_1tmQoGrnEeamDfIio0uaAg" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_3XQRAGrnEeamDfIio0uaAg" statusCode="411" reasonPhrase="Company not registered" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_9YbrMFqxEeaPFtzUzVdyOg">
+        <parameterMapping xmi:id="_9YbrMVqxEeaPFtzUzVdyOg" parameterName="customerId" parameterType="Path" dataType="string" required="true" description=""/>
+        <parameterMapping xmi:id="_9YbrMQqxEeaPFtzUzVdyOg" parameterName="companyId" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9YbEIlqxEeaPFtzUzVdyOg" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_RF5UUFqyEeaPFtzUzVdyOg" name="charges" promote="ComponentplugIn/charges">
+    <sca:interface.wsdl xmi:id="_RF6icFqyEeaPFtzUzVdyOg" interface="http://xmlns.example.com/20160805121136PLT#wsdl.interface(charges)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_RF7wkFqyEeaPFtzUzVdyOg" name="RestService3" path="/charges/{customerId}/{companyId}" docBasePath="http://localhost:7777/StripeBilling" docResourcePath="Account" basePath="/" connector="stripebilling.Stripe" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Stripe_1.0.0_plugin.json">
+      <operation xmi:id="_RF8XoFqyEeaPFtzUzVdyOg" operationName="get" httpMethod="GET" responseStyle="element">
+        <responseStatus xmi:id="_5tWQoGrnEeamDfIio0uaAg" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_7XTRAGrnEeamDfIio0uaAg" statusCode="411" reasonPhrase="Company not registered" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_RGApEFqyEeaPFtzUzVdyOg">
+        <parameterMapping xmi:id="_RGApEVqyEeaPFtzUzVdyOg" parameterName="customerId" parameterType="Path" dataType="string" required="true" description=""/>
+        <parameterMapping xmi:id="_RGApEQqyEeaPFtzUzVdyOg" parameterName="companyId" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_RF8XoVqyEeaPFtzUzVdyOg" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_BM6ywGUhEeaBZP24w1HUkw" name="invoice" promote="ComponentListInvoice/invoice">
+    <sca:interface.wsdl xmi:id="_BNBgcGUhEeaBZP24w1HUkw" interface="http://xmlns.example.com/20160818142024PLT#wsdl.interface(invoice)" scaext:wsdlLocation="../Processes/mashStripe/ListInvoice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_BNFK0GUhEeaBZP24w1HUkw" name="RestService" path="/invoice/{customerid}/{companyId}" docBasePath="http://localhost:7777/StripeBilling" docResourcePath="Invoice" basePath="/" connector="stripebilling.Stripe" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/mashStripe.ListInvoice-Invoice.json">
+      <operation xmi:id="_BNFx4GUhEeaBZP24w1HUkw" operationName="get" nickname="get-invoice" httpMethod="GET" responseStyle="element">
+        <responseStatus xmi:id="_0tWQoGrnEeamDfIio0uaAg" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_2XTRAGrnEeamDfIio0uaAg" statusCode="411" reasonPhrase="Company not registered" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_z2Z8MGrUEeacP_GIHlcBtA">
+        <parameterMapping xmi:id="_z2Z8MWrUEeacP_GIHlcBtA" parameterName="customerid" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_z2Z8MmrUEeacP_GIHlcBtA" parameterName="companyId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_BNFx4WUhEeaBZP24w1HUkw" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_ml4-sGduEeaIzuSD33zfsA" name="v1-package_key" promote="ComponentcreateStripeSubscription/v1-package_key">
+    <sca:interface.wsdl xmi:id="_mmLSkGduEeaIzuSD33zfsA" interface="http://xmlns.example.com/20160821124135PLT#wsdl.interface(v1-package_key)" scaext:wsdlLocation="../Processes/mashStripe/createStripeSubscription.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_mmT1cGduEeaIzuSD33zfsA" name="RestService1" path="/v1/package_key/{package_key_id}/{companyId}" docBasePath="http://localhost:7777/StripeBilling" docResourcePath="Resource" basePath="/" connector="stripebilling.Stripe" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/mashStripe.createStripeSubscription-Resource.json">
+      <operation xmi:id="_mmWRsGduEeaIzuSD33zfsA" operationName="put" nickname="put-v1-package_key" httpMethod="PUT" responseStyle="element">
+        <responseStatus xmi:id="_a4umkGroEeamDfIio0uaAg" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_bACIcGroEeamDfIio0uaAg" statusCode="411" reasonPhrase="Company not registered" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_2XIMgGrUEeacP_GIHlcBtA">
+        <parameterMapping xmi:id="_2XIMgWrUEeacP_GIHlcBtA" parameterName="package_key_id" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_2XIMgmrUEeacP_GIHlcBtA" parameterName="companyId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_mmWRsWduEeaIzuSD33zfsA" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_BYzp8GoUEea7K7QyeHEsmA" name="forcecalculatepostpaid" promote="ComponentpushPostpaidCalculation/forcecalculatepostpaid">
+    <sca:interface.wsdl xmi:id="_BY6-sGoUEea7K7QyeHEsmA" interface="http://xmlns.example.com/20160821233952PLT#wsdl.interface(forcecalculatepostpaid)" scaext:wsdlLocation="../Processes/mashStripe/pushPostpaidCalculation.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_BZCTcGoUEea7K7QyeHEsmA" name="RestService4" path="/forcecalculatepostpaid/{companyId}" docBasePath="http://localhost:7777/StripeBilling" docResourcePath="forceCalculatePostpaid" basePath="/" connector="stripebilling.Stripe" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/mashStripe.pushPostpaidCalculation-forceCalculatePostpaid.json">
+      <operation xmi:id="_BZEvsGoUEea7K7QyeHEsmA" operationName="post" nickname="post-forcecalculatepostpaid" httpMethod="POST" responseStyle="element">
+        <responseStatus xmi:id="_lpxuUGroEeamDfIio0uaAg" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_luoZIGroEeamDfIio0uaAg" statusCode="411" reasonPhrase="Company not registered" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="__rQDQGrUEeacP_GIHlcBtA">
+        <parameterMapping xmi:id="__rQDQWrUEeacP_GIHlcBtA" parameterName="companyId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_BZEvsWoUEea7K7QyeHEsmA" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_myReUGpiEeaqlbEtVrP4nw" name="postpaid" promote="ComponentpostpaidRating/postpaid">
+    <sca:interface.wsdl xmi:id="_mynckGpiEeaqlbEtVrP4nw" interface="http://xmlns.example.com/20160825110059PLT#wsdl.interface(postpaid)" scaext:wsdlLocation="../Processes/mashStripe/postpaidRating.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_my2tIGpiEeaqlbEtVrP4nw" name="RestService5" path="/postpaid/{companyId}" docBasePath="http://localhost:7777/StripeBilling" docResourcePath="Postpaid" basePath="/" connector="stripebilling.Stripe" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/mashStripe.postpaidRating-Postpaid.json">
+      <operation xmi:id="_my3UMGpiEeaqlbEtVrP4nw" operationName="get" nickname="get-postpaid" httpMethod="GET" responseStyle="element">
+        <responseStatus xmi:id="_hA43oGroEeamDfIio0uaAg" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_hDI6YGroEeamDfIio0uaAg" statusCode="411" reasonPhrase="Company not registered" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_8INaUGrUEeacP_GIHlcBtA">
+        <parameterMapping xmi:id="_8INaUWrUEeacP_GIHlcBtA" parameterName="companyId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_my37QGpiEeaqlbEtVrP4nw" bindingName="RestService5"/>
+  </sca:service>
+  <sca:service xmi:id="_cfSe4GqfEeaOzpnL2yL5yQ" name="companyresgistration" promote="ComponentProcess/companyresgistration">
+    <sca:interface.wsdl xmi:id="_cfwY8GqfEeaOzpnL2yL5yQ" interface="http://xmlns.example.com/20160825140515PLT#wsdl.interface(companyresgistration)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_cf0qYGqfEeaOzpnL2yL5yQ" name="RestService6" path="/companyresgistration" docBasePath="http://localhost:7777/StripeBilling" docResourcePath="CompanyResgistration" basePath="/" connector="stripebilling.Stripe" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/mashCompany.Process-CompanyResgistration.json">
+      <operation xmi:id="_cf14gGqfEeaOzpnL2yL5yQ" operationName="post" nickname="post-companyresgistration" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_D0TWYGqgEeaOzpnL2yL5yQ" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_Jtk24GqgEeaOzpnL2yL5yQ" statusCode="409" reasonPhrase="Conflict" dataType="string"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_cf_pgGqfEeaOzpnL2yL5yQ"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_cf14gWqfEeaOzpnL2yL5yQ" bindingName="RestService6"/>
+  </sca:service>
+  <sca:property xmi:id="_hW6F8EQPEeaMUKUGpiTY_A" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hXJ9kEQPEeaMUKUGpiTY_A" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hXOPAEQPEeaMUKUGpiTY_A" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hXSgcEQPEeaMUKUGpiTY_A" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hXWx4EQPEeaMUKUGpiTY_A" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hXk0UEQPEeaMUKUGpiTY_A" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_vKmQcEgOEea1WrWxHC1C1w" name="BWIPAddress" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_8MncYGOFEeaGqMrKUF_uSw" name="STRIPE_APIKEY" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_8TYLsGOFEeaGqMrKUF_uSw" name="MASHERY_APIKEY" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_8WUyAGOFEeaGqMrKUF_uSw" name="SECRET" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_AuZJIGRwEeaqS8lYHvuN7g" name="COMMERICIAL_ROLES" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_K0IMIGdnEeaUlemX23BvJg" name="MASHERY_UUID" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_9jFHoGd4Eear4aWrFzLuSQ" name="MASHERY_AREAID" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_B3m04GeaEear4aWrFzLuSQ" name="BWPort" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_8B4vAFqxEeaPFtzUzVdyOg" name="ComponentplugIn" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_8B4vAVqxEeaPFtzUzVdyOg" processName="mashStripe.plugIn"/>
+    <sca:service xmi:id="_9YZ2AFqxEeaPFtzUzVdyOg" name="account">
+      <sca:interface.wsdl xmi:id="_9YZ2AVqxEeaPFtzUzVdyOg" interface="http://xmlns.example.com/20160805121136PLT#wsdl.interface(account)"/>
+    </sca:service>
+    <sca:service xmi:id="_RFx_kFqyEeaPFtzUzVdyOg" name="charges">
+      <sca:interface.wsdl xmi:id="_RFx_kVqyEeaPFtzUzVdyOg" interface="http://xmlns.example.com/20160805121136PLT#wsdl.interface(charges)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_zeEdIGUgEeaBZP24w1HUkw" name="ComponentListInvoice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_zeEdIWUgEeaBZP24w1HUkw" processName="mashStripe.ListInvoice"/>
+    <sca:service xmi:id="_BM3IYGUhEeaBZP24w1HUkw" name="invoice">
+      <sca:interface.wsdl xmi:id="_BM4WgGUhEeaBZP24w1HUkw" interface="http://xmlns.example.com/20160818142024PLT#wsdl.interface(invoice)" scaext:wsdlLocation="../Processes/mashStripe/ListInvoice.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_fuPKYGduEeaIzuSD33zfsA" name="ComponentcreateStripeSubscription" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_fuPKYWduEeaIzuSD33zfsA" processName="mashStripe.createStripeSubscription"/>
+    <sca:service xmi:id="_mlvNsGduEeaIzuSD33zfsA" name="v1-package_key">
+      <sca:interface.wsdl xmi:id="_mlxC4GduEeaIzuSD33zfsA" interface="http://xmlns.example.com/20160821124135PLT#wsdl.interface(v1-package_key)" scaext:wsdlLocation="../Processes/mashStripe/createStripeSubscription.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_kBJYIGe9EeakNfgBanK25w" name="ComponentdailyPostpaidCalculation" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_kBJYIWe9EeakNfgBanK25w" processName="mashStripe.dailyPostpaidCalculation"/>
+  </sca:component>
+  <sca:component xmi:id="_4qUbkGe9EeakNfgBanK25w" name="ComponentpushPostpaidCalculation" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_4qUbkWe9EeakNfgBanK25w" processName="mashStripe.pushPostpaidCalculation"/>
+    <sca:service xmi:id="_BYuxcGoUEea7K7QyeHEsmA" name="forcecalculatepostpaid">
+      <sca:interface.wsdl xmi:id="_BYuxcWoUEea7K7QyeHEsmA" interface="http://xmlns.example.com/20160821233952PLT#wsdl.interface(forcecalculatepostpaid)" scaext:wsdlLocation="../Processes/mashStripe/pushPostpaidCalculation.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Y1dskGpfEeaqlbEtVrP4nw" name="ComponentpostpaidRating" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Y1dskWpfEeaqlbEtVrP4nw" processName="mashStripe.postpaidRating"/>
+    <sca:service xmi:id="_myF4IGpiEeaqlbEtVrP4nw" name="postpaid">
+      <sca:interface.wsdl xmi:id="_myIUYGpiEeaqlbEtVrP4nw" interface="http://xmlns.example.com/20160825110059PLT#wsdl.interface(postpaid)" scaext:wsdlLocation="../Processes/mashStripe/postpaidRating.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_OU9OgGqcEeaOzpnL2yL5yQ" name="ComponentCompanyActivator" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_OU9OgWqcEeaOzpnL2yL5yQ" processName="mashCompany.CompanyActivator"/>
+  </sca:component>
+  <sca:component xmi:id="_2IfjIGqeEeaOzpnL2yL5yQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_2IfjIWqeEeaOzpnL2yL5yQ" processName="mashCompany.CompanyRegisteration"/>
+    <sca:service xmi:id="_cfIG0GqfEeaOzpnL2yL5yQ" name="companyresgistration">
+      <sca:interface.wsdl xmi:id="_cfO0gGqfEeaOzpnL2yL5yQ" interface="http://xmlns.example.com/20160825140515PLT#wsdl.interface(companyresgistration)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

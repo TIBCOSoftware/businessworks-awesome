@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmi:id="_GkBmAWOPEeaPsJm_qno6qA" name="com.tibco.bw.resource.httpclient.twilio.HttpClientResource" type="http:HttpClientConfiguration">
+  <jndi:configuration xsi:type="http:HttpClientConfiguration" xmi:id="_GkVIAGOPEeaPsJm_qno6qA" httpClientVersion="httpcomponents" retryCount="3" idleConnectionTimeout="3000" useDefaultSSL="true">
+    <tcpDetails xmi:id="_GkYyYGOPEeaPsJm_qno6qA" port="443">
+      <substitutionBindings xmi:id="_F4yDMGSYEeaKQoHFb3LjKg" template="host" propName="/Twilio/URI/host"/>
+    </tcpDetails>
+  </jndi:configuration>
+</jndi:namedResource>

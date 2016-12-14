@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/getConversations/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/getConversations/parameters">
+  <xs:element name="lanugage-dialog-conversation-dialogsGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="dialog_id" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="query1" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lanugage-dialog-conversation-dialogsPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="dialog_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lanugage-dialog-conversation-dialogsPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="dialog_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lanugage-dialog-conversation-dialogsDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="dialog_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="lanugage-dialog-conversation-dialogs-dialog_id-conversationPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="form1" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

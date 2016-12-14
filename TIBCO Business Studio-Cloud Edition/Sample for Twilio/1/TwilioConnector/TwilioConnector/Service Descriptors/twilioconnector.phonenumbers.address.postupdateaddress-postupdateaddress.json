@@ -1,0 +1,129 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio PhoneNumber Address UpdateAddress.",
+    "description" : "Twilio PhoneNumber Address UpdateAddress."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/address/postupdateaddress" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-address-postupdateaddress",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/UpdateAddressInputSchema"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a UpdateAddressOutputSchema to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/UpdateAddressOutputSchema"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "UpdateAddressOutputSchema" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "sid" : {
+          "type" : "string"
+        },
+        "account_sid" : {
+          "type" : "string"
+        },
+        "friendly_name" : {
+          "type" : "string"
+        },
+        "customer_name" : {
+          "type" : "string"
+        },
+        "street" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "region" : {
+          "type" : "string"
+        },
+        "postal_code" : {
+          "type" : "string"
+        },
+        "iso_country" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "date_created" : {
+          "type" : "string"
+        },
+        "date_updated" : {
+          "type" : "string"
+        },
+        "emergency_enabled" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "UpdateAddressInputSchema" : {
+      "type" : "object",
+      "required" : [ "addresssid", "accountsid" ],
+      "properties" : {
+        "accountsid" : {
+          "type" : "string"
+        },
+        "addresssid" : {
+          "type" : "string"
+        },
+        "FriendlyName" : {
+          "type" : "string"
+        },
+        "CustomerName" : {
+          "type" : "string"
+        },
+        "Street" : {
+          "type" : "string"
+        },
+        "City" : {
+          "type" : "string"
+        },
+        "Region" : {
+          "type" : "string"
+        },
+        "PostalCode" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

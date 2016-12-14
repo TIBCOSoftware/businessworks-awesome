@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/GetQueueAttributes" xmlns:tns6="http://www.sqsconnector.tibco.com/GetQueueAttributes" elementFormDefault="qualified">
+	    
+	<complexType name="GetQueueAttributesRequestType">
+    	<sequence>
+    		<element name="queueName" type="string"></element>
+    		<element name="attributeNames" type="tns6:GetQueueAttributesRequestAttributesType" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <element name="getQueueAttributesRequest" type="tns6:GetQueueAttributesRequestType"></element>
+    
+    <complexType name="GetQueueAttributesRequestAttributesType">
+    	<sequence>
+    		<element name="attributeName" maxOccurs="unbounded" minOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="All"></enumeration>
+    					<enumeration
+    						value="ApproximateNumberOfMessages">
+    					</enumeration>
+    					<enumeration
+    						value="ApproximateNumberOfMessagesNotVisible">
+    					</enumeration>
+    					<enumeration value="VisibilityTimeout"></enumeration>
+    					<enumeration value="CreatedTimestamp"></enumeration>
+    					<enumeration value="LastModifiedTimestamp"></enumeration>
+    					<enumeration value="Policy"></enumeration>
+    					<enumeration value="MaximumMessageSize"></enumeration>
+    					<enumeration value="MessageRetentionPeriod"></enumeration>
+    					<enumeration value="QueueArn"></enumeration>
+    					<enumeration value="ApproximateNumberOfMessagesDelayed"></enumeration>
+    					<enumeration value="DelaySeconds"></enumeration>
+    					<enumeration value="ReceiveMessageWaitTimeSeconds"></enumeration>
+    					<enumeration value="RedrivePolicy"></enumeration>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <element name="attributeNames" type="tns6:GetQueueAttributesRequestAttributesType"></element>
+    
+    <complexType name="GetQueueAttributesResponseType">
+    	<sequence>
+    		<element name="getQueueAttributesResult" type="tns6:GetQueueAttributesResultType">
+    		</element>
+    		<element name="responseMetadata" type="tns6:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+	<element name="getQueueAttributesResponse" type="tns6:GetQueueAttributesResponseType"></element>
+	
+	<complexType name="GetQueueAttributesResponseAttributesType">
+    	<sequence>
+        	<element maxOccurs="1" minOccurs="0" name="ApproximateNumberOfMessages" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="ApproximateNumberOfMessagesDelayed" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="ApproximateNumberOfMessagesNotVisible" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="CreatedTimestamp" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="DelaySeconds" type="string"/>
+          	<element maxOccurs="1" minOccurs="0" name="LastModifiedTimestamp" type="string"/>
+          	<element maxOccurs="1" minOccurs="0" name="MaximumMessageSize" type="string"/>
+          	<element maxOccurs="1" minOccurs="0" name="MessageRetentionPeriod" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="Policy" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="QueueArn" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="ReceiveMessageWaitTimeSeconds" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="RedrivePolicy" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="VisibilityTimeout" type="string"/>
+         </sequence>
+    </complexType>
+        
+    <complexType name="GetQueueAttributesResultType">
+    	<sequence>
+    		<element name="attributes" type="tns6:GetQueueAttributesResponseAttributesType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+        
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

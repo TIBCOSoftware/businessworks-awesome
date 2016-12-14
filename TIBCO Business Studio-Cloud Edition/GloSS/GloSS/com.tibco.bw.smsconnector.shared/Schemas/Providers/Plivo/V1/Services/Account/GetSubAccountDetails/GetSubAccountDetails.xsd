@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.tibco.com/Providers/Plivo/V1/Services/Account/GetSubAccountDetails.xsd" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/GetSubAccountDetails.xsd">
+	<element name="GetSubAccountDetailsRequest">
+    	<complexType>
+    		<sequence>
+    			<element ref="tns:Authorization" />
+    			<element ref="tns:PlivoGetSubAccountDetailsRequest" />
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="GetSubAccountDetailsResponse">
+    	<complexType>
+            <choice>
+    			<element ref="tns:PlivoGetSubAccountDetailsResponse" />
+    			<element ref="tns:FaultDetail"></element>
+    		</choice>
+    	</complexType>
+    </element>
+    
+    <element name="Authorization">
+    	<complexType>
+    		<sequence>
+    			<element name="AuthID" type="string"/>
+    			<element name="AuthToken" type="string"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+
+    <element name="PlivoGetSubAccountDetailsResponse">
+    	<complexType>
+            <all>
+            	<element name="api_id" type="string"></element>
+            	<element name="account" type="string"></element>
+            	<element name="auth_id" type="string"></element>
+            	<element name="auth_token" type="string"></element>
+            	<element name="created" type="string"></element>
+            	<element name="enabled" type="string"></element>
+            	<element name="modified" type="string"></element>
+            	<element name="name" type="string"></element>
+            	<element name="new_auth_token" type="string"></element>
+            	<element name="resource_uri" type="string"></element>
+            </all>
+    	</complexType>
+    </element>
+
+    <element name="PlivoGetSubAccountDetailsRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="subauth_id" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="FaultDetail">
+		<complexType >
+        <sequence>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ActivityName" type="string"/>
+            <element block="extension restriction substitution"
+            	form="unqualified" minOccurs="0" name="Data" type="string" />
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="Msg" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" minOccurs="0" name="MsgCode" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ProcessStack" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="StackTrace" type="string"/>
+        </sequence>
+    </complexType>
+	</element>
+</schema>

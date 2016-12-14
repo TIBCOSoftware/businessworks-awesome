@@ -1,0 +1,96 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Auhty TOTP AddUser.",
+    "description" : "Twilio Auhty TOTP AddUser."
+  },
+  "host" : "HTTPConnectorGrp:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/totp/adduser" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-totp-adduser",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/AddUserInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a AddUserOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/AddUserOutput"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AddUserInput" : {
+      "type" : "object",
+      "required" : [ "CountyCode", "APIKey", "Email", "CellPhone" ],
+      "properties" : {
+        "Email" : {
+          "type" : "string"
+        },
+        "CellPhone" : {
+          "type" : "string"
+        },
+        "CountyCode" : {
+          "type" : "string"
+        },
+        "APIKey" : {
+          "type" : "string"
+        }
+      }
+    },
+    "user" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "AddUserOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "message" : {
+          "type" : "string"
+        },
+        "user" : {
+          "$ref" : "#/definitions/user"
+        },
+        "success" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}

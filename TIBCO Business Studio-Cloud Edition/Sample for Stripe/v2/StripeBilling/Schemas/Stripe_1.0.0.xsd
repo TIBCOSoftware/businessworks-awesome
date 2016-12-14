@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="/T1470363105519Converted/JsonSchema" xmlns:tns="/T1470363105519Converted/JsonSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="creditCard" type="tns:creditCard"/>
+    <xs:complexType name="creditCard">
+        <xs:sequence>
+            <xs:element name="Card.expMth" type="xs:string"/>
+            <xs:element name="Card.expYear" type="xs:string"/>
+            <xs:element name="Card.CVC" type="xs:string"/>
+            <xs:element name="Card.Number" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

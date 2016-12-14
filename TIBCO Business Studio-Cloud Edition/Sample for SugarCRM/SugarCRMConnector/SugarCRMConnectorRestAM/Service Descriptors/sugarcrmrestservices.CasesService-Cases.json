@@ -1,0 +1,214 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "SugarCRM Cases REST service .",
+    "description" : "SugarCRM Cases REST service ."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/Cases" : {
+      "post" : {
+        "description" : "AddCases : Create New SugarCRM Case",
+        "operationId" : "AddCases",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/AddCaseJSONElement"
+          },
+          "required" : true
+        }, {
+          "name" : "access_token",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "get" : {
+        "description" : "GetCases : Retrieve  existing  SugarCRM Case/Cases",
+        "operationId" : "get-Cases",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "access_token",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "caseid",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "put" : {
+        "description" : "UpdateCase : Update existing SugarCRM Case",
+        "operationId" : "UpdateCases",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/UpdateCaseJSONElement"
+          },
+          "required" : true
+        }, {
+          "name" : "access_token",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "caseid",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "DeleteCase : Delete existing SugarCRM Case",
+        "operationId" : "delete-Cases",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "access_token",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "caseid",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "UpdateCaseJSONElement" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "priority" : {
+          "type" : "string"
+        },
+        "account_name" : {
+          "type" : "string"
+        },
+        "account_id" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        },
+        "portal_viewable" : {
+          "type" : "boolean"
+        },
+        "assigned_user_id" : {
+          "type" : "string"
+        },
+        "assigned_user_name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AddCaseJSONElement" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "priority" : {
+          "type" : "string"
+        },
+        "account_name" : {
+          "type" : "string"
+        },
+        "account_id" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        },
+        "portal_viewable" : {
+          "type" : "boolean"
+        },
+        "assigned_user_id" : {
+          "type" : "string"
+        },
+        "assigned_user_name" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/filePatch/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/filePatch/parameters">
+  <xs:element name="patchFilePostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="fileId" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="addParents" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="convert" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="modifiedDateBehavior" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="newRevision" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="ocr" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="ocrLanguage" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="pinned" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="removeParents" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="setModifiedDate" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="timedTextLanguage" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="timedTextTrackName" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="updateViewedDate" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="useContentAsIndexableText" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="patchFile1PostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="fileId" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="addParents" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="convert" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="modifiedDateBehavior" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="newRevision" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="ocr" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="ocrLanguage" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="pinned" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="removeParents" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="setModifiedDate" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="timedTextLanguage" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="timedTextTrackName" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="updateViewedDate" type="xs:boolean"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="useContentAsIndexableText" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

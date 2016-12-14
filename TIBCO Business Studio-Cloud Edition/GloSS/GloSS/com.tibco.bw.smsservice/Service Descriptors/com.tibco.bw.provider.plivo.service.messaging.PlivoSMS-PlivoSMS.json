@@ -1,0 +1,300 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/api/plivo/SMS/SendSMS" : {
+      "post" : {
+        "description" : "Rest service of Plivo for SendSMS",
+        "operationId" : "post-api-plivo-SMS-SendSMS",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/PlivoSendSMSRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a PlivoSendSMSResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/PlivoSendSMSResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/SMS/RetrieveSMS" : {
+      "post" : {
+        "description" : "Rest Service of Plivo for RetrieveSMS",
+        "operationId" : "post-api-plivo-SMS-RetrieveSMS",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/PlivoRetrieveSMSRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a PlivoRetrieveSMSResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/PlivoRetrieveSMSResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/SMS/RetrieveALLSMS" : {
+      "post" : {
+        "description" : "Rest Service of Plivo for RetrieveAllSMS",
+        "operationId" : "post-api-plivo-SMS-RetrieveALLSMS",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/PlivoRetrieveAllSMSRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a PlivoRetrieveAllSMSResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/PlivoRetrieveAllSMSResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "PlivoRetrieveAllSMSRequest" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "subaccount" : {
+          "type" : "string"
+        },
+        "message_direction" : {
+          "type" : "string"
+        },
+        "message_time" : {
+          "type" : "string"
+        },
+        "message_time__gt" : {
+          "type" : "string"
+        },
+        "message_time__gte" : {
+          "type" : "string"
+        },
+        "message_time__lt" : {
+          "type" : "string"
+        },
+        "message_time__lte" : {
+          "type" : "string"
+        },
+        "message_state" : {
+          "type" : "string"
+        },
+        "limit" : {
+          "type" : "string"
+        },
+        "offset" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoRetrieveAllSMSResponse" : {
+      "type" : "object",
+      "required" : [ "api_id", "meta" ],
+      "properties" : {
+        "api_id" : {
+          "type" : "string"
+        },
+        "meta" : {
+          "$ref" : "#/definitions/meta"
+        },
+        "objects" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/objects",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "PlivoSendSMSResponse" : {
+      "type" : "object",
+      "required" : [ "api_id", "message_uuid", "message" ],
+      "properties" : {
+        "message" : {
+          "type" : "string"
+        },
+        "message_uuid" : {
+          "type" : "string"
+        },
+        "api_id" : {
+          "type" : "string"
+        }
+      }
+    },
+    "meta" : {
+      "type" : "object",
+      "required" : [ "next", "previous", "offset", "total_count", "limit" ],
+      "properties" : {
+        "previous" : {
+          "type" : "string"
+        },
+        "total_count" : {
+          "type" : "string"
+        },
+        "offset" : {
+          "type" : "string"
+        },
+        "limit" : {
+          "type" : "string"
+        },
+        "next" : {
+          "type" : "string"
+        }
+      }
+    },
+    "objects" : {
+      "type" : "object",
+      "required" : [ "to_number", "message_time", "message_state", "total_amount", "from_number", "resource_uri", "total_rate", "message_type", "units", "message_direction", "message_uuid" ],
+      "properties" : {
+        "units" : {
+          "type" : "string"
+        },
+        "total_rate" : {
+          "type" : "string"
+        },
+        "message_direction" : {
+          "type" : "string"
+        },
+        "to_number" : {
+          "type" : "string"
+        },
+        "message_state" : {
+          "type" : "string"
+        },
+        "total_amount" : {
+          "type" : "string"
+        },
+        "from_number" : {
+          "type" : "string"
+        },
+        "message_uuid" : {
+          "type" : "string"
+        },
+        "message_time" : {
+          "type" : "string"
+        },
+        "resource_uri" : {
+          "type" : "string"
+        },
+        "message_type" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoRetrieveSMSRequest" : {
+      "type" : "object",
+      "required" : [ "message_uuid" ],
+      "properties" : {
+        "message_uuid" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoSendSMSRequest" : {
+      "type" : "object",
+      "required" : [ "dst", "src", "text" ],
+      "properties" : {
+        "src" : {
+          "type" : "string"
+        },
+        "dst" : {
+          "type" : "string"
+        },
+        "text" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "method" : {
+          "type" : "string"
+        },
+        "log" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoRetrieveSMSResponse" : {
+      "type" : "object",
+      "required" : [ "to_number", "api_id", "message_time", "message_state", "total_amount", "from_number", "resource_uri", "total_rate", "message_type", "message_direction", "message_uuid", "units" ],
+      "properties" : {
+        "api_id" : {
+          "type" : "string"
+        },
+        "from_number" : {
+          "type" : "string"
+        },
+        "message_direction" : {
+          "type" : "string"
+        },
+        "message_state" : {
+          "type" : "string"
+        },
+        "message_time" : {
+          "type" : "string"
+        },
+        "message_type" : {
+          "type" : "string"
+        },
+        "message_uuid" : {
+          "type" : "string"
+        },
+        "resource_uri" : {
+          "type" : "string"
+        },
+        "to_number" : {
+          "type" : "string"
+        },
+        "total_amount" : {
+          "type" : "string"
+        },
+        "total_rate" : {
+          "type" : "string"
+        },
+        "units" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

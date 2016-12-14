@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/masherySubsListSchema" xmlns:tns="http://www.example.org/masherySubsListSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" >
+  <element name="response">
+    <complexType>
+      <sequence>
+        <element name="result">
+          <complexType>
+            <sequence>
+              <element type="int" name="total_items"/>
+              <element type="int" name="total_pages"/>
+              <element type="int" name="items_per_page"/>
+              <element type="int" name="current_page"/>
+              <element name="items" maxOccurs="unbounded" minOccurs="0">
+                <complexType>
+                  <sequence>
+                    <element type="string" name="apikey"/>
+                    <element type="double" name="unitCost"/>
+                    <element type="string" name="currency"/>
+                    <element type="string" name="paymentType"/>
+                    <element name="member">
+                      <complexType>
+                        <sequence>
+                          <element type="string" name="username"/>
+                          <element type="string" name="external_id"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element name="keys" maxOccurs="unbounded" minOccurs="0">
+                      <complexType>
+                        <sequence>
+                          <element type="string" name="service_key"/>
+                          <element type="string" name="apikey"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+        <element type="string" name="error" nillable="true"/>
+        <element type="int" name="id"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

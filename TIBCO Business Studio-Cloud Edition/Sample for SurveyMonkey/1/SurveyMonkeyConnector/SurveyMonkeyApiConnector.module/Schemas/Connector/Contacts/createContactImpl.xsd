@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/contacts/createContactImpl"
+	 targetNamespace="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/contacts/createContactImpl"
+	 elementFormDefault="unqualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="apiKey" type="xs:string"/>
+				<xs:element name="oauthKey" type="xs:string"/>
+				<xs:element name="postData" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="code" type="xs:string"/>
+							<xs:element name="msg" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="messageBody">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="asciiContent" type="xs:string" minOccurs="0"/>
+							<xs:element name="binaryContent" type="xs:base64Binary" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

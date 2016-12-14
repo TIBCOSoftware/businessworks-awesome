@@ -1,0 +1,81 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Usage CreateUsageTrigger.",
+    "description" : "Twilio Usage CreateUsageTrigger."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/postcreateusagetrigger" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-postcreateusagetrigger",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/CreateUsageTriggerInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a CreateUsageTriggerOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/CreateUsageTriggerOutput"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "CreateUsageTriggerInput" : {
+      "type" : "object",
+      "required" : [ "UsageCategory", "CallbackUrl", "TriggerValue", "AccountSid" ],
+      "properties" : {
+        "AccountSid" : {
+          "type" : "string"
+        },
+        "UsageCategory" : {
+          "type" : "string"
+        },
+        "TriggerValue" : {
+          "type" : "string"
+        },
+        "CallbackUrl" : {
+          "type" : "string"
+        },
+        "FreindlyName" : {
+          "type" : "string"
+        },
+        "Recurring" : {
+          "type" : "string"
+        },
+        "TriggerBy" : {
+          "type" : "string"
+        },
+        "CallbackMethod" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CreateUsageTriggerOutput" : {
+      "type" : "object",
+      "required" : [ "Response" ],
+      "properties" : {
+        "Response" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

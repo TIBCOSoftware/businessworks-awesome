@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetAllCallDetails.xsd" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetAllCallDetails.xsd">
+	<element name="GetAllCallDetailsRequest">
+    	<complexType>
+    		<sequence>
+    			<element ref="tns:Authorization" />
+    			<element ref="tns:PlivoGetAllCallDetailsRequest" />
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="GetAllCallDetailsResponse">
+    	<complexType>
+            <choice>
+    			<element ref="tns:PlivoGetAllCallDetailsResponse" />
+    			<element ref="tns:FaultDetail"></element>
+    		</choice>
+    	</complexType>
+    </element>
+    
+    <element name="Authorization">
+    	<complexType>
+    		<sequence>
+    			<element name="AuthID" type="string"/>
+    			<element name="AuthToken" type="string"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+
+    <element name="PlivoGetAllCallDetailsResponse">
+    	<complexType>
+            <sequence>
+                <element name="api_id" type="string"></element>
+                <element name="meta">
+    				<complexType>
+                        <all>
+    						<element name="previous" type="string"></element>
+    						<element name="total_count" type="string"></element>
+    						<element name="offset" type="string"></element>
+    						<element name="limit" type="string"></element>
+    						<element name="next" type="string"></element>
+    					</all>
+    				</complexType>
+    			</element>
+
+    			<element name="objects" minOccurs="0" maxOccurs="unbounded">
+			    				<complexType>
+            <all>
+    			<element name="answer_time" type="string"></element>
+    			<element name="bill_duration" type="string"></element>
+    			<element name="billed_duration" type="string"></element>
+    			<element name="call_direction" type="string"></element>
+    			<element name="call_duration" type="string"></element>
+    			<element name="call_uuid" type="string"></element>
+    			<element name="end_time" type="string"></element>
+    			<element name="from_number" type="string"></element>
+    			<element name="initiation_time" type="string"></element>
+    			<element name="parent_call_uuid" type="string"></element>
+    			<element name="resource_uri" type="string"></element>
+    			<element name="to_number" type="string"></element>
+    			<element name="total_amount" type="string"></element>
+    			<element name="total_rate" type="string"></element>
+    		</all>
+    	</complexType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="PlivoGetAllCallDetailsRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="subaccount" type="string" minOccurs="0" maxOccurs="1"></element>
+    			<element name="call_direction" type="string" maxOccurs="1" minOccurs="0"></element>
+    			<element name="from_number" type="string" maxOccurs="1" minOccurs="0"></element>
+    			<element name="to_number" type="string"
+    				minOccurs="0" maxOccurs="1">
+    			</element>
+    			<element name="bill_duration" type="string" minOccurs="0"
+    				maxOccurs="1">
+    			</element>
+    			<element name="bill_duration__gt" type="string" minOccurs="0"
+    				maxOccurs="1">
+    			</element>
+    			<element name="bill_duration__gte" type="string" minOccurs="0"
+    				maxOccurs="1">
+    			</element>
+    			<element name="bill_duration__lt" type="string"
+    				minOccurs="0" maxOccurs="1">
+    			</element>
+    			<element name="bill_duration__lte" type="string" minOccurs="0"
+    				maxOccurs="1">
+    			</element>
+    			<element name="end_time" type="string" minOccurs="0"
+    				maxOccurs="1"></element>
+    			<element name="end_time__gt" type="string" minOccurs="0"
+    				maxOccurs="1"></element>
+    			<element name="end_time__gte" type="string" minOccurs="0"
+    				maxOccurs="1"></element>
+    			<element name="end_time__lt" type="string" minOccurs="0"
+    				maxOccurs="1"></element>
+    			<element name="end_time__lte" type="string" minOccurs="0"
+    				maxOccurs="1"></element>
+    			<element name="limit" type="string" minOccurs="0"
+    				maxOccurs="1"></element>
+    			<element name="offset" type="string" minOccurs="0"
+    				maxOccurs="1"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="FaultDetail">
+		<complexType >
+        <sequence>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ActivityName" type="string"/>
+            <element block="extension restriction substitution"
+            	form="unqualified" minOccurs="0" name="Data" type="string" />
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="Msg" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" minOccurs="0" name="MsgCode" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ProcessStack" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="StackTrace" type="string"/>
+        </sequence>
+    </complexType>
+	</element>
+</schema>

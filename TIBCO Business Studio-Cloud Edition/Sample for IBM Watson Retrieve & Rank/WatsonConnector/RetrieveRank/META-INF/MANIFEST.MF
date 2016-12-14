@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RetrieveRank Module
+Bundle-SymbolicName: RetrieveRank
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: lib/java-sdk-3.3.0-jar-with-dependencies.jar,lib/commons-io-2.5.jar,.
+Bundle-Vendor: TIBCO Software Inc.
+Export-Package: com.example.watson.rr
+Require-Capability: com.tibco.bw.model; filter:="(name=bwext)",
+ com.tibco.bw.palette; filter:="(name=bw.restjson)",
+ com.tibco.bw.palette; filter:="(name=bw.java)",
+ com.tibco.bw.palette; filter:="(name=bw.http)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.httpclient)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.httpconnector)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.cred)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.sslclient)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.userid)",
+ com.tibco.bw.binding.model; filter:="(name=bw.rest)"
+TIBCO-BW-Version: 1.0.0 V80 2016-04-28
+TIBCO-BW-Edition: bwcloud
+TIBCO-BW-ApplicationModule: META-INF/module.bwm
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+TIBCO-BW-ConfigProfile: META-INF/default.substvar
+TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
+TIBCO-BW-JobSharedVariables: META-INF/module.jsv

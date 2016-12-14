@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.tibco.com/Providers/Plivo/V1/Services/Account/ModifyAccount.xsd" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/ModifyAccount.xsd">
+	<element name="ModifyAccountRequest">
+    	<complexType>
+    		<sequence>
+    			<element ref="tns:Authorization" />
+    			<element ref="tns:PlivoModifyAccountRequest" />
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="ModifyAccountResponse">
+    	<complexType>
+            <choice>
+    			<element ref="tns:PlivoModifyAccountResponse" />
+    			<element ref="tns:FaultDetail"></element>
+    		</choice>
+    	</complexType>
+    </element>
+    
+    <element name="Authorization">
+    	<complexType>
+    		<sequence>
+    			<element name="AuthID" type="string"/>
+    			<element name="AuthToken" type="string"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+
+    <element name="PlivoModifyAccountResponse">
+    	<complexType>
+            <all>
+            	<element name="api_id" type="string"></element>
+            	<element name="message" type="string"></element>
+            </all>
+    	</complexType>
+    </element>
+
+    <element name="PlivoModifyAccountRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="name" type="string" minOccurs="0" maxOccurs="1"></element>
+    			<element name="city" type="string" minOccurs="0" maxOccurs="1"></element>
+    			<element name="address" type="string" minOccurs="0" maxOccurs="1"></element>
+    			<element name="timezone" type="string" minOccurs="0" maxOccurs="1"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="FaultDetail">
+		<complexType >
+        <sequence>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ActivityName" type="string"/>
+            <element block="extension restriction substitution"
+            	form="unqualified" minOccurs="0" name="Data" type="string" />
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="Msg" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" minOccurs="0" name="MsgCode" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ProcessStack" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="StackTrace" type="string"/>
+        </sequence>
+    </complexType>
+	</element>
+</schema>

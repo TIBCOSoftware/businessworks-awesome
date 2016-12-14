@@ -1,0 +1,95 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Zen Desk User Search",
+    "description" : "Zen Desk User Search"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/tcizendeskservice/ver1/users/listall/{sessionId}" : {
+      "get" : {
+        "description" : "To get all existing user details from ZenDesk. Please note that you should have access to get the users.",
+        "operationId" : "get-tcizendeskservice-ver1-users-listall",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/users/getuseronrole/{sessionId}/{role}" : {
+      "get" : {
+        "description" : "To get users based on a role. Valid roles are admini,end-user and agent",
+        "operationId" : "get-tcizendeskservice-ver1-users-getuseronrole",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "role",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/users/getuseronemailid/{sessionId}/{emailId}" : {
+      "get" : {
+        "description" : "To get the user based on the email ID",
+        "operationId" : "get-tcizendeskservice-ver1-users-getuseronemailid",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "emailId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}

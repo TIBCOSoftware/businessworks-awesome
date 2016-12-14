@@ -1,0 +1,344 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Zen Desk Ticket Management.",
+    "description" : "Zen Desk Ticket Management."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/tcizendeskservice/ver1/tickets/assign/{sessionId}/{ticketId}" : {
+      "put" : {
+        "description" : "To assign a ticket",
+        "operationId" : "put-tcizendeskservice-ver1-tickets-assign",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "ticketId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/tickets/update/{sessionId}/{ticketId}" : {
+      "put" : {
+        "description" : "To Update ticket. To update indivitual important fields(such as priority,status), please use indivitual API. This API call will be used to update the entire ticket. You can get the existing ticket details by using 'get' api.",
+        "operationId" : "put-tcizendeskservice-ver1-tickets-update",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ZenTicketUpdate"
+          },
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "ticketId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/tickets/get/{sessionId}/{ticketid}" : {
+      "get" : {
+        "description" : "To get the ticket details",
+        "operationId" : "get-tcizendeskservice-ver1-tickets-get",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "ticketid",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/tickets/create/{sessionId}" : {
+      "post" : {
+        "description" : "To create new Ticket. Tickets are the means through which your End-users (customers) communicate with Agents in Zendesk. Successful ticket creation will return the ticket. Failure will return the error message.",
+        "operationId" : "post-tcizendeskservice-ver1-tickets-create",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ZenTicketSub"
+          },
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/tickets/setstatus/{sessionId}/{ticketId}" : {
+      "put" : {
+        "description" : "To change the ticket status. Valid statuc values are new,open,pending,hold,solved,closed.",
+        "operationId" : "put-tcizendeskservice-ver1-tickets-setstatus",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "ticketId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/tickets/delete/{sessionId}/{ticketId}" : {
+      "delete" : {
+        "description" : "To delete message",
+        "operationId" : "delete-tcizendeskservice-ver1-tickets-delete",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "ticketId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/tickets/setpriority/{sessionId}/{ticketId}" : {
+      "put" : {
+        "description" : "To change the priority of the ticket. valid priority values are high,urgent,normal,low",
+        "operationId" : "put-tcizendeskservice-ver1-tickets-setpriority",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "ticketId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/tickets/getall/{sessionId}" : {
+      "get" : {
+        "description" : "To get all assigned Tickets",
+        "operationId" : "get-tcizendeskservice-ver1-tickets-getall",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ZenTicketSub" : {
+      "type" : "object",
+      "required" : [ "subject", "description", "comment" ],
+      "properties" : {
+        "subject" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "comment" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ZenTicketUpdate" : {
+      "type" : "object",
+      "required" : [ "comment", "requester_id" ],
+      "properties" : {
+        "url" : {
+          "type" : "string"
+        },
+        "external_id" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "subject" : {
+          "type" : "string"
+        },
+        "priority" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "recipient" : {
+          "type" : "string"
+        },
+        "requester_id" : {
+          "type" : "string"
+        },
+        "submitter_id" : {
+          "type" : "string"
+        },
+        "assignee_id" : {
+          "type" : "string"
+        },
+        "organization_id" : {
+          "type" : "integer"
+        },
+        "group_id" : {
+          "type" : "string"
+        },
+        "collaborator_ids" : {
+          "type" : "string"
+        },
+        "problem_id" : {
+          "type" : "integer"
+        },
+        "due_at" : {
+          "type" : "string"
+        },
+        "is_public" : {
+          "type" : "boolean"
+        },
+        "comment" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

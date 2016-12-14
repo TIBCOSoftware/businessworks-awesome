@@ -1,0 +1,82 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8180",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/getauthtokenlinkedin" : {
+      "get" : {
+        "description" : "Get an item",
+        "operationId" : "getItem",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "code",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "state",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Output to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Output"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Element" : {
+      "type" : "object",
+      "required" : [ "RedirectURI" ],
+      "properties" : {
+        "RedirectURI" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Output" : {
+      "type" : "object",
+      "required" : [ "success", "status" ],
+      "properties" : {
+        "success" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "Token" : {
+          "$ref" : "#/definitions/Token"
+        }
+      }
+    },
+    "Token" : {
+      "type" : "object",
+      "required" : [ "Message", "LinkedinAccessToken" ],
+      "properties" : {
+        "LinkedinAccessToken" : {
+          "type" : "string"
+        },
+        "Message" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

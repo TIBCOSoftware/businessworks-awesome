@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/Providers/Twilio/V1/Services/Account/RetrieveAccountDetails" elementFormDefault="qualified" targetNamespace="http://www.tibco.com/Providers/Twilio/V1/Services/Account/RetrieveAccountDetails">
+<complexType name="Authorization">
+		<sequence>
+			<element name="AccountID" type="string"/>
+			<element name="AuthenticationToken" type="string"/>
+		</sequence>
+	</complexType>
+
+    <element name="RetrieveAccountDetailsRequest">
+    	<complexType>
+    	<sequence>
+    	<element name="Authorization" type="tns:Authorization"/>
+                <element name="AccountID" type="string"/>
+            </sequence>
+    	</complexType>
+    </element>
+
+    <element name="RetrieveAccountDetailsResponse">
+    	<complexType>
+            <choice>
+      	<element maxOccurs="1" minOccurs="1" ref="tns:Account"/>
+      	<element ref="tns:FaultDetail"/>
+      </choice>
+    	</complexType>
+    </element>
+    
+    <element name="Account">
+    	<complexType>
+    		<sequence>
+    			<element name="Sid" type="string"/>
+    			<element name="OwnerAccountSid" type="string"/>
+    			<element name="FriendlyName" type="string"/>
+    			<element name="Status" type="string"/>
+    			<element name="DateCreated" type="string"/>
+    			<element name="DateUpdated" type="string"/>
+    			<element name="AuthToken" type="string"/>
+    			<element name="Type" type="string"/>
+    			<element name="Uri" type="string"/>
+    			<element ref="tns:SubresourceUris"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="SubresourceUris">
+    	<complexType>
+    		<sequence>
+    			<element name="Applications" type="string"/>
+    			<element name="AuthorizedConnectApps" type="string">
+    			</element>
+    			<element name="AvailablePhoneNumbers" type="string">
+    			</element>
+    			<element name="Calls" type="string"/>
+    			<element name="Conferences" type="string"/>
+    			<element name="ConnectApps" type="string"/>
+    			<element name="IncomingPhoneNumbers" type="string">
+    			</element>
+    			<element name="Media" type="string"/>
+    			<element name="Messages" type="string"/>
+    			<element name="Notifications" type="string"/>
+    			<element name="OutgoingCallerIds" type="string"/>
+    			<element name="Queues" type="string"/>
+    			<element name="Recordings" type="string"/>
+    			<element name="Sandbox" type="string"/>
+    			<element name="SIP" type="string"/>
+    			<element name="SMSMessages" type="string"/>
+    			<element name="Transcriptions" type="string"/>
+    			<element name="Usage" type="string"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    <element name="FaultDetail">
+		<complexType>
+        <sequence>
+            <element block="extension restriction substitution" form="unqualified" name="ActivityName" type="string"/>
+            <element block="extension restriction substitution" form="unqualified" minOccurs="0" name="Data" type="string"/>
+            <element block="extension restriction substitution" form="unqualified" name="Msg" type="string"/>
+            <element block="extension restriction substitution" form="unqualified" minOccurs="0" name="MsgCode" type="string"/>
+            <element block="extension restriction substitution" form="unqualified" name="ProcessStack" type="string"/>
+            <element block="extension restriction substitution" form="unqualified" name="StackTrace" type="string"/>
+        </sequence>
+    </complexType>
+	</element>
+</schema>

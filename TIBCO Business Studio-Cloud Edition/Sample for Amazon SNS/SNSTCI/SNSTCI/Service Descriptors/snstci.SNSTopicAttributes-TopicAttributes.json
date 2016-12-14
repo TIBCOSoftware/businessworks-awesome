@@ -1,0 +1,178 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Amazon SQS Topic Attributes operations",
+    "description" : "Amazon SQS Topic Attributes operations"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/topic/attributes" : {
+      "get" : {
+        "description" : "Returns all of the properties of a topic. Topic properties returned might differ based on the authorization of the user.\nRequest Parameters\n\nFor information about the parameters that are common to all actions, see Common Parameters.\n\nTopicArn\n\n    The ARN of the topic whose properties you want to get.\n\n    Type: String\n\n    Required: Yes",
+        "operationId" : "get-topic-attributes",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "TopicArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetTopicAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetTopicAttributesResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "description" : "Allows a topic owner to set an attribute of the topic to a new value.",
+        "operationId" : "put-topic-attributes",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/SetTopicAttributesRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccesKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a SetTopicAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/SetTopicAttributesResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "SetTopicAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        },
+        "setTopicAttributesResult" : {
+          "type" : "string"
+        }
+      }
+    },
+    "getTopicAttributesResult" : {
+      "type" : "object",
+      "required" : [ "attributes" ],
+      "properties" : {
+        "attributes" : {
+          "$ref" : "#/definitions/attributes"
+        }
+      }
+    },
+    "GetTopicAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "getTopicAttributesResult", "responseMetadata" ],
+      "properties" : {
+        "getTopicAttributesResult" : {
+          "$ref" : "#/definitions/getTopicAttributesResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "SetTopicAttributesRequest" : {
+      "type" : "object",
+      "required" : [ "AttributeValue", "TopicArn", "AttributeName" ],
+      "properties" : {
+        "AttributeName" : {
+          "type" : "string"
+        },
+        "AttributeValue" : {
+          "type" : "string"
+        },
+        "TopicArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "required" : [ "Policy", "Owner", "SubscriptionsPending", "TopicArn", "EffectiveDeliveryPolicy", "SubscriptionsConfirmed", "DisplayName", "SubscriptionsDeleted" ],
+      "properties" : {
+        "Policy" : {
+          "type" : "string"
+        },
+        "Owner" : {
+          "type" : "string"
+        },
+        "SubscriptionsPending" : {
+          "type" : "string"
+        },
+        "TopicArn" : {
+          "type" : "string"
+        },
+        "EffectiveDeliveryPolicy" : {
+          "type" : "string"
+        },
+        "SubscriptionsConfirmed" : {
+          "type" : "string"
+        },
+        "DisplayName" : {
+          "type" : "string"
+        },
+        "SubscriptionsDeleted" : {
+          "type" : "string"
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

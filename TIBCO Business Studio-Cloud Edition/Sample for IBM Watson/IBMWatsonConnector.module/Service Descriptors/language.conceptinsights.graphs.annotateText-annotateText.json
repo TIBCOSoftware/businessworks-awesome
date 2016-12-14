@@ -1,0 +1,51 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Identifies concept mentions in a piece of text (concept extraction).",
+    "description" : "Identifies concept mentions in a piece of text (concept extraction)."
+  },
+  "host" : "localhost:8099",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/lanugage/conceptinsights/graphs/{account_id}/{graph}/annotate_text" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-lanugage-conceptinsights-graphs",
+        "consumes" : [ "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "account_id",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "form1",
+          "in" : "formData",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "graph",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}

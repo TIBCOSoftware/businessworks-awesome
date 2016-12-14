@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/Call/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/Call/parameters">
+  <xs:element name="smsGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="to" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="smsPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="to" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="smsPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="to" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="smsDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="to" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="call-statusGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="call-statusPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="call-statusPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="call-statusDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="sms-statusGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="sms-statusPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="sms-statusPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="sms-statusDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="sid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

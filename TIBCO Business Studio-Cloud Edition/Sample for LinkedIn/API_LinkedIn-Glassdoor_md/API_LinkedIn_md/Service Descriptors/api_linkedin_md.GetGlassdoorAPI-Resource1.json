@@ -1,0 +1,200 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8081",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/api/glassdoor/getuserdetails" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-api-glassdoor-getuserdetails",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/GetJobDetailsIp"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetJobDetailsOp to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetJobDetailsOp"
+            }
+          }
+        }
+      },
+      "get" : {
+        "description" : "",
+        "operationId" : "get-api-glassdoor-getuserdetails",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "JobTitle",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetJobDetailsOp to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetJobDetailsOp"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "GetJobDetailsIp" : {
+      "type" : "object",
+      "required" : [ "SearchQuery", "Country", "City" ],
+      "properties" : {
+        "SearchQuery" : {
+          "type" : "string"
+        },
+        "Country" : {
+          "type" : "string"
+        },
+        "City" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Employers" : {
+      "type" : "object",
+      "required" : [ "website", "OverallRatings", "name", "industry", "id", "workLifeBalanceRating", "numofratings", "exactmatch", "Location" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "website" : {
+          "type" : "string"
+        },
+        "exactmatch" : {
+          "type" : "string"
+        },
+        "industry" : {
+          "type" : "string"
+        },
+        "numofratings" : {
+          "type" : "string"
+        },
+        "OverallRatings" : {
+          "type" : "string"
+        },
+        "workLifeBalanceRating" : {
+          "type" : "string"
+        },
+        "Location" : {
+          "type" : "string"
+        },
+        "featuredreview" : {
+          "$ref" : "#/definitions/featuredreview"
+        },
+        "ceoName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Jobs" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "nextJobTitle" : {
+          "type" : "string"
+        },
+        "frequency" : {
+          "type" : "string"
+        },
+        "frequencyPercent" : {
+          "type" : "string"
+        },
+        "nationalJobCount" : {
+          "type" : "string"
+        },
+        "medianSalary" : {
+          "type" : "string"
+        }
+      }
+    },
+    "JobProgression" : {
+      "type" : "object",
+      "required" : [ "SearchedJobTitle", "Currency", "AvgPay" ],
+      "properties" : {
+        "SearchedJobTitle" : {
+          "type" : "string"
+        },
+        "Currency" : {
+          "type" : "string"
+        },
+        "AvgPay" : {
+          "type" : "string"
+        },
+        "Jobs" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Jobs",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "featuredreview" : {
+      "type" : "object",
+      "required" : [ "pros", "reviewdateTime", "id", "cons" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "pros" : {
+          "type" : "string"
+        },
+        "cons" : {
+          "type" : "string"
+        },
+        "reviewdateTime" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetJobDetailsOp" : {
+      "type" : "object",
+      "required" : [ "Status", "Success" ],
+      "properties" : {
+        "Success" : {
+          "type" : "string"
+        },
+        "Status" : {
+          "type" : "string"
+        },
+        "Employers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Employers",
+            "uniqueItems" : false
+          }
+        },
+        "JobProgression" : {
+          "$ref" : "#/definitions/JobProgression"
+        }
+      }
+    }
+  }
+}

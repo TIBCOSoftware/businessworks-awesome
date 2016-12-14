@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/search/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/search/parameters">
+  <xs:element name="search-simplesearchGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="access_token" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="str" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="search-simplesearchPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="searchstring" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="search-simplesearchPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="searchstring" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="search-simplesearchDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="searchstring" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-globalsearchGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="searchstring" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="access_token" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-globalsearchPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="searchstring" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-globalsearchPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="searchstring" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-globalsearchDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="searchstring" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-recentGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="module_list" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="access_token" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="module_list" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-recentPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="module_list" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-recentPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="module_list" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-recentDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="module_list" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="search-globalsearchqGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="access_token" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="str" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

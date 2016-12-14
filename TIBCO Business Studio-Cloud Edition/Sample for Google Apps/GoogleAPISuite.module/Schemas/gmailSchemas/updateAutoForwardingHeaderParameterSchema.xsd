@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:Q1="http://tns.tibco.com/bw/REST" xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/updateAutoForwarding/headerParameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://xmlns.example.com/updateAutoForwarding/headerParameters">
+  <xs:import namespace="http://tns.tibco.com/bw/REST"/>
+  <xs:complexType name="updateAutoForwardingPutHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Authorization" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="updateAutoForwardingPutHeader" type="tns:updateAutoForwardingPutHeaderType"/>
+    <xs:element name="updateAutoForwarding1PutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="userId" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:complexType name="updateAutoForwarding1PutHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="OAuth" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+    <xs:element name="updateAutoForwarding1PutHeader" type="tns:updateAutoForwarding1PutHeaderType"/>
+</xs:schema>

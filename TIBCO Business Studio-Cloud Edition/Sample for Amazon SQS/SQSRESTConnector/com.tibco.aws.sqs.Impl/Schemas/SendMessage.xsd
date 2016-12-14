@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/SendMessage" xmlns:tns14="http://www.sqsconnector.tibco.com/SendMessage" elementFormDefault="qualified">
+
+	<complexType name="SendMessageRequestType">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="queueName" type="string"/>
+            <element maxOccurs="1" minOccurs="1" name="messageBody" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="delaySeconds" type="int"/>
+            <!-- At this point, sending messages with dynamic message attributes is not supported.
+    		<element name="MessageAttributes" type="tns:MessageAttributesType" maxOccurs="unbounded" minOccurs="0"></element>
+    		-->
+    	</sequence>
+    </complexType>
+    
+    <element name="sendMessageRequest" type="tns14:SendMessageRequestType"></element>
+    
+    <!-- At this point, sending messages with dynamic message attributes is not supported.
+    <complexType name = "MessageAttributesType">
+    	<sequence>
+    		<element name="messageAttributes" type="tns:AttributeType" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+	
+	<element name="messageAttributes" type="tns:MessageAttributesType"></element>
+	
+	<complexType name="AttributeType">
+    	<sequence>
+    		<element name="Name" type="string"></element>
+    		<element name="Type" type="string"></element>
+    		<element name="Value" type="string"></element>
+    	</sequence>
+    </complexType>
+    -->
+	
+	<complexType name="SendMessageResponseType">
+    	<sequence>
+    		<element name="sendMessageResult"
+    			type="tns14:SendMessageResultType">
+    		</element>
+    		<element name="responseMetadata" type="tns14:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="sendMessageResponse" type="tns14:SendMessageResponseType"></element>
+    
+    <complexType name="SendMessageResultType">
+    	<sequence>
+    		<element name="md5OfMessageBody" type="string"></element>
+    		<element name="md5OfMessageAttributes" type="string" minOccurs="0" nillable="true"></element>
+    		<element name="messageId" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+</schema>

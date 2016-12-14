@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1468400889095" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1468400889095">
+  <complexType name="RootElementtype">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="result">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="created" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="updated" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="username" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="email" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="display_name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="blog" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="im" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="imsvc" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="phone" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="company" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="address1" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="address2" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="locality" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="region" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="postal_code" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="country_code" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="first_name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="last_name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="registration_ipaddr" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uuid" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="area_status" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="external_id" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="passwd_new" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="object_type" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="StripeAccount" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="error" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+    </sequence>
+  </complexType>
+  <element name="RootElement" type="tns:RootElementtype"/>
+</schema>

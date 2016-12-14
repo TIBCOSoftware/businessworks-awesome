@@ -1,0 +1,82 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/listfolder" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-listfolder",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ListFolderRsElement"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ListFolderRsElement to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ListFolderRsElement"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "entries" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "tag" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "path_lower" : {
+          "type" : "string"
+        },
+        "path_display" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ListFolderRsElement" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "entries" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/entries",
+            "uniqueItems" : false
+          }
+        },
+        "cursor" : {
+          "type" : "string"
+        },
+        "has_more" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}

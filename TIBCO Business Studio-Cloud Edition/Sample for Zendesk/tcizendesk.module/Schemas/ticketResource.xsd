@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1471647267875" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1471647267875">
+  <complexType name="ticketElementType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="Id" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="AssigneeId" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="GroupId" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="HasIncidents" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="BrandId" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="Url" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Subject" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Description" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Status" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="RequesterId" type="long"/>
+      <element maxOccurs="1" minOccurs="0" name="OrganizationId" type="long"/>
+      <element maxOccurs="1" minOccurs="0" name="CreatedAt" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="UpdatedAt" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Priority" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Type" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="ticketElement" type="tns:ticketElementType"/>
+</schema>

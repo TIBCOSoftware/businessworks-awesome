@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:Q1="http://tns.tibco.com/bw/REST" xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/Account/headerParameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://xmlns.example.com/Account/headerParameters">
+  <xs:import namespace="http://tns.tibco.com/bw/REST"/>
+  <xs:complexType name="subscriptions-v1-package_keyPutHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Content-Type" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="subscriptions-v1-package_keyPutHeader" type="tns:subscriptions-v1-package_keyPutHeaderType"/>
+    <xs:complexType name="subscriptions-v1-package_key1PutHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Content-Type" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+    <xs:element name="subscriptions-v1-package_key1PutHeader" type="tns:subscriptions-v1-package_key1PutHeaderType"/>
+    <xs:complexType name="subscriptions-v1-package_key2PutHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Content-Type" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+    <xs:element name="subscriptions-v1-package_key2PutHeader" type="tns:subscriptions-v1-package_key2PutHeaderType"/>
+</xs:schema>

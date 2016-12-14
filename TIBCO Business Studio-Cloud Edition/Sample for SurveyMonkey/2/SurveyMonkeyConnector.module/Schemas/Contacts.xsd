@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Contacts" xmlns:tns="http://www.example.org/Contacts" elementFormDefault="qualified">
+
+    <complexType name="Contact">
+    	<sequence>
+    		<element name="ID" type="string"></element>
+            <element name="Email" type="string"></element>
+            <element name="FirstName" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="LastName" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="HRef" type="string" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ContactElement" type="tns:Contact"></element>
+
+    <complexType name="Contacts">
+    	<sequence>
+    		<element ref="tns:ContactElement" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ContactsElement" type="tns:Contacts"></element>
+</schema>

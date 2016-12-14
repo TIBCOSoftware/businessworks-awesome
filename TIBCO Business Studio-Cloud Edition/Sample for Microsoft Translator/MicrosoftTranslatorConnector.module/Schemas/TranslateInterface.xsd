@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/TranslateInterface" xmlns:tns="http://www.example.org/TranslateInterface" elementFormDefault="qualified">
+
+    <complexType name="TranslateRequest">
+    	<sequence>
+    		<element name="FromLanguage" type="string"></element>
+    		<element name="ToLanguage" type="string"></element>
+    		<element name="TextToTranslate" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="TranslateResponse">
+    	<sequence>
+    		<element name="Success" type="boolean"></element>
+    		<element name="Message" type="string"></element>
+    		<element name="TranslatedText" type="string" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="TranslateRequestElement" type="tns:TranslateRequest"></element>
+
+    <element name="TranslateResponseElement" type="tns:TranslateResponse"></element>
+</schema>

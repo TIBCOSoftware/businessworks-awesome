@@ -1,0 +1,43 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="error"/>
+        <xs:element type="xs:byte" name="id"/>
+        <xs:element name="result">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="StripeAccount"/>
+              <xs:element type="xs:string" name="address1"/>
+              <xs:element type="xs:string" name="address2"/>
+              <xs:element type="xs:string" name="area_status"/>
+              <xs:element type="xs:string" name="blog"/>
+              <xs:element type="xs:string" name="company"/>
+              <xs:element type="xs:string" name="country_code"/>
+              <xs:element type="xs:dateTime" name="created"/>
+              <xs:element type="xs:string" name="display_name"/>
+              <xs:element type="xs:string" name="email"/>
+              <xs:element type="xs:string" name="external_id"/>
+              <xs:element type="xs:string" name="first_name"/>
+              <xs:element type="xs:int" name="id"/>
+              <xs:element type="xs:string" name="im"/>
+              <xs:element type="xs:string" name="imsvc"/>
+              <xs:element type="xs:string" name="last_name"/>
+              <xs:element type="xs:string" name="locality"/>
+              <xs:element type="xs:string" name="object_type"/>
+              <xs:element type="xs:string" name="passwd_new"/>
+              <xs:element type="xs:long" name="phone"/>
+              <xs:element type="xs:string" name="postal_code"/>
+              <xs:element type="xs:string" name="region"/>
+              <xs:element type="xs:string" name="registration_ipaddr"/>
+              <xs:element type="xs:dateTime" name="updated"/>
+              <xs:element type="xs:string" name="uri"/>
+              <xs:element type="xs:string" name="username"/>
+              <xs:element type="xs:string" name="uuid"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

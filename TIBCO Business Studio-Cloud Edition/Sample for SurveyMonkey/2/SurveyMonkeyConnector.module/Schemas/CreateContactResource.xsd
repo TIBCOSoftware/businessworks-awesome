@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1471355499666" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1471355499666">
+  <complexType name="CreateContactElementType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="first_name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="last_name" type="string"/>
+      <element name="email" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="CreateContactElement" type="tns:CreateContactElementType"/>
+    <complexType name="CreateContactResponseType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="first_name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="last_name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="href" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="email" type="string"/>
+      <!-- 
+      <element maxOccurs="1" minOccurs="0" name="custom_fields">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="1" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="2" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="3" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="4" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="5" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="6" type="string"/>
+          </sequence>
+        </complexType>
+      </element> -->
+      <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="CreateContactResponse" type="tns:CreateContactResponseType"/>
+</schema>

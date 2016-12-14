@@ -1,0 +1,50 @@
+{
+  "apiVersion" : "4.0",
+  "swaggerVersion" : "1.2",
+  "basePath" : null,
+  "resourcePath" : "/Process",
+  "apis" : [ {
+    "path" : "/process/",
+    "description" : "",
+    "operations" : [ {
+      "method" : "POST",
+      "nickname" : "createItem",
+      "responseClass" : "string",
+      "parameters" : [ {
+        "paramType" : "body",
+        "type" : "CreditCardDetails",
+        "required" : "true",
+        "allowMultiple" : "false"
+      } ],
+      "summary" : null,
+      "notes" : "Create a new item",
+      "responseMessages" : [ ],
+      "consumes" : [ "application/json" ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "CreditCardDetails" : {
+      "id" : "CreditCardDetails",
+      "required" : [ "CustomerName", "Card.Number", "Card.expMth", "Card.expYear", "Card.CVC" ],
+      "properties" : {
+        "CustomerName" : {
+          "type" : "string"
+        },
+        "Card.Number" : {
+          "type" : "string"
+        },
+        "Card.expMth" : {
+          "type" : "string"
+        },
+        "Card.expYear" : {
+          "type" : "string"
+        },
+        "Card.CVC" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "authorizations" : { }
+}

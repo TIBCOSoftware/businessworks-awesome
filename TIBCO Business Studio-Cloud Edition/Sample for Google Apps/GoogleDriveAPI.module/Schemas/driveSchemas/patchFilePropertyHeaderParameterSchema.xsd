@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:Q1="http://tns.tibco.com/bw/REST" xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/patchFileProperty/headerParameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://xmlns.example.com/patchFileProperty/headerParameters">
+  <xs:import namespace="http://tns.tibco.com/bw/REST"/>
+  <xs:complexType name="patchPropertyPostHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="OAuth" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="patchPropertyPostHeader" type="tns:patchPropertyPostHeaderType"/>
+    <xs:complexType name="patchProperty1PostHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="OAuth" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+    <xs:element name="patchProperty1PostHeader" type="tns:patchProperty1PostHeaderType"/>
+</xs:schema>

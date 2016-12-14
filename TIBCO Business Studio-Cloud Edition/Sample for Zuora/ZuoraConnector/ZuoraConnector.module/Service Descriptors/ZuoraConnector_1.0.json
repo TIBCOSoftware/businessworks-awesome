@@ -1,0 +1,712 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "ZuoraConnector",
+    "x-lastModified": "Aug 26, 2016 01:04AM PST",
+    "description": "Zuora Connector Sample"
+  },
+  "paths": {
+    "/zuora/catalog/products": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve entire product catalog, including all products, features, and their corresponding rate plans, charges. Products are returned in reverse chronological order on the UpdatedDate field."
+      }
+    },
+    "/zuora/accounts": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/createAccount"
+            }
+          }
+        ],
+        "description": "Create a customer account with a credit-card payment method, a bill-to contact, and an optional sold-to contact.",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/zuora/accounts/{account-key}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account-key",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get basic information about a customer account."
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account-key",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/updateAccount"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update customer account."
+      }
+    },
+    "/zuora/accounts/{account-key}/summary": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Account Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "name": "account-key"
+          }
+        ],
+        "description": "Get detailed information about the specified customer account."
+      }
+    },
+    "/zuora/subscriptions/accounts/{account-key}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Account Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "account-key",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get all subscriptions associated with the specified account."
+      }
+    }
+  },
+  "definitions": {
+    "createAccount": {
+      "type": "object",
+      "properties": {
+        "batch": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "billCycleDay": {
+          "type": "integer"
+        },
+        "crmId": {
+          "type": "string"
+        },
+        "autoPay": {
+          "type": "boolean"
+        },
+        "invoiceTemplateId": {
+          "type": "string"
+        },
+        "communicationProfileId": {
+          "type": "string"
+        },
+        "paymentGateway": {
+          "type": "string"
+        },
+        "paymentTerm": {
+          "type": "string"
+        },
+        "Collector__c": {
+          "type": "string"
+        },
+        "CollectorRegion__c": {
+          "type": "string"
+        },
+        "SourceChannel__c": {
+          "type": "string"
+        },
+        "tnt__c": {
+          "type": "string"
+        },
+        "pk__c": {
+          "type": "string"
+        },
+        "billToContact": {
+          "type": "object",
+          "properties": {
+            "address1": {
+              "type": "string"
+            },
+            "address2": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "county": {
+              "type": "string"
+            },
+            "fax": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "homePhone": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "mobilePhone": {
+              "type": "string"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "otherPhone": {
+              "type": "string"
+            },
+            "otherPhoneType": {
+              "type": "string"
+            },
+            "personalEmail": {
+              "type": "string"
+            },
+            "zipCode": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "taxRegion": {
+              "type": "string"
+            },
+            "workEmail": {
+              "type": "string"
+            },
+            "workPhone": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName"
+          ]
+        },
+        "soldToContact": {
+          "type": "object",
+          "properties": {
+            "address1": {
+              "type": "string"
+            },
+            "address2": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "county": {
+              "type": "string"
+            },
+            "fax": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "homePhone": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "mobilePhone": {
+              "type": "string"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "otherPhone": {
+              "type": "string"
+            },
+            "otherPhoneType": {
+              "type": "string"
+            },
+            "personalEmail": {
+              "type": "string"
+            },
+            "zipCode": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "taxRegion": {
+              "type": "string"
+            },
+            "workEmail": {
+              "type": "string"
+            },
+            "workPhone": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName"
+          ]
+        },
+        "creditCard": {
+          "type": "object",
+          "properties": {
+            "cardType": {
+              "type": "string"
+            },
+            "cardNumber": {
+              "type": "string"
+            },
+            "expirationMonth": {
+              "type": "integer"
+            },
+            "expirationYear": {
+              "type": "integer"
+            },
+            "securityCode": {
+              "type": "string"
+            },
+            "cardHolderInfo": {
+              "type": "object",
+              "properties": {
+                "cardHolderName": {
+                  "type": "string"
+                },
+                "addressLine1": {
+                  "type": "string"
+                },
+                "addressLine2": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "zipCode": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cardHolderName",
+                "addressLine1",
+                "city",
+                "state",
+                "zipCode",
+                "country"
+              ]
+            }
+          },
+          "required": [
+            "cardType",
+            "cardNumber",
+            "expirationMonth",
+            "expirationYear"
+          ]
+        },
+        "subscription": {
+          "type": "object",
+          "properties": {
+            "subscriptionNumber": {
+              "type": "string"
+            },
+            "termType": {
+              "type": "string"
+            },
+            "contractEffectiveDate": {
+              "type": "string"
+            },
+            "serviceActivationDate": {
+              "type": "string"
+            },
+            "customerAcceptanceDate": {
+              "type": "string"
+            },
+            "termStartDate": {
+              "type": "string"
+            },
+            "initialTerm": {
+              "type": "integer"
+            },
+            "autoRenew": {
+              "type": "boolean"
+            },
+            "renewalTerm": {
+              "type": "integer"
+            },
+            "notes": {
+              "type": "string"
+            },
+            "subscribeToRatePlans": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "productRatePlanId": {
+                    "type": "string"
+                  },
+                  "chargeOverrides": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "productRatePlanChargeId": {
+                          "type": "string"
+                        },
+                        "quantity": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "productRatePlanChargeId",
+                        "quantity"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "productRatePlanId"
+                ]
+              }
+            }
+          },
+          "required": [
+            "contractEffectiveDate",
+            "termType"
+          ]
+        },
+        "invoiceCollect": {
+          "type": "boolean"
+        },
+        "invoice": {
+          "type": "boolean"
+        },
+        "collect": {
+          "type": "boolean"
+        },
+        "applyCreditBalance": {
+          "type": "boolean"
+        },
+        "invoiceSeparately": {
+          "type": "boolean"
+        },
+        "invoiceTargetDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "currency",
+        "billToContact",
+        "creditCard"
+      ]
+    },
+    "updateAccount": {
+      "type": "object",
+      "properties": {
+        "batch": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "autoPay": {
+          "type": "boolean"
+        },
+        "crmId": {
+          "type": "string"
+        },
+        "invoiceTemplateId": {
+          "type": "string"
+        },
+        "communicationProfileId": {
+          "type": "string"
+        },
+        "paymentGateway": {
+          "type": "string"
+        },
+        "Collector__c": {
+          "type": "string"
+        },
+        "CollectorRegion__c": {
+          "type": "string"
+        },
+        "SourceChannel__c": {
+          "type": "string"
+        },
+        "VAT__c": {
+          "type": "string"
+        },
+        "CustomerGUID__c": {
+          "type": "string"
+        },
+        "OracleCustomer__c": {
+          "type": "string"
+        },
+        "OracleBillToID__c": {
+          "type": "string"
+        },
+        "billToContact": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "mobilePhone": {
+              "type": "string"
+            },
+            "homePhone": {
+              "type": "string"
+            },
+            "personalEmail": {
+              "type": "string"
+            },
+            "workEmail": {
+              "type": "string"
+            },
+            "workPhone": {
+              "type": "string"
+            },
+            "otherPhoneType": {
+              "type": "string"
+            },
+            "otherPhone": {
+              "type": "string"
+            },
+            "fax": {
+              "type": "string"
+            },
+            "address1": {
+              "type": "string"
+            },
+            "address2": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "taxRegion": {
+              "type": "string"
+            },
+            "county": {
+              "type": "string"
+            },
+            "zipCode": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName"
+          ]
+        },
+        "soldToContact": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "mobilePhone": {
+              "type": "string"
+            },
+            "homePhone": {
+              "type": "string"
+            },
+            "personalEmail": {
+              "type": "string"
+            },
+            "workEmail": {
+              "type": "string"
+            },
+            "workPhone": {
+              "type": "string"
+            },
+            "otherPhoneType": {
+              "type": "string"
+            },
+            "otherPhone": {
+              "type": "string"
+            },
+            "fax": {
+              "type": "string"
+            },
+            "address1": {
+              "type": "string"
+            },
+            "address2": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "taxRegion": {
+              "type": "string"
+            },
+            "county": {
+              "type": "string"
+            },
+            "zipCode": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName"
+          ]
+        }
+      }
+    }
+  }
+}

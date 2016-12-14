@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/InstantiateSQSClient" xmlns:tns8="http://www.sqsconnector.tibco.com/InstantiateSQSClient" elementFormDefault="qualified">
+	
+	<complexType name="InstantiateSQSClientRequestType">
+    	<sequence>
+    		<element name="awsAccessKey" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="awsSecretKey" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="endPoint" minOccurs="1" maxOccurs="1" type="string">
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <element name="InstantiateSQSClientRequest" type="tns8:InstantiateSQSClientRequestType"></element>
+</schema>

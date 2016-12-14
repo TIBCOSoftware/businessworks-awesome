@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/masherySubsListSchema" xmlns:tns="http://www.example.org/masherySubsListSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" >
+  <element name="response">
+    <complexType>
+      <sequence>
+              <element name="items" maxOccurs="unbounded" minOccurs="0">
+                <complexType>
+                  <sequence>
+                    <element type="date" name="startDate"/>
+                    <element type="date" name="endDate"/>
+                    <element type="string" name="serviceKey"/>
+                    <element type="string" name="serviceDevKey"/>
+                    <element type="int" name="callStatusSuccessful"/>
+                    <element type="int" name="callStatusBlocked"/>
+                    <element type="int" name="callStatusOther"/>
+                    <element type="string" name="auditInfo"/>
+                  </sequence>
+                </complexType>
+              </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

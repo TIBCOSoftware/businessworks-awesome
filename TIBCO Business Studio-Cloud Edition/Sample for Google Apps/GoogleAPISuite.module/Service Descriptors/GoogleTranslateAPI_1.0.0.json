@@ -1,0 +1,183 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GoogleTranslateAPI",
+    "x-lastModified": "Aug 17, 2016 23:26PM PST"
+  },
+  "paths": {
+    "/translateText": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n    \"data\": {\n        \"translations\": [\n            {\n                \"translatedText\": \"Hallo Welt\"\n            }\n        ]\n    }\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "API key: Use the key parameter to identify your application.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "description": "Target language: Use the target parameter to specify the language you want to translate into.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Source text string: Use the q parameter to specify the text to translate.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "description": "specifies the source language, using the optional source query parameter",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Google Translate API is a paid enterprise service for translating large amounts of text.",
+        "tags": [
+          "Translate"
+        ]
+      }
+    },
+    "/detectSourceLanguage": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "\n{\n    \"data\": {\n        \"translations\": [\n            {\n                \"translatedText\": \"Hallo Welt\",\n                \"detectedSourceLanguage\": \"en\"\n            }\n        ]\n    }\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "API key: Use the key parameter to identify your application.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "description": "Target language: Use the target parameter to specify the language you want to translate into.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Source text string: Use the q parameter to specify the text to translate.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Detecting the source language\n\nIf the source parameter is omitted from a request, the API attempts to detect the language of the source text.",
+        "tags": [
+          "Translate"
+        ]
+      }
+    },
+    "/translateMultiple": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "\n{\n    \"data\": {\n        \"translations\": [\n            {\n                \"translatedText\": \"Hallo Welt\"\n            },\n            {\n                \"translatedText\": \"Mein Name ist Jeff\"\n            }\n        ]\n    }\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "API key: Use the key parameter to identify your application.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "description": "Target language: Use the target parameter to specify the language you want to translate into.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Source text string: Use the q parameter to specify the text to translate.",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "",
+              "default": ""
+            }
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "description": "Source text string: Use the q parameter to specify the text to translate.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "tags": [
+          "Translate"
+        ]
+      }
+    }
+  }
+}

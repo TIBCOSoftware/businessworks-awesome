@@ -1,0 +1,150 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Zen Desk Article Category (Knowledge Base) Management.",
+    "description" : "Zen Desk Article Category (Knowledge Base) Management."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/tcizendeskservice/ver1/articlecategory/getAll/{sessionId}" : {
+      "get" : {
+        "description" : "To get all categories which are accessible from the current session",
+        "operationId" : "get-tcizendeskservice-ver1-articlecategory-getAll",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/articlecategory/create/{sessionId}" : {
+      "post" : {
+        "description" : "To create new Article Category. They are high level groups above sections. Example : BusinessWorks.",
+        "operationId" : "post-tcizendeskservice-ver1-articlecategory-create",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ArticleCategory"
+          },
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/articlecategory/update/{sessionId}/{categoryId}" : {
+      "put" : {
+        "description" : "To update category based on the category id.",
+        "operationId" : "put-tcizendeskservice-ver1-articlecategory-update",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ArticleCategory"
+          },
+          "required" : true
+        }, {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "categoryId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/articlecategory/get/{sessionId}/{categoryId}" : {
+      "get" : {
+        "description" : "tcizendeskservice/ver1/articlecategory",
+        "operationId" : "get-tcizendeskservice-ver1-articlecategory-get",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "categoryId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ArticleCategory" : {
+      "type" : "object",
+      "required" : [ "name", "description", "locale" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "locale" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

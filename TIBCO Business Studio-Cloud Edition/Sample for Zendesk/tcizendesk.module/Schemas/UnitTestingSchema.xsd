@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/UnitTestingSchema" xmlns:tns="http://www.example.org/UnitTestingSchema" elementFormDefault="qualified">
+
+    <complexType name="TestDetails">
+    	<sequence>
+    		<element name="CaseId" type="int"></element>
+    		<element name="TestCaseStatus" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="TestCaseStatus" type="tns:TestDetails"></element>
+
+    <element name="TestCaseDescription" type="string"></element>
+</schema>

@@ -1,0 +1,102 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  	<xs:element name="UpdateProfile">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="JSON"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+  <xs:element name="JSON">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="type" minOccurs="0"/>
+        <xs:element type="xs:int" name="id" minOccurs="0"/>
+        <xs:element type="xs:short" name="network_id" minOccurs="0"/>
+        <xs:element type="xs:string" name="state" minOccurs="0"/>
+        <xs:element type="xs:string" name="guid" minOccurs="0"/>
+        <xs:element type="xs:string" name="job_title" minOccurs="0"/>
+        <xs:element type="xs:string" name="location" minOccurs="0"/>
+        <xs:element type="xs:string" name="significant_other" minOccurs="0"/>
+        <xs:element type="xs:string" name="kids_names" minOccurs="0"/>
+        <xs:element type="xs:string" name="interests" minOccurs="0"/>
+        <xs:element type="xs:string" name="summary" minOccurs="0"/>
+        <xs:element type="xs:string" name="expertise" minOccurs="0"/>
+        <xs:element type="xs:string" name="full_name" minOccurs="0"/>
+        <xs:element type="xs:string" name="activated_at" minOccurs="0"/>
+        <xs:element type="xs:string" name="auto_activated" minOccurs="0"/>
+        <xs:element type="xs:string" name="show_ask_for_photo" minOccurs="0"/>
+        <xs:element type="xs:string" name="first_name" minOccurs="0"/>
+        <xs:element type="xs:string" name="last_name" minOccurs="0"/>
+        <xs:element type="xs:string" name="network_name" minOccurs="0"/>
+        <xs:element type="xs:string" name="network_domains" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element type="xs:string" name="url" minOccurs="0"/>
+        <xs:element type="xs:string" name="web_url" minOccurs="0"/>
+        <xs:element type="xs:string" name="name" minOccurs="0"/>
+        <xs:element type="xs:string" name="mugshot_url" minOccurs="0"/>
+        <xs:element type="xs:string" name="mugshot_url_template" minOccurs="0"/>
+        <xs:element type="xs:string" name="birth_date" minOccurs="0"/>
+        <xs:element name="birth_date_complete" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="month" minOccurs="0"/>
+              <xs:element type="xs:string" name="day" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="timezone" minOccurs="0"/>
+        <xs:element type="xs:string" name="external_urls" minOccurs="0"/>
+        <xs:element type="xs:string" name="admin" minOccurs="0"/>
+        <xs:element type="xs:string" name="verified_admin" minOccurs="0"/>
+        <xs:element type="xs:string" name="supervisor_admin" minOccurs="0"/>
+        <xs:element type="xs:string" name="can_broadcast" minOccurs="0"/>
+        <xs:element type="xs:string" name="department" minOccurs="0"/>
+        <xs:element type="xs:string" name="email" minOccurs="0"/>
+        <xs:element type="xs:string" name="can_create_new_network" minOccurs="0"/>
+        <xs:element type="xs:string" name="can_browse_external_networks" minOccurs="0"/>
+        <xs:element type="xs:string" name="previous_companies" minOccurs="0"/>
+        <xs:element type="xs:string" name="schools" minOccurs="0"/>
+        <xs:element name="contact" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="im" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="provider" minOccurs="0"/>
+                    <xs:element type="xs:string" name="username" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="phone_numbers" minOccurs="0"/>
+              <xs:element name="email_addresses" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="type" minOccurs="0"/>
+                    <xs:element type="xs:string" name="address" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="has_fake_email" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="stats" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="following" minOccurs="0"/>
+              <xs:element type="xs:byte" name="followers" minOccurs="0"/>
+              <xs:element type="xs:byte" name="updates" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="settings" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="xdr_proxy" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="show_invite_lightbox" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

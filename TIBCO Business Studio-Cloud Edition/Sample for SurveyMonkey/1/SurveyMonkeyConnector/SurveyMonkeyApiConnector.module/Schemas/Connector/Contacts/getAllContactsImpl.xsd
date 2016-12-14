@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/contacts/getAllContactsImpl"
+	 targetNamespace="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/contacts/getAllContactsImpl"
+	 elementFormDefault="unqualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="apiKey" type="xs:string"/>
+				<xs:element name="oauthKey" type="xs:string"/>
+				<xs:element name="page" type="xs:int" minOccurs="0"/>
+				<xs:element name="per_page" type="xs:int" minOccurs="0"/>
+				<xs:element id="status" name="status" form="unqualified" block="restriction" default="active" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="active"/>
+							<xs:enumeration value="optout"/>
+							<xs:enumeration value="bounced"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element id="sortBy" name="sortby" block="restriction" default="email" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="first_name"/>
+							<xs:enumeration value="last_name"/>
+							<xs:enumeration value="email"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="3"/>
+							<xs:enumeration value="4"/>
+							<xs:enumeration value="5"/>
+							<xs:enumeration value="6"/>	
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element id="sortOrder" name="sortOrder" default="ASC" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="ASC"/>
+							<xs:enumeration value="DESC"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element id="searchBy" name="searchBy" block="restriction" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="email"/>
+							<xs:enumeration value="first_name"/>
+							<xs:enumeration value="last_name"/>
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="3"/>
+							<xs:enumeration value="4"/>
+							<xs:enumeration value="5"/>
+							<xs:enumeration value="6"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="search" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="code" type="xs:string"/>
+							<xs:element name="msg" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="messageBody">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="asciiContent" type="xs:string" minOccurs="0"/>
+							<xs:element name="binaryContent" type="xs:base64Binary" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

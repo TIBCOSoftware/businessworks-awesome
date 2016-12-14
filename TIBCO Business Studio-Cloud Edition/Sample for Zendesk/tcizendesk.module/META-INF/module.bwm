@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_oV3PEGKuEeak77w0Kbyaxg" targetNamespace="http://tns.tibco.com/bw/composite/tcizendesk.module" name="tcizendesk.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_G82doGZsEeaQ8YJh8EfVVg" name="tcizendeskruntimetest" promote="ComponentTestRuntime/tcizendeskruntimetest">
+    <sca:interface.wsdl xmi:id="_G8_AgGZsEeaQ8YJh8EfVVg" interface="http://xmlns.example.com/20160819172027PLT#wsdl.interface(tcizendeskruntimetest)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_G9D5AGZsEeaQ8YJh8EfVVg" name="RestService3" path="/tcizendeskruntimetest" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskruntimetest" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.TestRuntime-tcizendeskruntimetest.json">
+      <operation xmi:id="_G9FHIGZsEeaQ8YJh8EfVVg" operationName="post" nickname="post-tcizendeskruntimetest" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_G9L00GZsEeaQ8YJh8EfVVg"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_G9FHIWZsEeaQ8YJh8EfVVg" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_tMTlYmbnEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-usersession-login" promote="Componenttcizendeskuserservice/tcizendeskservice-ver1-usersession-login">
+    <sca:interface.wsdl xmi:id="_tMWosGbnEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820080238PLT#wsdl.interface(tcizendeskservice-ver1-usersession-login)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskuserservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_tMX20GbnEeaXRIXR7XwG3g" name="RestService9" path="/tcizendeskservice/ver1/usersession/login/" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/usersession" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskuserservice-tcizendeskservice-ver1-usersession.json">
+      <operation xmi:id="_tMX20WbnEeaXRIXR7XwG3g" operationName="post" nickname="post-tcizendeskservice-ver1-usersession-login" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_tMZsAGbnEeaXRIXR7XwG3g"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_tMX20mbnEeaXRIXR7XwG3g" bindingName="RestService9"/>
+  </sca:service>
+  <sca:service xmi:id="_5e4KQmbnEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-usersession-isActive" promote="Componenttcizendeskuserservice/tcizendeskservice-ver1-usersession-isActive">
+    <sca:interface.wsdl xmi:id="_5e4xUWbnEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820080238PLT#wsdl.interface(tcizendeskservice-ver1-usersession-isActive)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskuserservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_5e5_cGbnEeaXRIXR7XwG3g" name="RestService11" path="/tcizendeskservice/ver1/usersession/isActive/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/usersession" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskuserservice-tcizendeskservice-ver1-usersession.json">
+      <operation xmi:id="_5e5_cWbnEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-usersession-isActive" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_AVcukGbqEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_AVcukWbqEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_5e5_cmbnEeaXRIXR7XwG3g" bindingName="RestService11"/>
+  </sca:service>
+  <sca:service xmi:id="_bQbuUGbqEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-usersession-logout" promote="Componenttcizendeskuserservice/tcizendeskservice-ver1-usersession-logout">
+    <sca:interface.wsdl xmi:id="_bQbuVGbqEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820080238PLT#wsdl.interface(tcizendeskservice-ver1-usersession-logout2)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskuserservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_bQc8cGbqEeaXRIXR7XwG3g" name="RestService10" path="/tcizendeskservice/ver1/usersession/logout/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/usersession" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskuserservice-tcizendeskservice-ver1-usersession.json">
+      <operation xmi:id="_bQdjgGbqEeaXRIXR7XwG3g" operationName="delete" nickname="delete-tcizendeskservice-ver1-usersession-logout" httpMethod="DELETE" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_bQeKkGbqEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_bQeKkWbqEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_bQdjgWbqEeaXRIXR7XwG3g" bindingName="RestService10"/>
+  </sca:service>
+  <sca:service xmi:id="_fIRtImbrEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-create" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-create">
+    <sca:interface.wsdl xmi:id="_fIS7QGbrEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_fITiUGbrEeaXRIXR7XwG3g" name="RestService12" path="/tcizendeskservice/ver1/tickets/create/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_fIUwcGbrEeaXRIXR7XwG3g" operationName="post" nickname="post-tcizendeskservice-ver1-tickets-create" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_oV1B0GbrEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_oV1B0WbrEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_fIUwcWbrEeaXRIXR7XwG3g" bindingName="RestService12"/>
+  </sca:service>
+  <sca:service xmi:id="_tQHxkWbrEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-delete" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-delete">
+    <sca:interface.wsdl xmi:id="_tQIYombrEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-delete)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_tQKN0GbrEeaXRIXR7XwG3g" name="RestService13" path="/tcizendeskservice/ver1/tickets/delete/{sessionId}/{ticketId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_tQLb8GbrEeaXRIXR7XwG3g" operationName="delete" nickname="delete-tcizendeskservice-ver1-tickets-delete" httpMethod="DELETE" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_NFluUGbsEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_NFluUWbsEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_NFluUmbsEeaXRIXR7XwG3g" parameterName="ticketId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_tQLb8WbrEeaXRIXR7XwG3g" bindingName="RestService13"/>
+  </sca:service>
+  <sca:service xmi:id="_FICB4mbsEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-assign" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-assign">
+    <sca:interface.wsdl xmi:id="_FICo8GbsEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-assign)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_FIDQAGbsEeaXRIXR7XwG3g" name="RestService14" path="/tcizendeskservice/ver1/tickets/assign/{sessionId}/{ticketId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_FID3EGbsEeaXRIXR7XwG3g" operationName="put" nickname="put-tcizendeskservice-ver1-tickets-assign" httpMethod="PUT" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_FIEeIGbsEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_FIEeIWbsEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_FIEeImbsEeaXRIXR7XwG3g" parameterName="ticketId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_FID3EWbsEeaXRIXR7XwG3g" bindingName="RestService14"/>
+  </sca:service>
+  <sca:service xmi:id="_aeJq4GbsEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-setpriority" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-setpriority">
+    <sca:interface.wsdl xmi:id="_aeKR82bsEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-setpriority)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_aeLgEGbsEeaXRIXR7XwG3g" name="RestService15" path="/tcizendeskservice/ver1/tickets/setpriority/{sessionId}/{ticketId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_aeMHIGbsEeaXRIXR7XwG3g" operationName="put" nickname="put-tcizendeskservice-ver1-tickets-setpriority" httpMethod="PUT" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_aeMuMGbsEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_aeMuMWbsEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_aeMuMmbsEeaXRIXR7XwG3g" parameterName="ticketId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_aeMHIWbsEeaXRIXR7XwG3g" bindingName="RestService15"/>
+  </sca:service>
+  <sca:service xmi:id="_lWvlEmbsEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-setstatus" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-setstatus">
+    <sca:interface.wsdl xmi:id="_lWwMI2bsEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-setstatus)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_lWzPcGbsEeaXRIXR7XwG3g" name="RestService16" path="/tcizendeskservice/ver1/tickets/setstatus/{sessionId}/{ticketId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_lWz2gGbsEeaXRIXR7XwG3g" operationName="put" nickname="put-tcizendeskservice-ver1-tickets-setstatus" httpMethod="PUT" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_lW1rsGbsEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_lW1rsWbsEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_lW1rsmbsEeaXRIXR7XwG3g" parameterName="ticketId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_lW0dkGbsEeaXRIXR7XwG3g" bindingName="RestService16"/>
+  </sca:service>
+  <sca:service xmi:id="_D8jQwGbtEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-get" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-get">
+    <sca:interface.wsdl xmi:id="_D8veAWbtEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-get)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_D8x6QGbtEeaXRIXR7XwG3g" name="RestService18" path="/tcizendeskservice/ver1/tickets/get/{sessionId}/{ticketid}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_D8x6QWbtEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-tickets-get" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_y1OdoGdTEeaBp-8ZeAV1GQ">
+        <parameterMapping xmi:id="_y1OdoWdTEeaBp-8ZeAV1GQ" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_y1OdomdTEeaBp-8ZeAV1GQ" parameterName="ticketid" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_D8x6QmbtEeaXRIXR7XwG3g" bindingName="RestService18"/>
+  </sca:service>
+  <sca:service xmi:id="_qSxkwWbtEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-getall" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-getall">
+    <sca:interface.wsdl xmi:id="_qSyL0WbtEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-getall)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_qS3rYGbtEeaXRIXR7XwG3g" name="RestService19" path="/tcizendeskservice/ver1/tickets/getall/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_qS4ScGbtEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-tickets-getall" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Sn5YEGfjEea5ysRLK5_0yQ">
+        <parameterMapping xmi:id="_Sn5_IGfjEea5ysRLK5_0yQ" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_qS4ScWbtEeaXRIXR7XwG3g" bindingName="RestService19"/>
+  </sca:service>
+  <sca:service xmi:id="_PYMYMWbuEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-search" promote="Componenttcizendesksearchservice/tcizendeskservice-ver1-search">
+    <sca:interface.wsdl xmi:id="_PYM_QGbuEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820085212PLT#wsdl.interface(tcizendeskservice-ver1-search)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendesksearchservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_PYONYGbuEeaXRIXR7XwG3g" name="RestService20" path="/tcizendeskservice/ver1/search/{sessionId}/{searchstring}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/search" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendesksearchservice-tcizendeskservice-ver1-search.json">
+      <operation xmi:id="_PYO0cGbuEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-search" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_e9PkYGdEEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_e9PkYWdEEeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_e9PkYmdEEeaCsqe5qNVt5w" parameterName="searchstring" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_PYO0cWbuEeaXRIXR7XwG3g" bindingName="RestService20"/>
+  </sca:service>
+  <sca:service xmi:id="_9z_FIWbuEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-ticketcomment-create" promote="Componenttcizendeskticketcomment/tcizendeskservice-ver1-ticketcomment-create">
+    <sca:interface.wsdl xmi:id="_9z_sMmbuEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820085649PLT#wsdl.interface(tcizendeskservice-ver1-ticketcomment-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketcomment.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_90A6UGbuEeaXRIXR7XwG3g" name="RestService4" path="/tcizendeskservice/ver1/ticketcomment/create/{sessionId}/{ticketId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/ticketcomment" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketcomment-tcizendeskservice-ver1-ticketcomment.json">
+      <operation xmi:id="_90CIcGbuEeaXRIXR7XwG3g" operationName="post" nickname="post-tcizendeskservice-ver1-ticketcomment-create" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_90DWkGbuEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_90DWkWbuEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_90DWkmbuEeaXRIXR7XwG3g" parameterName="ticketId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_90CIcWbuEeaXRIXR7XwG3g" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_U3xJ0mbvEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-ticketcomment-list" promote="Componenttcizendeskticketcomment/tcizendeskservice-ver1-ticketcomment-list">
+    <sca:interface.wsdl xmi:id="_U3xw4WbvEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820085649PLT#wsdl.interface(tcizendeskservice-ver1-ticketcomment-list)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketcomment.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_U3yX8GbvEeaXRIXR7XwG3g" name="RestService5" path="/tcizendeskservice/ver1/ticketcomment/list/{sessionId}/{ticketId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/ticketcomment" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketcomment-tcizendeskservice-ver1-ticketcomment.json">
+      <operation xmi:id="_U3y_AGbvEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-ticketcomment-list" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_U3zmEGbvEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_U3zmEWbvEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_U3zmEmbvEeaXRIXR7XwG3g" parameterName="ticketId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_U3y_AWbvEeaXRIXR7XwG3g" bindingName="RestService5"/>
+  </sca:service>
+  <sca:service xmi:id="_6U6EQmbwEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-ticketaudit-list" promote="Componenttcizendeskticketaudit/tcizendeskservice-ver1-ticketaudit-list">
+    <sca:interface.wsdl xmi:id="_6U6rUWbwEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820091102PLT#wsdl.interface(tcizendeskservice-ver1-ticketaudit-list)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketaudit.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_6U7SYGbwEeaXRIXR7XwG3g" name="RestService6" path="/tcizendeskservice/ver1/ticketaudit/list/{sessionId}/{ticketid}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/ticketaudit" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketaudit-tcizendeskservice-ver1-ticketaudit.json">
+      <operation xmi:id="_6U75cGbwEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-ticketaudit-list" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_6U9HkGbwEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_6U9HkWbwEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_6U9HkmbwEeaXRIXR7XwG3g" parameterName="ticketid" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_6U75cWbwEeaXRIXR7XwG3g" bindingName="RestService6"/>
+  </sca:service>
+  <sca:service xmi:id="_uue5EmcDEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlecategory-create" promote="Componenttcizendeskarticlecategory/tcizendeskservice-ver1-articlecategory-create">
+    <sca:interface.wsdl xmi:id="_uufgI2cDEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlecategory.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_uugHMGcDEeaXRIXR7XwG3g" name="RestService7" path="/tcizendeskservice/ver1/articlecategory/create/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlecategory" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlecategory-tcizendeskservice-ver1-articlecategory.json">
+      <operation xmi:id="_uuguQGcDEeaXRIXR7XwG3g" operationName="post" nickname="post-tcizendeskservice-ver1-articlecategory-create" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_uuhVUGcDEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_uuhVUWcDEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_uuguQWcDEeaXRIXR7XwG3g" bindingName="RestService7"/>
+  </sca:service>
+  <sca:service xmi:id="_JOm24GcGEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlesection-create" promote="Componenttcizendeskarticlesection/tcizendeskservice-ver1-articlesection-create">
+    <sca:interface.wsdl xmi:id="_JOm25GcGEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlesection.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_JOnd8GcGEeaXRIXR7XwG3g" name="RestService22" path="/tcizendeskservice/ver1/articlesection/create/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlesection" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlesection-tcizendeskservice-ver1-articlesection.json">
+      <operation xmi:id="_JOoFAGcGEeaXRIXR7XwG3g" operationName="post" nickname="post-tcizendeskservice-ver1-articlesection-create" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_aMOZIGcHEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_aMOZIWcHEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_JOoFAWcGEeaXRIXR7XwG3g" bindingName="RestService22"/>
+  </sca:service>
+  <sca:service xmi:id="_ioezwGcHEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlesection-get" promote="Componenttcizendeskarticlesection/tcizendeskservice-ver1-articlesection-get">
+    <sca:interface.wsdl xmi:id="_ioezxGcHEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-get)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlesection.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_iogB4GcHEeaXRIXR7XwG3g" name="RestService23" path="/tcizendeskservice/ver1/articlesection/get/{sessionId}/{sectionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlesection" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlesection-tcizendeskservice-ver1-articlesection.json">
+      <operation xmi:id="_iogB4WcHEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-articlesection-get" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_deeIAGc-EeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_deeIAWc-EeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_deeIAmc-EeaCsqe5qNVt5w" parameterName="sectionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_iogB4mcHEeaXRIXR7XwG3g" bindingName="RestService23"/>
+  </sca:service>
+  <sca:service xmi:id="_p3WOMGcHEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlesection-getAll" promote="Componenttcizendeskarticlesection/tcizendeskservice-ver1-articlesection-getAll">
+    <sca:interface.wsdl xmi:id="_p3W1QGcHEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-getAll)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlesection.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_p3YqcGcHEeaXRIXR7XwG3g" name="RestService24" path="/tcizendeskservice/ver1/articlesection/getAll/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlesection" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlesection-tcizendeskservice-ver1-articlesection.json">
+      <operation xmi:id="_p3Z4kGcHEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-articlesection-getAll" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_xCI78Gc-EeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_xCI78Wc-EeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_p3Z4kWcHEeaXRIXR7XwG3g" bindingName="RestService24"/>
+  </sca:service>
+  <sca:service xmi:id="_VAdCYWcIEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-article-create" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-create">
+    <sca:interface.wsdl xmi:id="_VAeQgGcIEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-create)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_VAfeoGcIEeaXRIXR7XwG3g" name="RestService25" path="/tcizendeskservice/ver1/article/create/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_VAgswGcIEeaXRIXR7XwG3g" operationName="post" nickname="post-tcizendeskservice-ver1-article-create" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_VAih8GcIEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_VAih8WcIEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_VAgswWcIEeaXRIXR7XwG3g" bindingName="RestService25"/>
+  </sca:service>
+  <sca:service xmi:id="_iT4AQmcIEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-article-get" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-get">
+    <sca:interface.wsdl xmi:id="_iT5OYGcIEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-get)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_iT7qoGcIEeaXRIXR7XwG3g" name="RestService27" path="/tcizendeskservice/ver1/article/get/{sessionId}/{articleId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_iT84wGcIEeaXRIXR7XwG3g" operationName="get" nickname="get-tcizendeskservice-ver1-article-get" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_iT-G4GcIEeaXRIXR7XwG3g">
+        <parameterMapping xmi:id="_iT-G4WcIEeaXRIXR7XwG3g" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_iT-G4mcIEeaXRIXR7XwG3g" parameterName="articleId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_iT84wWcIEeaXRIXR7XwG3g" bindingName="RestService27"/>
+  </sca:service>
+  <sca:service xmi:id="_GZLd4mcyEeaaMYsyE22PSg" name="tcizendeskservice-ver1-articlecategory-update" promote="Componenttcizendeskarticlecategory/tcizendeskservice-ver1-articlecategory-update">
+    <sca:interface.wsdl xmi:id="_GZME82cyEeaaMYsyE22PSg" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-update)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_GZMsAGcyEeaaMYsyE22PSg" name="RestService29" path="/tcizendeskservice/ver1/articlecategory/update/{sessionId}/{categoryId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlecategory" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlecategory-tcizendeskservice-ver1-articlecategory.json">
+      <operation xmi:id="_GZMsAWcyEeaaMYsyE22PSg" operationName="put" nickname="put-tcizendeskservice-ver1-articlecategory-update" httpMethod="PUT" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_GZN6IGcyEeaaMYsyE22PSg">
+        <parameterMapping xmi:id="_GZN6IWcyEeaaMYsyE22PSg" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_GZN6ImcyEeaaMYsyE22PSg" parameterName="categoryId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_GZNTEGcyEeaaMYsyE22PSg" bindingName="RestService29"/>
+  </sca:service>
+  <sca:service xmi:id="_mcM5AmczEeaaMYsyE22PSg" name="tcizendeskservice-ver1-articlecategory-get" promote="Componenttcizendeskarticlecategory/tcizendeskservice-ver1-articlecategory-get">
+    <sca:interface.wsdl xmi:id="_mcM5BmczEeaaMYsyE22PSg" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-get2)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_mcNgEGczEeaaMYsyE22PSg" name="RestService8" path="/tcizendeskservice/ver1/articlecategory/get/{sessionId}/{categoryId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlecategory" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlecategory-tcizendeskservice-ver1-articlecategory.json">
+      <operation xmi:id="_mcOHIGczEeaaMYsyE22PSg" operationName="get" nickname="get-tcizendeskservice-ver1-articlecategory-get" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_mcOuMGczEeaaMYsyE22PSg">
+        <parameterMapping xmi:id="_mcOuMWczEeaaMYsyE22PSg" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_mcOuMmczEeaaMYsyE22PSg" parameterName="categoryId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_mcOHIWczEeaaMYsyE22PSg" bindingName="RestService8"/>
+  </sca:service>
+  <sca:service xmi:id="_4ULAImczEeaaMYsyE22PSg" name="tcizendeskservice-ver1-articlecategory-getAll" promote="Componenttcizendeskarticlecategory/tcizendeskservice-ver1-articlecategory-getAll">
+    <sca:interface.wsdl xmi:id="_4ULnMmczEeaaMYsyE22PSg" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-getAll)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_4UMOQGczEeaaMYsyE22PSg" name="RestService21" path="/tcizendeskservice/ver1/articlecategory/getAll/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlecategory" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlecategory-tcizendeskservice-ver1-articlecategory.json">
+      <operation xmi:id="_4UMOQWczEeaaMYsyE22PSg" operationName="get" nickname="get-tcizendeskservice-ver1-articlecategory-getAll" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_4UM1UGczEeaaMYsyE22PSg">
+        <parameterMapping xmi:id="_4UM1UWczEeaaMYsyE22PSg" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_4UMOQmczEeaaMYsyE22PSg" bindingName="RestService21"/>
+  </sca:service>
+  <sca:service xmi:id="_7Hl-cGc9EeaCsqe5qNVt5w" name="tcizendeskservice-ver1-articlesection-update" promote="Componenttcizendeskarticlesection/tcizendeskservice-ver1-articlesection-update">
+    <sca:interface.wsdl xmi:id="_7HsFEGc9EeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-update)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7HwWgGc9EeaCsqe5qNVt5w" name="RestService28" path="/tcizendeskservice/ver1/articlesection/update/{sessionId}/{sectionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/articlesection" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticlesection-tcizendeskservice-ver1-articlesection.json">
+      <operation xmi:id="_7Hw9kGc9EeaCsqe5qNVt5w" operationName="put" nickname="put-tcizendeskservice-ver1-articlesection-update" httpMethod="PUT" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_7HzZ0Gc9EeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_7H0A4Gc9EeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_7H0A4Wc9EeaCsqe5qNVt5w" parameterName="sectionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_7Hw9kWc9EeaCsqe5qNVt5w" bindingName="RestService28"/>
+  </sca:service>
+  <sca:service xmi:id="_QYA9MmdAEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-update" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-update">
+    <sca:interface.wsdl xmi:id="_QYBkQWdAEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-update)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_QYCLUGdAEeaCsqe5qNVt5w" name="RestService30" path="/tcizendeskservice/ver1/article/update/{sessionId}/{articleId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_QYCLUWdAEeaCsqe5qNVt5w" operationName="put" nickname="put-tcizendeskservice-ver1-article-update" httpMethod="PUT" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_QYCyYGdAEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_QYCyYWdAEeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_QYCyYmdAEeaCsqe5qNVt5w" parameterName="articleId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_QYCLUmdAEeaCsqe5qNVt5w" bindingName="RestService30"/>
+  </sca:service>
+  <sca:service xmi:id="_JfyEomdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listoncategory" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-listoncategory">
+    <sca:interface.wsdl xmi:id="_JfyEpmdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listoncategory)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_JfzSwGdBEeaCsqe5qNVt5w" name="RestService26" path="/tcizendeskservice/ver1/article/listoncategory/{sessionId}/{categoryId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_JfzSwWdBEeaCsqe5qNVt5w" operationName="get" nickname="get-tcizendeskservice-ver1-article-listoncategory" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Jf0g4GdBEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_Jf0g4WdBEeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_Jf0g4mdBEeaCsqe5qNVt5w" parameterName="categoryId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_JfzSwmdBEeaCsqe5qNVt5w" bindingName="RestService26"/>
+  </sca:service>
+  <sca:service xmi:id="_QpggYmdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonlocal" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-listonlocal">
+    <sca:interface.wsdl xmi:id="_QphHcGdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonlocal)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_QphugGdBEeaCsqe5qNVt5w" name="RestService31" path="/tcizendeskservice/ver1/article/listonlocal/{sessionid}/{categoryid}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_QphugWdBEeaCsqe5qNVt5w" operationName="get" nickname="get-tcizendeskservice-ver1-article-listonlocal" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Qpi8oGdBEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_Qpi8oWdBEeaCsqe5qNVt5w" parameterName="sessionid" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_Qpi8omdBEeaCsqe5qNVt5w" parameterName="categoryid" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_QphugmdBEeaCsqe5qNVt5w" bindingName="RestService31"/>
+  </sca:service>
+  <sca:service xmi:id="_Y_WxAmdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonsection" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-listonsection">
+    <sca:interface.wsdl xmi:id="_Y_XYEGdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonsection)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Y_X_IGdBEeaCsqe5qNVt5w" name="RestService32" path="/tcizendeskservice/ver1/article/listonsection/{sessionid}/{sectionid}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_Y_X_IWdBEeaCsqe5qNVt5w" operationName="get" nickname="get-tcizendeskservice-ver1-article-listonsection" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Y_YmMGdBEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_Y_YmMWdBEeaCsqe5qNVt5w" parameterName="sessionid" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_Y_YmMmdBEeaCsqe5qNVt5w" parameterName="sectionid" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Y_X_ImdBEeaCsqe5qNVt5w" bindingName="RestService32"/>
+  </sca:service>
+  <sca:service xmi:id="_fvWeImdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonuser" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-listonuser">
+    <sca:interface.wsdl xmi:id="_fvXFMmdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonuser)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_fvYTUGdBEeaCsqe5qNVt5w" name="RestService33" path="/tcizendeskservice/ver1/article/listonuser/{sessionid}/{userid}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_fvYTUWdBEeaCsqe5qNVt5w" operationName="get" nickname="get-tcizendeskservice-ver1-article-listonuser" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_fvY6YGdBEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_fvY6YWdBEeaCsqe5qNVt5w" parameterName="sessionid" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_fvY6YmdBEeaCsqe5qNVt5w" parameterName="userid" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_fvYTUmdBEeaCsqe5qNVt5w" bindingName="RestService33"/>
+  </sca:service>
+  <sca:service xmi:id="_tvUY8mdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonsession" promote="Componenttcizendeskarticle/tcizendeskservice-ver1-article-listonsession">
+    <sca:interface.wsdl xmi:id="_tvVAAGdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonsession)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_tvVnEGdBEeaCsqe5qNVt5w" name="RestService34" path="/tcizendeskservice/ver1/article/listonsession/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/article" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskarticle-tcizendeskservice-ver1-article.json">
+      <operation xmi:id="_tvWOIGdBEeaCsqe5qNVt5w" operationName="get" nickname="get-tcizendeskservice-ver1-article-listonsession" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_tvW1MGdBEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_tvW1MWdBEeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_tvWOIWdBEeaCsqe5qNVt5w" bindingName="RestService34"/>
+  </sca:service>
+  <sca:service xmi:id="_gh4iwmdLEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-tickets-update" promote="Componenttcizendeskticketservice/tcizendeskservice-ver1-tickets-update">
+    <sca:interface.wsdl xmi:id="_gh6X8GdLEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-update)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_gh7mEGdLEeaCsqe5qNVt5w" name="RestService" path="/tcizendeskservice/ver1/tickets/update/{sessionId}/{ticketId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/tickets" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskticketservice-tcizendeskservice-ver1-tickets.json">
+      <operation xmi:id="_gh7mEWdLEeaCsqe5qNVt5w" operationName="put" nickname="put-tcizendeskservice-ver1-tickets-update" httpMethod="PUT" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_gh80MGdLEeaCsqe5qNVt5w">
+        <parameterMapping xmi:id="_gh80MWdLEeaCsqe5qNVt5w" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_gh80MmdLEeaCsqe5qNVt5w" parameterName="ticketId" parameterType="Path" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_gh7mEmdLEeaCsqe5qNVt5w" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_sD0OIGvbEeaeW-L1eCo63A" name="tcizendeskservice-ver1-users-listall" promote="Componenttcizendeskzenuserservice/tcizendeskservice-ver1-users-listall">
+    <sca:interface.wsdl xmi:id="_sD7i4GvbEeaeW-L1eCo63A" interface="http://xmlns.example.com/20160826152026PLT#wsdl.interface(tcizendeskservice-ver1-users-listall)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_sEBCcGvbEeaeW-L1eCo63A" name="RestService1" path="/tcizendeskservice/ver1/users/listall/{sessionId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/users" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskzenuserservice-tcizendeskservice-ver1-users.json">
+      <operation xmi:id="_sECQkGvbEeaeW-L1eCo63A" operationName="get" nickname="get-tcizendeskservice-ver1-users-listall" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_sEF68GvbEeaeW-L1eCo63A">
+        <parameterMapping xmi:id="_sEF68WvbEeaeW-L1eCo63A" parameterName="sessionId" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_sEC3oGvbEeaeW-L1eCo63A" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_ON_YcmvcEeaeW-L1eCo63A" name="tcizendeskservice-ver1-users-getuseronrole" promote="Componenttcizendeskzenuserservice/tcizendeskservice-ver1-users-getuseronrole">
+    <sca:interface.wsdl xmi:id="_ON__gmvcEeaeW-L1eCo63A" interface="http://xmlns.example.com/20160826152026PLT#wsdl.interface(tcizendeskservice-ver1-users-getuseronrole)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_OOB0sGvcEeaeW-L1eCo63A" name="RestService2" path="/tcizendeskservice/ver1/users/getuseronrole/{sessionId}/{role}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/users" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskzenuserservice-tcizendeskservice-ver1-users.json">
+      <operation xmi:id="_OOCbwGvcEeaeW-L1eCo63A" operationName="get" nickname="get-tcizendeskservice-ver1-users-getuseronrole" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_OODp4GvcEeaeW-L1eCo63A">
+        <parameterMapping xmi:id="_OODp4WvcEeaeW-L1eCo63A" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_OODp4mvcEeaeW-L1eCo63A" parameterName="role" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_OOCbwWvcEeaeW-L1eCo63A" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_9KvA4GvdEeaeW-L1eCo63A" name="tcizendeskservice-ver1-users-getuseronemailid" promote="Componenttcizendeskzenuserservice/tcizendeskservice-ver1-users-getuseronemailid">
+    <sca:interface.wsdl xmi:id="_9KvA5GvdEeaeW-L1eCo63A" interface="http://xmlns.example.com/20160826152026PLT#wsdl.interface(tcizendeskservice-ver1-users-getuseronemailid3)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskzenuserservice.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9KwPAGvdEeaeW-L1eCo63A" name="RestService17" path="/tcizendeskservice/ver1/users/getuseronemailid/{sessionId}/{emailId}" docBasePath="http://localhost:7777/tcizendesk.module" docResourcePath="tcizendeskservice/ver1/users" basePath="/" connector="tcizendesk.module.tcizendeskusersession" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/tcizendesk.tcizendeskzenuserservice-tcizendeskservice-ver1-users.json">
+      <operation xmi:id="_9Kw2EGvdEeaeW-L1eCo63A" operationName="get" nickname="get-tcizendeskservice-ver1-users-getuseronemailid" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_9K2VoGvdEeaeW-L1eCo63A">
+        <parameterMapping xmi:id="_9K2VoWvdEeaeW-L1eCo63A" parameterName="sessionId" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_9K2VomvdEeaeW-L1eCo63A" parameterName="emailId" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9Kw2EWvdEeaeW-L1eCo63A" bindingName="RestService17"/>
+  </sca:service>
+  <sca:property xmi:id="_pbZ60GKuEeak77w0Kbyaxg" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_pbv5EGKuEeak77w0Kbyaxg" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_pb1YoGKuEeak77w0Kbyaxg" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_pb6RIGKuEeak77w0Kbyaxg" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_pcNMEGKuEeak77w0Kbyaxg" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_pcv-oGKuEeak77w0Kbyaxg" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_vFe0kGNlEeak77w0Kbyaxg" name="BW.HOST.NAME1" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_wEVpgGNlEeak77w0Kbyaxg" name="BW.HOST.NAME11" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_5Yv_cGZrEeaQ8YJh8EfVVg" name="ComponentTestRuntime" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_5Yv_cWZrEeaQ8YJh8EfVVg" processName="tcizendesk.TestRuntime"/>
+    <sca:service xmi:id="_G8xlIGZsEeaQ8YJh8EfVVg" name="tcizendeskruntimetest">
+      <sca:interface.wsdl xmi:id="_G8yzQGZsEeaQ8YJh8EfVVg" interface="http://xmlns.example.com/20160819172027PLT#wsdl.interface(tcizendeskruntimetest)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_IpizEGbnEeaXRIXR7XwG3g" name="Componenttcizendeskuserservice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_IpjaIGbnEeaXRIXR7XwG3g" processName="tcizendesk.tcizendeskuserservice"/>
+    <sca:service xmi:id="_tMTlYGbnEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-usersession-login">
+      <sca:interface.wsdl xmi:id="_tMTlYWbnEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820080238PLT#wsdl.interface(tcizendeskservice-ver1-usersession-login)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskuserservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_5e4KQGbnEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-usersession-isActive">
+      <sca:interface.wsdl xmi:id="_5e4KQWbnEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820080238PLT#wsdl.interface(tcizendeskservice-ver1-usersession-isActive)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskuserservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_bQbHQGbqEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-usersession-logout">
+      <sca:interface.wsdl xmi:id="_bQbHQWbqEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820080238PLT#wsdl.interface(tcizendeskservice-ver1-usersession-logout2)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskuserservice.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_KwLyoGbrEeaXRIXR7XwG3g" name="Componenttcizendeskticketservice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_KwLyoWbrEeaXRIXR7XwG3g" processName="tcizendesk.tcizendeskticketservice"/>
+    <sca:service xmi:id="_fIRtIGbrEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-create">
+      <sca:interface.wsdl xmi:id="_fIRtIWbrEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_tQHKgGbrEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-delete">
+      <sca:interface.wsdl xmi:id="_tQHxkGbrEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-delete)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_FICB4GbsEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-assign">
+      <sca:interface.wsdl xmi:id="_FICB4WbsEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-assign)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_aeJD0GbsEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-setpriority">
+      <sca:interface.wsdl xmi:id="_aeJD0WbsEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-setpriority)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_lWvlEGbsEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-setstatus">
+      <sca:interface.wsdl xmi:id="_lWvlEWbsEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-setstatus)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_D8ipsGbtEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-get">
+      <sca:interface.wsdl xmi:id="_D8ipsWbtEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-get)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_qSw9sGbtEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-tickets-getall">
+      <sca:interface.wsdl xmi:id="_qSxkwGbtEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-getall)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_gh4iwGdLEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-tickets-update">
+      <sca:interface.wsdl xmi:id="_gh4iwWdLEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820083130PLT#wsdl.interface(tcizendeskservice-ver1-tickets-update)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketservice.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_D4pywGbuEeaXRIXR7XwG3g" name="Componenttcizendesksearchservice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_D4pywWbuEeaXRIXR7XwG3g" processName="tcizendesk.tcizendesksearchservice"/>
+    <sca:service xmi:id="_PYLxIGbuEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-search">
+      <sca:interface.wsdl xmi:id="_PYMYMGbuEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820085212PLT#wsdl.interface(tcizendeskservice-ver1-search)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendesksearchservice.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_tIms8GbuEeaXRIXR7XwG3g" name="Componenttcizendeskticketcomment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_tIms8WbuEeaXRIXR7XwG3g" processName="tcizendesk.tcizendeskticketcomment"/>
+    <sca:service xmi:id="_9z-eEGbuEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-ticketcomment-create">
+      <sca:interface.wsdl xmi:id="_9z_FIGbuEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820085649PLT#wsdl.interface(tcizendeskservice-ver1-ticketcomment-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketcomment.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_U3xJ0GbvEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-ticketcomment-list">
+      <sca:interface.wsdl xmi:id="_U3xJ0WbvEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820085649PLT#wsdl.interface(tcizendeskservice-ver1-ticketcomment-list)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketcomment.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_sRMR4GbwEeaXRIXR7XwG3g" name="Componenttcizendeskticketaudit" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_sRMR4WbwEeaXRIXR7XwG3g" processName="tcizendesk.tcizendeskticketaudit"/>
+    <sca:service xmi:id="_6U6EQGbwEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-ticketaudit-list">
+      <sca:interface.wsdl xmi:id="_6U6EQWbwEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820091102PLT#wsdl.interface(tcizendeskservice-ver1-ticketaudit-list)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskticketaudit.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_YyC28GcDEeaXRIXR7XwG3g" name="Componenttcizendeskarticlecategory" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_YyC28WcDEeaXRIXR7XwG3g" processName="tcizendesk.tcizendeskarticlecategory"/>
+    <sca:service xmi:id="_uue5EGcDEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlecategory-create">
+      <sca:interface.wsdl xmi:id="_uue5EWcDEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlecategory.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_GZLd4GcyEeaaMYsyE22PSg" name="tcizendeskservice-ver1-articlecategory-update">
+      <sca:interface.wsdl xmi:id="_GZLd4WcyEeaaMYsyE22PSg" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-update)"/>
+    </sca:service>
+    <sca:service xmi:id="_mcM5AGczEeaaMYsyE22PSg" name="tcizendeskservice-ver1-articlecategory-get">
+      <sca:interface.wsdl xmi:id="_mcM5AWczEeaaMYsyE22PSg" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-get2)"/>
+    </sca:service>
+    <sca:service xmi:id="_4ULAIGczEeaaMYsyE22PSg" name="tcizendeskservice-ver1-articlecategory-getAll">
+      <sca:interface.wsdl xmi:id="_4ULAIWczEeaaMYsyE22PSg" interface="http://xmlns.example.com/20160820112452PLT#wsdl.interface(tcizendeskservice-ver1-articlecategory-getAll)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_c8T38GcDEeaXRIXR7XwG3g" name="Componenttcizendeskarticlesection" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_c8T38WcDEeaXRIXR7XwG3g" processName="tcizendesk.tcizendeskarticlesection"/>
+    <sca:service xmi:id="_JOmP0GcGEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlesection-create">
+      <sca:interface.wsdl xmi:id="_JOmP0WcGEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-create)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlesection.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_ioeMsGcHEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlesection-get">
+      <sca:interface.wsdl xmi:id="_ioeMsWcHEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-get)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlesection.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_p3VnIGcHEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-articlesection-getAll">
+      <sca:interface.wsdl xmi:id="_p3VnIWcHEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-getAll)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskarticlesection.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_7HiUEGc9EeaCsqe5qNVt5w" name="tcizendeskservice-ver1-articlesection-update">
+      <sca:interface.wsdl xmi:id="_7Hi7IGc9EeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112520#wsdl.interface(tcizendeskservice-ver1-articlesection-update)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_fyjFQGcDEeaXRIXR7XwG3g" name="Componenttcizendeskarticle" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_fyjFQWcDEeaXRIXR7XwG3g" processName="tcizendesk.tcizendeskarticle"/>
+    <sca:service xmi:id="_VAcbUGcIEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-article-create">
+      <sca:interface.wsdl xmi:id="_VAdCYGcIEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-create)"/>
+    </sca:service>
+    <sca:service xmi:id="_iT4AQGcIEeaXRIXR7XwG3g" name="tcizendeskservice-ver1-article-get">
+      <sca:interface.wsdl xmi:id="_iT4AQWcIEeaXRIXR7XwG3g" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-get)"/>
+    </sca:service>
+    <sca:service xmi:id="_QYA9MGdAEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-update">
+      <sca:interface.wsdl xmi:id="_QYA9MWdAEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-update)"/>
+    </sca:service>
+    <sca:service xmi:id="_JfyEoGdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listoncategory">
+      <sca:interface.wsdl xmi:id="_JfyEoWdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listoncategory)"/>
+    </sca:service>
+    <sca:service xmi:id="_QpggYGdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonlocal">
+      <sca:interface.wsdl xmi:id="_QpggYWdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonlocal)"/>
+    </sca:service>
+    <sca:service xmi:id="_Y_WxAGdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonsection">
+      <sca:interface.wsdl xmi:id="_Y_WxAWdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonsection)"/>
+    </sca:service>
+    <sca:service xmi:id="_fvWeIGdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonuser">
+      <sca:interface.wsdl xmi:id="_fvWeIWdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonuser)"/>
+    </sca:service>
+    <sca:service xmi:id="_tvUY8GdBEeaCsqe5qNVt5w" name="tcizendeskservice-ver1-article-listonsession">
+      <sca:interface.wsdl xmi:id="_tvUY8WdBEeaCsqe5qNVt5w" interface="http://xmlns.example.com/20160820112539#wsdl.interface(tcizendeskservice-ver1-article-listonsession)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Siz5EGvbEeaeW-L1eCo63A" name="Componenttcizendeskzenuserservice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Siz5EWvbEeaeW-L1eCo63A" processName="tcizendesk.tcizendeskzenuserservice"/>
+    <sca:service xmi:id="_sDnZ0GvbEeaeW-L1eCo63A" name="tcizendeskservice-ver1-users-listall">
+      <sca:interface.wsdl xmi:id="_sDv8sGvbEeaeW-L1eCo63A" interface="http://xmlns.example.com/20160826152026PLT#wsdl.interface(tcizendeskservice-ver1-users-listall)"/>
+    </sca:service>
+    <sca:service xmi:id="_ON_YcGvcEeaeW-L1eCo63A" name="tcizendeskservice-ver1-users-getuseronrole">
+      <sca:interface.wsdl xmi:id="_ON_YcWvcEeaeW-L1eCo63A" interface="http://xmlns.example.com/20160826152026PLT#wsdl.interface(tcizendeskservice-ver1-users-getuseronrole)"/>
+    </sca:service>
+    <sca:service xmi:id="_9KuZ0GvdEeaeW-L1eCo63A" name="tcizendeskservice-ver1-users-getuseronemailid">
+      <sca:interface.wsdl xmi:id="_9KuZ0WvdEeaeW-L1eCo63A" interface="http://xmlns.example.com/20160826152026PLT#wsdl.interface(tcizendeskservice-ver1-users-getuseronemailid3)" scaext:wsdlLocation="../Processes/tcizendesk/tcizendeskzenuserservice.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

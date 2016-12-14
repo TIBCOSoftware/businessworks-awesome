@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1471712466966" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1471712466966">
+  <complexType name="AddCaseElementType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="access_token" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="description" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="type" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="priority" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="source" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="portal_viewable" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_name" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="AddCaseElement" type="tns:AddCaseElementType"/>
+  <complexType name="AddCaseJSONElementType">
+    <sequence>
+   
+      <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="description" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="type" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="priority" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="source" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="portal_viewable" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_name" type="string"/> 
+   </sequence>
+  </complexType>
+  <element name="AddCaseJSONElement" type="tns:AddCaseJSONElementType"/>
+   <complexType name="UpdateCaseElementType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="access_token" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="description" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="type" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="priority" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="source" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="portal_viewable" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_name" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="UpdateCaseElement" type="tns:UpdateCaseElementType"/>
+   <complexType name="UpdateCaseJSONElementType">
+    <sequence> 
+      <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="description" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="type" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="priority" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_name" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="account_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="source" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="portal_viewable" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="assigned_user_name" type="string"/>    
+    </sequence>
+  </complexType>
+  <element name="UpdateCaseJSONElement" type="tns:UpdateCaseJSONElementType"/>
+</schema>

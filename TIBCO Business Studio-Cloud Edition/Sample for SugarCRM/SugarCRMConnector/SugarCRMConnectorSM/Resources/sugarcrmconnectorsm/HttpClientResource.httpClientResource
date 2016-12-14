@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient" xmlns:id="http://www.tibco.com/ws/2013/11/identity" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:sca_ext="http://www.tibco.com/ns/sca/201311" xmlns:sslclient="http://xsd.tns.tibco.com/bw/sharedresource/trinity/models/sslclient" xmi:id="_9O6csGY_EeaW_s6OCgP07w" name="sugarcrmconnectorsm.HttpClientResource" type="http:HttpClientConfiguration">
+  <identitySet xmi:id="_yYDV8GZBEeaW_s6OCgP07w" appliesTo="namedResource" name="HttpClientIdentitySet" provides="confidentiality">
+    <sca_ext:intentMap xmi:id="_yYDV8WZBEeaW_s6OCgP07w" provides="sca_ext:confidentiality">
+      <sca_ext:qualifier xmi:id="_yYDV8mZBEeaW_s6OCgP07w" name="transport">
+        <id:IdentityReference xmi:id="_yYEkEGZBEeaW_s6OCgP07w" URI="" type="sslclient:SSLClientConfiguration"/>
+      </sca_ext:qualifier>
+    </sca_ext:intentMap>
+  </identitySet>
+  <jndi:configuration xsi:type="http:HttpClientConfiguration" xmi:id="_9PBxcGY_EeaW_s6OCgP07w" httpClientVersion="httpcomponents" retryCount="3" idleConnectionTimeout="3000" useDefaultSSL="true">
+    <tcpDetails xmi:id="_9PFb0GY_EeaW_s6OCgP07w" port="443">
+      <substitutionBindings xmi:id="_t8SNEGjlEeaxZYlb_asgPA" template="host" propName="SugarCRMHost"/>
+    </tcpDetails>
+  </jndi:configuration>
+</jndi:namedResource>

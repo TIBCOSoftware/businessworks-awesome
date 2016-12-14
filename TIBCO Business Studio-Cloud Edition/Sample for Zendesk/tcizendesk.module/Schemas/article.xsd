@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/article" xmlns:tns="http://www.example.org/article" elementFormDefault="qualified">
+
+    <complexType name="article">
+    	<sequence>
+    		<element name="title" type="string"></element>
+    		<element name="body" type="string"></element>
+    		<element name="locale" type="string"></element>
+    		<element name="section_id" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="Article" type="tns:article"></element>
+
+    <complexType name="SPArticle">
+    	<complexContent>
+    		<extension base="tns:article">
+    			<sequence>
+    				<element name="sessionId" type="string"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="SPArticle" type="tns:SPArticle"></element>
+
+    <complexType name="getarticle">
+    	<sequence>
+    		<element name="sessionId" type="string"></element>
+    		<element name="articleid" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="GetArticle" type="tns:getarticle"></element>
+
+    <complexType name="getarticleCat">
+    	<sequence>
+    		<element name="sessionId" type="string"></element>
+    		<element name="categoryId" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="GetArticleCat" type="tns:getarticleCat"></element>
+
+    <complexType name="getarticlesub">
+    	<sequence>
+    		<element name="sessionId" type="string"></element>
+    		<element name="sub" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="GetArticleSub" type="tns:getarticlesub"></element>
+     <complexType name="articleedit">
+    	<sequence>
+    	    <!-- <element name="articleId" type="long"></element>  -->
+    		<element name="title" type="string"></element>
+    		<element name="body" type="string"></element>
+    		<element name="locale" type="string"></element>
+    		<element name="section_id" type="int"></element>
+    		<element name="comments_disabled" type="boolean"></element>
+    		<element name="promoted" type="boolean"></element>
+    	</sequence>
+    </complexType>
+    
+
+     <complexType name="SPArticleedit">
+     	<complexContent>
+     		<extension base="tns:articleedit">
+     			<sequence>
+     				<element name="ArticleId" type="int"></element>
+     				<element name="Sessionid" type="string"></element>
+     			</sequence>
+     		</extension>
+     	</complexContent>
+     </complexType>
+
+    <element name="SPArticleEdit" type="tns:SPArticleedit"></element>
+
+    <element name="ArticleEdit" type="tns:articleedit"></element>
+</schema>

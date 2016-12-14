@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="TwilioResponse">
+    	<xs:complexType>
+            <xs:choice>
+    			<xs:element ref="Account"></xs:element>
+    			<xs:element ref="Accounts"></xs:element>
+    		</xs:choice>
+    	</xs:complexType>
+    </xs:element>
+     <xs:element name="Accounts">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="Account" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    		<xs:attribute name="page" type="xs:string"></xs:attribute>
+    		<xs:attribute name="pagesize" type="xs:string"></xs:attribute>
+    		<xs:attribute name="start" type="xs:string"></xs:attribute>
+    		<xs:attribute name="end" type="xs:string"></xs:attribute>
+    		<xs:attribute name="uri" type="xs:string"></xs:attribute>
+    		<xs:attribute name="firstpageuri" type="xs:string"></xs:attribute>
+    		<xs:attribute name="previouspageuri" type="xs:string"></xs:attribute>
+    		<xs:attribute name="nextpageuri" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+     </xs:element>
+    <xs:element name="Account">
+    	<xs:complexType>
+            <xs:all>
+    			<xs:element name="Sid" type="xs:string"></xs:element>
+    			<xs:element name="OwnerAccountSid" type="xs:string"></xs:element>
+    			<xs:element name="FriendlyName" type="xs:string"></xs:element>
+    			<xs:element name="Status" type="xs:string"></xs:element>
+    			<xs:element name="DateCreated" type="xs:string"></xs:element>
+    			<xs:element name="DateUpdated" type="xs:string"></xs:element>
+    			<xs:element name="AuthToken" type="xs:string"></xs:element>
+    			<xs:element name="Type" type="xs:string"></xs:element>
+    			<xs:element name="Uri" type="xs:string"></xs:element>
+    			<xs:element ref="SubresourceUris"></xs:element>
+    		</xs:all>
+    	</xs:complexType>
+    </xs:element>
+
+    <xs:element name="SubresourceUris">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="Applications" type="xs:string"></xs:element>
+    			<xs:element name="AuthorizedConnectApps"
+    				type="xs:string">
+    			</xs:element>
+    			<xs:element name="AvailablePhoneNumbers"
+    				type="xs:string">
+    			</xs:element>
+    			<xs:element name="Calls" type="xs:string"></xs:element>
+    			<xs:element name="Conferences" type="xs:string"></xs:element>
+    			<xs:element name="ConnectApps" type="xs:string"></xs:element>
+    			<xs:element name="IncomingPhoneNumbers"
+    				type="xs:string">
+    			</xs:element>
+    			<xs:element name="Media" type="xs:string"></xs:element>
+    			<xs:element name="Messages" type="xs:string"></xs:element>
+    			<xs:element name="Notifications" type="xs:string"></xs:element>
+    			<xs:element name="OutgoingCallerIds" type="xs:string"></xs:element>
+    			<xs:element name="Queues" type="xs:string"></xs:element>
+    			<xs:element name="Recordings" type="xs:string"></xs:element>
+    			<xs:element name="Sandbox" type="xs:string"></xs:element>
+    			<xs:element name="SIP" type="xs:string"></xs:element>
+    			<xs:element name="SMSMessages" type="xs:string"></xs:element>
+    			<xs:element name="Transcriptions" type="xs:string"></xs:element>
+    			<xs:element name="Usage" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+</xs:schema>

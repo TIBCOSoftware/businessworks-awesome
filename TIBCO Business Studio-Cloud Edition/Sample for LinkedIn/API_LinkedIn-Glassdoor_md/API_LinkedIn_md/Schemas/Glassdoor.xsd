@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Glassdoor" xmlns:tns="http://www.example.org/Glassdoor" elementFormDefault="qualified">
+
+    <complexType name="GetJobDetailsIp">
+    	<sequence>
+    		<element name="SearchQuery" type="string"></element>
+    		<element name="Country" type="string"></element>
+    		<element name="City" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="GetJobDetailsOp">
+    	<sequence>
+    		<element name="Success" type="string"></element>
+    		<element name="Status" type="string"></element>
+    		<element name="Employers" maxOccurs="unbounded"
+    			type="tns:Employers" minOccurs="0" />
+
+    		<element name="JobProgression" type="tns:JobProgression"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <element name="GetJobDetailsIp" type="tns:GetJobDetailsIp"></element>
+    
+    <element name="GetJobDetailsOp" type="tns:GetJobDetailsOp"></element>
+
+    <complexType name="JobProgression">
+    	<sequence>
+    		<element name="SearchedJobTitle" type="string"></element>
+    		<element name="Currency" type="string"></element>
+    		<element name="AvgPay" type="string"></element>
+    		<element name="Jobs" type="tns:Jobs" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Jobs">
+    	<sequence>
+    		<element name="nextJobTitle" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="frequency" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="frequencyPercent" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="nationalJobCount" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="medianSalary" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="Employers">
+    				<sequence>
+    					<element name="id" type="string"></element>
+    					<element name="name" type="string"></element>
+    					<element name="website" type="string"></element>
+    					<element name="exactmatch" type="string"></element>
+    					<element name="industry" type="string"></element>
+    					<element name="numofratings" type="string"></element>
+    					<element name="OverallRatings" type="string"></element>
+    					<element name="workLifeBalanceRating"
+    						type="string">
+    					</element>
+    					<element name="Location" type="string"></element>
+    					<element name="featuredreview" maxOccurs="1"
+    						minOccurs="0">
+    						<complexType>
+    							<sequence>
+    								<element name="id" type="string">
+    								</element>
+    								<element name="pros"
+    									type="string">
+    								</element>
+    								<element name="cons"
+    									type="string">
+    								</element>
+    								<element name="reviewdateTime"
+    									type="string">
+    								</element>
+    							</sequence>
+    						</complexType>
+    					</element>
+    					<element name="ceoName" type="string"
+    						maxOccurs="1" minOccurs="0">
+    					</element>
+    				</sequence>
+    			</complexType>
+
+    
+</schema>

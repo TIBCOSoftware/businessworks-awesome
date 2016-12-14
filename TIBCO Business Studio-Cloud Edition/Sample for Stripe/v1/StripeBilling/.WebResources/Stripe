@@ -1,0 +1,52 @@
+{
+  "apiVersion" : "1.0",
+  "swaggerVersion" : "1.2",
+  "basePath" : "localhost:8888",
+  "resourcePath" : "/Stripe",
+  "apis" : [ {
+    "path" : "/stripe",
+    "description" : "",
+    "operations" : [ {
+      "method" : "POST",
+      "nickname" : "postStripe",
+      "type" : "string",
+      "parameters" : [ {
+        "paramType" : "body",
+        "name" : "",
+        "description" : "",
+        "type" : "CreditCardDetails",
+        "required" : true,
+        "allowMultiple" : false
+      } ],
+      "summary" : null,
+      "notes" : null,
+      "responseMessages" : [ ],
+      "consumes" : [ "application/json" ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "authorizations" : { },
+  "models" : {
+    "CreditCardDetails" : {
+      "id" : "CreditCardDetails",
+      "type" : "object",
+      "properties" : {
+        "CustomerName" : {
+          "type" : "string"
+        },
+        "Card.Number" : {
+          "type" : "string"
+        },
+        "Card.expMth" : {
+          "type" : "string"
+        },
+        "Card.expYear" : {
+          "type" : "string"
+        },
+        "Card.CVC" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

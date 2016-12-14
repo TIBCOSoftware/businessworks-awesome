@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_idbRYGamEea80rKh-dmwUA" targetNamespace="http://tns.tibco.com/bw/composite/API_LinkedIn_md" name="API_LinkedIn_md" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="__DfikmdZEeadm7AdCcDWAw" name="api-glassdoor-linkedin-getbasicdetails" promote="ComponentLinkedinGlassdoorIntBasicDetails/api-glassdoor-linkedin-getbasicdetails">
+    <sca:interface.wsdl xmi:id="__DosgmdZEeadm7AdCcDWAw" interface="http://xmlns.example.com/20160821101304PLT#wsdl.interface(api-glassdoor-linkedin-getbasicdetails)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="__Dosg2dZEeadm7AdCcDWAw" name="RestService3" path="/api/glassdoor-linkedin/getbasicdetails" docBasePath="http://localhost:7777/API_LinkedIn_md" docResourcePath="Resource3" basePath="/" connector="api_linkedin_md.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/api_linkedin_md.LinkedinGlassdoorIntBasicDetails-Resource3.json">
+      <operation xmi:id="__DoshGdZEeadm7AdCcDWAw" operationName="get" nickname="get-api-glassdoor-linkedin-getbasicdetails" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_RF-QkGdaEeadm7AdCcDWAw">
+          <parameterMapping xmi:id="_RGHagGdaEeadm7AdCcDWAw" parameterName="authtoken" parameterType="Query" required="true"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="__DoshWdZEeadm7AdCcDWAw" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_BGffomdbEeadm7AdCcDWAw" name="api-glassdoor-linkedin-getprobablejobprog" promote="ComponentLinkedinGlassdoorIntProbJobProg/api-glassdoor-linkedin-getprobablejobprog">
+    <sca:interface.wsdl xmi:id="_BGffpmdbEeadm7AdCcDWAw" interface="http://xmlns.example.com/20160821102122PLT#wsdl.interface(api-glassdoor-linkedin-getprobablejobprog)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_BGffp2dbEeadm7AdCcDWAw" name="RestService4" path="/api/glassdoor-linkedin/getprobablejobprog" docBasePath="http://localhost:7777/API_LinkedIn_md" docResourcePath="Resource4" basePath="/" connector="api_linkedin_md.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/api_linkedin_md.LinkedinGlassdoorIntProbJobProg-Resource4.json">
+      <operation xmi:id="_BGpQoGdbEeadm7AdCcDWAw" operationName="get" nickname="get-api-glassdoor-linkedin-getprobablejobprog" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_MM3-MGdbEeadm7AdCcDWAw">
+          <parameterMapping xmi:id="_MM3-MWdbEeadm7AdCcDWAw" parameterName="authtoken" parameterType="Query" required="true"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_BGpQomdbEeadm7AdCcDWAw"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_BGpQoWdbEeadm7AdCcDWAw" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_C0nfQmdkEea_ZNgRH9McVg" name="api-glassdoor-getuserdetails" promote="ComponentGetGlassdoorAPI/api-glassdoor-getuserdetails">
+    <sca:interface.wsdl xmi:id="_C0nfRmdkEea_ZNgRH9McVg" interface="http://xmlns.example.com/20160821112419PLT#wsdl.interface(api-glassdoor-getuserdetails)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_C0nfR2dkEea_ZNgRH9McVg" name="RestService2" path="/api/glassdoor/getuserdetails" docBasePath="http://localhost:7777/API_LinkedIn_md" docResourcePath="Resource1" basePath="/" connector="api_linkedin_md.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/api_linkedin_md.GetGlassdoorAPI-Resource1.json">
+      <operation xmi:id="_C0nfSGdkEea_ZNgRH9McVg" operationName="post" nickname="post-api-glassdoor-getuserdetails" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_C0nfSWdkEea_ZNgRH9McVg" operationName="get" nickname="get-api-glassdoor-getuserdetails" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_pk0ZgGdkEea_ZNgRH9McVg">
+          <parameterMapping xmi:id="_pk0ZgWdkEea_ZNgRH9McVg" parameterName="JobTitle" parameterType="Query" required="true"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_C0xQQGdkEea_ZNgRH9McVg"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_C0nfSmdkEea_ZNgRH9McVg" bindingName="RestService2"/>
+  </sca:service>
+  <sca:property xmi:id="_lE1_kGamEea80rKh-dmwUA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lGEuoGamEea80rKh-dmwUA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lGtn0GamEea80rKh-dmwUA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lHbZgGamEea80rKh-dmwUA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lIV_gGamEea80rKh-dmwUA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lI4yEGamEea80rKh-dmwUA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_l_mFsGaoEea80rKh-dmwUA" name="/ResourcePaths/GetAdditioinalUserProfileDetails" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_0DSYAGaqEea80rKh-dmwUA" name="/ResourcePaths/GetBasicUserProfile" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_sYYzwGaoEea80rKh-dmwUA" name="/Connections/LinkedInConnections/Host" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_zu9YsGaoEea80rKh-dmwUA" name="/Connections/LinkedInConnections/Port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_sctTEGaoEea80rKh-dmwUA" name="/Connections/RestConnection/Host" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_4u75sGaoEea80rKh-dmwUA" name="/Connections/RestConnection/Port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_pQb70GbeEeaky-qWpy7F0A" name="/Connections/Glassdoor/HostName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_wJ8KQGbeEeaky-qWpy7F0A" name="/Connections/Glassdoor/Port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Fs1rAGbfEeaky-qWpy7F0A" name="/Connections/Glassdoor/APIDetails/t.p" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_N9pDkGbfEeaky-qWpy7F0A" name="/Connections/Glassdoor/APIDetails/t.k" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Ot5MoGdfEeadm7AdCcDWAw" name="/LinkedinAPIIntegration/GetAuthToken/ClientKey" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_SQRuQGdfEeadm7AdCcDWAw" name="/LinkedinAPIIntegration/GetAuthToken/AppName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_SQtzIGdfEeadm7AdCcDWAw" name="/LinkedinAPIIntegration/GetAuthToken/ClientSecret" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_VIppkGdfEeadm7AdCcDWAw" name="/LinkedinAPIIntegration/GetAuthToken/state" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_XeuJEGdfEeadm7AdCcDWAw" name="/LinkedinAPIIntegration/GetAuthToken/scope" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_XggRwGdfEeadm7AdCcDWAw" name="/LinkedinAPIIntegration/GetAuthToken/redirect_uri" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_v3TFMGdZEeadm7AdCcDWAw" name="ComponentLinkedinGlassdoorIntBasicDetails" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_v3TFMWdZEeadm7AdCcDWAw" processName="api_linkedin_md.LinkedinGlassdoorIntBasicDetails"/>
+    <sca:service xmi:id="__DfikGdZEeadm7AdCcDWAw" name="api-glassdoor-linkedin-getbasicdetails">
+      <sca:interface.wsdl xmi:id="__DfikWdZEeadm7AdCcDWAw" interface="http://xmlns.example.com/20160821101304PLT#wsdl.interface(api-glassdoor-linkedin-getbasicdetails)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_6COysGdaEeadm7AdCcDWAw" name="ComponentLinkedinGlassdoorIntProbJobProg" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_6COysWdaEeadm7AdCcDWAw" processName="api_linkedin_md.LinkedinGlassdoorIntProbJobProg"/>
+    <sca:service xmi:id="_BGffoGdbEeadm7AdCcDWAw" name="api-glassdoor-linkedin-getprobablejobprog">
+      <sca:interface.wsdl xmi:id="_BGffoWdbEeadm7AdCcDWAw" interface="http://xmlns.example.com/20160821102122PLT#wsdl.interface(api-glassdoor-linkedin-getprobablejobprog)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_s_SKsGdjEea_ZNgRH9McVg" name="ComponentGetGlassdoorAPI" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_s_SKsWdjEea_ZNgRH9McVg" processName="api_linkedin_md.GetGlassdoorAPI"/>
+    <sca:service xmi:id="_C0nfQGdkEea_ZNgRH9McVg" name="api-glassdoor-getuserdetails">
+      <sca:interface.wsdl xmi:id="_C0nfQWdkEea_ZNgRH9McVg" interface="http://xmlns.example.com/20160821112419PLT#wsdl.interface(api-glassdoor-getuserdetails)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

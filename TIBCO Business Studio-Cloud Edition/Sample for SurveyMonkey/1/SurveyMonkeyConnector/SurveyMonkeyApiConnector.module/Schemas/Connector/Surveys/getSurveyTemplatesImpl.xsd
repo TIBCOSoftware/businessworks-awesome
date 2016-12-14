@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/Connector/Surveys/getSurveyTemplatesImpl"
+	 targetNamespace="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/Connector/Surveys/getSurveyTemplatesImpl"
+	 elementFormDefault="unqualified"
+	 attributeFormDefault="unqualified">
+          <xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+ 				<xs:element name="apiKey" type="xs:string"/>
+ 				<xs:element name="oAuthKey" type="xs:string"/>
+				<xs:element name="page" type="xs:integer" minOccurs="0"/>
+				<xs:element name="perPage" type="xs:integer" minOccurs="0"/>
+                <xs:element name="language" minOccurs="0">
+                	<xs:simpleType>
+						    <xs:restriction base="xs:string">
+						      	<xs:enumeration value="en"/>
+						    </xs:restriction>
+				 	</xs:simpleType>
+                </xs:element>
+				<xs:element name="category" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="code" type="xs:string"/>
+							<xs:element name="msg" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="messageBody">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="asciiContent" type="xs:string" minOccurs="0"/>
+							<xs:element name="binaryContent" type="xs:base64Binary" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

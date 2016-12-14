@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/Services/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/Services/parameters">
+  <xs:element name="services-saved-searchesGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="earliest_time" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="latest_time" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="listDefaultActionArgs" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="add_orphan_field" type="xs:boolean"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-nameGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="earliest_time" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="latest_time" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="listDefaultActionArgs" type="xs:boolean"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-namePutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-namePostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-nameDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-dispatchGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-dispatchPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-dispatchPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-dispatchDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-dispatchPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="args" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="dispatchAs" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="dispatch" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="dispatch.adhoc_search_level" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="dispatch.now" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="force_dispatch" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="now" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="trigger_actions" type="xs:boolean"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-rescheduleGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-reschedulePutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-reschedulePostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-rescheduleDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-saved-searches-name-reschedulePostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="schedule_time" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-nameGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-namePutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-namePostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-nameDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-namePostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="action.email.to" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="action.email" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="cron_schedule" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="disabled" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="is_scheduled" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="next_scheduled_time" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-name-dispatchGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-name-dispatchPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-name-dispatchPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-name-dispatchDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-scheduled-views-name-dispatchPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="args" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="dispatch" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="dispatch.now" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="force_dispatch" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="now" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="trigger_actions" type="xs:boolean"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-search-jobsPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="auto_cancel" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="auto_finalize_ec" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="auto_pause" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="custom" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="earliest_time" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="enable_lookups" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="exec_mode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="force_bundle_replication" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="index_earliest" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="index_latest" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="indexedRealtime" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="indexedRealtimeOffset" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="latest_time" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="max_count" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="max_time" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="namespace" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="now" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reduce_freq" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reload_macros" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="remote_server_list" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="required_field_list" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="reuse_max_seconds_ago" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rf" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rt_blocking" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rt_indexfilter" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rt_maxblocksecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rt_queue_size" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="search" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="search_listener" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="search_mode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="spawn_process" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="status_buckets" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="sync_bundle_replication" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="time_format" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="timeout" type="xs:integer"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-search-jobs-search_idGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="search_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-search-jobs-search_idPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="search_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-search-jobs-search_idPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="search_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-search-jobs-search_idDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="search_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-search-jobs-search_idPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="1" name="custom" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

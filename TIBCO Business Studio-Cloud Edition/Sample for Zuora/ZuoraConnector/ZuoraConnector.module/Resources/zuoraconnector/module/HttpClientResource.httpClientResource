@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient" xmlns:id="http://www.tibco.com/ws/2013/11/identity" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:sca_ext="http://www.tibco.com/ns/sca/201311" xmlns:sslclient="http://xsd.tns.tibco.com/bw/sharedresource/trinity/models/sslclient" xmlns:subject="http://xsd.tns.tibco.com/bw/sharedresource/trinity/models/identity/subject" xmi:id="_fvbgsWrxEeaiEqg6MqCvdQ" name="zuoraconnector.module.HttpClientResource" type="http:HttpClientConfiguration">
+  <identitySet xmi:id="_C78RwGryEeaiEqg6MqCvdQ" appliesTo="namedResource" name="HttpClientIdentitySet" provides="confidentiality">
+    <sca_ext:intentMap xmi:id="_C78RwWryEeaiEqg6MqCvdQ" provides="sca_ext:confidentiality">
+      <sca_ext:qualifier xmi:id="_C78RwmryEeaiEqg6MqCvdQ" name="transport">
+        <id:IdentityReference xmi:id="_C7840GryEeaiEqg6MqCvdQ" URI="zuoraconnector.module.IdentityProvider" type="subject:SubjectConfiguration"/>
+        <id:IdentityReference xmi:id="_EhJ8EGryEeaiEqg6MqCvdQ" URI="zuoraconnector.module.SSLClientResource" type="sslclient:SSLClientConfiguration"/>
+      </sca_ext:qualifier>
+    </sca_ext:intentMap>
+  </identitySet>
+  <jndi:configuration xsi:type="http:HttpClientConfiguration" xmi:id="_fvbgsmrxEeaiEqg6MqCvdQ" httpClientVersion="httpcomponents" retryCount="3" idleConnectionTimeout="3000">
+    <tcpDetails xmi:id="_fvbgs2rxEeaiEqg6MqCvdQ">
+      <substitutionBindings xmi:id="__P76EGrxEeaiEqg6MqCvdQ" template="host" propName="clientHost"/>
+      <substitutionBindings xmi:id="_Avx8MGryEeaiEqg6MqCvdQ" template="port" propName="clientPort"/>
+    </tcpDetails>
+  </jndi:configuration>
+</jndi:namedResource>

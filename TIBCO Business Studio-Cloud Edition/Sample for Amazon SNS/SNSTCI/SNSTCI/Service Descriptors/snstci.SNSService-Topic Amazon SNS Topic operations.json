@@ -1,0 +1,135 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/topic" : {
+      "post" : {
+        "description" : "Creates a topic to which notifications can be published",
+        "operationId" : "post-topic",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/CreateTopicRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a CreateTopicResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/CreateTopicResponse"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "Deletes a topic and all its subscriptions",
+        "operationId" : "delete-topic",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "TopicArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a DeleteTopicResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/DeleteTopicResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "DeleteTopicResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "CreateTopicRequest" : {
+      "type" : "object",
+      "required" : [ "Name" ],
+      "properties" : {
+        "Name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CreateTopicResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata", "createTopicResult" ],
+      "properties" : {
+        "createTopicResult" : {
+          "$ref" : "#/definitions/createTopicResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "createTopicResult" : {
+      "type" : "object",
+      "required" : [ "topicArn" ],
+      "properties" : {
+        "topicArn" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

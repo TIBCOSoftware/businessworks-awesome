@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_vpxW4GQ1EeaTPKNMxXI-5w" targetNamespace="http://tns.tibco.com/bw/composite/SNSTestSuite" name="SNSTestSuite" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:property xmi:id="_wFJrUGQ1EeaTPKNMxXI-5w" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_wFS1QGQ1EeaTPKNMxXI-5w" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_wFlwMGQ1EeaTPKNMxXI-5w" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_wFvhMGQ1EeaTPKNMxXI-5w" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_wFvhMWQ1EeaTPKNMxXI-5w" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_wFvhMmQ1EeaTPKNMxXI-5w" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_gMjs4GakEeaAtpBxBKMzag" name="AccessKey" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_iayfAGakEeaAtpBxBKMzag" name="SecretKey" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_v4gWcGQ1EeaTPKNMxXI-5w" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_v4gWcWQ1EeaTPKNMxXI-5w" processName="snstestsuite.Test_CreateSNSTopic"/>
+  </sca:component>
+  <sca:component xmi:id="_ENGHgGXXEeaMc_OIsB8wXA" name="ComponentTest_ConfirmSNSSubscription" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_ENGHgWXXEeaMc_OIsB8wXA" processName="snstestsuite.Test_ConfirmSNSSubscription"/>
+  </sca:component>
+  <sca:component xmi:id="_TawnsGXbEeaMc_OIsB8wXA" name="ComponentTest_GetSNSSubscriptionAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_TawnsWXbEeaMc_OIsB8wXA" processName="snstestsuite.Test_GetSNSSubscriptionAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_5W7yEGXdEeaMc_OIsB8wXA" name="ComponentTest_GetSNSTopicAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_5W7yEWXdEeaMc_OIsB8wXA" processName="snstestsuite.Test_GetSNSTopicAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_yDiDoGXiEeaMc_OIsB8wXA" name="ComponentTest_ListSNSTopics" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_yDiDoWXiEeaMc_OIsB8wXA" processName="snstestsuite.Test_ListSNSTopics"/>
+  </sca:component>
+  <sca:component xmi:id="_A2BqwGXnEeaMc_OIsB8wXA" name="ComponentTest_ListSNSSubscriptions" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_A2BqwWXnEeaMc_OIsB8wXA" processName="snstestsuite.Test_ListSNSSubscriptions"/>
+  </sca:component>
+  <sca:component xmi:id="_x5K_AGXoEeaMc_OIsB8wXA" name="ComponentTest_ListSNSSubscriptionsByTopic" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_x5K_AWXoEeaMc_OIsB8wXA" processName="snstestsuite.Test_ListSNSSubscriptionsByTopic"/>
+  </sca:component>
+  <sca:component xmi:id="_K_QZYGY7EeaAtpBxBKMzag" name="ComponentTest_ListSNSPlatformApplications" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_K_QZYWY7EeaAtpBxBKMzag" processName="snstestsuite.Test_ListSNSPlatformApplications"/>
+  </sca:component>
+  <sca:component xmi:id="_yIW70GY7EeaAtpBxBKMzag" name="ComponentTest_ListSNSPhoneNumbersOptedOut" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_yIW70WY7EeaAtpBxBKMzag" processName="snstestsuite.Test_ListSNSPhoneNumbersOptedOut"/>
+  </sca:component>
+  <sca:component xmi:id="_EZYUwGY_EeaAtpBxBKMzag" name="ComponentTest_ListEndpointsByPlatformApplication" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_EZYUwWY_EeaAtpBxBKMzag" processName="snstestsuite.Test_ListSNSEndpointsByPlatformApplication"/>
+  </sca:component>
+  <sca:component xmi:id="_kfTA8GZCEeaAtpBxBKMzag" name="ComponentTest_GetSNSEndpointAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_kfTA8WZCEeaAtpBxBKMzag" processName="snstestsuite.Test_GetSNSEndpointAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_LDTmYGZQEeaAtpBxBKMzag" name="ComponentCopyOfTest_GetSNSEndpointAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_LDTmYWZQEeaAtpBxBKMzag" processName="snstestsuite.Test_GetSNSPlatformApplicationAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_lCMU0GZREeaAtpBxBKMzag" name="ComponentTest_GetSNSSMSAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lCMU0WZREeaAtpBxBKMzag" processName="snstestsuite.Test_GetSNSSMSAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_xIPOsGZTEeaAtpBxBKMzag" name="ComponentTest_CreateSNSPlatformApplication" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_xIPOsWZTEeaAtpBxBKMzag" processName="snstestsuite.Test_CreateSNSPlatformApplication"/>
+  </sca:component>
+  <sca:component xmi:id="_uFkScGZUEeaAtpBxBKMzag" name="ComponentTest_CreateSNSPlatformEndpoint" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_uFkScWZUEeaAtpBxBKMzag" processName="snstestsuite.Test_CreateSNSPlatformEndpoint"/>
+  </sca:component>
+  <sca:component xmi:id="_NHT2wGZWEeaAtpBxBKMzag" name="ComponentTest_DeleteSNSTopic" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_NHT2wWZWEeaAtpBxBKMzag" processName="snstestsuite.Test_DeleteSNSTopic"/>
+  </sca:component>
+  <sca:component xmi:id="_u5fX0GZWEeaAtpBxBKMzag" name="ComponentTest_DeleteSNSEndpoint" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_u5fX0WZWEeaAtpBxBKMzag" processName="snstestsuite.Test_DeleteSNSEndpoint"/>
+  </sca:component>
+  <sca:component xmi:id="_P8L8sGZXEeaAtpBxBKMzag" name="ComponentTest_DeleteSNSPlatformApplication" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_P8L8sWZXEeaAtpBxBKMzag" processName="snstestsuite.Test_DeleteSNSPlatformApplication"/>
+  </sca:component>
+  <sca:component xmi:id="_M-UA4GZYEeaAtpBxBKMzag" name="ComponentTest_UnsubscribeSNSTopic" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_M-UA4WZYEeaAtpBxBKMzag" processName="snstestsuite.Test_UnsubscribeSNSTopic"/>
+  </sca:component>
+  <sca:component xmi:id="_Ilce8GcjEea3C-UnO3ksiQ" name="ComponentTest_SetSNSEndpointAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Ilce8WcjEea3C-UnO3ksiQ" processName="snstestsuite.Test_SetSNSEndpointAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_XdcN8GcjEea3C-UnO3ksiQ" name="ComponentTest_SetSNSPlatformApplicationAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_XdcN8WcjEea3C-UnO3ksiQ" processName="snstestsuite.Test_SetSNSPlatformApplicationAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_le1sIGcjEea3C-UnO3ksiQ" name="ComponentTest_SetSNSSMSAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_le1sIWcjEea3C-UnO3ksiQ" processName="snstestsuite.Test_SetSNSSMSAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_yLvckGcjEea3C-UnO3ksiQ" name="ComponentTest_SetSNSSubscriptionAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_yLvckWcjEea3C-UnO3ksiQ" processName="snstestsuite.Test_SetSNSSubscriptionAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_Em6XYGckEea3C-UnO3ksiQ" name="ComponentTest_SetSNSTopicAttributes" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Em6XYWckEea3C-UnO3ksiQ" processName="snstestsuite.Test_SetSNSTopicAttributes"/>
+  </sca:component>
+  <sca:component xmi:id="_cNQ9oGckEea3C-UnO3ksiQ" name="ComponentTest_SetSNSAddPermission" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_cNQ9oWckEea3C-UnO3ksiQ" processName="snstestsuite.Test_AddSNSPermission"/>
+  </sca:component>
+  <sca:component xmi:id="_9TDSwGckEea3C-UnO3ksiQ" name="ComponentTest_RemoveSNSPermission" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_9TDSwWckEea3C-UnO3ksiQ" processName="snstestsuite.Test_RemoveSNSPermission"/>
+  </sca:component>
+  <sca:component xmi:id="_VqVmsGclEea3C-UnO3ksiQ" name="ComponentTest_CheckIfSNSPhoneNumberIsOptedOut" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_VqVmsWclEea3C-UnO3ksiQ" processName="snstestsuite.Test_CheckSNSIfPhoneNumberIsOptedOut"/>
+  </sca:component>
+  <sca:component xmi:id="_tUZoQGclEea3C-UnO3ksiQ" name="ComponentTest_OptInSNSPhoneNumber" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_tUZoQWclEea3C-UnO3ksiQ" processName="snstestsuite.Test_OptInSNSPhoneNumber"/>
+  </sca:component>
+  <sca:component xmi:id="_HDeOgGcmEea3C-UnO3ksiQ" name="ComponentTest_PublishSNS" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_HDeOgWcmEea3C-UnO3ksiQ" processName="snstestsuite.Test_PublishSNS"/>
+  </sca:component>
+  <sca:component xmi:id="_vvu2oGfzEeaCxNPG0_G-IA" name="ComponentSNSTestRunner" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_vvu2oWfzEeaCxNPG0_G-IA" processName="snstest.SNSTestRunner"/>
+  </sca:component>
+</sca:composite>

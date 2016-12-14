@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://www.connector.tibco.com/twilio/account" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.connector.tibco.com/twilio/account">
+  <xsd:element name="ViewAccountInputSchema" type="tns:ViewAccountInput">
+
+  </xsd:element>
+
+
+
+ <xsd:complexType name="ViewAccountOutput">
+ <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="sid" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="owner_account_sid" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="friendly_name" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="status" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="date_created" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="date_updated" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="auth_token" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="type" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="uri" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="subresource_uris">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="applications" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="authorized_connect_apps" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="available_phone_numbers" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="calls" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="conferences" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="connect_apps" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="incoming_phone_numbers" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="media" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="messages" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="notifications" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="outgoing_caller_ids" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="queues" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="recordings" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sandbox" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sip" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sms_messages" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="transcriptions" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="usage" type="xsd:string"  nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ViewAccountInput">
+  	<xsd:sequence>
+  		<xsd:element maxOccurs="1" minOccurs="1" name="accountsid" type="xsd:string" />
+  	</xsd:sequence>
+  </xsd:complexType>
+
+    <xsd:element name="ViewAccountOutputSchema" type="tns:ViewAccountOutput"/>
+
+
+    <xsd:element name="ViewAccountListInputSchema" type="tns:ViewAccountListInput"/>
+
+    <xsd:complexType name="ViewAccountListInput">
+    	<xsd:sequence>
+    		<xsd:element maxOccurs="1" minOccurs="0" name="FriendlyName" type="xsd:string" />
+    		<xsd:element maxOccurs="1" minOccurs="0" name="Status">
+    			<xsd:simpleType>
+    				<xsd:restriction base="xsd:string">
+    					<xsd:enumeration value="active"/>
+    					<xsd:enumeration value="closed"/>
+    					<xsd:enumeration value="suspended"/>
+    				</xsd:restriction>
+    			</xsd:simpleType>
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ViewAccountListOutputSchema" type="tns:ViewAccountListOutput"/>
+
+    <xsd:complexType name="ViewAccountListOutput">
+    	<xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="first_page_uri" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="end" type="xsd:integer"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="previous_page_uri" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="uri" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="page_size" type="xsd:integer"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="start" type="xsd:integer"  nillable="true" />
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="accounts">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="sid" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="owner_account_sid" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="friendly_name" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="status" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="date_created" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="date_updated" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="auth_token" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="type" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="uri" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="subresource_uris">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="1" minOccurs="0" name="applications" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="authorized_connect_apps" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="available_phone_numbers" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="calls" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="conferences" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="connect_apps" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="incoming_phone_numbers" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="media" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="messages" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="notifications" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="outgoing_caller_ids" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="queues" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="recordings" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="sandbox" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="sip" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="sms_messages" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="transcriptions" type="xsd:string"  nillable="true" />
+                  <xsd:element maxOccurs="1" minOccurs="0" name="usage" type="xsd:string"  nillable="true" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="0" name="next_page_uri" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="page" type="xsd:integer"  nillable="true" />
+    </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="UpdateAccountInputSchema" type="tns:UpdateAccountInput"></xsd:element>
+
+    <xsd:element name="UpdateAccountOutputSchema" type="tns:UpdateAccountOutput"></xsd:element>
+
+    <xsd:complexType name="UpdateAccountInput">
+    	<xsd:sequence>
+    		<xsd:element name="accountsid" type="xsd:string"   maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="FriendlyName" type="xsd:string"   maxOccurs="1" minOccurs="0"></xsd:element>
+    		<xsd:element name="status" maxOccurs="1" minOccurs="0">
+    			<xsd:simpleType>
+    				<xsd:restriction base="xsd:string">
+    					<xsd:enumeration value="active"></xsd:enumeration>
+    					<xsd:enumeration value="closed"></xsd:enumeration>
+    					<xsd:enumeration value="suspended"></xsd:enumeration>
+    				</xsd:restriction>
+    			</xsd:simpleType>
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="UpdateAccountOutput">
+    	<xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="sid" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="owner_account_sid" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="friendly_name" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="status" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="date_created" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="date_updated" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="auth_token" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="type" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="uri" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="subresource_uris">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="applications" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="authorized_connect_apps" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="available_phone_numbers" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="calls" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="conferences" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="connect_apps" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="incoming_phone_numbers" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="media" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="messages" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="notifications" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="outgoing_caller_ids" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="queues" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="recordings" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sandbox" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sip" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sms_messages" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="transcriptions" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="usage" type="xsd:string"  nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="CreateSubAccountInputSchema" type="tns:CreateSubAccountInput"></xsd:element>
+
+    <xsd:element name="CreateSubAccountOutputSchema" type="tns:CreateSubAccountOutput"></xsd:element>
+
+    <xsd:complexType name="CreateSubAccountOutput">
+<xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="sid" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="owner_account_sid" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="friendly_name" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="status" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="date_created" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="date_updated" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="auth_token" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="type" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="uri" type="xsd:string"  nillable="true" />
+      <xsd:element maxOccurs="1" minOccurs="0" name="subresource_uris">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="applications" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="authorized_connect_apps" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="available_phone_numbers" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="calls" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="conferences" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="connect_apps" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="incoming_phone_numbers" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="media" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="messages" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="notifications" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="outgoing_caller_ids" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="queues" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="recordings" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sandbox" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sip" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="sms_messages" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="transcriptions" type="xsd:string"  nillable="true" />
+            <xsd:element maxOccurs="1" minOccurs="0" name="usage" type="xsd:string"  nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="CreateSubAccountInput">
+    	<xsd:sequence>
+    		<xsd:element name="FriendlyName" type="xsd:string"   maxOccurs="1" minOccurs="0" ></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

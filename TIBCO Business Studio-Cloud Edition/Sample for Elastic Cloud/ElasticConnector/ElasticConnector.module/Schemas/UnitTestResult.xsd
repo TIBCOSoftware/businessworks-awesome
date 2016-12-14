@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" targetNamespace="http://www.example.org/UnitTestResult" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="TestSuite"/>
+        <xs:element type="xs:string" name="TestSuiteResult"/>
+        <xs:element name="Tests">
+          <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+              <xs:element name="Test">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:int" name="TestID"/>
+                    <xs:element type="xs:string" name="TestName"/>
+                    <xs:element type="xs:string" name="TestResult"/>
+                    <xs:element type="xs:string" name="ErrorMessage"/>
+                    <xs:element type="xs:string" name="DetailedResultsFile"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

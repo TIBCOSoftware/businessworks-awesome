@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/Services/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/Services/parameters">
+  <xs:element name="services-data-indexesPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="blockSignSize" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="bucketRebuildMemoryHint" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="coldPath" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="coldToFrozenDir" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="coldToFrozenScript" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="compressRawdata" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="enableOnlineBucketRepair" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="frozenTimePeriodInSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="homePath" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxBloomBackfillBucketAge" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxConcurrentOptimizes" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxDataSize" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxHotBuckets" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxHotIdleSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxHotSpanSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxMemMB" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxMetaEntries" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxTimeUnreplicatedNoAcks" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxTimeUnreplicatedWithAcks" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxTotalDataSizeMB" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxWarmDBCount" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="minRawFileSyncSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="minStreamGroupQueueSize" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="partialServiceMetaPeriod" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="processTrackerServiceInterval" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="quarantineFutureSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="quarantinePastSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rawChunkSizeBytes" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="repFactor" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rotatePeriodInSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="serviceMetaPeriod" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="syncMeta" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="thawedPath" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="throttleCheckPeriod" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="tstatsHomePath" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="warmToColdScript" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-data-indexes-nameGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-data-indexes-namePutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-data-indexes-namePostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-data-indexes-nameDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-data-indexes-namePostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="blockSignSize" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="bucketRebuildMemoryHint" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="coldToFrozenDir" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="coldToFrozenScript" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="compressRawdata" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="enableOnlineBucketRepair" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="frozenTimePeriodInSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxBloomBackfillBucketAge" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxConcurrentOptimizes" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxDataSize" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxHotBuckets" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxHotIdleSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxHotSpanSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxMemMB" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxMetaEntries" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxTimeUnreplicatedNoAcks" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxTimeUnreplicatedWithAcks" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxTotalDataSizeMB" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxWarmDBCount" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="minRawFileSyncSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rawChunkSizeBytes" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="minStreamGroupQueueSize" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="partialServiceMetaPeriod" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="processTrackerServiceInterval" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="quarantineFutureSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="quarantinePastSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="repFactor" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rotatePeriodInSecs" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="serviceMetaPeriod" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="syncMeta" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="throttleCheckPeriod" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="tstatsHomePath" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="warmToColdScript" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-data-summariesGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="report_acceleration" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="data_model_acceleration" type="xs:integer"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

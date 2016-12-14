@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.connector.tibco.com/twilio/phonenumber/incomingphonenumbers" elementFormDefault="qualified" targetNamespace="http://www.connector.tibco.com/twilio/phonenumber/incomingphonenumbers">
+
+    <element name="ViewIncomingNumberInputSchema" type="tns:ViewIncomingNumber"/>
+
+    <complexType name="ViewIncomingNumber">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="accountsid" type="string"  nillable="true"/>
+    		<element maxOccurs="1" minOccurs="1" name="IncomingPhoneNumberSid" type="string"  nillable="true"/>
+    	</sequence>
+    </complexType>
+
+    <element name="ViewIncomingNumberOutputSchema" type="tns:ViewIncomingNumberOutput"/>
+
+    <complexType name="ViewIncomingNumberOutput">
+    	<sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="phone_number" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_fallback_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_fallback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_caller_id_lookup" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_fallback_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_fallback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="address_requirements" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="beta" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="capabilities">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="1" minOccurs="0" name="voice" type="boolean"/>
+                  <element maxOccurs="1" minOccurs="0" name="sms" type="boolean"/>
+                  <element maxOccurs="1" minOccurs="0" name="mms" type="boolean"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element maxOccurs="1" minOccurs="0" name="status_callback" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="status_callback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="api_version" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_application_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_application_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="trunk_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="emergency_status" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="emergency_address_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+          </sequence>
+    </complexType>
+
+    <element name="DeleteIncomingNumberInputSchema" type="tns:ViewIncomingNumber"/>
+
+    <element name="ViewIncomingNumberListInputSchema" type="tns:ViewIncomingNumberList"/>
+
+    <complexType name="ViewIncomingNumberList">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="AccountSid" type="string"  />
+    		<element maxOccurs="1" minOccurs="0" name="FriendlyName" type="string"  />
+    		<element maxOccurs="1" minOccurs="0" name="Page" type="string"  />
+    		<element maxOccurs="1" minOccurs="0" name="PageSize" type="string"  />
+    		<element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="string" />
+    	</sequence>
+    </complexType>
+
+    <element name="ViewIncomingNumberListOutputSchema" type="tns:ViewIncomingNumberListOutput"/>
+
+    <complexType name="IncomingNumberCommon">
+    	<sequence>
+
+            <element name="ApiVersion" type="string"  nillable="true" maxOccurs="1" minOccurs="0"></element>
+            <element name="FriendlyName" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="SmsFallbackMethod" type="string"  nillable="true"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="SmsFallbackUrl" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="SmsMethod" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="SmsUrl" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="StatusCallback" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="StatusCallbackMethod" type="string"  nillable="true"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="VoiceCallerIdLookup" type="string"  nillable="true"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="VoiceFallbackMethod" type="string"  nillable="true"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="VoiceFallbackUrl" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="VoiceMethod" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="VoiceUrl" type="string"  nillable="true" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="SmsApplicationSid" type="string"  nillable="true"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+    		<element name="VoiceApplicationSid" type="string"  nillable="true"
+    			minOccurs="0" maxOccurs="1">
+    		</element>
+
+    	</sequence>
+    </complexType>
+
+    <element name="AddIncomingNumberInputSchema" type="tns:AddIncomingNumberInput"></element>
+
+    <complexType name="AddIncomingNumberInput">
+    	<sequence>
+
+            <element name="AccountSid" type="string"   maxOccurs="1" minOccurs="1">
+    		</element>
+            <choice>
+    			<element name="PhoneNumber" type="string"  ></element>
+    			<element name="AreaCode" type="string"  ></element>
+    		</choice>
+            <element ref="tns:IncomingNumberCommonSchema" maxOccurs="1" minOccurs="0">
+    		</element>
+        </sequence>
+    </complexType>
+
+    <element name="AddIncomingNumberOutputSchema" type="tns:AddIncomingNumberOutput"></element>
+
+    <complexType name="AddIncomingNumberOutput">
+    	<sequence>
+    		<element name="response" type="string"  nillable="true"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="UpdateIncomingNumberInputSchema" type="tns:UpdateIncomingNumberInput"></element>
+
+    <complexType name="UpdateIncomingNumberInput">
+    	<sequence>
+            <element name="accountsid" type="string"  maxOccurs="1" minOccurs="1">
+    		</element>
+            <element name="IncomingPhoneNumberSid" type="string"   maxOccurs="1" minOccurs="1">
+    		</element>
+            <element ref="tns:IncomingNumberCommonSchema" maxOccurs="1" minOccurs="0"></element>
+
+
+    	</sequence>
+    </complexType>
+    
+    <element name="UpdateIncomingNumberOutputSchema" type="tns:UpdateIncomingNumberOutput"></element>
+
+    <complexType name="UpdateIncomingNumberOutput">
+    	<sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="phone_number" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_fallback_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_fallback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_caller_id_lookup" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_fallback_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_fallback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="address_requirements" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="beta" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="capabilities">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="1" minOccurs="0" name="voice" type="boolean"/>
+                  <element maxOccurs="1" minOccurs="0" name="sms" type="boolean"/>
+                  <element maxOccurs="1" minOccurs="0" name="mms" type="boolean"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element maxOccurs="1" minOccurs="0" name="status_callback" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="status_callback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="api_version" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_application_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_application_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="trunk_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="emergency_status" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="emergency_address_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+          </sequence>
+    </complexType>
+    
+    <element name="DeleteIncomingNumberOutputSchema" type="tns:DeleteIncomingNumberOutput"></element>
+
+    <complexType name="DeleteIncomingNumberOutput">
+    	<sequence>
+    		<element name="response" type="string"  nillable="true"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="IncomingNumberCommonSchema" type="tns:IncomingNumberCommon"></element>
+
+    <complexType name="ViewIncomingNumberListOutput">
+    	<sequence>
+      <element maxOccurs="1" minOccurs="0" name="first_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="end" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="previous_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="incoming_phone_numbers">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="phone_number" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_fallback_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_fallback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_caller_id_lookup" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_fallback_url" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_fallback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="address_requirements" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="beta" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="capabilities">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="1" minOccurs="0" name="voice" type="boolean"/>
+                  <element maxOccurs="1" minOccurs="0" name="sms" type="boolean"/>
+                  <element maxOccurs="1" minOccurs="0" name="mms" type="boolean"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element maxOccurs="1" minOccurs="0" name="status_callback" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="status_callback_method" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="api_version" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="voice_application_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="sms_application_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="trunk_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="emergency_status" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="emergency_address_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page_size" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="start" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="next_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page" type="integer"  nillable="true"/>
+    </sequence>
+    </complexType>
+</schema>

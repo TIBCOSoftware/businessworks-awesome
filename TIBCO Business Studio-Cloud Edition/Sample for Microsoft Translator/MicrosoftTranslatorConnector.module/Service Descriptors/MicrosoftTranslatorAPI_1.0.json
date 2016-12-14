@@ -1,0 +1,65 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "MicrosoftTranslatorAPI",
+    "x-lastModified": "Aug 17, 2016 05:29AM PST"
+  },
+  "paths": {
+    "/translate": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "string..."
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Language to Translate From",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "en"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "language to translate to",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "nl"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "textToTranslate",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/ShareUrlHeader" xmlns:tns="http://www.example.org/ShareUrlHeader" elementFormDefault="qualified">
+<element name="sharelement">
+    <complexType>
+      <sequence>
+        <element type="string" name="comment"/>
+        <element name="content">
+          <complexType>
+            <sequence>
+              <element type="string" name="title"/>
+              <element type="string" name="description"/>
+              <element type="string" name="submitted-url"/>
+              <element type="string" name="submitted-image-url"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="visibility">
+          <complexType>
+            <sequence>
+              <element type="string" name="code"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+<element name="PostInpt">
+    <complexType>
+      <sequence>
+        <element type="string" name="comment"/>
+        <element type="string" name="url"/>
+        <element type="string" name="AccessToken"/>
+        <element name="content">
+          <complexType>
+            <sequence>
+              <element type="string" name="title"/>
+              <element type="string" name="description"/>
+              <element type="string" name="submitted-url"/>
+              <element type="string" name="submitted-image-url"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="visibility">
+          <complexType>
+            <sequence>
+              <element type="string" name="code"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+
+
+
+</schema>

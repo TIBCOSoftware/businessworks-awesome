@@ -1,0 +1,91 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="error"/>
+        <xs:element type="xs:byte" name="id"/>
+        <xs:element name="result">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="current_page"/>
+              <xs:element name="items">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="element">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="apikey"/>
+                          <xs:element name="application">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="ads"/>
+                                <xs:element type="xs:string" name="ads_system"/>
+                                <xs:element type="xs:string" name="commercial"/>
+                                <xs:element type="xs:dateTime" name="created"/>
+                                <xs:element type="xs:string" name="description"/>
+                                <xs:element type="xs:string" name="external_id"/>
+                                <xs:element type="xs:string" name="how_did_you_hear"/>
+                                <xs:element type="xs:int" name="id"/>
+                                <xs:element type="xs:string" name="is_packaged"/>
+                                <xs:element type="xs:string" name="name"/>
+                                <xs:element type="xs:string" name="notes"/>
+                                <xs:element type="xs:string" name="oauth_redirect_uri"/>
+                                <xs:element type="xs:string" name="object_type"/>
+                                <xs:element type="xs:string" name="preferred_output"/>
+                                <xs:element type="xs:string" name="preferred_protocol"/>
+                                <xs:element type="xs:string" name="status"/>
+                                <xs:element type="xs:string" name="tags"/>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:dateTime" name="updated"/>
+                                <xs:element type="xs:string" name="uri"/>
+                                <xs:element type="xs:string" name="usage_model"/>
+                                <xs:element type="xs:string" name="username"/>
+                                <xs:element type="xs:string" name="uuid"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:dateTime" name="created"/>
+                          <xs:element type="xs:int" name="id"/>
+                          <xs:element name="limits">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:short" name="ceiling"/>
+                                      <xs:element type="xs:string" name="period"/>
+                                      <xs:element type="xs:string" name="source"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="object_type"/>
+                          <xs:element type="xs:string" name="paymentType"/>
+                          <xs:element type="xs:byte" name="qps_limit_ceiling"/>
+                          <xs:element type="xs:string" name="qps_limit_exempt"/>
+                          <xs:element type="xs:byte" name="rate_limit_ceiling"/>
+                          <xs:element type="xs:string" name="rate_limit_exempt"/>
+                          <xs:element type="xs:string" name="ratingType"/>
+                          <xs:element type="xs:string" name="secret"/>
+                          <xs:element type="xs:string" name="status"/>
+                          <xs:element type="xs:byte" name="unitCost"/>
+                          <xs:element type="xs:dateTime" name="updated"/>
+                          <xs:element type="xs:string" name="uuid"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:byte" name="items_per_page"/>
+              <xs:element type="xs:byte" name="total_items"/>
+              <xs:element type="xs:byte" name="total_pages"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/tcizendeskticket/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/tcizendeskticket/parameters">
+  <xs:element name="tcizendeskticketGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tcizendeskticketPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tcizendeskticketPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tcizendeskticketDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="tcizendeskticket1GetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="sessionId" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="tcizendeskticket1PutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="sessionId" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="tcizendeskticket1PostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="sessionId" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="tcizendeskticket1DeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="ticketid" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="sessionId" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

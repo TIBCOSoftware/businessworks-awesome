@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Questions"
+	xmlns:tns="http://www.example.org/Questions" elementFormDefault="qualified">
+
+	<element name="ManualJSONRequestElement" type="tns:ManualJSONRequest"></element>
+
+	<element name="ManualJSONResponseElement" type="tns:ManualJSONResponse"></element>
+
+	<complexType name="Identifier">
+		<sequence>
+			<element name="SurveyID" type="string"></element>
+			<element name="PageID" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="IdentifierElement" type="tns:Identifier"></element>
+
+	<complexType name="ManualJSONRequest">
+		<sequence>
+			<element ref="tns:IdentifierElement"></element>
+			<element name="JSONRequest" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ManualJSONResponse">
+		<sequence>
+			<element name="JSONResponse" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="SingleChoiceRequest">
+		<sequence>
+			<element ref="tns:IdentifierElement"></element>
+			<element name="Question" type="string"></element>
+			<element name="Answers" type="string" minOccurs="0"
+				maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="MultipleChoiceRequest">
+		<sequence>
+			<element ref="tns:IdentifierElement"></element>
+			<element name="Question" type="string"></element>
+			<element name="Answers" type="string" minOccurs="0"
+				maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="OpenEndedRequest">
+		<sequence>
+			<element ref="tns:IdentifierElement"></element>
+			<element name="Question" type="string"></element>
+		</sequence>
+	</complexType>
+	
+	<element name="OpenEndedRequestElement" type="tns:OpenEndedRequest"></element>
+
+	<element name="MultipleChoiceRequestElement" type="tns:MultipleChoiceRequest"></element>
+
+	<element name="SingleChoiceRequestElement" type="tns:SingleChoiceRequest"></element>
+
+
+	<complexType name="CreateQuestionResponse">
+		<sequence>
+			<element name="Success" type="boolean"></element>
+			<element name="Message" type="string"></element>
+			<element name="QuestionID" type="string" minOccurs="0"
+				maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<element name="CreateQuestionResponseElement" type="tns:CreateQuestionResponse"></element>
+</schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/groups/groupsIdImpl" xmlns="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/groups/groupsIdImpl" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="apikey" type="xs:string"/>
+				<xs:element name="oauthKey" type="xs:string"/>
+				<xs:element name="groupId" type="xs:string"/>
+				
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="code" type="xs:string"/>
+							<xs:element minOccurs="0" name="msg" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="messageBody">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="asciiContent" type="xs:string"/>
+							<xs:element minOccurs="0" name="binaryContent" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

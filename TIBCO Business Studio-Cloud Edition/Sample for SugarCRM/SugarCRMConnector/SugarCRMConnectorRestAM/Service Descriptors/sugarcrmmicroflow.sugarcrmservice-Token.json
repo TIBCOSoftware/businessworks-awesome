@@ -1,0 +1,93 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/token" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-token",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/tokenRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a tokenResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/tokenResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "tokenRequest" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "grant_type" : {
+          "type" : "string"
+        },
+        "client_id" : {
+          "type" : "string"
+        },
+        "client_secret" : {
+          "type" : "string"
+        },
+        "username" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "platform" : {
+          "type" : "string"
+        }
+      }
+    },
+    "tokenResponse" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "access_token" : {
+          "type" : "string"
+        },
+        "expires_in" : {
+          "type" : "integer"
+        },
+        "token_type" : {
+          "type" : "string"
+        },
+        "scope" : {
+          "type" : "string"
+        },
+        "refresh_token" : {
+          "type" : "string"
+        },
+        "refresh_expires_in" : {
+          "type" : "integer"
+        },
+        "download_token" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

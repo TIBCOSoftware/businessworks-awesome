@@ -1,0 +1,60 @@
+{
+  "apiVersion" : "1.0",
+  "swaggerVersion" : "1.2",
+  "basePath" : "localhost:8888",
+  "resourcePath" : "/connectMashery",
+  "apis" : [ {
+    "path" : "/connectmashery",
+    "description" : "",
+    "operations" : [ {
+      "method" : "POST",
+      "nickname" : "postConnectmashery",
+      "type" : "string",
+      "parameters" : [ {
+        "paramType" : "body",
+        "type" : "RootElement",
+        "required" : true,
+        "allowMultiple" : false
+      } ],
+      "summary" : null,
+      "notes" : null,
+      "responseMessages" : [ ],
+      "consumes" : [ "application/json" ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "authorizations" : { },
+  "models" : {
+    "RootElement" : {
+      "id" : "RootElement",
+      "type" : "object",
+      "properties" : {
+        "method" : {
+          "type" : "string"
+        },
+        "params" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "params",
+            "uniqueItems" : false
+          }
+        },
+        "id" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "params" : {
+      "id" : "params",
+      "type" : "object",
+      "properties" : {
+        "username" : {
+          "type" : "string"
+        },
+        "StripeAccount" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

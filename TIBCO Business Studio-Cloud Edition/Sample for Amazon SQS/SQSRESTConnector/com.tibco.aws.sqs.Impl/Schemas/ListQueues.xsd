@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/ListQueues" xmlns:tns10="http://www.sqsconnector.tibco.com/ListQueues" elementFormDefault="qualified">
+	
+	<complexType name="ListQueuesRequestType">
+    	<sequence>
+    		<element name="queueNamePrefix" type="string" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="listQueuesRequest" type="tns10:ListQueuesRequestType"></element>
+    
+    <complexType name="ListQueuesResponseType">
+    	<sequence>
+    		<element name="listQueuesResult"
+    			type="tns10:ListQueuesResultType">
+    		</element>
+    		<element name="responseMetadata" type="tns10:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="listQueuesResponse" type="tns10:ListQueuesResponseType"></element>
+    
+    <complexType name="ListQueuesResultType">
+    	<sequence>
+    		<element name="queueUrls" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+</schema>

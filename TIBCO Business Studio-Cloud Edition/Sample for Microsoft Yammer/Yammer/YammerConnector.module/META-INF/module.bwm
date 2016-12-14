@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:parameters="http://xmlns.example.com/Api/parameters" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_s31-wGn8EeaRSrmvSkgxnA" targetNamespace="http://tns.tibco.com/bw/composite/YammerConnector.module" name="YammerConnector.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_Tg1BYGrnEea0iIIqPJfpdA" name="api-v1-messages" promote="ComponentGet_Post_and_Delete_Message/api-v1-messages">
+    <sca:interface.wsdl xmi:id="_ThIjYGrnEea0iIIqPJfpdA" interface="http://xmlns.example.com/20160825224334PLT#wsdl.interface(api-v1-messages)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ThUwoGrnEea0iIIqPJfpdA" name="RestService1" path="/api/v1/messages/{method_name}" docBasePath="http://localhost:7777/YammerConnector.module" docResourcePath="MessagesAPI" basePath="/" connector="yammerconnector.module.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Yammer Connector_1.0.json">
+      <operation xmi:id="_ThYbAGrnEea0iIIqPJfpdA" operationName="post" httpMethod="POST" notes="Create a new message. and posts it to the specified group (or) replies back to the already received message (or) sends a private message to the specified user_id.&#xA;use method name as &quot;messages&quot; to invoke this operation&#xA;example: /api/v1/messages.json" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_ThuZQGrnEea0iIIqPJfpdA" formElement="parameters:api-v1-messages-method_namePostForm">
+          <parameterMapping xmi:id="_ThuZQWrnEea0iIIqPJfpdA" parameterName="TokenValue" parameterType="Header" dataType="string" required="true" description="Contains the Developer Token value that is obtained after registering your application with Yammer"/>
+          <parameterMapping xmi:id="_ThuZQmrnEea0iIIqPJfpdA" parameterName="body" parameterType="formData" dataType="string" description="Message to be posted into your network"/>
+          <parameterMapping xmi:id="_ThuZQ2rnEea0iIIqPJfpdA" parameterName="group_id" parameterType="formData" dataType="integer#int32" description="The ID of the group to which the message should be posted"/>
+          <parameterMapping xmi:id="_ThvAUGrnEea0iIIqPJfpdA" parameterName="direct_to_id" parameterType="formData" dataType="integer#int32" description="Send a private message directly to the user indicated."/>
+          <parameterMapping xmi:id="_ThvAUWrnEea0iIIqPJfpdA" parameterName="replied_to_id" parameterType="formData" dataType="integer#int32" description="The message ID this message is in reply to."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientFormat>XML</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_ThYbAWrnEea0iIIqPJfpdA" operationName="get" httpMethod="GET" notes="It gets All messages sent by the user. &#xA;Use method name as &quot;sent&quot; to invoke this operation&#xA;example: /api/v1/messages/sent.json" responseStyle="element">
+        <parameters xmi:id="_ThvAUmrnEea0iIIqPJfpdA">
+          <parameterMapping xmi:id="_ThvAU2rnEea0iIIqPJfpdA" parameterName="older_than" parameterType="Query" dataType="integer#int32" description="Returns messages older than the message ID specified as a numeric string."/>
+          <parameterMapping xmi:id="_ThvAVGrnEea0iIIqPJfpdA" parameterName="newer_than" parameterType="Query" dataType="integer#int32" description="Returns messages newer than the message ID specified as a numeric string"/>
+          <parameterMapping xmi:id="_ThvAVWrnEea0iIIqPJfpdA" parameterName="threaded" parameterType="Query" dataType="boolean" description="It returns the first message in each thread. This parameter is intended for apps which display message threads collapsed."/>
+          <parameterMapping xmi:id="_ThvAVmrnEea0iIIqPJfpdA" parameterName="limit" parameterType="Query" dataType="integer#int32" description="Returns only the specified number of messages. Works for threaded=true and threaded=extended."/>
+          <parameterMapping xmi:id="_ThvAV2rnEea0iIIqPJfpdA" parameterName="TokenValue" parameterType="Header" dataType="string" required="true" description="Contains the Developer Token value that is obtained after registering your application with Yammer"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientFormat>XML</clientFormat>
+      </operation>
+      <operation xmi:id="_ThYbAmrnEea0iIIqPJfpdA" operationName="delete" httpMethod="DELETE" notes="Removes a message based on the specified message_id.&#xA;use method name as &quot;messages/:message_id&quot; where {:message_id= id of the messages that needs to be deleted&quot;.&#xA;example: /api/v1/messages/:message_id" responseStyle="element">
+        <parameters xmi:id="_ThvnYGrnEea0iIIqPJfpdA">
+          <parameterMapping xmi:id="_ThvnYWrnEea0iIIqPJfpdA" parameterName="message_id" parameterType="Query" dataType="string" description="Deletes a message specified by the numeric ID."/>
+          <parameterMapping xmi:id="_ThvnYmrnEea0iIIqPJfpdA" parameterName="TokenValue" parameterType="Header" dataType="string" required="true" description="Contains the Developer Token value that is obtained after registering your application with Yammer"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientFormat>XML</clientFormat>
+      </operation>
+      <parameters xmi:id="_ThtyMGrnEea0iIIqPJfpdA">
+        <parameterMapping xmi:id="_ThtyMWrnEea0iIIqPJfpdA" parameterName="method_name" parameterType="Path" dataType="string" required="true" description="Use &quot;sent&quot; as method to retrieve all sent messages"/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_ThYbA2rnEea0iIIqPJfpdA" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_9YGrMGrwEeaFMt-rnwZVDQ" name="api-v1-streams-notifications-json" promote="ComponentGetNotifications/api-v1-streams-notifications-json">
+    <sca:interface.wsdl xmi:id="_9YmacGrwEeaFMt-rnwZVDQ" interface="http://xmlns.example.com/20160825235229PLT#wsdl.interface(api-v1-streams-notifications-json)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9Y-08GrwEeaFMt-rnwZVDQ" name="RestService" path="/api/v1/streams/notifications.json" docBasePath="http://localhost:7777/YammerConnector.module" docResourcePath="StreamsAPI" basePath="/" connector="yammerconnector.module.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Yammer Connector_1.0.json">
+      <operation xmi:id="_9ZB4QGrwEeaFMt-rnwZVDQ" operationName="get" httpMethod="GET" notes="Get the notifications feed for the current user." responseStyle="element">
+        <parameters xmi:id="_9aYjIGrwEeaFMt-rnwZVDQ">
+          <parameterMapping xmi:id="_9aZKMGrwEeaFMt-rnwZVDQ" parameterName="TokenValue" parameterType="Header" dataType="string" required="true" description="Contains the Developer Token value that is obtained after registering your application with Yammer"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientFormat>XML</clientFormat>
+      </operation>
+      <parameters xmi:id="_9aX8EGrwEeaFMt-rnwZVDQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9ZCfUGrwEeaFMt-rnwZVDQ" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_x6xvcmr0EeaFMt-rnwZVDQ" name="api-v1-users" promote="ComponentGet_and_Update_Profile/api-v1-users">
+    <sca:interface.wsdl xmi:id="_x6yWg2r0EeaFMt-rnwZVDQ" interface="http://xmlns.example.com/20160826001946PLT#wsdl.interface(api-v1-users)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_x6zkoGr0EeaFMt-rnwZVDQ" name="RestService2" path="/api/v1/users/{method_name}" docBasePath="http://localhost:7777/YammerConnector.module" docResourcePath="UsersAPI" basePath="/" connector="yammerconnector.module.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Yammer Connector_1.0.json">
+      <operation xmi:id="_x61Z0Gr0EeaFMt-rnwZVDQ" operationName="get" httpMethod="GET" notes="Views data about the current user." responseStyle="element">
+        <parameters xmi:id="_x67gcmr0EeaFMt-rnwZVDQ">
+          <parameterMapping xmi:id="_x67gc2r0EeaFMt-rnwZVDQ" parameterName="TokenValue" parameterType="Header" dataType="string" required="true" description="Contains the Developer Token value that is obtained after registering your application with Yammer"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientFormat>XML</clientFormat>
+      </operation>
+      <operation xmi:id="_x61Z0Wr0EeaFMt-rnwZVDQ" operationName="put" httpMethod="PUT" notes="Update information about a user. The target user should be the current user or a verified admin in a paid Yammer network." clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_x68HgGr0EeaFMt-rnwZVDQ" formElement="parameters:api-v1-users-method_namePutForm">
+          <parameterMapping xmi:id="_x68HgWr0EeaFMt-rnwZVDQ" parameterName="TokenValue" parameterType="Header" dataType="string" required="true" description="Contains the Developer Token value that is obtained after registering your application with Yammer"/>
+          <parameterMapping xmi:id="_x68Hgmr0EeaFMt-rnwZVDQ" parameterName="user_id" parameterType="formData" dataType="integer#int32" description="User id specified by the numeric string id"/>
+          <parameterMapping xmi:id="_x68Hg2r0EeaFMt-rnwZVDQ" parameterName="job_title" parameterType="formData" dataType="string" description="Updated job title"/>
+          <parameterMapping xmi:id="_x68HhGr0EeaFMt-rnwZVDQ" parameterName="full_name" parameterType="formData" dataType="string" description="Contains the full_name that needs to be  changed"/>
+          <parameterMapping xmi:id="_x68HhWr0EeaFMt-rnwZVDQ" parameterName="department_name" parameterType="formData" dataType="string" description="Contains the department_name that needs to be changed"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientFormat>XML</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_x67gcGr0EeaFMt-rnwZVDQ">
+        <parameterMapping xmi:id="_x67gcWr0EeaFMt-rnwZVDQ" parameterName="method_name" parameterType="Path" dataType="string" required="true" description="Use &quot;current&quot; to retrieve current user's profile"/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_x61Z0mr0EeaFMt-rnwZVDQ" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_FkAjUGu6Eeafg4wfx5gUGQ" name="api-v1-PostMessageToUser" promote="ComponentPostMessageToSingleUser/api-v1-PostMessageToUser">
+    <sca:interface.wsdl xmi:id="_FkBKYWu6Eeafg4wfx5gUGQ" interface="http://xmlns.example.com/20160826235146PLT#wsdl.interface(api-v1-PostMessageToUser)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_FkC_kGu6Eeafg4wfx5gUGQ" name="RestService3" path="/api/v1/PostMessageToUser/{email}" docBasePath="http://localhost:7777/YammerConnector.module" docResourcePath="PostMessageToUserAPI" basePath="/" connector="yammerconnector.module.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Yammer Connector_1.0.json">
+      <operation xmi:id="_FkH4EGu6Eeafg4wfx5gUGQ" operationName="post" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_FkSQIGu6Eeafg4wfx5gUGQ" formElement="parameters:api-v1-PostMessageToUser-emailPostForm">
+          <parameterMapping xmi:id="_FkSQIWu6Eeafg4wfx5gUGQ" parameterName="TokenValue" parameterType="Header" dataType="string" required="true" description="Contains the Developer Token value that is obtained after registering your application with Yammer"/>
+          <parameterMapping xmi:id="_FkS3MGu6Eeafg4wfx5gUGQ" parameterName="Body" parameterType="formData" dataType="string" required="true" description="Provide the Message which you want to post"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientFormat>XML</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_FkRpEGu6Eeafg4wfx5gUGQ">
+        <parameterMapping xmi:id="_FkRpEWu6Eeafg4wfx5gUGQ" parameterName="email" parameterType="Path" dataType="string" required="true" description="provide email of the registered person in Yammer network to whom you want to send the message"/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_FkIfIGu6Eeafg4wfx5gUGQ" bindingName="RestService3"/>
+  </sca:service>
+  <sca:property xmi:id="_vGiq8Gn8EeaRSrmvSkgxnA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_vHXxYGn8EeaRSrmvSkgxnA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_vHqsUGn8EeaRSrmvSkgxnA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_vH6j8Gn8EeaRSrmvSkgxnA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_vIJ0gGn8EeaRSrmvSkgxnA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_vIXP4Gn8EeaRSrmvSkgxnA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0MUqQGoCEeaqP-Go-BgDTg" name="/Connections/HTTP/DefaultHost" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_3aR0AGoCEeaqP-Go-BgDTg" name="/Connections/HTTP/DefaultPort" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_gKQ0sGoDEeaqP-Go-BgDTg" name="/YammerConnector/LogEnabled" type="XMLSchema:boolean" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_njnn4GoDEeaqP-Go-BgDTg" name="/YammerConnector/LoggerName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_DBoRoGoDEeaqP-Go-BgDTg" name="/YammerConnector/LogLevels/INFO" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_FuuxEGoDEeaqP-Go-BgDTg" name="/YammerConnector/LogLevels/WARN" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_F0IOcGoDEeaqP-Go-BgDTg" name="/YammerConnector/LogLevels/ERROR" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_F5R0MGoDEeaqP-Go-BgDTg" name="/YammerConnector/LogLevels/TRACE" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_GPZOIGoDEeaqP-Go-BgDTg" name="/YammerConnector/LogLevels/DEBUG" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_U1XZAGoDEeaqP-Go-BgDTg" name="/YammerConnector/OAuth2Details/TokenName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_QYohYGrnEea0iIIqPJfpdA" name="ComponentGet_Post_and_Delete_Message" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_QYohYWrnEea0iIIqPJfpdA" processName="yammerconnector.module.Processes.Get_Post_and_Delete_Message"/>
+    <sca:service xmi:id="_Tgj7oGrnEea0iIIqPJfpdA" name="api-v1-messages">
+      <sca:interface.wsdl xmi:id="_TgrQYGrnEea0iIIqPJfpdA" interface="http://xmlns.example.com/20160825224334PLT#wsdl.interface(api-v1-messages)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_4g_LQGrwEeaFMt-rnwZVDQ" name="ComponentGetNotifications" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_4g_LQWrwEeaFMt-rnwZVDQ" processName="yammerconnector.module.Processes.GetNotifications"/>
+    <sca:service xmi:id="_9X524GrwEeaFMt-rnwZVDQ" name="api-v1-streams-notifications-json">
+      <sca:interface.wsdl xmi:id="_9X8TIGrwEeaFMt-rnwZVDQ" interface="http://xmlns.example.com/20160825235229PLT#wsdl.interface(api-v1-streams-notifications-json)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_sVwnsGr0EeaFMt-rnwZVDQ" name="ComponentGet_and_Update_Profile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_sVwnsWr0EeaFMt-rnwZVDQ" processName="yammerconnector.module.Processes.Get_and_Update_Profile"/>
+    <sca:service xmi:id="_x6xvcGr0EeaFMt-rnwZVDQ" name="api-v1-users">
+      <sca:interface.wsdl xmi:id="_x6xvcWr0EeaFMt-rnwZVDQ" interface="http://xmlns.example.com/20160826001946PLT#wsdl.interface(api-v1-users)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_8oINcGu5Eeafg4wfx5gUGQ" name="ComponentPostMessageToSingleUser" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_8oI0gGu5Eeafg4wfx5gUGQ" processName="yammerconnector.module.Processes.PostMessageToSingleUser"/>
+    <sca:service xmi:id="_Fj_8QGu6Eeafg4wfx5gUGQ" name="api-v1-PostMessageToUser">
+      <sca:interface.wsdl xmi:id="_Fj_8QWu6Eeafg4wfx5gUGQ" interface="http://xmlns.example.com/20160826235146PLT#wsdl.interface(api-v1-PostMessageToUser)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

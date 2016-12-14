@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.connector.tibco.com/twilio/voice/transcriptions" xmlns:tns="http://www.connector.tibco.com/twilio/voice/transcriptions" elementFormDefault="qualified">
+
+    <element name="ViewTranscriptionsInput" type="tns:ViewTranscriptionsRequest"></element>
+
+    <complexType name="ViewTranscriptionsRequest">
+    	<sequence>
+    		<element name="AccountSid" type="string"   minOccurs="1" maxOccurs="1"></element>
+    		<element name="TranscriptionSid" type="string"   minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ViewTranscriptionsOutput" type="tns:ViewTranscriptionsResponse"></element>
+
+    <complexType name="ViewTranscriptionsResponse">
+    	<sequence>
+    		<element name="Response" type="string"  nillable="true"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ViewTranscriptionsListInput" type="tns:ViewTranscriptionsListRequest"></element>
+
+    <complexType name="ViewTranscriptionsListRequest">
+    	<sequence>
+    		<element name="AccountSid" type="string"  ></element>
+    		<element name="PageSize" type="string"   minOccurs="0" maxOccurs="1"></element>
+    		<element name="NewElement2" type="string"   minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ViewTranscriptionsListOutput" type="tns:ViewTranscriptionsListResponse"></element>
+
+    <complexType name="ViewTranscriptionsListResponse">
+    	<sequence>
+    		<element name="Response" type="string"  nillable="true"></element>
+    	</sequence>
+    </complexType>
+</schema>

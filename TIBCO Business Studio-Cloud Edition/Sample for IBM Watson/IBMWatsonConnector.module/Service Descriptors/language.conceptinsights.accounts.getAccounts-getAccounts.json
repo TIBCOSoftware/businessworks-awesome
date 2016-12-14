@@ -1,0 +1,39 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Retrieves a Concept Insights account identifier.",
+    "description" : "Retrieves a Concept Insights account identifier."
+  },
+  "host" : "localhost:8099",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/language/conceptinsights/accounts/accounts" : {
+      "get" : {
+        "description" : "",
+        "operationId" : "get-language-conceptinsights-accounts-accounts",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "query1",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}

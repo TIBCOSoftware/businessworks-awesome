@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetAllLiveCalls.xsd" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetAllLiveCalls.xsd">
+	<element name="GetAllLiveCallDetailsRequest">
+    	<complexType>
+    		<sequence>
+    			<element ref="tns:Authorization" />
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="GetAllLiveCallDetailsResponse">
+    	<complexType>
+            <choice>
+    			<element ref="tns:PlivoGetAllLiveCallDetailsResponse" />
+    			<element ref="tns:FaultDetail"></element>
+    		</choice>
+    	</complexType>
+    </element>
+    
+    <element name="Authorization">
+    	<complexType>
+    		<sequence>
+    			<element name="AuthID" type="string"/>
+    			<element name="AuthToken" type="string"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+
+    <element name="PlivoGetAllLiveCallDetailsResponse">
+    	<complexType>
+            <sequence>
+                <element name="api_id" type="string"></element>
+                <element name="calls" minOccurs="0"
+                	maxOccurs="unbounded" type="string">
+                </element>
+            </sequence>
+    	</complexType>
+    </element>
+
+    <element name="PlivoGetAllLiveCallDetailsRequest">
+    	<complexType>
+    		<sequence>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="FaultDetail">
+		<complexType >
+        <sequence>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ActivityName" type="string"/>
+            <element block="extension restriction substitution"
+            	form="unqualified" minOccurs="0" name="Data" type="string" />
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="Msg" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" minOccurs="0" name="MsgCode" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ProcessStack" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="StackTrace" type="string"/>
+        </sequence>
+    </complexType>
+	</element>
+
+</schema>

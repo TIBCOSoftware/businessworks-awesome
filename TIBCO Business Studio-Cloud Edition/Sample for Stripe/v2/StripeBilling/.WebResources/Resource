@@ -1,0 +1,57 @@
+{
+  "apiVersion" : "4.0",
+  "swaggerVersion" : "1.2",
+  "basePath" : "http://localhost:8888",
+  "resourcePath" : "/Resource",
+  "apis" : [ {
+    "path" : "/resource/",
+    "description" : "",
+    "operations" : [ {
+      "method" : "POST",
+      "nickname" : "postResource",
+      "responseClass" : "string",
+      "parameters" : [ {
+        "paramType" : "body",
+        "type" : "RootElement",
+        "required" : "true",
+        "allowMultiple" : "false"
+      } ],
+      "summary" : null,
+      "notes" : null,
+      "responseMessages" : [ ],
+      "consumes" : [ "application/json" ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "RootElement" : {
+      "id" : "RootElement",
+      "properties" : {
+        "method" : {
+          "type" : "string"
+        },
+        "params" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "params"
+          }
+        },
+        "id" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "params" : {
+      "id" : "params",
+      "properties" : {
+        "username" : {
+          "type" : "string"
+        },
+        "StripeAccount" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "authorizations" : { }
+}

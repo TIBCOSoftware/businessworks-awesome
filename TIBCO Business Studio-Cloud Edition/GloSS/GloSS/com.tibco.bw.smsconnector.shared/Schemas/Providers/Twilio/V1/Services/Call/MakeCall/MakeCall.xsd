@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://www.tibco.com/Providers/Twilio/V1/Services/Call/MakeCall"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.tibco.com/Providers/Twilio/V1/Services/Call/MakeCall">
+
+	<element name="MakeCallRequest">
+		<complexType>
+			<sequence>
+				<element name="Authorization"
+					type="tns:Authorization">
+				</element>
+
+				<element ref="tns:TwilioMakeCallRequest"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="Authorization">
+		<sequence>
+			<element name="AccountID" type="string" />
+			<element name="AuthenticationToken" type="string" />
+		</sequence>
+	</complexType>
+
+	<element name="MakeCallResponse">
+		<complexType>
+            <choice>
+				<element ref="tns:Call"></element>
+				<element ref="tns:FaultDetail"></element>
+			</choice>
+		</complexType>
+	</element>
+	<element name="Call">
+		<complexType>
+			<all>
+				<element name="Sid" type="string"></element>
+				<element name="DateCreated" type="string"></element>
+				<element name="DateUpdated" type="string"></element>
+				<element name="ParentCallSid" type="string"></element>
+				<element name="AccountSid" type="string"></element>
+				<element name="To" type="string"></element>
+				<element name="From" type="string"></element>
+				<element name="FromFormatted" type="string"></element>
+				<element name="PhoneNumberSid " type="string"></element>
+				<element name="Status" type="string"></element>
+				<element name="StartTime" type="string"></element>
+				<element name="EndTime" type="string"></element>
+				<element name="Duration" type="string"></element>
+				<element name="Price" type="string"></element>
+				<element name="PriceUnit" type="string"></element>
+				<element name="Direction" type="string"></element>
+				<element name="AnsweredBy " type="string"></element>
+				<element name="Annotation " type="string"></element>
+				<element name="ApiVersion" type="string"></element>
+				<element name="ForwardedFrom " type="string"></element>
+				<element name="GroupSid " type="string"></element>
+				<element name="CallerName " type="string"></element>
+				<element name="Uri" type="string"></element>
+				<element ref="tns:SubresourceUris"></element>
+			</all>
+		</complexType>
+	</element>
+
+	<element name="SubresourceUris">
+		<complexType>
+			<sequence>
+				<element name="Notifications" type="string"></element>
+				<element name="Recordings" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+    <element name="TwilioMakeCallRequest">
+    	<complexType><all>
+    	<element name="From" type="string"></element>
+    			<element name="To" type="string"></element>
+    			<element name="Url" type="string" minOccurs="0"></element>
+    			<element name="Method" type="string" minOccurs="0"></element>
+    			<element name="ApplicationSid" type="string" minOccurs="0"></element>
+    			<element name="FallbackUrl" type="string" minOccurs="0"></element>
+    			<element name="FallbackMethod" type="string" minOccurs="0"></element>
+    			<element name="StatusCallback" type="string" minOccurs="0"></element>
+    			<element name="StatusCallbackMethod" type="string" minOccurs="0"></element>
+    			<element name="StatusCallbackEvent" type="string" minOccurs="0"></element>
+    			<element name="SendDigits" type="string" minOccurs="0"></element>
+    			<element name="IfMachine" type="string" minOccurs="0"></element>
+    			<element name="Timeout" type="string" minOccurs="0"></element>
+    			<element name="Record" type="string" minOccurs="0"></element>
+    	</all>    	</complexType>
+    </element>
+    <element name="FaultDetail">
+		<complexType >
+        <sequence>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ActivityName" type="string"/>
+            <element block="extension restriction substitution"
+            	form="unqualified" minOccurs="0" name="Data" type="string" />
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="Msg" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" minOccurs="0" name="MsgCode" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ProcessStack" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="StackTrace" type="string"/>
+        </sequence>
+    </complexType>
+	</element>
+</schema>

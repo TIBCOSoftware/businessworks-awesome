@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+	<xs:element name="TwilioResponse">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="SMSMessage"></xs:element>
+				<xs:element ref="RestException"></xs:element>
+				<xs:element ref="SMSMessages"></xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="SMSMessages">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="SMSMessage"
+							maxOccurs="unbounded">
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="end" type="xs:string"></xs:attribute>
+					<xs:attribute name="firstpageuri" type="xs:string"></xs:attribute>
+					<xs:attribute name="nextpageuri" type="xs:string"></xs:attribute>
+					<xs:attribute name="page" type="xs:string"></xs:attribute>
+					<xs:attribute name="pagesize" type="xs:string"></xs:attribute>
+					<xs:attribute name="previouspageuri" type="xs:string"></xs:attribute>
+					<xs:attribute name="start" type="xs:string"></xs:attribute>
+					<xs:attribute name="uri" type="xs:string"></xs:attribute>
+					
+				</xs:complexType>
+
+	</xs:element>
+	<xs:element name="RestException">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Code" type="xs:string"></xs:element>
+							<xs:element name="Message" type="xs:string"></xs:element>
+							<xs:element name="MoreInfo" type="xs:string"></xs:element>
+							<xs:element name="Status" type="xs:string"></xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+	<xs:element name="SMSMessage">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="Sid" type="xs:string" />
+							<xs:element name="DateCreated" type="xs:string" />
+							<xs:element name="DateUpdated" type="xs:string" />
+							<xs:element name="DateSent" type="xs:string" />
+							<xs:element name="AccountSid" type="xs:string" />
+							<xs:element name="To" type="xs:string" />
+							<xs:element name="From" type="xs:string" />
+							<xs:element name="Body" type="xs:string" />
+							<xs:element name="Status" type="xs:string" />
+							<xs:element name="Direction" type="xs:string" />
+							<xs:element name="NumSegments" type="xs:string" />
+							<xs:element name="NumberOfMedias" type="xs:string"
+								minOccurs="0" />
+							<xs:element name="ApiVersion" type="xs:string" />
+							<xs:element name="Price" type="xs:string" />
+							<xs:element name="PriceUnit" type="xs:string" />
+							<xs:element maxOccurs="1" minOccurs="1"
+								name="Uri" type="xs:string" />
+							<xs:element name="ErrorCode" type="xs:string"
+								minOccurs="0" />
+							<xs:element name="ErrorMessage" type="xs:string"
+								minOccurs="0" />
+							<xs:element maxOccurs="1" minOccurs="0"
+								name="SubResourceURI" type="xs:string" />
+						</xs:all>
+						
+					</xs:complexType>
+				</xs:element>
+</xs:schema>

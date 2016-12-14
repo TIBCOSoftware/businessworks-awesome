@@ -1,0 +1,58 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/tcizendeskruntimetest" : {
+      "post" : {
+        "description" : "This is for Unit testing the API. It will execute and make sure that the APIs are deployed properly. Please make sure that you provide admin user for this testing. Please provide either the password or token. ",
+        "operationId" : "post-tcizendeskruntimetest",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/login"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "login" : {
+      "type" : "object",
+      "required" : [ "password", "domain", "userid", "token" ],
+      "properties" : {
+        "domain" : {
+          "type" : "string"
+        },
+        "userid" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "token" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

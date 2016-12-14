@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:http="http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient" xmlns:parameters="http://xmlns.example.com/Watsonplatform/parameters" xmlns:property="http://ns.tibco.com/bw/property" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_gjXy4Gd_EeaRrNiwHE4iuQ" targetNamespace="http://tns.tibco.com/bw/composite/RetrieveRank" name="RetrieveRank" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_QTQIcGeBEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-rankers" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-rankers">
+    <sca:interface.wsdl xmi:id="_QTZ5cGeBEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-rankers)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_QTicUGeBEeaRrNiwHE4iuQ" name="RestService" path="/watsonplatform/retrieve-and-rank/api/v1/rankers" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_QTn74GeBEeaRrNiwHE4iuQ" operationName="createRanker" httpMethod="POST" notes="Create ranker.&#xA;Sends data to create and train a ranker and returns information about the new ranker. When the operation is successful, the status of the ranker is set to Training. The status must be Available before you can use the ranker." responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_QToi8GeBEeaRrNiwHE4iuQ" operationName="listRankers" httpMethod="GET" notes="List rankers. &#xA;Retrieves the list of rankers for the service instance." responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_QUISMGeBEeaRrNiwHE4iuQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_QToi8WeBEeaRrNiwHE4iuQ" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_Ap1uImeCEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-rankers1" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-rankers1">
+    <sca:interface.wsdl xmi:id="_Ap28QGeCEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-rankers1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Ap4KYGeCEeaRrNiwHE4iuQ" name="RestService1" path="/watsonplatform/retrieve-and-rank/api/v1/rankers/{ranker_id}" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_Ap4KYWeCEeaRrNiwHE4iuQ" operationName="getRankerInfo" httpMethod="GET" notes="Get information about a ranker" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_Ap4xcGeCEeaRrNiwHE4iuQ" operationName="deleteRanker" httpMethod="DELETE" notes="Delete ranker." responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_Ap5YgGeCEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_Ap6moGeCEeaRrNiwHE4iuQ" parameterName="ranker_id" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Ap4xcWeCEeaRrNiwHE4iuQ" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_zrZk8GeFEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters">
+    <sca:interface.wsdl xmi:id="_zrZk9GeFEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_zrazEGeFEeaRrNiwHE4iuQ" name="RestService2" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_zrbaIGeFEeaRrNiwHE4iuQ" operationName="createCluster" httpMethod="POST" notes="Create Solr cluster. &#xA;Provisions a Solr cluster asynchronously. When the operation is successful, the status of the cluster is set to NOT_AVAILABLE. The status must be READY before you can use the cluster." responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_zrbaIWeFEeaRrNiwHE4iuQ" operationName="listClusters" httpMethod="GET" notes="List Solr clusters.&#xA;Retrieves the list of Solr clusters for the service instance." responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_zrcBMGeFEeaRrNiwHE4iuQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_zrbaImeFEeaRrNiwHE4iuQ" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_d0JvYmeGEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters1" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters1">
+    <sca:interface.wsdl xmi:id="_d0K9gmeGEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_d0MLoGeGEeaRrNiwHE4iuQ" name="RestService3" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_d0MLoWeGEeaRrNiwHE4iuQ" operationName="getClusterInfo" httpMethod="GET" notes="Returns status and other information about a solr cluster." responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_d0MLomeGEeaRrNiwHE4iuQ" operationName="deleteCluster" httpMethod="DELETE" notes="Delete Solr cluster.&#xA;Stops and deletes a Solr Cluster asynchronously." responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_d0MysGeGEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_d0MysWeGEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_d0MLo2eGEeaRrNiwHE4iuQ" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_-ilUcmeGEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters2" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters2">
+    <sca:interface.wsdl xmi:id="_-il7gGeGEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters2)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_-inJoGeGEeaRrNiwHE4iuQ" name="RestService4" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/collections" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_-inJoWeGEeaRrNiwHE4iuQ" operationName="createCollection" httpMethod="POST" notes="Create Solr collection" responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_-inwsGeGEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_-inwsWeGEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_-inJomeGEeaRrNiwHE4iuQ" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_d4GwYmeIEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters3" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters3">
+    <sca:interface.wsdl xmi:id="_d4H-gGeIEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters3)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_d4JMoGeIEeaRrNiwHE4iuQ" name="RestService5" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/collections/{collection_name}" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_d4JMoWeIEeaRrNiwHE4iuQ" operationName="deleteCollection" httpMethod="DELETE" notes="Delete Solr collection" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_d4JzsGeIEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_d4JzsWeIEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+        <parameterMapping xmi:id="_d4JzsmeIEeaRrNiwHE4iuQ" parameterName="collection_name" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_d4JMomeIEeaRrNiwHE4iuQ" bindingName="RestService5"/>
+  </sca:service>
+  <sca:service xmi:id="_-ATb4WeIEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters4" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters4">
+    <sca:interface.wsdl xmi:id="_-ATb5WeIEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters4)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_-AVREGeIEeaRrNiwHE4iuQ" name="RestService6" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/config" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_-AVREWeIEeaRrNiwHE4iuQ" operationName="listConfigs" httpMethod="GET" notes="List Solr configurations. &#xA;Retrieves all configurations for a cluster." responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_-AV4IGeIEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_-AV4IWeIEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_-AVREmeIEeaRrNiwHE4iuQ" bindingName="RestService6"/>
+  </sca:service>
+  <sca:service xmi:id="_VWI54GeJEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters5" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters5">
+    <sca:interface.wsdl xmi:id="_VWI55GeJEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters5)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_VWKvEGeJEeaRrNiwHE4iuQ" name="RestService7" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/config/{config_name}" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_VWLWIGeJEeaRrNiwHE4iuQ" operationName="uploadConfig" httpMethod="POST" notes="Uploads a zip file containing the configuration files for your Solr collection. The zip file must include schema.xml, solrconfig.xml, and other files you need for your configuration." clientRequestType="multipart/form-data" responseStyle="element">
+        <parameters xmi:id="_VWL9MGeJEeaRrNiwHE4iuQ" formElement="parameters:watsonplatform-retrieve-and-rank-api-v1-solr_clusters-solr_cluster_id-config-config_namePostForm">
+          <parameterMapping xmi:id="_VWL9MWeJEeaRrNiwHE4iuQ" parameterName="body" parameterType="formData" dataType="file" contentType="application/octet-stream" contentElement="parameters:content" required="true" description=""/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_VWLWIWeJEeaRrNiwHE4iuQ" operationName="deleteConfig" httpMethod="DELETE" notes="Delete configuration. &#xA;Deletes the configuration for a cluster." responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_VWLWI2eJEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_VWLWJGeJEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+        <parameterMapping xmi:id="_VWLWJWeJEeaRrNiwHE4iuQ" parameterName="config_name" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_VWLWImeJEeaRrNiwHE4iuQ" bindingName="RestService7"/>
+  </sca:service>
+  <sca:service xmi:id="_c9vvAmeKEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters6" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters6">
+    <sca:interface.wsdl xmi:id="_c9vvBmeKEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters6)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_c9yLQGeKEeaRrNiwHE4iuQ" name="RestService8" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/solr/{collection_name}/fcselect" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_c9yLQWeKEeaRrNiwHE4iuQ" operationName="rankedSearch" httpMethod="POST" notes="Return reranked results for your query. &#xA;The request is similar to the Search Solr standard query parser method, but includes the ranker_id and, in the default configuration, fcselect replaces the select request handler." responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_c9yyUGeKEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_c9yyUWeKEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+        <parameterMapping xmi:id="_c9yyUmeKEeaRrNiwHE4iuQ" parameterName="collection_name" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_c9yLQmeKEeaRrNiwHE4iuQ" bindingName="RestService8"/>
+  </sca:service>
+  <sca:service xmi:id="_SD8ecGeLEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters7" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters7">
+    <sca:interface.wsdl xmi:id="_SD8edGeLEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters7)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_SD-6sGeLEeaRrNiwHE4iuQ" name="RestService9" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/solr/{collection_name}/select" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_SD_hwGeLEeaRrNiwHE4iuQ" operationName="standardSolrSearch" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_SEAI0GeLEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_SEAI0WeLEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+        <parameterMapping xmi:id="_SEAI0meLEeaRrNiwHE4iuQ" parameterName="collection_name" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_SD_hwWeLEeaRrNiwHE4iuQ" bindingName="RestService9"/>
+  </sca:service>
+  <sca:service xmi:id="_yFbd8GeLEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters8" promote="ComponentRanker/watsonplatform-retrieve-and-rank-api-v1-solr_clusters8">
+    <sca:interface.wsdl xmi:id="_yFbd9GeLEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters8)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_yFd6MGeLEeaRrNiwHE4iuQ" name="RestService10" path="/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/solr/{collection_name}/update" docBasePath="http://localhost:7777/RetrieveRank" docResourcePath="Watsonplatform" basePath="/" connector="retrieverank.Ranker" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/IBM Watson Retrieve and Rank Service_1.0.json">
+      <operation xmi:id="_yFd6MWeLEeaRrNiwHE4iuQ" operationName="indexDocuments" httpMethod="POST" notes="Index documents. &#xA;Adds content to a Solr index so you can search it." responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_yFehQGeLEeaRrNiwHE4iuQ">
+        <parameterMapping xmi:id="_yFehQWeLEeaRrNiwHE4iuQ" parameterName="solr_cluster_id" parameterType="Path" dataType="string" required="true" description=""/>
+        <parameterMapping xmi:id="_yFehQmeLEeaRrNiwHE4iuQ" parameterName="collection_name" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_yFd6MmeLEeaRrNiwHE4iuQ" bindingName="RestService10"/>
+  </sca:service>
+  <sca:property xmi:id="_hTUCEGd_EeaRrNiwHE4iuQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hTvf4Gd_EeaRrNiwHE4iuQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hT2NkGd_EeaRrNiwHE4iuQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hT8UMGd_EeaRrNiwHE4iuQ" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hUE3EGd_EeaRrNiwHE4iuQ" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hULkwGd_EeaRrNiwHE4iuQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_b_h-0GeAEeaRrNiwHE4iuQ" name="httpClient" type="http:HttpClientConfiguration" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_fEyfkGeAEeaRrNiwHE4iuQ" name="clientHost" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_i2VekGeAEeaRrNiwHE4iuQ" name="clientPort" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_o4bj4GeAEeaRrNiwHE4iuQ" name="clientUsername" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_vRR8UGeAEeaRrNiwHE4iuQ" name="clientPassword" type="property:password" scaext:simpleValue="#!e9J8Uh5YkCnU7IXGH/LwRA==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_zGky4GeAEeaRrNiwHE4iuQ" name="httpPort" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_2IuVQGeAEeaRrNiwHE4iuQ" name="keystorePath" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_g95LsGd_EeaRrNiwHE4iuQ" name="ComponentRanker" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_g97A4Gd_EeaRrNiwHE4iuQ" processName="retrieverank.Ranker"/>
+    <sca:service xmi:id="_QTKB0GeBEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-rankers">
+      <sca:interface.wsdl xmi:id="_QTLP8GeBEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-rankers)"/>
+    </sca:service>
+    <sca:service xmi:id="_Ap1uIGeCEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-rankers1">
+      <sca:interface.wsdl xmi:id="_Ap1uIWeCEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-rankers1)"/>
+    </sca:service>
+    <sca:service xmi:id="_zrY94GeFEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters">
+      <sca:interface.wsdl xmi:id="_zrY94WeFEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters)"/>
+    </sca:service>
+    <sca:service xmi:id="_d0JvYGeGEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters1">
+      <sca:interface.wsdl xmi:id="_d0JvYWeGEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters1)"/>
+    </sca:service>
+    <sca:service xmi:id="_-ilUcGeGEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters2">
+      <sca:interface.wsdl xmi:id="_-ilUcWeGEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters2)"/>
+    </sca:service>
+    <sca:service xmi:id="_d4GwYGeIEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters3">
+      <sca:interface.wsdl xmi:id="_d4GwYWeIEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters3)"/>
+    </sca:service>
+    <sca:service xmi:id="_-AS00GeIEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters4">
+      <sca:interface.wsdl xmi:id="_-ATb4GeIEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters4)"/>
+    </sca:service>
+    <sca:service xmi:id="_VWIS0GeJEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters5">
+      <sca:interface.wsdl xmi:id="_VWIS0WeJEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters5)"/>
+    </sca:service>
+    <sca:service xmi:id="_c9vvAGeKEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters6">
+      <sca:interface.wsdl xmi:id="_c9vvAWeKEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters6)"/>
+    </sca:service>
+    <sca:service xmi:id="_SD73YGeLEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters7">
+      <sca:interface.wsdl xmi:id="_SD73YWeLEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters7)"/>
+    </sca:service>
+    <sca:service xmi:id="_yFa24GeLEeaRrNiwHE4iuQ" name="watsonplatform-retrieve-and-rank-api-v1-solr_clusters8">
+      <sca:interface.wsdl xmi:id="_yFa24WeLEeaRrNiwHE4iuQ" interface="http://xmlns.example.com/20160821051324PLT#wsdl.interface(watsonplatform-retrieve-and-rank-api-v1-solr_clusters8)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

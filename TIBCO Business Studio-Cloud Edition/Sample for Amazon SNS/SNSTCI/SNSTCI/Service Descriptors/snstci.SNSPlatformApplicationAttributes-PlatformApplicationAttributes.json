@@ -1,0 +1,198 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/platformapplication/attributes" : {
+      "get" : {
+        "description" : "Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and GCM",
+        "operationId" : "get-platformapplication-attributes",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "PlatformApplicationArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetPlatformApplicationAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetPlatformApplicationAttributesResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "description" : "Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM. ",
+        "operationId" : "put-platformapplication-attributes",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/SetPlatformApplicationAttributesRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a SetPlatformApplicationAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/SetPlatformApplicationAttributesResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "SetPlatformApplicationAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "entry" : {
+      "type" : "object",
+      "required" : [ "value", "key" ],
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetPlatformApplicationAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata", "getPlatformApplicationAttributesResult" ],
+      "properties" : {
+        "getPlatformApplicationAttributesResult" : {
+          "$ref" : "#/definitions/getPlatformApplicationAttributesResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "Attributes" : {
+      "type" : "object",
+      "properties" : {
+        "PlatformCredential" : {
+          "type" : "string"
+        },
+        "PlatformPrincipal" : {
+          "type" : "string"
+        },
+        "EventEndpointCreated" : {
+          "type" : "string"
+        },
+        "EventEndpointDeleted" : {
+          "type" : "string"
+        },
+        "EventEndpointUpdated" : {
+          "type" : "string"
+        },
+        "EventDeliveryFailure" : {
+          "type" : "string"
+        },
+        "SuccessFeedbackRoleArn" : {
+          "type" : "string"
+        },
+        "FailureFeedbackRoleArn" : {
+          "type" : "string"
+        },
+        "SuccessFeedbackSampleRate" : {
+          "type" : "string"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "properties" : {
+        "entry" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/entry",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "getPlatformApplicationAttributesResult" : {
+      "type" : "object",
+      "required" : [ "attributes" ],
+      "properties" : {
+        "attributes" : {
+          "$ref" : "#/definitions/attributes"
+        }
+      }
+    },
+    "SetPlatformApplicationAttributesRequest" : {
+      "type" : "object",
+      "required" : [ "Attributes", "PlatformApplicationArn" ],
+      "properties" : {
+        "Attributes" : {
+          "$ref" : "#/definitions/Attributes"
+        },
+        "PlatformApplicationArn" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

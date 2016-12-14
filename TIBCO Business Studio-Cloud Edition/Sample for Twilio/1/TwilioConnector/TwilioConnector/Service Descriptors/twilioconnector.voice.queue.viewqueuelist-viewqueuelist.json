@@ -1,0 +1,139 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/voice/queue/viewqueuelist" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-voice-queue-viewqueuelist",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ViewQueueListInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ViewQueueListOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ViewQueueListOutput"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ViewQueueListInput" : {
+      "type" : "object",
+      "required" : [ "AccountSid" ],
+      "properties" : {
+        "AccountSid" : {
+          "type" : "string"
+        },
+        "PageSize" : {
+          "type" : "string"
+        },
+        "Page" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ViewQueueListOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "first_page_uri" : {
+          "type" : "string"
+        },
+        "end" : {
+          "type" : "integer"
+        },
+        "previous_page_uri" : {
+          "type" : "string"
+        },
+        "queues" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/queues",
+            "uniqueItems" : false
+          }
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "page_size" : {
+          "type" : "integer"
+        },
+        "start" : {
+          "type" : "integer"
+        },
+        "next_page_uri" : {
+          "type" : "string"
+        },
+        "page" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "queues" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "sid" : {
+          "type" : "string"
+        },
+        "account_sid" : {
+          "type" : "string"
+        },
+        "friendly_name" : {
+          "type" : "string"
+        },
+        "current_size" : {
+          "type" : "integer"
+        },
+        "average_wait_time" : {
+          "type" : "integer"
+        },
+        "max_size" : {
+          "type" : "integer"
+        },
+        "date_created" : {
+          "type" : "string"
+        },
+        "date_updated" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:Q1="http://tns.tibco.com/bw/REST" xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/about/headerParameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://xmlns.example.com/about/headerParameters">
+  <xs:import namespace="http://tns.tibco.com/bw/REST"/>
+  <xs:complexType name="aboutDriveGetHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="OAuth" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="aboutDriveGetHeader" type="tns:aboutDriveGetHeaderType"/>
+    <xs:complexType name="aboutDrive1GetHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="OAuth" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+    <xs:element name="aboutDrive1GetHeader" type="tns:aboutDrive1GetHeaderType"/>
+    <xs:complexType name="aboutDrive2GetHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="OAuth" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+    <xs:element name="aboutDrive2GetHeader" type="tns:aboutDrive2GetHeaderType"/>
+    <xs:complexType name="aboutDrive3GetHeaderType">
+    <xs:complexContent>
+      <xs:extension base="Q1:httpTransportHeaders">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="OAuth" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+    <xs:element name="aboutDrive3GetHeader" type="tns:aboutDrive3GetHeaderType"/>
+</xs:schema>

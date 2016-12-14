@@ -1,0 +1,377 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Yammer Connector",
+    "x-lastModified": "Aug 26, 2016 11:09AM PST",
+    "description": "Connects to Yammer through it's REST API"
+  },
+  "paths": {
+    "/api/v1/messages/{method_name}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "string..."
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "older_than",
+            "in": "query",
+            "description": "Returns messages older than the message ID specified as a numeric string.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "newer_than",
+            "in": "query",
+            "description": "Returns messages newer than the message ID specified as a numeric string",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "threaded",
+            "in": "query",
+            "description": "It returns the first message in each thread. This parameter is intended for apps which display message threads collapsed.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Returns only the specified number of messages. Works for threaded=true and threaded=extended.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "TokenValue",
+            "in": "header",
+            "description": "Contains the Developer Token value that is obtained after registering your application with Yammer",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "method_name",
+            "in": "path",
+            "description": "Use \"sent\" as method to retrieve all sent messages",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "sent"
+          }
+        ],
+        "description": "It gets All messages sent by the user. \nUse method name as \"sent\" to invoke this operation\nexample: /api/v1/messages/sent.json",
+        "tags": []
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "TokenValue",
+            "in": "header",
+            "description": "Contains the Developer Token value that is obtained after registering your application with Yammer",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "method_name",
+            "in": "path",
+            "description": "Use \"post\" as method to post a message",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "post"
+          },
+          {
+            "name": "body",
+            "in": "formData",
+            "description": "Message to be posted into your network",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "group_id",
+            "in": "formData",
+            "description": "The ID of the group to which the message should be posted",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "direct_to_id",
+            "in": "formData",
+            "description": "Send a private message directly to the user indicated.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "replied_to_id",
+            "in": "formData",
+            "description": "The message ID this message is in reply to.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "description": "Create a new message. and posts it to the specified group (or) replies back to the already received message (or) sends a private message to the specified user_id.\nuse method name as \"messages\" to invoke this operation\nexample: /api/v1/messages.json"
+      },
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "message_id",
+            "in": "query",
+            "description": "Deletes a message specified by the numeric ID.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "TokenValue",
+            "in": "header",
+            "description": "Contains the Developer Token value that is obtained after registering your application with Yammer",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "method_name",
+            "in": "path",
+            "description": "Use \"delete\" as method to delete a message",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "delete"
+          }
+        ],
+        "description": "Removes a message based on the specified message_id.\nuse method name as \"messages/:message_id\" where {:message_id= id of the messages that needs to be deleted\".\nexample: /api/v1/messages/:message_id"
+      }
+    },
+    "/api/v1/users/{method_name}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "TokenValue",
+            "in": "header",
+            "description": "Contains the Developer Token value that is obtained after registering your application with Yammer",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "method_name",
+            "in": "path",
+            "description": "Use \"current\" to retrieve current user's profile",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "current"
+          }
+        ],
+        "description": "Views data about the current user."
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "TokenValue",
+            "in": "header",
+            "description": "Contains the Developer Token value that is obtained after registering your application with Yammer",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "method_name",
+            "in": "path",
+            "description": "Use \"put\" has method_name to update the job title",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "put"
+          },
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "User id specified by the numeric string id",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "job_title",
+            "in": "formData",
+            "description": "Updated job title",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "full_name",
+            "in": "formData",
+            "description": "Contains the full_name that needs to be  changed",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "department_name",
+            "in": "formData",
+            "description": "Contains the department_name that needs to be changed",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "description": "Update information about a user. The target user should be the current user or a verified admin in a paid Yammer network."
+      }
+    },
+    "/api/v1/streams/notifications.json": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "TokenValue",
+            "in": "header",
+            "description": "Contains the Developer Token value that is obtained after registering your application with Yammer",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get the notifications feed for the current user."
+      }
+    },
+    "/api/v1/PostMessageToUser/{email}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "TokenValue",
+            "in": "header",
+            "description": "Contains the Developer Token value that is obtained after registering your application with Yammer",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "email",
+            "in": "path",
+            "description": "provide email of the registered person in Yammer network to whom you want to send the message",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "Body",
+            "in": "formData",
+            "description": "Provide the Message which you want to post",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+    }
+  }
+}

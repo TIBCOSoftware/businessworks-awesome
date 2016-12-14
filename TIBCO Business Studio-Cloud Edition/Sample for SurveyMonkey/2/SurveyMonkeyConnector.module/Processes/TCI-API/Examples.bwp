@@ -1,0 +1,1913 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process exitOnStandardFault="no" name="TCI-API.Examples"
+    suppressJoinFailure="yes"
+    targetNamespace="http://xmlns.example.com/20160821171919"
+    xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:info="http://www.tibco.com/bw/process/info"
+    xmlns:ns="http://www.tibco.com/pe/EngineTypes"
+    xmlns:ns0="http://xmlns.example.com/20160821171919PLT"
+    xmlns:ns1="http://tns.tibco.com/bw/json/1471332425182"
+    xmlns:ns10="activity.jsonRender.output+73cb89e4-17f1-4c31-a9ad-51cc7ad6aea3+ActivityOutputType"
+    xmlns:ns11="activity.jsonRender.output+319b5056-015e-4e2d-9b42-2e8f936f94c3+ActivityOutputType"
+    xmlns:ns12="activity.jsonRender.output+f7ec523e-fdd8-4e82-90ce-a3630b5fb54a+ActivityOutputType"
+    xmlns:ns13="activity.jsonRender.output+eac4edf0-9cd6-4993-806a-6ca22191672d+ActivityOutputType"
+    xmlns:ns14="http://www.example.org/SendSurvey"
+    xmlns:ns15="activity.jsonRender.output+76f24075-944b-42da-99ae-92952a4f5c8e+ActivityOutputType"
+    xmlns:ns16="activity.jsonRender.output+42671120-69cd-45d5-8dcc-29a67ecb609f+ActivityOutputType"
+    xmlns:ns2="activity.jsonRender.output+a217fdd0-30a5-47de-aab9-9aedf59ed122+ActivityOutputType"
+    xmlns:ns3="http://tns.tibco.com/bw/json/1471333816670"
+    xmlns:ns4="activity.jsonRender.output+8fd85191-2a1c-4a44-abc9-c0fec08078f9+ActivityOutputType"
+    xmlns:ns5="http://tns.tibco.com/bw/json/1471355499666"
+    xmlns:ns6="http://www.example.org/CompleteSurvey"
+    xmlns:ns7="activity.jsonRender.output+6409868b-83b4-4968-be88-36e7ef0fe0d9+ActivityOutputType"
+    xmlns:ns8="http://www.example.org/GenericResult"
+    xmlns:ns9="activity.jsonRender.output+9f8c5a5e-898c-4732-8ba9-b81739f1eed9+ActivityOutputType"
+    xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
+    xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
+    xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
+    xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <tibex:Types>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.tibco.com/pe/EngineTypes"
+            xmlns:tns="http://www.tibco.com/pe/EngineTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="ErrorReport">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="StackTrace" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Msg" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="FullClass" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Class" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessStack" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="MsgCode" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Data" type="tns:anydata"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="FaultDetail">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ActivityName" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Data" type="tns:anydata"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Msg" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="MsgCode" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessStack" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="StackTrace" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="ProcessContext">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="JobId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessInstanceId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0"
+                        name="CustomJobId" type="xs:string"/>
+                    <!--xs:element name="RestartedFromCheckpoint" form="unqualified" block="extension restriction substitution" type="xs:boolean"/-->
+                    <!--xs:element minOccurs="0" maxOccurs="unbounded" name="TrackingInfo" form="unqualified" block="extension restriction substitution" type="xs:string"/-->
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="anydata">
+                <xs:sequence>
+                    <xs:any namespace="##any" processContents="lax"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="ErrorReport" type="tns:ErrorReport"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="FaultDetail" type="tns:FaultDetail"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="ProcessContext" type="tns:ProcessContext"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="CorrelationValue" type="xs:string"/>
+        </xs:schema>
+        <schema attributeFormDefault="unqualified"
+            elementFormDefault="unqualified"
+            targetNamespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"
+            version="" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions">
+            <complexType name="ActivityExceptionType">
+                <sequence>
+                    <element name="msg" type="string"/>
+                    <element minOccurs="0" name="msgCode" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityException" type="tns:ActivityExceptionType"/>
+            <complexType name="ActivityTimedOutExceptionType">
+                <complexContent>
+                    <extension base="tns:ActivityExceptionType"/>
+                </complexContent>
+            </complexType>
+            <element name="ActivityTimedOutException" type="tns:ActivityTimedOutExceptionType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+a217fdd0-30a5-47de-aab9-9aedf59ed122+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+a217fdd0-30a5-47de-aab9-9aedf59ed122+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+8fd85191-2a1c-4a44-abc9-c0fec08078f9+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+8fd85191-2a1c-4a44-abc9-c0fec08078f9+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+6409868b-83b4-4968-be88-36e7ef0fe0d9+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+6409868b-83b4-4968-be88-36e7ef0fe0d9+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+9f8c5a5e-898c-4732-8ba9-b81739f1eed9+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+9f8c5a5e-898c-4732-8ba9-b81739f1eed9+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+73cb89e4-17f1-4c31-a9ad-51cc7ad6aea3+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+73cb89e4-17f1-4c31-a9ad-51cc7ad6aea3+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+319b5056-015e-4e2d-9b42-2e8f936f94c3+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+319b5056-015e-4e2d-9b42-2e8f936f94c3+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+f7ec523e-fdd8-4e82-90ce-a3630b5fb54a+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+f7ec523e-fdd8-4e82-90ce-a3630b5fb54a+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+eac4edf0-9cd6-4993-806a-6ca22191672d+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+eac4edf0-9cd6-4993-806a-6ca22191672d+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+76f24075-944b-42da-99ae-92952a4f5c8e+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+76f24075-944b-42da-99ae-92952a4f5c8e+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <schema
+            targetNamespace="activity.jsonRender.output+42671120-69cd-45d5-8dcc-29a67ecb609f+ActivityOutputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonRender.output+42671120-69cd-45d5-8dcc-29a67ecb609f+ActivityOutputType">
+            <complexType name="ActivityOutputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityOutputClass" type="tns:ActivityOutputClassType"/>
+        </schema>
+        <wsdl:definitions
+            targetNamespace="http://xmlns.example.com/20160821171919PLT"
+            xmlns:extns="http://tns.tibco.com/bw/REST"
+            xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+            xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
+            xmlns:tns="http://xmlns.example.com/20160821171919PLT"
+            xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <plnk:partnerLinkType name="partnerLinkType">
+                <plnk:role name="use" portType="tns:examples2"/>
+            </plnk:partnerLinkType>
+            <wsdl:import namespace="http://tns.tibco.com/bw/REST"/>
+            <wsdl:message name="getRequest">
+                <wsdl:part element="extns:httpHeaders"
+                    name="httpHeaders" tibex:source="bw.rest"/>
+            </wsdl:message>
+            <wsdl:message name="getResponse">
+                <wsdl:part name="item" type="xsd:string"/>
+            </wsdl:message>
+            <wsdl:message name="get4XXFaultMessage">
+                <wsdl:part element="extns:client4XXError" name="clientError"/>
+            </wsdl:message>
+            <wsdl:message name="get5XXFaultMessage">
+                <wsdl:part element="extns:server5XXError" name="serverError"/>
+            </wsdl:message>
+            <wsdl:message name="getRequest1">
+                <wsdl:part element="extns:httpHeaders"
+                    name="httpHeaders" tibex:source="bw.rest"/>
+            </wsdl:message>
+            <wsdl:message name="getResponse1">
+                <wsdl:part element="extns:statusLine" name="status" tibex:source="bw.rest"/>
+            </wsdl:message>
+            <wsdl:message name="get4XXFaultMessage1">
+                <wsdl:part element="extns:client4XXError" name="clientError"/>
+            </wsdl:message>
+            <wsdl:message name="get5XXFaultMessage1">
+                <wsdl:part element="extns:server5XXError" name="serverError"/>
+            </wsdl:message>
+            <wsdl:message name="getRequest2">
+                <wsdl:part element="extns:httpHeaders"
+                    name="httpHeaders" tibex:source="bw.rest"/>
+            </wsdl:message>
+            <wsdl:message name="getResponse2">
+                <wsdl:part name="item" type="xsd:string"/>
+            </wsdl:message>
+            <wsdl:message name="get4XXFaultMessage2">
+                <wsdl:part element="extns:client4XXError" name="clientError"/>
+            </wsdl:message>
+            <wsdl:message name="get5XXFaultMessage2">
+                <wsdl:part element="extns:server5XXError" name="serverError"/>
+            </wsdl:message>
+            <wsdl:portType name="examples"
+                tibex:bw.rest.apipath="/examples"
+                tibex:bw.rest.basepath="Examples"
+                tibex:bw.rest.resource="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json"
+                tibex:bw.rest.resource.source="external" tibex:source="bw.rest.service">
+                <wsdl:documentation>Summary about the new REST service.</wsdl:documentation>
+                <wsdl:operation name="get">
+                    <wsdl:documentation/>
+                    <wsdl:input message="tns:getRequest" name="getInput"/>
+                    <wsdl:output message="tns:getResponse" name="getOutput"/>
+                    <wsdl:fault message="tns:get4XXFaultMessage" name="clientFault"/>
+                    <wsdl:fault message="tns:get5XXFaultMessage" name="serverFault"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <wsdl:portType name="examples1"
+                tibex:bw.rest.apipath="/examples"
+                tibex:bw.rest.basepath="Examples"
+                tibex:bw.rest.resource="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json"
+                tibex:bw.rest.resource.source="external" tibex:source="bw.rest.service">
+                <wsdl:documentation>Summary about the new REST service.</wsdl:documentation>
+                <wsdl:operation name="get">
+                    <wsdl:documentation/>
+                    <wsdl:input message="tns:getRequest1" name="getInput"/>
+                    <wsdl:output message="tns:getResponse1" name="getOutput"/>
+                    <wsdl:fault message="tns:get4XXFaultMessage1" name="clientFault"/>
+                    <wsdl:fault message="tns:get5XXFaultMessage1" name="serverFault"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <wsdl:portType name="examples2"
+                tibex:bw.rest.apipath="/examples"
+                tibex:bw.rest.basepath="Examples"
+                tibex:bw.rest.resource="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json"
+                tibex:bw.rest.resource.source="external" tibex:source="bw.rest.service">
+                <wsdl:documentation>Summary about the new REST service.</wsdl:documentation>
+                <wsdl:operation name="get">
+                    <wsdl:documentation/>
+                    <wsdl:input message="tns:getRequest2" name="getInput"/>
+                    <wsdl:output message="tns:getResponse2" name="getOutput"/>
+                    <wsdl:fault message="tns:get4XXFaultMessage2" name="clientFault"/>
+                    <wsdl:fault message="tns:get5XXFaultMessage2" name="serverFault"/>
+                </wsdl:operation>
+            </wsdl:portType>
+        </wsdl:definitions>
+    </tibex:Types>
+    <tibex:ProcessInfo callable="false" createdBy="Administrator"
+        createdOn="Sun Aug 21 17:19:19 CAT 2016" description=""
+        modifiers="public" productVersion="1.0.0 V80 2016-04-28"
+        scalable="true" singleton="true" stateless="true" type="IT"/>
+    <tibex:ProcessInterface context="" input="" output=""/>
+    <tibex:ProcessTemplateConfigurations/>
+    <notation:Diagram measurementUnit="Pixel" type="BWProcess"
+        xmlns:bwnotation="http://tns.tibco.com/bw/runtime/BWNotation"
+        xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <children type="2001">
+            <children type="5001"/>
+            <children type="3001">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <children type="3002">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <children type="3003">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <children type="3004">
+                <children type="4018">
+                    <children type="3018">
+                        <children type="4020">
+                            <children type="3020">
+                                <children type="4005">
+                                    <children type="3007">
+                                    <children type="4010">
+                                    <children type="5002"/>
+                                    <children type="3010">
+                                    <children type="4013">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    <layoutConstraint
+                                    height="34"
+                                    width="34" x="9"
+                                    xsi:type="notation:Bounds" y="55"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+                                    <children type="3011">
+                                    <children type="4011">
+                                    <children type="3012">
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint
+                                    xsi:type="notation:Bounds" y="40"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+                                    <children type="3013">
+                                    <children type="4018">
+                                    <children type="3018">
+
+                                    <children type="4020">
+
+                                    <children type="3020">
+
+                                    <children type="4005">
+
+                                    <children type="3007">
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="-3"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.3"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="192"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.4"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="667"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.5"/>
+
+                                    <layoutConstraint
+                                    x="1176"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.6"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="92"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.7"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="305"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.8"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="415"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.9"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="535"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.10"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="796"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.11"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="918"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <children type="4002 bw.restjson.JsonRender">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.12"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="1050"
+                                    xsi:type="notation:Bounds" y="11"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:DrawerStyle"/>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
+
+                                    <layoutConstraint
+                                    height="151"
+                                    width="1309" xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+
+                                    <layoutConstraint
+                                    height="151"
+                                    width="1312"
+                                    x="15" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+
+                                    <layoutConstraint
+                                    height="175"
+                                    width="1352" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+                                    <children type="3016">
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint
+                                    xsi:type="notation:Bounds" y="40"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles
+                                    restoreHeight="194"
+                                    restoreWidth="1414"
+                                    restoreX="2" xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    <layoutConstraint
+                                    height="194"
+                                    width="1414"
+                                    x="2" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    <layoutConstraint
+                                    height="224"
+                                    width="1433" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:DrawerStyle"/>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity"/>
+                                    <layoutConstraint height="409"
+                                    width="1443" xsi:type="notation:Bounds"/>
+                                </children>
+                                <styles xsi:type="notation:SortingStyle"/>
+                                <styles xsi:type="notation:FilteringStyle"/>
+                            </children>
+                            <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
+                            <styles xsi:type="bwnotation:BackgroundStyle"/>
+                            <styles xsi:type="bwnotation:ResizingStyle"/>
+                            <element href="//0/@process/@activity"/>
+                            <layoutConstraint height="409" width="1446" xsi:type="notation:Bounds"/>
+                        </children>
+                        <styles xsi:type="notation:SortingStyle"/>
+                        <styles xsi:type="notation:FilteringStyle"/>
+                        <element href="//0/@process/@activity"/>
+                    </children>
+                    <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
+                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                    <element href="//0/@process/@activity"/>
+                    <layoutConstraint height="433" width="1446" x="1"
+                        xsi:type="notation:Bounds" y="1"/>
+                </children>
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
+            <element href="//0/@process"/>
+            <layoutConstraint height="485" width="1788" xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:DiagramStyle"/>
+        <element href="//0"/>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
+            <bendpoints points="[12, -3, -80, 14]$[68, -13, -24, 4]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[25, 0, -170, 0]$[171, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.3"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[25, 0, -75, 0]$[76, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.6"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.7"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.9" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.8"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.9"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.9"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.10"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+    </notation:Diagram>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1471332425182"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1471333816670"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1471355499666"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/CompleteSurvey"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/GenericResult"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/SendSurvey"/>
+    <bpws:partnerLinks>
+        <bpws:partnerLink myRole="use" name="examples"
+            partnerLinkType="ns0:partnerLinkType"
+            sca-bpel:ignore="false" sca-bpel:service="examples"/>
+    </bpws:partnerLinks>
+    <bpws:variables>
+        <bpws:variable element="ns:ProcessContext"
+            name="_processContext" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns0:getRequest2" name="get" sca-bpel:internal="true"/>
+        <bpws:variable element="ns1:CreateSurveyElement"
+            name="Create-Survey-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:ActivityOutputClass"
+            name="Create-Survey" sca-bpel:internal="true"/>
+        <bpws:variable element="ns5:CreateContactElement"
+            name="Create-Contact-Request-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns4:ActivityOutputClass"
+            name="Create-Contact-Request" sca-bpel:internal="true"/>
+        <bpws:variable
+            element="ns6:CreateCollectorMessageRequestElement"
+            name="CMR-Request-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns7:ActivityOutputClass"
+            name="CMR-Request" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns0:getResponse2" name="Reply-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:ResultElement"
+            name="Create-Survey-Response-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:ActivityOutputClass"
+            name="Create-Survey-Response" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:ResultElement"
+            name="Create-Contact-Response-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns10:ActivityOutputClass"
+            name="Create-Contact-Response" sca-bpel:internal="true"/>
+        <bpws:variable
+            element="ns6:CreatePageAndQuestionsRequestElement"
+            name="Create-Page-and-Questions-Request-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns11:ActivityOutputClass"
+            name="Create-Page-and-Questions-Request" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:ResultElement"
+            name="Create-Page-and-Questions-Response-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:ActivityOutputClass"
+            name="Create-Page-and-Questions-Response" sca-bpel:internal="true"/>
+        <bpws:variable
+            element="ns6:CreateCollectorMessageResponseElement"
+            name="CMR-Response-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns13:ActivityOutputClass"
+            name="CMR-Response" sca-bpel:internal="true"/>
+        <bpws:variable element="ns14:SendSurveyRequestElement"
+            name="Send-Survey-Request-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns15:ActivityOutputClass"
+            name="Send-Survey-Request" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:ResultElement"
+            name="Send-Survey-Response-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns16:ActivityOutputClass"
+            name="Send-Survey-Response" sca-bpel:internal="true"/>
+    </bpws:variables>
+    <bpws:extensions>
+        <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
+        <bpws:extension mustUnderstand="no" namespace="http://www.tibco.com/bw/process/info"/>
+        <bpws:extension mustUnderstand="no" namespace="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"/>
+        <bpws:extension mustUnderstand="no" namespace="http://docs.oasis-open.org/ns/opencsa/sca/200912"/>
+        <bpws:extension mustUnderstand="no" namespace="http://ns.tibco.com/bw/property"/>
+        <bpws:extension mustUnderstand="no" namespace="http://www.tibco.com/bpel/2007/extensions"/>
+    </bpws:extensions>
+    <bpws:scope name="scope">
+        <bpws:flow name="flow">
+            <bpws:links/>
+            <bpws:pick createInstance="yes" name="pick" tibex:xpdlId="1bd2c1ab-f7d7-4f05-8389-850b3092fac3">
+                <bpws:onMessage operation="get" partnerLink="examples"
+                    portType="ns0:examples2"
+                    tibex:xpdlId="e5a6b08d-a08c-42fd-a565-538a1e68691f" variable="get">
+                    <bpws:scope name="scope1">
+                        <bpws:flow name="flow1">
+                            <bpws:links>
+                                <bpws:link
+                                    name="OnMessageStartToRenderJSON" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="CreateSurveyToCreateSurveyResponse" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="RenderJSONTogetOut1" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="RenderJSONToReply" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="CreateSurveyResponseToCreateContactRequest" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="RenderJSONTocollectorMessageAndReceipientsRequest" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="RenderJSONTocollectorMessageAndReceipientsRequest1" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="RenderJSONTocollectorMessageAndReceipientsRequest2" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="RenderJSONToReply1" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="RenderJSONToReply2" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="RenderJSONToReply3" tibex:linkType="SUCCESS"/>
+                            </bpws:links>
+                            <bpws:empty name="OnMessageStart"
+                                tibex:constructor="onMessageStart" tibex:xpdlId="96943629-4102-45a6-bac6-6d148e59dfec">
+                                <bpws:sources>
+                                    <bpws:source linkName="OnMessageStartToRenderJSON"/>
+                                </bpws:sources>
+                            </bpws:empty>
+                            <bpws:empty name="OnMessageEnd"
+                                tibex:constructor="onMessageEnd" tibex:xpdlId="40a1b672-283c-41ed-8379-f6af6859cefc"/>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1471332425182&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Survey-input&quot; match=&quot;/&quot;>&lt;tns:CreateSurveyElement>&lt;tns:title>&lt;xsl:value-of select=&quot;&amp;quot;Example Survey&amp;quot;&quot;/>&lt;/tns:title>&lt;/tns:CreateSurveyElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Create-Survey-input"
+                                    name="Create Survey"
+                                    outputVariable="Create-Survey"
+                                    tibex:xpdlId="a217fdd0-30a5-47de-aab9-9aedf59ed122" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="OnMessageStartToRenderJSON"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="CreateSurveyToCreateSurveyResponse"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1471332425182&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Survey-input&quot; match=&quot;/&quot;>&lt;tns:CreateSurveyElement>&lt;tns:title>&lt;xsl:value-of select=&quot;&amp;quot;Example Survey&amp;quot;&quot;/>&lt;/tns:title>&lt;/tns:CreateSurveyElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/SurveysResource.xsd#//CreateSurveyElement;XSDElementDeclaration"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1471355499666&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Contact-Request-input&quot; match=&quot;/&quot;>&lt;tns:CreateContactElement>&lt;tns:first_name>&lt;xsl:value-of select=&quot;&amp;quot;Hugo&amp;quot;&quot;/>&lt;/tns:first_name>&lt;tns:last_name>&lt;xsl:value-of select=&quot;&amp;quot;Peters&amp;quot;&quot;/>&lt;/tns:last_name>&lt;tns:email>&lt;xsl:value-of select=&quot;&amp;quot;hpeters@tibco.com&amp;quot;&quot;/>&lt;/tns:email>&lt;/tns:CreateContactElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Create-Contact-Request-input"
+                                    name="Create Contact Request"
+                                    outputVariable="Create-Contact-Request"
+                                    tibex:xpdlId="8fd85191-2a1c-4a44-abc9-c0fec08078f9" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="CreateSurveyToCreateSurveyResponse"/>
+                                    <bpws:target linkName="CreateSurveyResponseToCreateContactRequest"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="RenderJSONTogetOut1"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1471355499666&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Contact-Request-input&quot; match=&quot;/&quot;>&lt;tns:CreateContactElement>&lt;tns:first_name>&lt;xsl:value-of select=&quot;&amp;quot;Hugo&amp;quot;&quot;/>&lt;/tns:first_name>&lt;tns:last_name>&lt;xsl:value-of select=&quot;&amp;quot;Peters&amp;quot;&quot;/>&lt;/tns:last_name>&lt;tns:email>&lt;xsl:value-of select=&quot;&amp;quot;hpeters@tibco.com&amp;quot;&quot;/>&lt;/tns:email>&lt;/tns:CreateContactElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/CreateContactResource.xsd#//CreateContactElement;XSDElementDeclaration"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/CompleteSurvey&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;collectorMessageAndReceipients-Request-input&quot; match=&quot;/&quot;>&lt;tns:CreateCollectorMessageRequestElement>&lt;tns:MessageElement>&lt;tns:Title>&lt;xsl:value-of select=&quot;&amp;quot;TCI Hack-a-thon Survey&amp;quot;&quot;/>&lt;/tns:Title>&lt;tns:Subject>&lt;xsl:value-of select=&quot;&amp;quot;TCI Hack-a-thon Survey&amp;quot;&quot;/>&lt;/tns:Subject>&lt;tns:Head>&lt;xsl:value-of select=&quot;&amp;quot;Hi [FirstName] [LastName], You are selected for a Survey about the Hack-a-ton !!!&amp;quot;&quot;/>&lt;/tns:Head>&lt;tns:SurveyHeader>&lt;xsl:value-of select=&quot;&amp;quot;Click the button below to start the survey...&amp;quot;&quot;/>&lt;/tns:SurveyHeader>&lt;tns:SurveyButton>&lt;xsl:value-of select=&quot;&amp;quot;Do Survey&amp;quot;&quot;/>&lt;/tns:SurveyButton>&lt;tns:SurveyFooter>&lt;xsl:value-of select=&quot;&amp;quot;Powered by Tibco Cloud Integration&amp;lt;br>Thank you in advance for doing my survey !&amp;lt;br>This survey is completely anonymously...&amp;quot;&quot;/>&lt;/tns:SurveyFooter>&lt;tns:UnsubscribeHeader>&lt;xsl:value-of select=&quot;&amp;quot;Press this button for unsubscribing...&amp;quot;&quot;/>&lt;/tns:UnsubscribeHeader>&lt;tns:UnsubscribeButton>&lt;xsl:value-of select=&quot;&amp;quot;Deregister&amp;quot;&quot;/>&lt;/tns:UnsubscribeButton>&lt;tns:UnsubscribeFooter>&lt;xsl:value-of select=&quot;&amp;quot;When you do unsubscribe, you will not be bothered again..&amp;quot;&quot;/>&lt;/tns:UnsubscribeFooter>&lt;/tns:MessageElement>&lt;tns:ReceipientElement>&lt;tns:FirstName>&lt;xsl:value-of select=&quot;&amp;quot;John&amp;quot;&quot;/>&lt;/tns:FirstName>&lt;tns:LastName>&lt;xsl:value-of select=&quot;&amp;quot;Doe&amp;quot;&quot;/>&lt;/tns:LastName>&lt;tns:Email>&lt;xsl:value-of select=&quot;&amp;quot;John@Doe.com&amp;quot;&quot;/>&lt;/tns:Email>&lt;/tns:ReceipientElement>&lt;tns:ReceipientElement>&lt;tns:FirstName>&lt;xsl:value-of select=&quot;&amp;quot;Hugo&amp;quot;&quot;/>&lt;/tns:FirstName>&lt;tns:LastName>&lt;xsl:value-of select=&quot;&amp;quot;Peters&amp;quot;&quot;/>&lt;/tns:LastName>&lt;tns:Email>&lt;xsl:value-of select=&quot;&amp;quot;hpeters@tibco.com&amp;quot;&quot;/>&lt;/tns:Email>&lt;/tns:ReceipientElement>&lt;/tns:CreateCollectorMessageRequestElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="CMR-Request-input"
+                                    name="CMR Request"
+                                    outputVariable="CMR-Request"
+                                    tibex:xpdlId="6409868b-83b4-4968-be88-36e7ef0fe0d9" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="RenderJSONTocollectorMessageAndReceipientsRequest2"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="CreateSurveyToCreateSurveyResponse"/>
+                                    <bpws:source linkName="RenderJSONToReply"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/CompleteSurvey&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;collectorMessageAndReceipients-Request-input&quot; match=&quot;/&quot;>&lt;tns:CreateCollectorMessageRequestElement>&lt;tns:MessageElement>&lt;tns:Title>&lt;xsl:value-of select=&quot;&amp;quot;TCI Hack-a-thon Survey&amp;quot;&quot;/>&lt;/tns:Title>&lt;tns:Subject>&lt;xsl:value-of select=&quot;&amp;quot;TCI Hack-a-thon Survey&amp;quot;&quot;/>&lt;/tns:Subject>&lt;tns:Head>&lt;xsl:value-of select=&quot;&amp;quot;Hi [FirstName] [LastName], You are selected for a Survey about the Hack-a-ton !!!&amp;quot;&quot;/>&lt;/tns:Head>&lt;tns:SurveyHeader>&lt;xsl:value-of select=&quot;&amp;quot;Click the button below to start the survey...&amp;quot;&quot;/>&lt;/tns:SurveyHeader>&lt;tns:SurveyButton>&lt;xsl:value-of select=&quot;&amp;quot;Do Survey&amp;quot;&quot;/>&lt;/tns:SurveyButton>&lt;tns:SurveyFooter>&lt;xsl:value-of select=&quot;&amp;quot;Powered by Tibco Cloud Integration&amp;lt;br>Thank you in advance for doing my survey !&amp;lt;br>This survey is completely anonymously...&amp;quot;&quot;/>&lt;/tns:SurveyFooter>&lt;tns:UnsubscribeHeader>&lt;xsl:value-of select=&quot;&amp;quot;Press this button for unsubscribing...&amp;quot;&quot;/>&lt;/tns:UnsubscribeHeader>&lt;tns:UnsubscribeButton>&lt;xsl:value-of select=&quot;&amp;quot;Deregister&amp;quot;&quot;/>&lt;/tns:UnsubscribeButton>&lt;tns:UnsubscribeFooter>&lt;xsl:value-of select=&quot;&amp;quot;When you do unsubscribe, you will not be bothered again..&amp;quot;&quot;/>&lt;/tns:UnsubscribeFooter>&lt;/tns:MessageElement>&lt;tns:ReceipientElement>&lt;tns:FirstName>&lt;xsl:value-of select=&quot;&amp;quot;John&amp;quot;&quot;/>&lt;/tns:FirstName>&lt;tns:LastName>&lt;xsl:value-of select=&quot;&amp;quot;Doe&amp;quot;&quot;/>&lt;/tns:LastName>&lt;tns:Email>&lt;xsl:value-of select=&quot;&amp;quot;John@Doe.com&amp;quot;&quot;/>&lt;/tns:Email>&lt;/tns:ReceipientElement>&lt;tns:ReceipientElement>&lt;tns:FirstName>&lt;xsl:value-of select=&quot;&amp;quot;Hugo&amp;quot;&quot;/>&lt;/tns:FirstName>&lt;tns:LastName>&lt;xsl:value-of select=&quot;&amp;quot;Peters&amp;quot;&quot;/>&lt;/tns:LastName>&lt;tns:Email>&lt;xsl:value-of select=&quot;&amp;quot;hpeters@tibco.com&amp;quot;&quot;/>&lt;/tns:Email>&lt;/tns:ReceipientElement>&lt;/tns:CreateCollectorMessageRequestElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/CompleteSurvey.xsd#//CreateCollectorMessageRequestElement;XSDElementDeclaration=7"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:reply name="Reply" operation="get"
+                                partnerLink="examples"
+                                portType="ns0:examples2"
+                                tibex:xpdlId="83e5243a-803f-4ca2-a212-52afe2c2e956" variable="Reply-input">
+                                <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20160821171919PLT" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="Create-Survey"/&gt;&lt;xsl:param name="Create-Contact-Request"/&gt;&lt;xsl:param name="CMR-Request"/&gt;&lt;xsl:param name="Create-Survey-Response"/&gt;&lt;xsl:param name="Create-Contact-Response"/&gt;&lt;xsl:param name="Create-Page-and-Questions-Request"/&gt;&lt;xsl:param name="Create-Page-and-Questions-Response"/&gt;&lt;xsl:param name="CMR-Response"/&gt;&lt;xsl:param name="Send-Survey-Response"/&gt;&lt;xsl:template name="Reply-input" match="/"&gt;&lt;tns:getResponse2&gt;&lt;item&gt;&lt;xsl:value-of select="concat(&amp;quot;/survey POST: &amp;quot;, $Create-Survey/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $Create-Survey-Response/jsonString, &amp;quot; /contact POST: &amp;quot;, $Create-Contact-Request/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $Create-Contact-Response/jsonString, &amp;quot;/pageAndQuestions?SurveyID=string  POST: &amp;quot;, $Create-Page-and-Questions-Request/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $Create-Page-and-Questions-Response/jsonString, &amp;quot;/collectorMessageAndReceipients?SurveyID=string POST:&amp;quot;, $CMR-Request/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $CMR-Response/jsonString, &amp;quot;/sendSurvey?MessageID=&amp;lt;from collectorMessageAndReceipients&gt;&amp;amp;CollectorID=&amp;lt;from collectorMessageAndReceipients&gt;&amp;amp;OptionalSendDateTime=&amp;quot;,xsd:string(current-dateTime() + xsd:dayTimeDuration(&amp;quot;P1D&amp;quot;)),&amp;quot; GET: EXAMPLE RESPONSE: &amp;quot;, $Send-Survey-Response/jsonString)"/&gt;&lt;/item&gt;&lt;/tns:getResponse2&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+                                <tibex:inputBindings>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20160821171919PLT&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;Create-Survey&quot;/>&#xa;    &lt;xsl:param name=&quot;Create-Contact-Request&quot;/>&#xa;    &lt;xsl:param name=&quot;CMR-Request&quot;/>&#xa;    &lt;xsl:param name=&quot;Create-Survey-Response&quot;/>&#xa;    &lt;xsl:param name=&quot;Create-Contact-Response&quot;/>&#xa;    &lt;xsl:param name=&quot;Create-Page-and-Questions-Request&quot;/>&#xa;    &lt;xsl:param name=&quot;Create-Page-and-Questions-Response&quot;/>&#xa;    &lt;xsl:param name=&quot;CMR-Response&quot;/>&#xa;    &lt;xsl:param name=&quot;Send-Survey-Response&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply-input&quot; match=&quot;/&quot;>&#xa;        &lt;item>&#xa;            &lt;xsl:value-of select=&quot;concat(&amp;quot;/survey POST: &amp;quot;, $Create-Survey/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $Create-Survey-Response/jsonString, &amp;quot; /contact POST: &amp;quot;, $Create-Contact-Request/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $Create-Contact-Response/jsonString, &amp;quot;/pageAndQuestions?SurveyID=string  POST: &amp;quot;, $Create-Page-and-Questions-Request/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $Create-Page-and-Questions-Response/jsonString, &amp;quot;/collectorMessageAndReceipients?SurveyID=string POST:&amp;quot;, $CMR-Request/jsonString, &amp;quot; EXAMPLE RESPONSE: &amp;quot;, $CMR-Response/jsonString, &amp;quot;/sendSurvey?MessageID=&amp;lt;from collectorMessageAndReceipients>&amp;amp;CollectorID=&amp;lt;from collectorMessageAndReceipients>&amp;amp;OptionalSendDateTime=&amp;quot;,xsd:string(current-dateTime() + xsd:dayTimeDuration(&amp;quot;P1D&amp;quot;)),&amp;quot; GET: EXAMPLE RESPONSE: &amp;quot;, $Send-Survey-Response/jsonString)&quot;/>&#xa;        &lt;/item>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                </tibex:inputBindings>
+                                <bpws:targets>
+                                    <bpws:target linkName="RenderJSONToReply3"/>
+                                </bpws:targets>
+                            </bpws:reply>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Survey-Response-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully created Survey: Example Survey&amp;quot; &quot;/>&lt;/tns:Message>&lt;tns:Id>&lt;xsl:value-of select=&quot;&amp;quot;83764751&amp;quot;&quot;/>&lt;/tns:Id>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Create-Survey-Response-input"
+                                    name="Create Survey Response"
+                                    outputVariable="Create-Survey-Response"
+                                    tibex:xpdlId="9f8c5a5e-898c-4732-8ba9-b81739f1eed9" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="CreateSurveyToCreateSurveyResponse"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="CreateSurveyResponseToCreateContactRequest"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Survey-Response-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully created Survey: Example Survey&amp;quot; &quot;/>&lt;/tns:Message>&lt;tns:Id>&lt;xsl:value-of select=&quot;&amp;quot;83764751&amp;quot;&quot;/>&lt;/tns:Id>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/GenericResult.xsd#//ResultElement;XSDElementDeclaration"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Contact-Response-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully created contact&amp;quot;&quot;/>&lt;/tns:Message>&lt;tns:Id>&lt;xsl:value-of select=&quot;&amp;quot;1234&amp;quot;&quot;/>&lt;/tns:Id>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Create-Contact-Response-input"
+                                    name="Create Contact Response"
+                                    outputVariable="Create-Contact-Response"
+                                    tibex:xpdlId="73cb89e4-17f1-4c31-a9ad-51cc7ad6aea3" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="RenderJSONTogetOut1"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="RenderJSONTocollectorMessageAndReceipientsRequest"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Contact-Response-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully created contact&amp;quot;&quot;/>&lt;/tns:Message>&lt;tns:Id>&lt;xsl:value-of select=&quot;&amp;quot;1234&amp;quot;&quot;/>&lt;/tns:Id>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/GenericResult.xsd#//ResultElement;XSDElementDeclaration"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/CompleteSurvey&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Page-and-Questions-Request-input&quot; match=&quot;/&quot;>&lt;tns:CreatePageAndQuestionsRequestElement>&lt;tns:PageElement>&lt;tns:PageTitle>&lt;xsl:value-of select=&quot;&amp;quot;Survey Questions Page 1&amp;quot;&quot;/>&lt;/tns:PageTitle>&lt;tns:Description>&lt;xsl:value-of select=&quot;&amp;quot;Share your Business Works experience...&amp;quot;&quot;/>&lt;/tns:Description>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;SingleChoice&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;Select your experience with BusinessWorks&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Less than a year&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between two and three years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between three and five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;More than five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;/tns:QuestionElement>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;SingleChoice&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;Select your experience with the new BusinessWorks 6 platform&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Less than a year&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between two and three years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between three and five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;More than five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;/tns:QuestionElement>&lt;/tns:PageElement>&lt;tns:PageElement>&lt;tns:PageTitle>&lt;xsl:value-of select=&quot;&amp;quot;Survey Questions Page 2&amp;quot;&quot;/>&lt;/tns:PageTitle>&lt;tns:Description>&lt;xsl:value-of select=&quot;&amp;quot;Share your experience....&amp;quot;&quot;/>&lt;/tns:Description>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;SingleChoice&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;What is your overall rating of the Tibco Cloud Integration (TCI) platform ?&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Excellent&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;It is Very Good&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;It is Good&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;It is Bad&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;/tns:QuestionElement>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;OpenEnded&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;(optional) Please elaborate on your previous answer&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;/tns:QuestionElement>&lt;/tns:PageElement>&lt;/tns:CreatePageAndQuestionsRequestElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Create-Page-and-Questions-Request-input"
+                                    name="Create Page and Questions Request"
+                                    outputVariable="Create-Page-and-Questions-Request"
+                                    tibex:xpdlId="319b5056-015e-4e2d-9b42-2e8f936f94c3" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="RenderJSONTocollectorMessageAndReceipientsRequest"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="RenderJSONTocollectorMessageAndReceipientsRequest1"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/CompleteSurvey&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Create-Page-and-Questions-Request-input&quot; match=&quot;/&quot;>&lt;tns:CreatePageAndQuestionsRequestElement>&lt;tns:PageElement>&lt;tns:PageTitle>&lt;xsl:value-of select=&quot;&amp;quot;Survey Questions Page 1&amp;quot;&quot;/>&lt;/tns:PageTitle>&lt;tns:Description>&lt;xsl:value-of select=&quot;&amp;quot;Share your Business Works experience...&amp;quot;&quot;/>&lt;/tns:Description>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;SingleChoice&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;Select your experience with BusinessWorks&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Less than a year&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between two and three years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between three and five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;More than five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;/tns:QuestionElement>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;SingleChoice&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;Select your experience with the new BusinessWorks 6 platform&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Less than a year&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between two and three years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Between three and five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;More than five years&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;/tns:QuestionElement>&lt;/tns:PageElement>&lt;tns:PageElement>&lt;tns:PageTitle>&lt;xsl:value-of select=&quot;&amp;quot;Survey Questions Page 2&amp;quot;&quot;/>&lt;/tns:PageTitle>&lt;tns:Description>&lt;xsl:value-of select=&quot;&amp;quot;Share your experience....&amp;quot;&quot;/>&lt;/tns:Description>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;SingleChoice&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;What is your overall rating of the Tibco Cloud Integration (TCI) platform ?&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;Excellent&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;It is Very Good&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;It is Good&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;tns:PossibleAnswer>&lt;xsl:value-of select=&quot;&amp;quot;It is Bad&amp;quot;&quot;/>&lt;/tns:PossibleAnswer>&lt;/tns:QuestionElement>&lt;tns:QuestionElement>&lt;tns:Type>&lt;xsl:value-of select=&quot;&amp;quot;OpenEnded&amp;quot;&quot;/>&lt;/tns:Type>&lt;tns:QuestionLine>&lt;xsl:value-of select=&quot;&amp;quot;(optional) Please elaborate on your previous answer&amp;quot;&amp;#xD;&amp;#xA;&quot;/>&lt;/tns:QuestionLine>&lt;/tns:QuestionElement>&lt;/tns:PageElement>&lt;/tns:CreatePageAndQuestionsRequestElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/CompleteSurvey.xsd#//CreatePageAndQuestionsRequestElement;XSDElementDeclaration=5"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;RenderJSON-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully created 2 pages and 4 questions...&amp;quot;&quot;/>&lt;/tns:Message>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Create-Page-and-Questions-Response-input"
+                                    name="Create Page and Questions Response"
+                                    outputVariable="Create-Page-and-Questions-Response"
+                                    tibex:xpdlId="f7ec523e-fdd8-4e82-90ce-a3630b5fb54a" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="RenderJSONTocollectorMessageAndReceipientsRequest1"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="RenderJSONTocollectorMessageAndReceipientsRequest2"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;RenderJSON-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully created 2 pages and 4 questions...&amp;quot;&quot;/>&lt;/tns:Message>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/GenericResult.xsd#//ResultElement;XSDElementDeclaration"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/CompleteSurvey&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;CMR-Response-input&quot; match=&quot;/&quot;>&lt;tns:CreateCollectorMessageResponseElement>&lt;tns:CollectorID>&lt;xsl:value-of select=&quot;&amp;quot;90559209&amp;quot;&quot;/>&lt;/tns:CollectorID>&lt;tns:MessageID>&lt;xsl:value-of select=&quot;&amp;quot;31652455&amp;quot;&quot;/>&lt;/tns:MessageID>&lt;/tns:CreateCollectorMessageResponseElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="CMR-Response-input"
+                                    name="CMR Response"
+                                    outputVariable="CMR-Response"
+                                    tibex:xpdlId="eac4edf0-9cd6-4993-806a-6ca22191672d" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="RenderJSONToReply"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="RenderJSONToReply1"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/CompleteSurvey&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;CMR-Response-input&quot; match=&quot;/&quot;>&lt;tns:CreateCollectorMessageResponseElement>&lt;tns:CollectorID>&lt;xsl:value-of select=&quot;&amp;quot;90559209&amp;quot;&quot;/>&lt;/tns:CollectorID>&lt;tns:MessageID>&lt;xsl:value-of select=&quot;&amp;quot;31652455&amp;quot;&quot;/>&lt;/tns:MessageID>&lt;/tns:CreateCollectorMessageResponseElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/CompleteSurvey.xsd#//CreateCollectorMessageResponseElement;XSDElementDeclaration=8"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/SendSurvey&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Send-Survey-Request-input&quot; match=&quot;/&quot;>&lt;tns:SendSurveyRequestElement>&lt;tns:CollectorID>&lt;xsl:value-of select=&quot;&amp;quot;90559209 (from output of create message and collector response)&amp;quot;&quot;/>&lt;/tns:CollectorID>&lt;tns:MessageID>&lt;xsl:value-of select=&quot;&amp;quot;31652455 (from output of create message and collector response)&amp;quot;&quot;/>&lt;/tns:MessageID>&lt;tns:SurveyDate>&lt;xsl:value-of select=&quot;current-dateTime() + xsd:dayTimeDuration(&amp;quot;P1D&amp;quot;)&quot;/>&lt;/tns:SurveyDate>&lt;/tns:SendSurveyRequestElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Send-Survey-Request-input"
+                                    name="Send Survey Request"
+                                    outputVariable="Send-Survey-Request"
+                                    tibex:xpdlId="76f24075-944b-42da-99ae-92952a4f5c8e" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="RenderJSONToReply1"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="RenderJSONToReply2"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/SendSurvey&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Send-Survey-Request-input&quot; match=&quot;/&quot;>&lt;tns:SendSurveyRequestElement>&lt;tns:CollectorID>&lt;xsl:value-of select=&quot;&amp;quot;90559209 (from output of create message and collector response)&amp;quot;&quot;/>&lt;/tns:CollectorID>&lt;tns:MessageID>&lt;xsl:value-of select=&quot;&amp;quot;31652455 (from output of create message and collector response)&amp;quot;&quot;/>&lt;/tns:MessageID>&lt;tns:SurveyDate>&lt;xsl:value-of select=&quot;current-dateTime() + xsd:dayTimeDuration(&amp;quot;P1D&amp;quot;)&quot;/>&lt;/tns:SurveyDate>&lt;/tns:SendSurveyRequestElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/SendSurvey.xsd#//SendSurveyRequestElement;XSDElementDeclaration"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Send-Survey-Response-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully Sent Survey&amp;quot;&quot;/>&lt;/tns:Message>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Send-Survey-Response-input"
+                                    name="Send Survey Response"
+                                    outputVariable="Send-Survey-Response"
+                                    tibex:xpdlId="42671120-69cd-45d5-8dcc-29a67ecb609f" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="RenderJSONToReply2"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="RenderJSONToReply3"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/GenericResult&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Send-Survey-Response-input&quot; match=&quot;/&quot;>&lt;tns:ResultElement>&lt;tns:Success>&lt;xsl:value-of select=&quot;true()&quot;/>&lt;/tns:Success>&lt;tns:Message>&lt;xsl:value-of select=&quot;&amp;quot;Succesfully Sent Survey&amp;quot;&quot;/>&lt;/tns:Message>&lt;/tns:ResultElement>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.restjson.JsonRender"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
+                                    <value
+                                    jsonOutputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
+
+                                    <inputEditorElement href="platform:/resource/SurveyMonkeyConnector.module/Schemas/GenericResult.xsd#//ResultElement;XSDElementDeclaration"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                        </bpws:flow>
+                    </bpws:scope>
+                </bpws:onMessage>
+            </bpws:pick>
+        </bpws:flow>
+    </bpws:scope>
+</bpws:process>

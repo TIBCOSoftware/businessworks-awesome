@@ -1,0 +1,119 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio PhoneNumber Address ViewAddress.",
+    "description" : "Twilio PhoneNumber Address ViewAddress."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/address/postviewaddress" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-address-postviewaddress",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ViewAddressInputSchema"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ViewAddressOutputSchema to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ViewAddressOutputSchema"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ViewAddressInputSchema" : {
+      "type" : "object",
+      "required" : [ "addresssid", "accountsid" ],
+      "properties" : {
+        "accountsid" : {
+          "type" : "string"
+        },
+        "addresssid" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ViewAddressOutputSchema" : {
+      "type" : "object",
+      "required" : [ "elements" ],
+      "properties" : {
+        "sid" : {
+          "type" : "string"
+        },
+        "account_sid" : {
+          "type" : "string"
+        },
+        "friendly_name" : {
+          "type" : "string"
+        },
+        "customer_name" : {
+          "type" : "string"
+        },
+        "street" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "region" : {
+          "type" : "string"
+        },
+        "postal_code" : {
+          "type" : "string"
+        },
+        "iso_country" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "date_created" : {
+          "type" : "string"
+        },
+        "date_updated" : {
+          "type" : "string"
+        },
+        "emergency_enabled" : {
+          "type" : "boolean"
+        },
+        "elements" : {
+          "$ref" : "#/definitions/elements"
+        }
+      }
+    },
+    "elements" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : { }
+    }
+  }
+}

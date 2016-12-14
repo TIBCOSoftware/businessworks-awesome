@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="/T1471771551592Converted/JsonSchema" xmlns:tns="/T1471771551592Converted/JsonSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="solrSearchQuery" type="tns:solrSearchQuery"/>
+    <xs:complexType name="solrSearchQuery">
+        <xs:sequence>
+            <xs:element name="query" type="xs:string"/>
+            <xs:element minOccurs="0" name="fields" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="createRanker" type="tns:createRanker"/>
+    <xs:complexType name="createRanker">
+        <xs:sequence>
+            <xs:element name="file_url" type="xs:string"/>
+            <xs:element name="ranker_name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="createSolrCluster" type="tns:createSolrCluster"/>
+    <xs:complexType name="createSolrCluster">
+        <xs:sequence>
+            <xs:element name="cluster_name" type="xs:string"/>
+            <xs:element name="cluster_size" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="createSolrCollection" type="tns:createSolrCollection"/>
+    <xs:complexType name="createSolrCollection">
+        <xs:sequence>
+            <xs:element name="config_name" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="rankedSearchQuery" type="tns:rankedSearchQuery"/>
+    <xs:complexType name="rankedSearchQuery">
+        <xs:sequence>
+            <xs:element name="ranker_id" type="xs:string"/>
+            <xs:element name="query" type="xs:string"/>
+            <xs:element minOccurs="0" name="fields" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

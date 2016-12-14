@@ -1,0 +1,135 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Auhty OneTouch SendApprovalRequest.",
+    "description" : "Twilio Auhty OneTouch SendApprovalRequest."
+  },
+  "host" : "HTTPConnectorGrp:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/onetouch/sendapprovalrequest" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-onetouch-sendapprovalrequest",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/SendApprovalRequestInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a SendApprovalRequestOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/SendApprovalRequestOutput"
+            },
+            "headers" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "SendApprovalRequestInput" : {
+      "type" : "object",
+      "required" : [ "APIKey", "AuthyId", "Details", "Message" ],
+      "properties" : {
+        "AuthyId" : {
+          "type" : "string"
+        },
+        "Message" : {
+          "type" : "string"
+        },
+        "Details" : {
+          "$ref" : "#/definitions/Details"
+        },
+        "HiddenDetails" : {
+          "$ref" : "#/definitions/HiddenDetails"
+        },
+        "APIKey" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Details" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "Detail" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Detail",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "approval_request" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "uuid" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SendApprovalRequestOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "approval_request" : {
+          "$ref" : "#/definitions/approval_request"
+        },
+        "success" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "HiddenDetails" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "Detail" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Detail",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Detail" : {
+      "type" : "object",
+      "required" : [ "Value", "Name" ],
+      "properties" : {
+        "Name" : {
+          "type" : "string"
+        },
+        "Value" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

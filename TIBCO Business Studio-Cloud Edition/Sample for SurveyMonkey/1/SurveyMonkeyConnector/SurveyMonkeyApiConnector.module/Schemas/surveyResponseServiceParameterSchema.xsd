@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/surveyResponseService/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/surveyResponseService/parameters">
+  <xs:element name="surveyResponseGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="api_key" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="page" type="xs:integer"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="per_page" type="xs:integer"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="start_created_at" type="xs:dateTime"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="end_created_at" type="xs:dateTime"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="start_modified_at" type="xs:dateTime"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="end_modified_at" type="xs:dateTime"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="status" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="email" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="first_name" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="last_name" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="ip" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="custom" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="total_time_max" type="xs:integer"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="total_time_min" type="xs:integer"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="total_time_units" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="sort_order" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="sort_by" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surveyResponsePutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surveyResponsePostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surveyResponseDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

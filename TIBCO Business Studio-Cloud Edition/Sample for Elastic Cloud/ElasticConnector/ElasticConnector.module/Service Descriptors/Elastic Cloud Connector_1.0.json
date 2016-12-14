@@ -1,0 +1,360 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Elastic Cloud Connector",
+    "x-lastModified": "Aug 24, 2016 07:29AM PST",
+    "description": "TIBCO Cloud Integration Connector for Elastic Cloud"
+  },
+  "paths": {
+    "/elastic/api/{index}/{type}/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "Elasticsearch Index Name. The index operation automatically creates an index if it has not been created before.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Mapping Type. Creates a dynamic type mapping for the specific type if one has not yet been created.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique ID of JSON document",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Search document by its ID"
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "Elasticsearch Index Name. \nThe index operation automatically creates an index if it has not been created before.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Mapping Type.\nCreates a dynamic type mapping for the specific type if one has not yet been created.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique ID of JSON document",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSONString",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Index or Update JSON document",
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "Elasticsearch Index Name. The index operation automatically creates an index if it has not been created before.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Mapping Type. Creates a dynamic type mapping for the specific type if one has not yet been created.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique ID of JSON document",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Delete document"
+      }
+    },
+    "/elastic/api/{index}/{type}": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Mapping Parse Exception",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "Elasticsearch Index Name. The index operation automatically creates an index if it has not been created before.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Mapping Type. Creates a dynamic type mapping for the specific type if one has not yet been created.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON String",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Index document. Document ID will be auto generated.",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/elastic/api/{index}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Index Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Delete elasticsearch index."
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Index Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get information about an elasticsearch index."
+      }
+    },
+    "/elastic/api/{index}/_search": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Search Parse Exception",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Elasticsearch Search Query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Search documents from an elasticsearch index.",
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Index Not Found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get all documents from an index."
+      }
+    }
+  }
+}

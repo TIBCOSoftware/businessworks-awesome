@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:axis2="http://xsd.tns.tibco.com/bw/models/binding/soap/axis2" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:property="http://ns.tibco.com/bw/property" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_RR85EGJiEeaRXeEj6F62_A" targetNamespace="http://tns.tibco.com/bw/composite/SurveyMonkeyConnector.module" name="SurveyMonkeyConnector.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_7TWnMmOHEeaRXeEj6F62_A" name="survey" promote="ComponentSurvey/survey">
+    <sca:interface.wsdl xmi:id="_7TWnNmOHEeaRXeEj6F62_A" interface="http://xmlns.example.com/20160816100326PLT#wsdl.interface(survey)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7TWnN2OHEeaRXeEj6F62_A" name="RestService" path="/survey" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="Survey" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_7TWnOGOHEeaRXeEj6F62_A" operationName="post" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_7TWnOWOHEeaRXeEj6F62_A" operationName="get" httpMethod="GET" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_7TWnO2OHEeaRXeEj6F62_A"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_7TWnOmOHEeaRXeEj6F62_A" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_5HB2smSREeayKr5ga09CSA" name="userinfo" promote="ComponentUserInfo/userinfo">
+    <sca:interface.wsdl xmi:id="_5HLnsGSREeayKr5ga09CSA" interface="http://xmlns.example.com/20160815230321PLT#wsdl.interface(userinfo)" scaext:wsdlLocation="../Processes/TCI-API/UserInfo.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_5HLnsWSREeayKr5ga09CSA" name="RestService1" path="/userinfo" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="Userinfo" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_5HLnsmSREeayKr5ga09CSA" operationName="get" httpMethod="GET" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_5HLntGSREeayKr5ga09CSA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_5HLns2SREeayKr5ga09CSA" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_VMOWoGUdEeavkpjT02m21g" name="contact" promote="ComponentContact/contact">
+    <sca:interface.wsdl xmi:id="_VMYHoGUdEeavkpjT02m21g" interface="http://xmlns.example.com/20160818102526PLT#wsdl.interface(contact)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_VMYHoWUdEeavkpjT02m21g" name="RestService2" path="/contact" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="Contact" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_VMYHomUdEeavkpjT02m21g" operationName="post" httpMethod="POST" notes="Add Contact Details" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_VMYHpWUdEeavkpjT02m21g" statusCode="500" reasonPhrase="Error" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_VMYHo2UdEeavkpjT02m21g" operationName="get" httpMethod="GET" notes="Get All Contacts" responseStyle="element">
+        <responseStatus xmi:id="_VMYHpmUdEeavkpjT02m21g" statusCode="500" reasonPhrase="Error" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_VMYHp2UdEeavkpjT02m21g"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_VMYHpGUdEeavkpjT02m21g" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_nYpRgmUiEeavkpjT02m21g" name="CreateContactIfNotExists" promote="ComponentContactCreateIfNotExists/CreateContactIfNotExists">
+    <sca:interface.wsdl xmi:id="_nYpRhmUiEeavkpjT02m21g" interface="http://xmlns.example.com/20160818110315PLT#wsdl.interface(CreateContactIfNotExists)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_nYpRh2UiEeavkpjT02m21g" name="RestService4" path="/CreateContactIfNotExists" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="CreateContactIfNotExists" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_nYpRiGUiEeavkpjT02m21g" operationName="post" httpMethod="POST" notes="Create the contact when it not exists, if it exist it will return it's ID" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_nYpRimUiEeavkpjT02m21g"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_nYpRiWUiEeavkpjT02m21g" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_9RURImUmEeavkpjT02m21g" name="contactDetails" promote="ComponentContactID/contactDetails">
+    <sca:interface.wsdl xmi:id="_9RURJmUmEeavkpjT02m21g" interface="http://xmlns.example.com/20160818105527PLT#wsdl.interface(contactDetails2)" scaext:wsdlLocation="../Processes/TCI-API/ContactID.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9RURJ2UmEeavkpjT02m21g" name="RestService3" path="/contactDetails/{id}" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="ContactDetails" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_9RURKGUmEeavkpjT02m21g" operationName="get" httpMethod="GET" notes="Get Contact Details" responseStyle="element">
+        <responseStatus xmi:id="_9RURLGUmEeavkpjT02m21g" statusCode="500" reasonPhrase="Error" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_9RURKWUmEeavkpjT02m21g" operationName="put" httpMethod="PUT" notes="Update Contact Details" responseStyle="element">
+        <responseStatus xmi:id="_9RURLWUmEeavkpjT02m21g" statusCode="500" reasonPhrase="Error" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_9RURKmUmEeavkpjT02m21g" operationName="delete" httpMethod="DELETE" notes="Remove a Contact" responseStyle="element">
+        <responseStatus xmi:id="_9RURLmUmEeavkpjT02m21g" statusCode="500" reasonPhrase="Error" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_9RURL2UmEeavkpjT02m21g">
+        <parameterMapping xmi:id="_9RURMGUmEeavkpjT02m21g" parameterName="id" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9RURK2UmEeavkpjT02m21g" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_XYbZkGVLEeaOR-phZiAxtA" name="doCompleteSurvey" promote="ComponentCompleteSurvey/doCompleteSurvey">
+    <sca:interface.wsdl xmi:id="_XYgSEGVLEeaOR-phZiAxtA" interface="http://xmlns.example.com/20160818154907PLT#wsdl.interface(doCompleteSurvey)" scaext:wsdlLocation="../Processes/TCI-API/CompleteSurvey.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_XYjVYGVLEeaOR-phZiAxtA" name="RestService5" path="/doCompleteSurvey" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="DoCompleteSurvey" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_XYj8cGVLEeaOR-phZiAxtA" operationName="post" httpMethod="POST" notes="Provide All Details to Send Out a survey" responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_XYo08GVLEeaOR-phZiAxtA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_XYj8cWVLEeaOR-phZiAxtA" bindingName="RestService5"/>
+  </sca:service>
+  <sca:service xmi:id="_k_1zwmX2Eea2mJZhHDJIQQ" name="surveyDetails" promote="ComponentSurveyDetails/surveyDetails">
+    <sca:interface.wsdl xmi:id="_k__kwmX2Eea2mJZhHDJIQQ" interface="http://xmlns.example.com/20160819122036PLT#wsdl.interface(surveyDetails)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_k__kw2X2Eea2mJZhHDJIQQ" name="RestService6" path="/surveyDetails/{surveyID}" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="SurveyDetails" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_k__kxGX2Eea2mJZhHDJIQQ" operationName="get" httpMethod="GET" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_k__kxWX2Eea2mJZhHDJIQQ" operationName="delete" httpMethod="DELETE" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_lAJVwGX2Eea2mJZhHDJIQQ">
+        <parameterMapping xmi:id="_lAJVwWX2Eea2mJZhHDJIQQ" parameterName="surveyID" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_k__kxmX2Eea2mJZhHDJIQQ" bindingName="RestService6"/>
+  </sca:service>
+  <sca:service xmi:id="_2W_u8Gk6Eea3np6Y20q3dA" name="collectorMessageAndReceipients" promote="ComponentMessageCollector/collectorMessageAndReceipients">
+    <sca:interface.wsdl xmi:id="_2XFOgGk6Eea3np6Y20q3dA" interface="http://xmlns.example.com/20160821173134PLT#wsdl.interface(collectorMessageAndReceipients)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_2XI44Gk6Eea3np6Y20q3dA" name="RestService7" path="/collectorMessageAndReceipients" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="CollectorMessageAndReceipients" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_2XKHAGk6Eea3np6Y20q3dA" operationName="post" httpMethod="POST" responseStyle="element">
+        <parameters xmi:id="_2XOYcWk6Eea3np6Y20q3dA">
+          <parameterMapping xmi:id="_2XOYcmk6Eea3np6Y20q3dA" parameterName="SurveyID" parameterType="Query" dataType="string" description="The Identifier of the Survey"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_2XOYcGk6Eea3np6Y20q3dA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_2XKHAWk6Eea3np6Y20q3dA" bindingName="RestService7"/>
+  </sca:service>
+  <sca:service xmi:id="_fZusgmk7Eea3np6Y20q3dA" name="pageAndQuestions" promote="ComponentPageAndQuestions/pageAndQuestions">
+    <sca:interface.wsdl xmi:id="_fZvTkmk7Eea3np6Y20q3dA" interface="http://xmlns.example.com/20160823161124PLT#wsdl.interface(pageAndQuestions)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_fZv6oGk7Eea3np6Y20q3dA" name="RestService8" path="/pageAndQuestions" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="PageAndQuestions" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_fZwhsGk7Eea3np6Y20q3dA" operationName="post" httpMethod="POST" responseStyle="element">
+        <parameters xmi:id="_fZy98Wk7Eea3np6Y20q3dA">
+          <parameterMapping xmi:id="_fZy98mk7Eea3np6Y20q3dA" parameterName="SurveyID" parameterType="Query" dataType="string" description="The Identifier of the Survey"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_fZy98Gk7Eea3np6Y20q3dA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_fZwhsWk7Eea3np6Y20q3dA" bindingName="RestService8"/>
+  </sca:service>
+  <sca:service xmi:id="_p3lWAmk8Eea3np6Y20q3dA" name="sendSurvey" promote="ComponentSendSurvey/sendSurvey">
+    <sca:interface.wsdl xmi:id="_p3lWBmk8Eea3np6Y20q3dA" interface="http://xmlns.example.com/20160823161944PLT#wsdl.interface(sendSurvey)" scaext:wsdlLocation="../Processes/TCI-API/SendSurvey.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_p3l9EGk8Eea3np6Y20q3dA" name="RestService9" path="/sendSurvey" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="SendSurvey" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_p3l9EWk8Eea3np6Y20q3dA" operationName="get" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_p3mkIWk8Eea3np6Y20q3dA">
+          <parameterMapping xmi:id="_p3mkImk8Eea3np6Y20q3dA" parameterName="MessageID" parameterType="Query" dataType="string" description="The Identifier of the Message"/>
+          <parameterMapping xmi:id="_p3mkI2k8Eea3np6Y20q3dA" parameterName="CollectorID" parameterType="Query" dataType="string" description="The ID of the collector"/>
+          <parameterMapping xmi:id="_p3nLMGk8Eea3np6Y20q3dA" parameterName="OptionalSendDateTime" parameterType="Query" dataType="string#date-time" description="Optionally provide the date and time for the survey"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_p3mkIGk8Eea3np6Y20q3dA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_p3l9Emk8Eea3np6Y20q3dA" bindingName="RestService9"/>
+  </sca:service>
+  <sca:service xmi:id="_9en0wWlBEeaPRNgQBLV1LQ" name="examples" promote="ComponentExamples/examples">
+    <sca:interface.wsdl xmi:id="_9exlwGlBEeaPRNgQBLV1LQ" interface="http://xmlns.example.com/20160821171919PLT#wsdl.interface(examples1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9exlwWlBEeaPRNgQBLV1LQ" name="RestService10" path="/examples" docBasePath="http://localhost:7777/SurveyMonkeyConnector.module" docResourcePath="Examples" basePath="/" connector="surveymonkeyconnector.module.Authentication" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SurveyMonkeyConnectorAPI_1.0.json">
+      <operation xmi:id="_9exlwmlBEeaPRNgQBLV1LQ" operationName="get" httpMethod="GET" notes="Get Examples for All The Messages" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_9e7WwGlBEeaPRNgQBLV1LQ"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9exlw2lBEeaPRNgQBLV1LQ" bindingName="RestService10"/>
+  </sca:service>
+  <sca:property xmi:id="_SUVjIGJiEeaRXeEj6F62_A" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_SUfUIGJiEeaRXeEj6F62_A" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_SUoeEGJiEeaRXeEj6F62_A" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_SUoeEWJiEeaRXeEj6F62_A" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_SUoeEmJiEeaRXeEj6F62_A" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_SUyPEGJiEeaRXeEj6F62_A" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_4RryMGJkEeaRXeEj6F62_A" name="/Authentication/AccessToken" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_6N61YGJkEeaRXeEj6F62_A" name="/Authentication/APIKey" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_JkvdwGR7Eea0Sf4kb0NElw" name="/Authentication/UserName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_MvUjYGR7Eea0Sf4kb0NElw" name="/Authentication/Password" type="property:password" scaext:simpleValue="#!Nji0RgkWO+iDBIittBV6Lw==" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_zqkDMGK-EeaRXeEj6F62_A" name="ComponentTest" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_zqkDMWK-EeaRXeEj6F62_A" processName="Test.TestAllScenarios"/>
+  </sca:component>
+  <sca:component xmi:id="_sswPAGMrEeaRXeEj6F62_A" name="ComponentUserInfo" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_sswPAWMrEeaRXeEj6F62_A" processName="TCI-API.UserInfo"/>
+    <sca:service xmi:id="_5HB2sGSREeayKr5ga09CSA" name="userinfo">
+      <sca:interface.wsdl xmi:id="_5HB2sWSREeayKr5ga09CSA" interface="http://xmlns.example.com/20160815230321PLT#wsdl.interface(userinfo)" scaext:wsdlLocation="../Processes/TCI-API/UserInfo.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_IVZI4GOCEeaRXeEj6F62_A" name="ComponentCreateSurvey" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_IVZI4WOCEeaRXeEj6F62_A" processName="surveymonkeyconnector.Implementation.Post_Survey"/>
+  </sca:component>
+  <sca:component xmi:id="_6RAZYGOHEeaRXeEj6F62_A" name="ComponentSurvey" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_6RAZYWOHEeaRXeEj6F62_A" processName="TCI-API.Survey"/>
+    <sca:service xmi:id="_7TWnMGOHEeaRXeEj6F62_A" name="survey">
+      <sca:interface.wsdl xmi:id="_7TWnMWOHEeaRXeEj6F62_A" interface="http://xmlns.example.com/20160816100326PLT#wsdl.interface(survey)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_E6RvEGOREeaRXeEj6F62_A" name="ComponentAddPageToSurvey" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_E6RvEWOREeaRXeEj6F62_A" processName="surveymonkeyconnector.Implementation.Post_Page_for_Survey"/>
+  </sca:component>
+  <sca:component xmi:id="_kIP0sGOWEeaRXeEj6F62_A" name="ComponentAddQuestionToPage" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_kIP0sWOWEeaRXeEj6F62_A" processName="surveymonkeyconnector.Implementation.Post_Question_for_Page_Manual"/>
+  </sca:component>
+  <sca:component xmi:id="_BnVVoGOnEeaRXeEj6F62_A" name="ComponentAddQuestionToPage_SingleChoice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_BnVVoWOnEeaRXeEj6F62_A" processName="surveymonkeyconnector.Implementation.Post_Question_for_Page_SingleChoice"/>
+  </sca:component>
+  <sca:component xmi:id="_NBs3cGO4EeaRXeEj6F62_A" name="ComponentPost_Contact" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_NBs3cWO4EeaRXeEj6F62_A" processName="surveymonkeyconnector.Implementation.Post_Contact"/>
+  </sca:component>
+  <sca:component xmi:id="_BY8AYGO_EeaRXeEj6F62_A" name="ComponentPost_Collector" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_BY8AYWO_EeaRXeEj6F62_A" processName="surveymonkeyconnector.Implementation.Post_Collector"/>
+  </sca:component>
+  <sca:component xmi:id="_tp-bEGPBEea0Sf4kb0NElw" name="ComponentPost_Message" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_tp-bEWPBEea0Sf4kb0NElw" processName="surveymonkeyconnector.Implementation.Post_Message"/>
+  </sca:component>
+  <sca:component xmi:id="_SzAGsGPDEea0Sf4kb0NElw" name="ComponentPost_AddReceipient_To_Message" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_SzAGsWPDEea0Sf4kb0NElw" processName="surveymonkeyconnector.Implementation.Post_AddReceipient_To_Message"/>
+  </sca:component>
+  <sca:component xmi:id="_de9doGPEEea0Sf4kb0NElw" name="ComponentPost_SendSurvey" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_de9doWPEEea0Sf4kb0NElw" processName="surveymonkeyconnector.Implementation.Post_SendSurvey"/>
+  </sca:component>
+  <sca:component xmi:id="_g-1Z0GPwEea0Sf4kb0NElw" name="ComponentPost_Question_for_Page_MultipleChoice" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_g-2A4GPwEea0Sf4kb0NElw" processName="surveymonkeyconnector.Implementation.Post_Question_for_Page_MultipleChoice"/>
+  </sca:component>
+  <sca:component xmi:id="_pQbxsGPyEea0Sf4kb0NElw" name="ComponentPost_Question_for_Page_OpenEnded" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_pQbxsWPyEea0Sf4kb0NElw" processName="surveymonkeyconnector.Implementation.Post_Question_for_Page_OpenEnded"/>
+  </sca:component>
+  <sca:component xmi:id="_aKqOQGUXEeavkpjT02m21g" name="ComponentTestGetUserInfo" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_aKqOQWUXEeavkpjT02m21g" processName="Test.TestMakeMailMessage"/>
+  </sca:component>
+  <sca:component xmi:id="_UK7RsGUdEeavkpjT02m21g" name="ComponentContact" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_UK7RsWUdEeavkpjT02m21g" processName="TCI-API.Contact"/>
+    <sca:service xmi:id="_VMFMsGUdEeavkpjT02m21g" name="contact">
+      <sca:interface.wsdl xmi:id="_VMFMsWUdEeavkpjT02m21g" interface="http://xmlns.example.com/20160818102526PLT#wsdl.interface(contact)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_dwHDQGUdEeavkpjT02m21g" name="ComponentGet_Contacts" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_dwHDQWUdEeavkpjT02m21g" processName="surveymonkeyconnector.Implementation.Get_Contacts"/>
+  </sca:component>
+  <sca:component xmi:id="_gkyNgGUhEeavkpjT02m21g" name="ComponentContactID" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_gkyNgWUhEeavkpjT02m21g" processName="TCI-API.ContactID"/>
+    <sca:service xmi:id="_9RURIGUmEeavkpjT02m21g" name="contactDetails">
+      <sca:interface.wsdl xmi:id="_9RURIWUmEeavkpjT02m21g" interface="http://xmlns.example.com/20160818105527PLT#wsdl.interface(contactDetails2)" scaext:wsdlLocation="../Processes/TCI-API/ContactID.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_mTV2UGUiEeavkpjT02m21g" name="ComponentContactCreateIfNotExists" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_mTV2UWUiEeavkpjT02m21g" processName="TCI-API.ContactCreateIfNotExists"/>
+    <sca:service xmi:id="_nYpRgGUiEeavkpjT02m21g" name="CreateContactIfNotExists">
+      <sca:interface.wsdl xmi:id="_nYpRgWUiEeavkpjT02m21g" interface="http://xmlns.example.com/20160818110315PLT#wsdl.interface(CreateContactIfNotExists)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_tqcmwGUiEeavkpjT02m21g" name="ComponentComposite_CreateContactIfNotExists" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_tqcmwWUiEeavkpjT02m21g" processName="surveymonkeyconnector.Implementation.Composite_CreateContactIfNotExists"/>
+  </sca:component>
+  <sca:component xmi:id="_rdvMsGUkEeavkpjT02m21g" name="ComponentTestAllScenariosWithCreateContactIfNotExists" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_rdvMsWUkEeavkpjT02m21g" processName="Test.TestAllScenariosWithCreateContactIfNotExists"/>
+  </sca:component>
+  <sca:component xmi:id="_6Bx-wGVBEea_XcCf7qjo-w" name="ComponentTestCompleteSurvey" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_6Bx-wWVBEea_XcCf7qjo-w" processName="Test.TestCompleteSurvey"/>
+  </sca:component>
+  <sca:component xmi:id="_woSboGVIEeaOR-phZiAxtA" name="ComponentPost_SurveyButtons" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_woSboWVIEeaOR-phZiAxtA" processName="surveymonkeyconnector.Implementation.Post_SurveyButtons"/>
+  </sca:component>
+  <sca:component xmi:id="_iNOOUGVKEeaOR-phZiAxtA" name="ComponentCompleteSurvey" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_iNOOUWVKEeaOR-phZiAxtA" processName="TCI-API.CompleteSurvey"/>
+    <sca:service xmi:id="_XYXvMGVLEeaOR-phZiAxtA" name="doCompleteSurvey">
+      <sca:interface.wsdl xmi:id="_XYY9UGVLEeaOR-phZiAxtA" interface="http://xmlns.example.com/20160818154907PLT#wsdl.interface(doCompleteSurvey)" scaext:wsdlLocation="../Processes/TCI-API/CompleteSurvey.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_kcE_YGX2Eea2mJZhHDJIQQ" name="ComponentSurveyDetails" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_kcE_YWX2Eea2mJZhHDJIQQ" processName="TCI-API.SurveyDetails"/>
+    <sca:service xmi:id="_k_1zwGX2Eea2mJZhHDJIQQ" name="surveyDetails">
+      <sca:interface.wsdl xmi:id="_k_1zwWX2Eea2mJZhHDJIQQ" interface="http://xmlns.example.com/20160819122036PLT#wsdl.interface(surveyDetails)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_2W4aMGk6Eea3np6Y20q3dA" name="ComponentMessageCollector" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_2W4aMWk6Eea3np6Y20q3dA" processName="TCI-API.MessageCollector"/>
+    <sca:service xmi:id="_2W8EkGk6Eea3np6Y20q3dA" name="collectorMessageAndReceipients">
+      <sca:interface.wsdl xmi:id="_2W9SsGk6Eea3np6Y20q3dA" interface="http://xmlns.example.com/20160821173134PLT#wsdl.interface(collectorMessageAndReceipients)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_eZO40Gk7Eea3np6Y20q3dA" name="ComponentPageAndQuestions" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_eZO40Wk7Eea3np6Y20q3dA" processName="TCI-API.PageAndQuestions"/>
+    <sca:service xmi:id="_fZusgGk7Eea3np6Y20q3dA" name="pageAndQuestions">
+      <sca:interface.wsdl xmi:id="_fZusgWk7Eea3np6Y20q3dA" interface="http://xmlns.example.com/20160823161124PLT#wsdl.interface(pageAndQuestions)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_o7s8kGk8Eea3np6Y20q3dA" name="ComponentSendSurvey" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_o7s8kWk8Eea3np6Y20q3dA" processName="TCI-API.SendSurvey"/>
+    <sca:service xmi:id="_p3lWAGk8Eea3np6Y20q3dA" name="sendSurvey">
+      <sca:interface.wsdl xmi:id="_p3lWAWk8Eea3np6Y20q3dA" interface="http://xmlns.example.com/20160823161944PLT#wsdl.interface(sendSurvey)" scaext:wsdlLocation="../Processes/TCI-API/SendSurvey.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_9eeq0GlBEeaPRNgQBLV1LQ" name="ComponentExamples" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_9eeq0WlBEeaPRNgQBLV1LQ" processName="TCI-API.Examples"/>
+    <sca:service xmi:id="_9eeq0mlBEeaPRNgQBLV1LQ" name="examples">
+      <sca:interface.wsdl xmi:id="_9en0wGlBEeaPRNgQBLV1LQ" interface="http://xmlns.example.com/20160821171919PLT#wsdl.interface(examples1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_o9hm4GlPEeaPRNgQBLV1LQ" name="ComponentPost_Question_for_Page_SingleChoice_Backup" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_o9hm4WlPEeaPRNgQBLV1LQ" processName="surveymonkeyconnector.Implementation.Post_Question_for_Page_SingleChoice_Backup"/>
+  </sca:component>
+  <sca:component xmi:id="_-u700GusEeaEduAz6KPWFQ" name="ComponentHelper_MakeEmailMessage_Backup" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_-u700WusEeaEduAz6KPWFQ" processName="surveymonkeyconnector.Implementation.Helper_MakeEmailMessage_Backup"/>
+  </sca:component>
+  <sca:component xmi:id="_hzwpgGutEeaEduAz6KPWFQ" name="ComponentTestMakeMailMessage" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_hzwpgWutEeaEduAz6KPWFQ" processName="Test.TestGetUserInfo"/>
+  </sca:component>
+</sca:composite>

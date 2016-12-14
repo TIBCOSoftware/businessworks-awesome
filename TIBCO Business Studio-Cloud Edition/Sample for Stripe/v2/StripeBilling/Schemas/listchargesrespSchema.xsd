@@ -1,0 +1,75 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:short" name="amount"/>
+        <xs:element type="xs:byte" name="amount_refunded"/>
+        <xs:element type="xs:string" name="application_fee"/>
+        <xs:element type="xs:string" name="balance_transaction"/>
+        <xs:element type="xs:string" name="captured"/>
+        <xs:element type="xs:int" name="created"/>
+        <xs:element type="xs:string" name="currency"/>
+        <xs:element type="xs:string" name="customer"/>
+        <xs:element type="xs:string" name="description"/>
+        <xs:element type="xs:string" name="destination"/>
+        <xs:element type="xs:string" name="dispute"/>
+        <xs:element type="xs:string" name="failure_code"/>
+        <xs:element type="xs:string" name="failure_message"/>
+        <xs:element type="xs:string" name="fraud_details"/>
+        <xs:element type="xs:string" name="id"/>
+        <xs:element type="xs:string" name="invoice"/>
+        <xs:element type="xs:string" name="livemode"/>
+        <xs:element type="xs:string" name="metadata"/>
+        <xs:element type="xs:string" name="object"/>
+        <xs:element type="xs:string" name="order"/>
+        <xs:element type="xs:string" name="paid"/>
+        <xs:element type="xs:string" name="receipt_email"/>
+        <xs:element type="xs:string" name="receipt_number"/>
+        <xs:element type="xs:string" name="refunded"/>
+        <xs:element name="refunds">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="data"/>
+              <xs:element type="xs:string" name="has_more"/>
+              <xs:element type="xs:string" name="object"/>
+              <xs:element type="xs:byte" name="total_count"/>
+              <xs:element type="xs:string" name="url"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="shipping"/>
+        <xs:element name="source">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="address_city"/>
+              <xs:element type="xs:string" name="address_country"/>
+              <xs:element type="xs:string" name="address_line1"/>
+              <xs:element type="xs:string" name="address_line1_check"/>
+              <xs:element type="xs:string" name="address_line2"/>
+              <xs:element type="xs:string" name="address_state"/>
+              <xs:element type="xs:string" name="address_zip"/>
+              <xs:element type="xs:string" name="address_zip_check"/>
+              <xs:element type="xs:string" name="brand"/>
+              <xs:element type="xs:string" name="country"/>
+              <xs:element type="xs:string" name="customer"/>
+              <xs:element type="xs:string" name="cvc_check"/>
+              <xs:element type="xs:string" name="dynamic_last4"/>
+              <xs:element type="xs:byte" name="exp_month"/>
+              <xs:element type="xs:short" name="exp_year"/>
+              <xs:element type="xs:string" name="funding"/>
+              <xs:element type="xs:string" name="id"/>
+              <xs:element type="xs:short" name="last4"/>
+              <xs:element type="xs:string" name="metadata"/>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element type="xs:string" name="object"/>
+              <xs:element type="xs:string" name="tokenization_method"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="source_transfer"/>
+        <xs:element type="xs:string" name="statement_descriptor"/>
+        <xs:element type="xs:string" name="status"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

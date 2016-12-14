@@ -1,0 +1,162 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Stripe",
+    "x-lastModified": "Aug 05, 2016 20:19PM PST",
+    "description": "Stripe Plug-in for Mashery to enable API monetization"
+  },
+  "paths": {
+    "/account/{customerId}/{companyId}": {
+      "post": {
+        "description": "",
+        "operationId": "postaccount",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/creditCard"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "a Credit Card to be returned",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "\"Customer XXX Stripe ID = YYY\""
+            }
+          }
+        }
+      }
+    },
+    "/charges/{customerId}/{companyId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "companyId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ]
+      }
+    },
+    "/subscriptions/v1/package_key/{packageKey}": {
+      "put": {
+        "description": "",
+        "operationId": "put-v1-package_key",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "a string to be returned",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "application/json"
+          },
+          {
+            "name": "packageKey",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "EventTriggerDetails",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "creditCard": {
+      "type": "object",
+      "required": [
+        "Card.Number",
+        "Card.expMth",
+        "Card.expYear",
+        "Card.CVC"
+      ],
+      "properties": {
+        "Card.Number": {
+          "type": "string"
+        },
+        "Card.expMth": {
+          "type": "string"
+        },
+        "Card.expYear": {
+          "type": "string"
+        },
+        "Card.CVC": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

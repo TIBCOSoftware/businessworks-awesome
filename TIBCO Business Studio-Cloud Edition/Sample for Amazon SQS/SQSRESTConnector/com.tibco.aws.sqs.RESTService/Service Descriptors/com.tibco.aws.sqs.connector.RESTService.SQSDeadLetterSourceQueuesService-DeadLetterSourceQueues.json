@@ -1,0 +1,89 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "This EndPoint implements all Amazon SQS APIs specific to DeadLetterSourceQueues Resource.",
+    "description" : "This EndPoint implements all Amazon SQS APIs specific to DeadLetterSourceQueues Resource."
+  },
+  "host" : "localhost:9876",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/sqs/queues/deadlettersource/{AWSAccessKey}/{AWSSecretKey}/{AWSSQSEndPoint}" : {
+      "get" : {
+        "description" : "ListDeadLetterSourceQueues: Returns a list of URLs of all queues that have the RedrivePolicy queue attribute configured with the supplied dead letter queue.",
+        "operationId" : "ListDeadLetterSourceQueues",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "AWSSecretKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "DLQName",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSAccessKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSSQSEndPoint",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a listDeadLetterSourceQueuesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/listDeadLetterSourceQueuesResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "listDeadLetterSourceQueuesResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "listDeadLetterSourceQueuesResult" : {
+          "$ref" : "#/definitions/listDeadLetterSourceQueuesResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "listDeadLetterSourceQueuesResult" : {
+      "type" : "object",
+      "properties" : {
+        "queueUrls" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:parameters="http://xmlns.example.com/RequestOAuthToken/parameters" xmlns:parameters_1="http://xmlns.example.com/RefreshOAuthToken/parameters" xmlns:parameters_2="http://xmlns.example.com/GetOAuth/parameters" xmlns:parameters_3="http://xmlns.example.com/InsertChildren/parameters" xmlns:parameters_4="http://xmlns.example.com/InsertFile/parameters" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_k3jMIF4vEeagjOAUJJMcfw" targetNamespace="http://tns.tibco.com/bw/composite/GoogleDriveAPI.module" name="GoogleDriveAPI.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_d_Zf0GBkEea7SatQxD34DQ" name="listFiles" promote="ComponentlistFIles/listFiles">
+    <sca:interface.wsdl xmi:id="_d_aG4WBkEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812134100PLT#wsdl.interface(listFiles)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_d_at8GBkEea7SatQxD34DQ" name="RestService20" path="/listFiles" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListFiles" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_d_bVAGBkEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists the user's files." responseStyle="element">
+        <parameters xmi:id="_d_b8EWBkEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_d_b8EmBkEea7SatQxD34DQ" parameterName="corpus" parameterType="Query" dataType="string" description="The body of items (files/documents) to which the query applies. &#xA;&#xA;Acceptable values are:&#xA;&quot;DEFAULT&quot;: The items that the user has accessed.&#xA;&quot;DOMAIN&quot;: Items shared to the user's domain."/>
+          <parameterMapping xmi:id="_d_b8E2BkEea7SatQxD34DQ" parameterName="maxResults" parameterType="Query" dataType="integer#int32" description="Maximum number of files to return. Acceptable values are 0 to 1000, inclusive. (Default: 100)"/>
+          <parameterMapping xmi:id="_d_b8FGBkEea7SatQxD34DQ" parameterName="orderBy" parameterType="Query" dataType="string" description="A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored."/>
+          <parameterMapping xmi:id="_d_b8FWBkEea7SatQxD34DQ" parameterName="pageToken" parameterType="Query" dataType="string" description="Page token for files."/>
+          <parameterMapping xmi:id="_d_b8FmBkEea7SatQxD34DQ" parameterName="projection" parameterType="Query" dataType="string" description="This parameter is deprecated and has no function. &#xA;&#xA;Acceptable values are:&#xA;&quot;BASIC&quot;: Deprecated&#xA;&quot;FULL&quot;: Deprecated"/>
+          <parameterMapping xmi:id="_d_b8F2BkEea7SatQxD34DQ" parameterName="q" parameterType="Query" dataType="string" description="Query string for searching files."/>
+          <parameterMapping xmi:id="_d_b8GGBkEea7SatQxD34DQ" parameterName="spaces" parameterType="Query" dataType="string" description="A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'."/>
+          <parameterMapping xmi:id="_d_b8GWBkEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_d_b8EGBkEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_d_bVAWBkEea7SatQxD34DQ" bindingName="RestService20"/>
+  </sca:service>
+  <sca:service xmi:id="_wSgOUmBlEea7SatQxD34DQ" name="copyFile" promote="ComponentcopyFile/copyFile">
+    <sca:interface.wsdl xmi:id="_wSgOVmBlEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135118PLT#wsdl.interface(copyFile)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_wSgOV2BlEea7SatQxD34DQ" name="RestService22" path="/copyFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="CopyFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_wSgOWGBlEea7SatQxD34DQ" operationName="post" httpMethod="POST" notes="Creates a copy of the specified file." responseStyle="element">
+        <parameters xmi:id="_wSgOW2BlEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_wSgOXGBlEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file to copy."/>
+          <parameterMapping xmi:id="_wSgOXWBlEea7SatQxD34DQ" parameterName="convert" parameterType="Query" dataType="boolean" description="Whether to convert this file to the corresponding Google Docs format. (Default: false)"/>
+          <parameterMapping xmi:id="_wSgOXmBlEea7SatQxD34DQ" parameterName="ocr" parameterType="Query" dataType="boolean" description="Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default: false)"/>
+          <parameterMapping xmi:id="_wSgOX2BlEea7SatQxD34DQ" parameterName="ocrLanguage" parameterType="Query" dataType="string" description="If ocr is true, hints at the language to use. Valid values are BCP 47 codes."/>
+          <parameterMapping xmi:id="_wSgOYGBlEea7SatQxD34DQ" parameterName="pinned" parameterType="Query" dataType="boolean" description="Whether to pin the head revision of the new copy. A file can have a maximum of 200 pinned revisions. (Default: false)"/>
+          <parameterMapping xmi:id="_wSgOYWBlEea7SatQxD34DQ" parameterName="timedTextLanguage" parameterType="Query" dataType="string" description="The language of the timed text."/>
+          <parameterMapping xmi:id="_wSgOYmBlEea7SatQxD34DQ" parameterName="timedTextTrackName" parameterType="Query" dataType="string" description="The timed text track name."/>
+          <parameterMapping xmi:id="_wSgOY2BlEea7SatQxD34DQ" parameterName="visibility" parameterType="Query" dataType="string" description="The visibility of the new file. This parameter is only relevant when the source is not a native Google Doc and convert=false. &#xA;&#xA;Acceptable values are:&#xA;&quot;DEFAULT&quot;: The visibility of the new file is determined by the user's default visibility/sharing policies. (default)&#xA;&quot;PRIVATE&quot;: The new file will be visible to only the owner."/>
+          <parameterMapping xmi:id="_wSgOZGBlEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_wSgOWmBlEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_wSgOWWBlEea7SatQxD34DQ" bindingName="RestService22"/>
+  </sca:service>
+  <sca:service xmi:id="_EK8_cmBmEea7SatQxD34DQ" name="deleteFile" promote="ComponentdeleteFile/deleteFile">
+    <sca:interface.wsdl xmi:id="_EK8_dmBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135331PLT#wsdl.interface(deleteFile)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_EK8_d2BmEea7SatQxD34DQ" name="RestService23" path="/deleteFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeleteFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_EK8_eGBmEea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file." responseStyle="element">
+        <parameters xmi:id="_EK8_e2BmEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_EK8_fGBmEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file to delete."/>
+          <parameterMapping xmi:id="_EK8_fWBmEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_EK8_emBmEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_EK8_eWBmEea7SatQxD34DQ" bindingName="RestService23"/>
+  </sca:service>
+  <sca:service xmi:id="_Rrkr0mBmEea7SatQxD34DQ" name="touchFile" promote="ComponenttouchFile/touchFile">
+    <sca:interface.wsdl xmi:id="_Rrkr1mBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135459PLT#wsdl.interface(touchFile)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Rrkr12BmEea7SatQxD34DQ" name="RestService24" path="/touchFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="TouchFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_Rrkr2GBmEea7SatQxD34DQ" operationName="post" httpMethod="POST" notes="Set the file's updated time to the current server time." responseStyle="element">
+        <parameters xmi:id="_Rrkr22BmEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_Rrkr3GBmEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file to update."/>
+          <parameterMapping xmi:id="_Rrkr3WBmEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_Rrkr2mBmEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Rrkr2WBmEea7SatQxD34DQ" bindingName="RestService24"/>
+  </sca:service>
+  <sca:service xmi:id="_co58EmBmEea7SatQxD34DQ" name="trashFile" promote="ComponenttrashFile/trashFile">
+    <sca:interface.wsdl xmi:id="_co58FmBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135614PLT#wsdl.interface(trashFile)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_co58F2BmEea7SatQxD34DQ" name="RestService25" path="/trashFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="TrashFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_co58GGBmEea7SatQxD34DQ" operationName="post" httpMethod="POST" notes="Moves a file to the trash. The currently authenticated user must own the file." responseStyle="element">
+        <parameters xmi:id="_co58G2BmEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_co58HGBmEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file to trash."/>
+          <parameterMapping xmi:id="_co58HWBmEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_co58GmBmEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_co58GWBmEea7SatQxD34DQ" bindingName="RestService25"/>
+  </sca:service>
+  <sca:service xmi:id="_n7j8EmBmEea7SatQxD34DQ" name="untrashFile" promote="ComponentuntrashFile/untrashFile">
+    <sca:interface.wsdl xmi:id="_n7j8FmBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135731PLT#wsdl.interface(untrashFile)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_n7j8F2BmEea7SatQxD34DQ" name="RestService26" path="/untrashFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="UntrashFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_n7j8GGBmEea7SatQxD34DQ" operationName="post" httpMethod="POST" notes="Restores a file from the trash." responseStyle="element">
+        <parameters xmi:id="_n7j8G2BmEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_n7j8HGBmEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file to untrash."/>
+          <parameterMapping xmi:id="_n7j8HWBmEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_n7j8GmBmEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_n7j8GWBmEea7SatQxD34DQ" bindingName="RestService26"/>
+  </sca:service>
+  <sca:service xmi:id="_3cdeImBmEea7SatQxD34DQ" name="emptyTrash" promote="ComponentemptyTrash/emptyTrash">
+    <sca:interface.wsdl xmi:id="_3cdeJmBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135914PLT#wsdl.interface(emptyTrash)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_3cdeJ2BmEea7SatQxD34DQ" name="RestService27" path="/emptyTrash" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="EmptyTrash" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_3cdeKGBmEea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Permanently deletes all of the user's trashed files." responseStyle="element">
+        <parameters xmi:id="_3cdeK2BmEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_3cdeLGBmEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_3cdeKmBmEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_3cdeKWBmEea7SatQxD34DQ" bindingName="RestService27"/>
+  </sca:service>
+  <sca:service xmi:id="_-Xf9omBmEea7SatQxD34DQ" name="generateIds" promote="ComponentgenerateIds/generateIds">
+    <sca:interface.wsdl xmi:id="_-Xf9pmBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812140001PLT#wsdl.interface(generateIds)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_-Xf9p2BmEea7SatQxD34DQ" name="RestService28" path="/generateIds" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GenerateIds" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_-Xf9qGBmEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Generates a set of file IDs which can be provided in insert requests." responseStyle="element">
+        <parameters xmi:id="_-Xf9q2BmEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_-Xf9rGBmEea7SatQxD34DQ" parameterName="maxResults" parameterType="Query" dataType="integer#int32" description="Maximum number of IDs to return. Acceptable values are 1 to 1000, inclusive. (Default: 10)"/>
+          <parameterMapping xmi:id="_-Xf9rWBmEea7SatQxD34DQ" parameterName="space" parameterType="Query" dataType="string" description="The space in which the IDs can be used to create new files. Supported values are 'drive' and 'appDataFolder'."/>
+          <parameterMapping xmi:id="_-Xf9rmBmEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_-Xf9qmBmEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_-Xf9qWBmEea7SatQxD34DQ" bindingName="RestService28"/>
+  </sca:service>
+  <sca:service xmi:id="_TIuUYmBoEea7SatQxD34DQ" name="listApps" promote="ComponentlistApps/listApps">
+    <sca:interface.wsdl xmi:id="_TIuUZmBoEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812140923PLT#wsdl.interface(listApps)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_TIuUZ2BoEea7SatQxD34DQ" name="RestService29" path="/listApps" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListApps" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_TIuUaGBoEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists a user's installed apps." responseStyle="element">
+        <parameters xmi:id="_TIuUa2BoEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_TIuUbGBoEea7SatQxD34DQ" parameterName="appFilterExtensions" parameterType="Query" dataType="string" description="A comma-separated list of file extensions for open with filtering. All apps within the given app query scope which can open any of the given file extensions will be included in the response. If appFilterMimeTypes are provided as well, the result is a union of the two resulting app lists."/>
+          <parameterMapping xmi:id="_TIuUbWBoEea7SatQxD34DQ" parameterName="appFilterMimeTypes" parameterType="Query" dataType="string" description="A comma-separated list of MIME types for open with filtering. All apps within the given app query scope which can open any of the given MIME types will be included in the response. If appFilterExtensions are provided as well, the result is a union of the two resulting app lists."/>
+          <parameterMapping xmi:id="_TIuUbmBoEea7SatQxD34DQ" parameterName="languageCode" parameterType="Query" dataType="string" description="A language or locale code, as defined by BCP 47, with some extensions from the Unicode LDML format."/>
+          <parameterMapping xmi:id="_TIuUb2BoEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_TIuUamBoEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_TIuUaWBoEea7SatQxD34DQ" bindingName="RestService29"/>
+  </sca:service>
+  <sca:service xmi:id="_i__IAmBoEea7SatQxD34DQ" name="getApp" promote="ComponentgetApp/getApp">
+    <sca:interface.wsdl xmi:id="_i__IBmBoEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812141117PLT#wsdl.interface(getApp)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_i__IB2BoEea7SatQxD34DQ" name="RestService30" path="/getApp" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetApp" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_i__ICGBoEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a specific app." responseStyle="element">
+        <parameters xmi:id="_i__IC2BoEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_i__IDGBoEea7SatQxD34DQ" parameterName="appId" parameterType="Query" dataType="string" required="true" description="The ID of the app."/>
+          <parameterMapping xmi:id="_i__IDWBoEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_i__ICmBoEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_i__ICWBoEea7SatQxD34DQ" bindingName="RestService30"/>
+  </sca:service>
+  <sca:service xmi:id="_-A-CEWBoEea7SatQxD34DQ" name="listChanges" promote="ComponentlistChanges/listChanges">
+    <sca:interface.wsdl xmi:id="_-A-CFWBoEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812141411PLT#wsdl.interface(listChanges)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_-A-pIGBoEea7SatQxD34DQ" name="RestService31" path="/listChanges" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListChanges" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_-A-pIWBoEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists the changes for a user." responseStyle="element">
+        <parameters xmi:id="_-A_QMWBoEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_-A_QMmBoEea7SatQxD34DQ" parameterName="includeDeleted" parameterType="Query" dataType="boolean" description="Whether to include deleted items. (Default: true)"/>
+          <parameterMapping xmi:id="_-A_QM2BoEea7SatQxD34DQ" parameterName="includeSubscribed" parameterType="Query" dataType="boolean" description="Whether to include public files the user has opened and shared files. When set to false, the list only includes owned files plus any shared or public files the user has explicitly added to a folder they own. (Default: true)"/>
+          <parameterMapping xmi:id="_-A_QNGBoEea7SatQxD34DQ" parameterName="maxResults" parameterType="Query" dataType="integer#int32" description="Maximum number of changes to return. Acceptable values are 0 to 1000, inclusive. (Default: 100)"/>
+          <parameterMapping xmi:id="_-A_QNWBoEea7SatQxD34DQ" parameterName="pageToken" parameterType="Query" dataType="string" description="Page token for changes."/>
+          <parameterMapping xmi:id="_-A_QNmBoEea7SatQxD34DQ" parameterName="spaces" parameterType="Query" dataType="string" description="A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'."/>
+          <parameterMapping xmi:id="_-A_QN2BoEea7SatQxD34DQ" parameterName="startChangeId" parameterType="Query" dataType="integer#int64" description="Change ID to start listing changes from."/>
+          <parameterMapping xmi:id="_-A_QOGBoEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_-A_QMGBoEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_-A-pImBoEea7SatQxD34DQ" bindingName="RestService31"/>
+  </sca:service>
+  <sca:service xmi:id="_OdA9wmBpEea7SatQxD34DQ" name="getChange" promote="ComponentgetChange/getChange">
+    <sca:interface.wsdl xmi:id="_OdA9xmBpEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812141606PLT#wsdl.interface(getChange)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_OdA9x2BpEea7SatQxD34DQ" name="RestService32" path="/getChange" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetChange" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_OdA9yGBpEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a specific change." responseStyle="element">
+        <parameters xmi:id="_OdA9y2BpEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_OdA9zGBpEea7SatQxD34DQ" parameterName="changeId" parameterType="Query" dataType="string" required="true" description="The ID of the change."/>
+          <parameterMapping xmi:id="_OdA9zWBpEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_OdA9ymBpEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_OdA9yWBpEea7SatQxD34DQ" bindingName="RestService32"/>
+  </sca:service>
+  <sca:service xmi:id="_yCFYwmBpEea7SatQxD34DQ" name="listChildren" promote="ComponentlistChildren/listChildren">
+    <sca:interface.wsdl xmi:id="_yCFYxmBpEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142004PLT#wsdl.interface(listChildren)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_yCFYx2BpEea7SatQxD34DQ" name="RestService33" path="/listChildren" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListChildren" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_yCFYyGBpEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists a folder's children. To list all children of the root folder, use the alias root for the folderId value." responseStyle="element">
+        <parameters xmi:id="_yCFYy2BpEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_yCFYzGBpEea7SatQxD34DQ" parameterName="folderId" parameterType="Query" dataType="string" required="true" description="The ID of the folder. To list all files in the root folder, use the alias root as the value for folderId."/>
+          <parameterMapping xmi:id="_yCFYzWBpEea7SatQxD34DQ" parameterName="maxResults" parameterType="Query" dataType="integer#int32" description="Maximum number of children to return. Acceptable values are 0 to 1000, inclusive. (Default: 100)"/>
+          <parameterMapping xmi:id="_yCFYzmBpEea7SatQxD34DQ" parameterName="orderBy" parameterType="Query" dataType="string" description="A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored."/>
+          <parameterMapping xmi:id="_yCFYz2BpEea7SatQxD34DQ" parameterName="pageToken" parameterType="Query" dataType="string" description="Page token for children."/>
+          <parameterMapping xmi:id="_yCFY0GBpEea7SatQxD34DQ" parameterName="q" parameterType="Query" dataType="string" description="Query string for searching children. See Searching for files for more information about supported fields and operations."/>
+          <parameterMapping xmi:id="_yCFY0WBpEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_yCFYymBpEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_yCFYyWBpEea7SatQxD34DQ" bindingName="RestService33"/>
+  </sca:service>
+  <sca:service xmi:id="_CHGUgmBqEea7SatQxD34DQ" name="getChild" promote="ComponentgetChild/getChild">
+    <sca:interface.wsdl xmi:id="_CHGUhmBqEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142154PLT#wsdl.interface(getChild)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_CHGUh2BqEea7SatQxD34DQ" name="RestService34" path="/getChild" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetChild" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_CHGUiGBqEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a specific child reference." responseStyle="element">
+        <parameters xmi:id="_CHGUi2BqEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_CHGUjGBqEea7SatQxD34DQ" parameterName="childId" parameterType="Query" dataType="string" required="true" description="The ID of the child."/>
+          <parameterMapping xmi:id="_CHGUjWBqEea7SatQxD34DQ" parameterName="folderId" parameterType="Query" dataType="string" required="true" description="The ID of the folder."/>
+          <parameterMapping xmi:id="_CHGUjmBqEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_CHGUimBqEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_CHGUiWBqEea7SatQxD34DQ" bindingName="RestService34"/>
+  </sca:service>
+  <sca:service xmi:id="_PBK-QmBqEea7SatQxD34DQ" name="deleteChild" promote="ComponentdeleteChild/deleteChild">
+    <sca:interface.wsdl xmi:id="_PBLlUGBqEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142321PLT#wsdl.interface(deleteChild)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_PBLlUWBqEea7SatQxD34DQ" name="RestService35" path="/deleteChild" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeleteChild" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_PBMMYGBqEea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Removes a child from a folder." responseStyle="element">
+        <parameters xmi:id="_PBMzcWBqEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_PBMzcmBqEea7SatQxD34DQ" parameterName="folderId" parameterType="Query" dataType="string" required="true" description="The ID of the folder."/>
+          <parameterMapping xmi:id="_PBMzc2BqEea7SatQxD34DQ" parameterName="childId" parameterType="Query" dataType="string" required="true" description="The ID of the child."/>
+          <parameterMapping xmi:id="_PBMzdGBqEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_PBMzcGBqEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_PBMMYWBqEea7SatQxD34DQ" bindingName="RestService35"/>
+  </sca:service>
+  <sca:service xmi:id="_p3SsImBqEea7SatQxD34DQ" name="listParent" promote="ComponentlistParents/listParent">
+    <sca:interface.wsdl xmi:id="_p3SsJmBqEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142622PLT#wsdl.interface(listParent)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_p3SsJ2BqEea7SatQxD34DQ" name="RestService36" path="/listParent" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListParent" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_p3SsKGBqEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists a file's parents." responseStyle="element">
+        <parameters xmi:id="_p3SsK2BqEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_p3SsLGBqEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_p3SsLWBqEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_p3SsKmBqEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_p3SsKWBqEea7SatQxD34DQ" bindingName="RestService36"/>
+  </sca:service>
+  <sca:service xmi:id="_JMNgkmBrEea7SatQxD34DQ" name="getParent" promote="ComponentgetParent/getParent">
+    <sca:interface.wsdl xmi:id="_JMNglmBrEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142952PLT#wsdl.interface(getParent)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_JMNgl2BrEea7SatQxD34DQ" name="RestService37" path="/getParent" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetParent" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_JMNgmGBrEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a specific parent reference." responseStyle="element">
+        <parameters xmi:id="_JMNgm2BrEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_JMNgnGBrEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_JMNgnWBrEea7SatQxD34DQ" parameterName="parentId" parameterType="Query" dataType="string" required="true" description="The ID of the parent."/>
+          <parameterMapping xmi:id="_JMNgnmBrEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_JMNgmmBrEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_JMNgmWBrEea7SatQxD34DQ" bindingName="RestService37"/>
+  </sca:service>
+  <sca:service xmi:id="_TeDj0mBrEea7SatQxD34DQ" name="deleteParent" promote="ComponentdeleteParent/deleteParent">
+    <sca:interface.wsdl xmi:id="_TeDj1mBrEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143100PLT#wsdl.interface(deleteParent)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_TeDj12BrEea7SatQxD34DQ" name="RestService38" path="/deleteParent" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeleteParent" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_TeDj2GBrEea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Removes a parent from a file." responseStyle="element">
+        <parameters xmi:id="_TeDj22BrEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_TeDj3GBrEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_TeDj3WBrEea7SatQxD34DQ" parameterName="parentId" parameterType="Query" dataType="string" required="true" description="The ID of the parent."/>
+          <parameterMapping xmi:id="_TeDj3mBrEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_TeDj2mBrEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_TeDj2WBrEea7SatQxD34DQ" bindingName="RestService38"/>
+  </sca:service>
+  <sca:service xmi:id="_8jpBEmBrEea7SatQxD34DQ" name="listRevisions" promote="ComponentlistRevisions/listRevisions">
+    <sca:interface.wsdl xmi:id="_8jpBFmBrEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143522PLT#wsdl.interface(listRevisions)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_8jpBF2BrEea7SatQxD34DQ" name="RestService39" path="/listRevisions" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListRevisions" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_8jpBGGBrEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists a file's revisions." responseStyle="element">
+        <parameters xmi:id="_8jpBG2BrEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_8jpBHGBrEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_8jpBHWBrEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_8jpBGmBrEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_8jpBGWBrEea7SatQxD34DQ" bindingName="RestService39"/>
+  </sca:service>
+  <sca:service xmi:id="_JWg2omBsEea7SatQxD34DQ" name="getRevision" promote="ComponentgetRevision/getRevision">
+    <sca:interface.wsdl xmi:id="_JWg2pmBsEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143701PLT#wsdl.interface(getRevision)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_JWiEwGBsEea7SatQxD34DQ" name="RestService40" path="/getRevision" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetRevision" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_JWir0GBsEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a specific revision." responseStyle="element">
+        <parameters xmi:id="_JWjS4WBsEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_JWjS4mBsEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_JWjS42BsEea7SatQxD34DQ" parameterName="revisionId" parameterType="Query" dataType="string" required="true" description="The ID of the revision."/>
+          <parameterMapping xmi:id="_JWjS5GBsEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_JWjS4GBsEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_JWir0WBsEea7SatQxD34DQ" bindingName="RestService40"/>
+  </sca:service>
+  <sca:service xmi:id="_Zhf3gmBsEea7SatQxD34DQ" name="deleteRevision" promote="ComponentdeleteRevision/deleteRevision">
+    <sca:interface.wsdl xmi:id="_Zhf3hmBsEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143850PLT#wsdl.interface(deleteRevision)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ZhgekGBsEea7SatQxD34DQ" name="RestService41" path="/deleteRevision" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeleteRevision" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_ZhhFoGBsEea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Removes a revision." responseStyle="element">
+        <parameters xmi:id="_ZhhssWBsEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_ZhhssmBsEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_Zhhss2BsEea7SatQxD34DQ" parameterName="revisionId" parameterType="Query" dataType="string" required="true" description="The ID of the revision."/>
+          <parameterMapping xmi:id="_ZhhstGBsEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_ZhhssGBsEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_ZhhFoWBsEea7SatQxD34DQ" bindingName="RestService41"/>
+  </sca:service>
+  <sca:service xmi:id="_Wv5dImBtEea7SatQxD34DQ" name="listPermissions" promote="ComponentlistPermissions/listPermissions">
+    <sca:interface.wsdl xmi:id="_Wv5dJmBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144540PLT#wsdl.interface(listPermissions)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Wv5dJ2BtEea7SatQxD34DQ" name="RestService42" path="/listPermissions" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListPermissions" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_Wv5dKGBtEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists a file's permissions." responseStyle="element">
+        <parameters xmi:id="_Wv5dK2BtEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_Wv5dLGBtEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_Wv5dLWBtEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_Wv5dKmBtEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Wv5dKWBtEea7SatQxD34DQ" bindingName="RestService42"/>
+  </sca:service>
+  <sca:service xmi:id="_hP204mBtEea7SatQxD34DQ" name="getPermission" promote="ComponentgetPermission/getPermission">
+    <sca:interface.wsdl xmi:id="_hP205mBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144653PLT#wsdl.interface(getPermission)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_hP2052BtEea7SatQxD34DQ" name="RestService43" path="/getPermission" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetPermission" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_hP206GBtEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a permission by ID." responseStyle="element">
+        <parameters xmi:id="_hP2062BtEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_hP207GBtEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_hP207WBtEea7SatQxD34DQ" parameterName="permissionId" parameterType="Query" dataType="string" required="true" description="The ID for the permission."/>
+          <parameterMapping xmi:id="_hP207mBtEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_hP206mBtEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_hP206WBtEea7SatQxD34DQ" bindingName="RestService43"/>
+  </sca:service>
+  <sca:service xmi:id="_vqrfsmBtEea7SatQxD34DQ" name="getIdForEmail" promote="ComponentgetIdForEmail/getIdForEmail">
+    <sca:interface.wsdl xmi:id="_vqrftmBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144830PLT#wsdl.interface(getIdForEmail)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_vqrft2BtEea7SatQxD34DQ" name="RestService44" path="/getIdForEmail" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetIdForEmail" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_vqrfuGBtEea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Returns the permission ID for an email address." responseStyle="element">
+        <parameters xmi:id="_vqrfu2BtEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_vqrfvGBtEea7SatQxD34DQ" parameterName="email" parameterType="Query" dataType="string" required="true" description="The email address for which to return a permission ID"/>
+          <parameterMapping xmi:id="_vqrfvWBtEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_vqrfumBtEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_vqrfuWBtEea7SatQxD34DQ" bindingName="RestService44"/>
+  </sca:service>
+  <sca:service xmi:id="_8PmY0mBtEea7SatQxD34DQ" name="deletePermission" promote="ComponentdeletePermission/deletePermission">
+    <sca:interface.wsdl xmi:id="_8PmY1mBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144940PLT#wsdl.interface(deletePermission)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_8PwJ0GBtEea7SatQxD34DQ" name="RestService45" path="/deletePermission" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeletePermission" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_8PwJ0WBtEea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Deletes a permission from a file." responseStyle="element">
+        <parameters xmi:id="_8PwJ1GBtEea7SatQxD34DQ">
+          <parameterMapping xmi:id="_8PwJ1WBtEea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_8PwJ1mBtEea7SatQxD34DQ" parameterName="permissionId" parameterType="Query" dataType="string" required="true" description="The ID for the permission."/>
+          <parameterMapping xmi:id="_8PwJ12BtEea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_8PwJ02BtEea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_8PwJ0mBtEea7SatQxD34DQ" bindingName="RestService45"/>
+  </sca:service>
+  <sca:service xmi:id="_9UrUEmB5Eea7SatQxD34DQ" name="listComments" promote="ComponentlistComments/listComments">
+    <sca:interface.wsdl xmi:id="_9UrUFmB5Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812161546PLT#wsdl.interface(listComments)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9UrUF2B5Eea7SatQxD34DQ" name="RestService21" path="/listComments" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListComments" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_9UrUGGB5Eea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists a file's comments." responseStyle="element">
+        <parameters xmi:id="_9UrUG2B5Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_9UrUHGB5Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_9UrUHWB5Eea7SatQxD34DQ" parameterName="includeDeleted" parameterType="Query" dataType="boolean" description="If set, all comments and replies, including deleted comments and replies (with content stripped) will be returned. (Default: false)"/>
+          <parameterMapping xmi:id="_9UrUHmB5Eea7SatQxD34DQ" parameterName="maxResults" parameterType="Query" dataType="integer#int32" description="The maximum number of discussions to include in the response, used for paging. Acceptable values are 0 to 100, inclusive. (Default: 20)"/>
+          <parameterMapping xmi:id="_9UrUH2B5Eea7SatQxD34DQ" parameterName="pageToken" parameterType="Query" dataType="string" description="The continuation token, used to page through large result sets. To get the next page of results, set this parameter to the value of &quot;nextPageToken&quot; from the previous response."/>
+          <parameterMapping xmi:id="_9UrUIGB5Eea7SatQxD34DQ" parameterName="updatedMin" parameterType="Query" dataType="string" description="Only discussions that were updated after this timestamp will be returned. Formatted as an RFC 3339 timestamp."/>
+          <parameterMapping xmi:id="_9UrUIWB5Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_9UrUGmB5Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9UrUGWB5Eea7SatQxD34DQ" bindingName="RestService21"/>
+  </sca:service>
+  <sca:service xmi:id="_eQWD4mB6Eea7SatQxD34DQ" name="deleteComment" promote="ComponentdeleteComment/deleteComment">
+    <sca:interface.wsdl xmi:id="_eQWD5mB6Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812161935PLT#wsdl.interface(deleteComment)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_eQWD52B6Eea7SatQxD34DQ" name="RestService48" path="/deleteComment" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeleteComment" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_eQWD6GB6Eea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Deletes a comment." responseStyle="element">
+        <parameters xmi:id="_eQWD62B6Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_eQWD7GB6Eea7SatQxD34DQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_eQWD7WB6Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_eQWD7mB6Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_eQWD6mB6Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_eQWD6WB6Eea7SatQxD34DQ" bindingName="RestService48"/>
+  </sca:service>
+  <sca:service xmi:id="_ZSv2kmB8Eea7SatQxD34DQ" name="getFileComment" promote="ComponentgetFileComment/getFileComment">
+    <sca:interface.wsdl xmi:id="_ZSv2lmB8Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812163316PLT#wsdl.interface(getFileComment)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ZSwdoGB8Eea7SatQxD34DQ" name="RestService47" path="/getFileComment" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetFileComment" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_ZSxEsGB8Eea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a comment by ID." responseStyle="element">
+        <parameters xmi:id="_ZSzg8WB8Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_ZSzg8mB8Eea7SatQxD34DQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_ZSzg82B8Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_ZSzg9GB8Eea7SatQxD34DQ" parameterName="includeDeleted" parameterType="Query" dataType="boolean" description="If set, this will succeed when retrieving a deleted comment, and will include any deleted replies. (Default: false)"/>
+          <parameterMapping xmi:id="_ZSzg9WB8Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_ZSzg8GB8Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_ZSxEsWB8Eea7SatQxD34DQ" bindingName="RestService47"/>
+  </sca:service>
+  <sca:service xmi:id="_0idJIGB8Eea7SatQxD34DQ" name="listReplies" promote="ComponentlistReplies/listReplies">
+    <sca:interface.wsdl xmi:id="_0idJJGB8Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812163620PLT#wsdl.interface(listReplies)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_0ieXQGB8Eea7SatQxD34DQ" name="RestService49" path="/listReplies" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListReplies" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_0ie-UGB8Eea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists all of the replies to a comment." responseStyle="element">
+        <parameters xmi:id="_0igzgWB8Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_0igzgmB8Eea7SatQxD34DQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_0igzg2B8Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_0igzhGB8Eea7SatQxD34DQ" parameterName="includeDeleted" parameterType="Query" dataType="boolean" description="If set, all replies, including deleted replies (with content stripped) will be returned. (Default: false)"/>
+          <parameterMapping xmi:id="_0igzhWB8Eea7SatQxD34DQ" parameterName="maxResults" parameterType="Query" dataType="integer#int32" description="The maximum number of replies to include in the response, used for paging. Acceptable values are 0 to 100, inclusive. (Default: 20)"/>
+          <parameterMapping xmi:id="_0igzhmB8Eea7SatQxD34DQ" parameterName="pageToken" parameterType="Query" dataType="string" description="The continuation token, used to page through large result sets. To get the next page of results, set this parameter to the value of &quot;nextPageToken&quot; from the previous response."/>
+          <parameterMapping xmi:id="_0igzh2B8Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_0igzgGB8Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_0ie-UWB8Eea7SatQxD34DQ" bindingName="RestService49"/>
+  </sca:service>
+  <sca:service xmi:id="_HuMlQmB9Eea7SatQxD34DQ" name="getReply" promote="ComponentgetReply/getReply">
+    <sca:interface.wsdl xmi:id="_HuMlRmB9Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812163825PLT#wsdl.interface(getReply)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_HuNMUGB9Eea7SatQxD34DQ" name="RestService50" path="/getReply" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetReply" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_HuNzYGB9Eea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a reply." responseStyle="element">
+        <parameters xmi:id="_HuOacWB9Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_HuOacmB9Eea7SatQxD34DQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_HuOac2B9Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_HuOadGB9Eea7SatQxD34DQ" parameterName="replyId" parameterType="Query" dataType="string" required="true" description="The ID of the reply."/>
+          <parameterMapping xmi:id="_HuOadWB9Eea7SatQxD34DQ" parameterName="includeDeleted" parameterType="Query" dataType="boolean" description="If set, this will succeed when retrieving a deleted reply. (Default: false)"/>
+          <parameterMapping xmi:id="_HuOadmB9Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_HuOacGB9Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_HuNzYWB9Eea7SatQxD34DQ" bindingName="RestService50"/>
+  </sca:service>
+  <sca:service xmi:id="_Wdr4gmB9Eea7SatQxD34DQ" name="deleteReply" promote="ComponentdeleteReply/deleteReply">
+    <sca:interface.wsdl xmi:id="_Wdr4hmB9Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812164003PLT#wsdl.interface(deleteReply)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_WdsfkGB9Eea7SatQxD34DQ" name="RestService51" path="/deleteReply" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeleteReply" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_WdtGoGB9Eea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Deletes a reply." responseStyle="element">
+        <parameters xmi:id="_WdttsWB9Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_WdttsmB9Eea7SatQxD34DQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_Wdtts2B9Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_WdtttGB9Eea7SatQxD34DQ" parameterName="replyId" parameterType="Query" dataType="string" required="true" description="The ID of the reply."/>
+          <parameterMapping xmi:id="_WdtttWB9Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_WdttsGB9Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_WdtGoWB9Eea7SatQxD34DQ" bindingName="RestService51"/>
+  </sca:service>
+  <sca:service xmi:id="_6n0IYmB9Eea7SatQxD34DQ" name="listProperties" promote="ComponentlistProperties/listProperties">
+    <sca:interface.wsdl xmi:id="_6n0IZmB9Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812164412PLT#wsdl.interface(listProperties)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_6n0IZ2B9Eea7SatQxD34DQ" name="RestService52" path="/listProperties" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="ListProperties" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_6n0IaGB9Eea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Lists a file's properties." responseStyle="element">
+        <parameters xmi:id="_6n0Ia2B9Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_6n0IbGB9Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_6n0IbWB9Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_6n0IamB9Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_6n0IaWB9Eea7SatQxD34DQ" bindingName="RestService52"/>
+  </sca:service>
+  <sca:service xmi:id="_jWzqkmB-Eea7SatQxD34DQ" name="getProperty" promote="ComponentgetProperty/getProperty">
+    <sca:interface.wsdl xmi:id="_jWzqlmB-Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812164845PLT#wsdl.interface(getProperty)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_jWzql2B-Eea7SatQxD34DQ" name="RestService53" path="/getProperty" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetProperty" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_jWzqmGB-Eea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a property by its key." responseStyle="element">
+        <parameters xmi:id="_jW9bkWB-Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_jW9bkmB-Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_jW9bk2B-Eea7SatQxD34DQ" parameterName="propertyKey" parameterType="Query" dataType="string" required="true" description="The key of the property."/>
+          <parameterMapping xmi:id="_jW9blGB-Eea7SatQxD34DQ" parameterName="visibility" parameterType="Query" dataType="string" description="The visibility of the property."/>
+          <parameterMapping xmi:id="_jW9blWB-Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_jW9bkGB-Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_jWzqmWB-Eea7SatQxD34DQ" bindingName="RestService53"/>
+  </sca:service>
+  <sca:service xmi:id="_9d9ZomB-Eea7SatQxD34DQ" name="deleteProperty" promote="ComponentdeleteProperty/deleteProperty">
+    <sca:interface.wsdl xmi:id="_9d9ZpmB-Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812165138PLT#wsdl.interface(deleteProperty)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9d9Zp2B-Eea7SatQxD34DQ" name="RestService54" path="/deleteProperty" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="DeleteProperty" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_9d9ZqGB-Eea7SatQxD34DQ" operationName="delete" httpMethod="DELETE" notes="Deletes a property." responseStyle="element">
+        <parameters xmi:id="_9d9Zq2B-Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_9d9ZrGB-Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_9d9ZrWB-Eea7SatQxD34DQ" parameterName="propertyKey" parameterType="Query" dataType="string" required="true" description="The key of the property."/>
+          <parameterMapping xmi:id="_9d9ZrmB-Eea7SatQxD34DQ" parameterName="visibility" parameterType="Query" dataType="string" description="The visibility of the property."/>
+          <parameterMapping xmi:id="_9d9Zr2B-Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_9d9ZqmB-Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9d9ZqWB-Eea7SatQxD34DQ" bindingName="RestService54"/>
+  </sca:service>
+  <sca:service xmi:id="_1kg7smB_Eea7SatQxD34DQ" name="getFile" promote="ComponentgetFile/getFile">
+    <sca:interface.wsdl xmi:id="_1kg7tmB_Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812165756PLT#wsdl.interface(getFile)" scaext:wsdlLocation="../Processes/googleapisuite/drive/file/getFile.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_1kg7t2B_Eea7SatQxD34DQ" name="RestService46" path="/getFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_1kg7uGB_Eea7SatQxD34DQ" operationName="get" httpMethod="GET" notes="Gets a file's metadata by ID." responseStyle="element">
+        <parameters xmi:id="_1kqFoWB_Eea7SatQxD34DQ">
+          <parameterMapping xmi:id="_1kqFomB_Eea7SatQxD34DQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file in question."/>
+          <parameterMapping xmi:id="_1kqFo2B_Eea7SatQxD34DQ" parameterName="acknowledgeAbuse" parameterType="Query" dataType="string" description="Whether the user is acknowledging the risk of downloading known malware or other abusive files. (Default: false)"/>
+          <parameterMapping xmi:id="_1kqFpGB_Eea7SatQxD34DQ" parameterName="revisionId" parameterType="Query" dataType="string" description="Specifies the Revision ID that should be downloaded. Ignored unless alt=media is specified."/>
+          <parameterMapping xmi:id="_1kqFpWB_Eea7SatQxD34DQ" parameterName="projection" parameterType="Query" dataType="string" description="This parameter is deprecated and has no function. &#xA;&#xA;Acceptable values are:&#xA;&quot;BASIC&quot;: Deprecated&#xA;&quot;FULL&quot;: Deprecated"/>
+          <parameterMapping xmi:id="_1kqFpmB_Eea7SatQxD34DQ" parameterName="updateViewedDate" parameterType="Query" dataType="string" description="Deprecated: Use files.update with modifiedDateBehavior=noChange, updateViewedDate=true and an empty request body. (Default: false)"/>
+          <parameterMapping xmi:id="_1kqFp2B_Eea7SatQxD34DQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_1kqFoGB_Eea7SatQxD34DQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_1kg7uWB_Eea7SatQxD34DQ" bindingName="RestService46"/>
+  </sca:service>
+  <sca:service xmi:id="_AC72xGO_Eea2zvJAj9I-WQ" name="aboutDrive" promote="Componentabout/aboutDrive">
+    <sca:interface.wsdl xmi:id="_AC72yGO_Eea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816154951PLT#wsdl.interface(aboutDrive3)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ADFnwGO_Eea2zvJAj9I-WQ" name="RestService105" path="/aboutDrive" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="AboutDrive" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_ADFnwWO_Eea2zvJAj9I-WQ" operationName="get" httpMethod="GET" notes="Gets the information about the current user along with Drive API settings" responseStyle="element">
+        <parameters xmi:id="_ADFnxGO_Eea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_ADFnxWO_Eea2zvJAj9I-WQ" parameterName="includeSubscribed" parameterType="Query" dataType="boolean" description="When calculating the number of remaining change IDs, whether to include public files the user has opened and shared files. When set to false, this counts only change IDs for owned files and any shared or public files that the user has explicitly added to a folder they own. (Default: true)"/>
+          <parameterMapping xmi:id="_ADFnxmO_Eea2zvJAj9I-WQ" parameterName="maxChangeIdCount" parameterType="Query" dataType="integer#int64" description="Maximum number of remaining change IDs to count"/>
+          <parameterMapping xmi:id="_ADFnx2O_Eea2zvJAj9I-WQ" parameterName="startChangeId" parameterType="Query" dataType="integer#int64" description="Change ID to start counting from when calculating number of remaining change IDs"/>
+          <parameterMapping xmi:id="_ADFnyGO_Eea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_ADFnw2O_Eea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_ADFnwmO_Eea2zvJAj9I-WQ" bindingName="RestService105"/>
+  </sca:service>
+  <sca:service xmi:id="_Ngm80mO_Eea2zvJAj9I-WQ" name="watchChanges" promote="ComponentwatchChange/watchChanges">
+    <sca:interface.wsdl xmi:id="_Ngm81mO_Eea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816154301PLT#wsdl.interface(watchChanges1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Ngm812O_Eea2zvJAj9I-WQ" name="RestService106" path="/watchChanges" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="WatchChanges" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_Ngm82GO_Eea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Watch for all changes to a user's Drive." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_Ngm822O_Eea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_Ngm83GO_Eea2zvJAj9I-WQ" parameterName="spaces" parameterType="Query" dataType="string" description="A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'."/>
+          <parameterMapping xmi:id="_Ngm83WO_Eea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Ngm82mO_Eea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Ngm82WO_Eea2zvJAj9I-WQ" bindingName="RestService106"/>
+  </sca:service>
+  <sca:service xmi:id="_il_bImO_Eea2zvJAj9I-WQ" name="stopDriveChannel" promote="ComponentstopDriveWatchChannel/stopDriveChannel">
+    <sca:interface.wsdl xmi:id="_il_bJmO_Eea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816164554PLT#wsdl.interface(stopDriveChannel2)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_il_bJ2O_Eea2zvJAj9I-WQ" name="RestService107" path="/stopDriveChannel" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="StopDriveChannel" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_il_bKGO_Eea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Stop watching for changes to a resource." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_il_bK2O_Eea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_il_bLGO_Eea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_il_bKmO_Eea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_il_bKWO_Eea2zvJAj9I-WQ" bindingName="RestService107"/>
+  </sca:service>
+  <sca:service xmi:id="_9IZ38mPBEea2zvJAj9I-WQ" name="updateComment" promote="ComponentupdateFileComment/updateComment">
+    <sca:interface.wsdl xmi:id="_9IafAGPBEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160504PLT#wsdl.interface(updateComment1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_9IcUMGPBEea2zvJAj9I-WQ" name="RestService109" path="/updateComment" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="UpdateComment" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_9Ic7QGPBEea2zvJAj9I-WQ" operationName="put" httpMethod="PUT" notes="Updates an existing comment." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_9IfXgWPBEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_9IfXgmPBEea2zvJAj9I-WQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_9IfXg2PBEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_9IfXhGPBEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_9IfXgGPBEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_9Ic7QWPBEea2zvJAj9I-WQ" bindingName="RestService109"/>
+  </sca:service>
+  <sca:service xmi:id="_LZ-gImPCEea2zvJAj9I-WQ" name="patchComment" promote="ComponentpatchFileComment/patchComment">
+    <sca:interface.wsdl xmi:id="_LZ-gJmPCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816155549PLT#wsdl.interface(patchComment1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_LaAVUGPCEea2zvJAj9I-WQ" name="RestService110" path="/patchComment" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="PatchComment" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_LaA8YGPCEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Updates an existing comment. This method supports patch semantics." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_LaBjcWPCEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_LaBjcmPCEea2zvJAj9I-WQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_LaBjc2PCEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_LaBjdGPCEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_LaBjcGPCEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_LaA8YWPCEea2zvJAj9I-WQ" bindingName="RestService110"/>
+  </sca:service>
+  <sca:service xmi:id="_gzYGomPCEea2zvJAj9I-WQ" name="insertComment" promote="ComponentinsertFileComment/insertComment">
+    <sca:interface.wsdl xmi:id="_gzYGpmPCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160347PLT#wsdl.interface(insertComment1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_gzZ70GPCEea2zvJAj9I-WQ" name="RestService111" path="/insertComment" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="InsertComment" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_gzai4GPCEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Creates a new comment on the given file" responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_gzbxAWPCEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_gzbxAmPCEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_gzbxA2PCEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_gzbxAGPCEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_gzai4WPCEea2zvJAj9I-WQ" bindingName="RestService111"/>
+  </sca:service>
+  <sca:service xmi:id="_wCgjQmPCEea2zvJAj9I-WQ" name="insertParent" promote="ComponentinsertFileParent/insertParent">
+    <sca:interface.wsdl xmi:id="_wChKU2PCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816133858PLT#wsdl.interface(insertParent1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_wCi_gGPCEea2zvJAj9I-WQ" name="RestService112" path="/insertParent" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="InsertParent" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_wCjmkGPCEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Adds a parent folder for a file." clientRequestType="multipart/form-data" responseStyle="element">
+        <parameters xmi:id="_wCk0sWPCEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_wCk0smPCEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_wCk0s2PCEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+          <parameterMapping xmi:id="_wCk0tGPCEea2zvJAj9I-WQ" parameterName="id" parameterType="formData" dataType="string" required="true" description="The ID of the parent."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_wCk0sGPCEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_wCjmkWPCEea2zvJAj9I-WQ" bindingName="RestService112"/>
+  </sca:service>
+  <sca:service xmi:id="__vs04mPCEea2zvJAj9I-WQ" name="getRealTime" promote="ComponentgetFileRealtime/getRealTime">
+    <sca:interface.wsdl xmi:id="__vs05mPCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160739PLT#wsdl.interface(getRealTime3)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="__vuqEGPCEea2zvJAj9I-WQ" name="RestService113" path="/getRealTime" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="GetRealTime" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="__vvRIGPCEea2zvJAj9I-WQ" operationName="get" httpMethod="GET" notes="Exports the contents of the Realtime API data model associated with this file as JSON." responseStyle="element">
+        <parameters xmi:id="__vv4MWPCEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="__vv4MmPCEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file that the Realtime API data model is associated with."/>
+          <parameterMapping xmi:id="__vv4M2PCEea2zvJAj9I-WQ" parameterName="revision" parameterType="Query" dataType="integer#int32" description="The revision of the Realtime API data model to export. Revisions start at 1 (the initial empty data model) and are incremented with each change. If this parameter is excluded, the most recent data model will be returned."/>
+          <parameterMapping xmi:id="__vv4NGPCEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="__vv4MGPCEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="__vvRIWPCEea2zvJAj9I-WQ" bindingName="RestService113"/>
+  </sca:service>
+  <sca:service xmi:id="_O7BIgmPDEea2zvJAj9I-WQ" name="patchRevisions" promote="ComponentpatchFileRevision/patchRevisions">
+    <sca:interface.wsdl xmi:id="_O7BIhmPDEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816155404PLT#wsdl.interface(patchRevisions1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_O7C9sGPDEea2zvJAj9I-WQ" name="RestService114" path="/patchRevisions" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="PatchRevisions" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_O7DkwGPDEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Updates a revision. This method supports patch semantics." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_O7Ey4WPDEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_O7Ey4mPDEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_O7Ey42PDEea2zvJAj9I-WQ" parameterName="revisionId" parameterType="Query" dataType="string" required="true" description="The ID for the revision."/>
+          <parameterMapping xmi:id="_O7Ey5GPDEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_O7Ey4GPDEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_O7DkwWPDEea2zvJAj9I-WQ" bindingName="RestService114"/>
+  </sca:service>
+  <sca:service xmi:id="_31HugmPDEea2zvJAj9I-WQ" name="updateRevision" promote="ComponentupdateFileRevision/updateRevision">
+    <sca:interface.wsdl xmi:id="_31HuhmPDEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816150319PLT#wsdl.interface(updateRevision1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_31Kx0GPDEea2zvJAj9I-WQ" name="RestService115" path="/updateRevision" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="UpdateRevision" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_31L_8GPDEea2zvJAj9I-WQ" operationName="put" httpMethod="PUT" notes="Updates a revision." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_31NOEWPDEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_31NOEmPDEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_31NOE2PDEea2zvJAj9I-WQ" parameterName="revisionId" parameterType="Query" dataType="string" required="true" description="The ID for the revision."/>
+          <parameterMapping xmi:id="_31NOFGPDEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_31NOEGPDEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_31L_8WPDEea2zvJAj9I-WQ" bindingName="RestService115"/>
+  </sca:service>
+  <sca:service xmi:id="_1NxcUmPEEea2zvJAj9I-WQ" name="updateReply" promote="ComponentupdateReplyToComment/updateReply">
+    <sca:interface.wsdl xmi:id="_1NyDYGPEEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816150133PLT#wsdl.interface(updateReply1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_1N1GsGPEEea2zvJAj9I-WQ" name="RestService116" path="/updateReply" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="UpdateReply" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_1N1twGPEEea2zvJAj9I-WQ" operationName="put" httpMethod="PUT" notes="Updates an existing reply" responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_1N274WPEEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_1N274mPEEea2zvJAj9I-WQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_1N2742PEEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_1N275GPEEea2zvJAj9I-WQ" parameterName="replyId" parameterType="Query" dataType="string" required="true" description="The ID of the reply."/>
+          <parameterMapping xmi:id="_1N275WPEEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_1N274GPEEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_1N1twWPEEea2zvJAj9I-WQ" bindingName="RestService116"/>
+  </sca:service>
+  <sca:service xmi:id="_GgObkGPFEea2zvJAj9I-WQ" name="patchReply" promote="ComponentpatchReplyToComment/patchReply">
+    <sca:interface.wsdl xmi:id="_GgOblGPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816162315PLT#wsdl.interface(patchReply1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_GgQQwGPFEea2zvJAj9I-WQ" name="RestService117" path="/patchReply" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="PatchReply" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_GgQ30GPFEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Updates an existing reply. This method supports patch semantics." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_GgRe4WPFEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_GgRe4mPFEea2zvJAj9I-WQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_GgRe42PFEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_GgRe5GPFEea2zvJAj9I-WQ" parameterName="replyId" parameterType="Query" dataType="string" required="true" description="The ID of the reply."/>
+          <parameterMapping xmi:id="_GgRe5WPFEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_GgRe4GPFEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_GgQ30WPFEea2zvJAj9I-WQ" bindingName="RestService117"/>
+  </sca:service>
+  <sca:service xmi:id="_Tmj_smPFEea2zvJAj9I-WQ" name="insertReply" promote="ComponentinsertReplyToComment/insertReply">
+    <sca:interface.wsdl xmi:id="_Tmj_tmPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816150002PLT#wsdl.interface(insertReply1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Tml04GPFEea2zvJAj9I-WQ" name="RestService118" path="/insertReply" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="InsertReply" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_Tmmb8GPFEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Creates a new reply to the given comment." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_TmnDAWPFEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_TmnDAmPFEea2zvJAj9I-WQ" parameterName="commentId" parameterType="Query" dataType="string" required="true" description="The ID of the comment."/>
+          <parameterMapping xmi:id="_TmnDA2PFEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_TmnDBGPFEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_TmnDAGPFEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Tmmb8WPFEea2zvJAj9I-WQ" bindingName="RestService118"/>
+  </sca:service>
+  <sca:service xmi:id="_miyZIWPFEea2zvJAj9I-WQ" name="updateProperty" promote="ComponentupdateFileProperty/updateProperty">
+    <sca:interface.wsdl xmi:id="_miyZJWPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816145814PLT#wsdl.interface(updateProperty1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_mi2DgGPFEea2zvJAj9I-WQ" name="RestService119" path="/updateProperty" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="UpdateProperty" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_mi2qkGPFEea2zvJAj9I-WQ" operationName="put" httpMethod="PUT" notes="Updates a property, or adds it if it doesn't exist." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_mi34sWPFEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_mi34smPFEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_mi34s2PFEea2zvJAj9I-WQ" parameterName="propertyKey" parameterType="Query" dataType="string" required="true" description="The key of the property."/>
+          <parameterMapping xmi:id="_mi34tGPFEea2zvJAj9I-WQ" parameterName="visibility" parameterType="Query" dataType="string" description="The visibility of the property."/>
+          <parameterMapping xmi:id="_mi34tWPFEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_mi34sGPFEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_mi2qkWPFEea2zvJAj9I-WQ" bindingName="RestService119"/>
+  </sca:service>
+  <sca:service xmi:id="_18d44GPFEea2zvJAj9I-WQ" name="patchProperty" promote="ComponentpatchFileProperty/patchProperty">
+    <sca:interface.wsdl xmi:id="_18d45GPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160154PLT#wsdl.interface(patchProperty1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_18gVIGPFEea2zvJAj9I-WQ" name="RestService120" path="/patchProperty" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="PatchProperty" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_18g8MGPFEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Updates a property, or adds it if it doesn't exist. This method supports patch semantics." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_18iKUWPFEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_18iKUmPFEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_18iKU2PFEea2zvJAj9I-WQ" parameterName="propertyKey" parameterType="Query" dataType="string" required="true" description="The key of the property."/>
+          <parameterMapping xmi:id="_18iKVGPFEea2zvJAj9I-WQ" parameterName="visibility" parameterType="Query" dataType="string" description="The visibility of the property."/>
+          <parameterMapping xmi:id="_18iKVWPFEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_18iKUGPFEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_18g8MWPFEea2zvJAj9I-WQ" bindingName="RestService120"/>
+  </sca:service>
+  <sca:service xmi:id="_DU-yImPGEea2zvJAj9I-WQ" name="insertProperty" promote="ComponentinsertFileProperty/insertProperty">
+    <sca:interface.wsdl xmi:id="_DU-yJmPGEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816145520PLT#wsdl.interface(insertProperty1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_DVAnUGPGEea2zvJAj9I-WQ" name="RestService121" path="/insertProperty" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="InsertProperty" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_DVBOYGPGEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Adds a property to a file, or updates it if it already exists." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_DVB1cWPGEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_DVB1cmPGEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file."/>
+          <parameterMapping xmi:id="_DVB1c2PGEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_DVB1cGPGEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_DVBOYWPGEea2zvJAj9I-WQ" bindingName="RestService121"/>
+  </sca:service>
+  <sca:service xmi:id="_x5zfQmPGEea2zvJAj9I-WQ" name="patchPermissions" promote="ComponentpatchFilePermission/patchPermissions">
+    <sca:interface.wsdl xmi:id="_x5zfRmPGEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816155201PLT#wsdl.interface(patchPermissions1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_x51UcGPGEea2zvJAj9I-WQ" name="RestService124" path="/patchPermissions" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="PatchPermissions" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_x517gGPGEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Updates a permission using patch semantics." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_x53JoWPGEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_x53JomPGEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_x53Jo2PGEea2zvJAj9I-WQ" parameterName="permissionId" parameterType="Query" dataType="string" required="true" description="The ID for the permission."/>
+          <parameterMapping xmi:id="_x53JpGPGEea2zvJAj9I-WQ" parameterName="removeExpiration" parameterType="Query" dataType="boolean" description="Whether to remove the expiration date. (Default: false)"/>
+          <parameterMapping xmi:id="_x53JpWPGEea2zvJAj9I-WQ" parameterName="transferOwnership" parameterType="Query" dataType="boolean" description="Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if the specified role is not 'owner'. (Default: false)"/>
+          <parameterMapping xmi:id="_x53JpmPGEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_x53JoGPGEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_x517gWPGEea2zvJAj9I-WQ" bindingName="RestService124"/>
+  </sca:service>
+  <sca:service xmi:id="_H5tFEmPHEea2zvJAj9I-WQ" name="watchFile" promote="ComponentwatchFileChange/watchFile">
+    <sca:interface.wsdl xmi:id="_H5tsIWPHEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816154448PLT#wsdl.interface(watchFile1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_H5u6QGPHEea2zvJAj9I-WQ" name="RestService125" path="/watchFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="WatchFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_H5vhUGPHEea2zvJAj9I-WQ" operationName="post" httpMethod="POST" notes="Start watching for changes to a file." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_H5wIYWPHEea2zvJAj9I-WQ">
+          <parameterMapping xmi:id="_H5wIYmPHEea2zvJAj9I-WQ" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file to watch."/>
+          <parameterMapping xmi:id="_H5wIY2PHEea2zvJAj9I-WQ" parameterName="revisionId" parameterType="Query" dataType="string" description="Specifies the Revision ID that should be downloaded. Ignored unless alt=media is specified."/>
+          <parameterMapping xmi:id="_H5wIZGPHEea2zvJAj9I-WQ" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_H5wIYGPHEea2zvJAj9I-WQ"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_H5vhUWPHEea2zvJAj9I-WQ" bindingName="RestService125"/>
+  </sca:service>
+  <sca:service xmi:id="_ujaIxGRWEeaqevRYaj1eQw" name="patchFile" promote="ComponentfilePatch/patchFile">
+    <sca:interface.wsdl xmi:id="_ujaIyGRWEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160816154635PLT#wsdl.interface(patchFile1)" scaext:wsdlLocation="../Processes/googleapisuite/drive/file/filePatch.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ujj5wGRWEeaqevRYaj1eQw" name="RestService56" path="/patchFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="PatchFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_ujlH4GRWEeaqevRYaj1eQw" operationName="post" httpMethod="POST" notes="Updates file metadata. This method supports patch semantics" responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_ujoLMWRWEeaqevRYaj1eQw">
+          <parameterMapping xmi:id="_ujoLMmRWEeaqevRYaj1eQw" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID of the file to update."/>
+          <parameterMapping xmi:id="_ujoLM2RWEeaqevRYaj1eQw" parameterName="addParents" parameterType="Query" dataType="string" description="Comma-separated list of parent IDs to add."/>
+          <parameterMapping xmi:id="_ujoLNGRWEeaqevRYaj1eQw" parameterName="convert" parameterType="Query" dataType="boolean" description="This parameter is deprecated and has no function. (Default: false)"/>
+          <parameterMapping xmi:id="_ujoLNWRWEeaqevRYaj1eQw" parameterName="modifiedDateBehavior" parameterType="Query" dataType="string" description="Determines the behavior in which modifiedDate is updated. This overrides setModifiedDate. &#xA;&#xA;Acceptable values are:&#xA;&quot;fromBody&quot;: Set modifiedDate to the value provided in the body of the request. No change if no value was provided.&#xA;&quot;fromBodyIfNeeded&quot;: Set modifiedDate to the value provided in the body of the request depending on other contents of the update.&#xA;&quot;fromBodyOrNow&quot;: Set modifiedDate to the value provided in the body of the request, or to the current time if no value was provided.&#xA;&quot;noChange&quot;: Maintain the previous value of modifiedDate.&#xA;&quot;now&quot;: Set modifiedDate to the current time.&#xA;&quot;nowIfNeeded&quot;: Set modifiedDate to the current time depending on contents of the update."/>
+          <parameterMapping xmi:id="_ujoLNmRWEeaqevRYaj1eQw" parameterName="newRevision" parameterType="Query" dataType="boolean" description="Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained, see the Drive Help Center. (Default: true)"/>
+          <parameterMapping xmi:id="_ujoLN2RWEeaqevRYaj1eQw" parameterName="ocr" parameterType="Query" dataType="boolean" description="Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default: false)"/>
+          <parameterMapping xmi:id="_ujoLOGRWEeaqevRYaj1eQw" parameterName="ocrLanguage" parameterType="Query" dataType="string" description="If ocr is true, hints at the language to use. Valid values are BCP 47 codes."/>
+          <parameterMapping xmi:id="_ujoLOWRWEeaqevRYaj1eQw" parameterName="pinned" parameterType="Query" dataType="boolean" description="Whether to pin the new revision. A file can have a maximum of 200 pinned revisions. (Default: false)"/>
+          <parameterMapping xmi:id="_ujoLOmRWEeaqevRYaj1eQw" parameterName="removeParents" parameterType="Query" dataType="string" description="Comma-separated list of parent IDs to remove."/>
+          <parameterMapping xmi:id="_ujoLO2RWEeaqevRYaj1eQw" parameterName="setModifiedDate" parameterType="Query" dataType="boolean" description="Whether to set the modified date with the supplied modified date. (Default: false)"/>
+          <parameterMapping xmi:id="_ujoLPGRWEeaqevRYaj1eQw" parameterName="timedTextLanguage" parameterType="Query" dataType="string" description="The language of the timed text."/>
+          <parameterMapping xmi:id="_ujoLPWRWEeaqevRYaj1eQw" parameterName="timedTextTrackName" parameterType="Query" dataType="string" description="The timed text track name."/>
+          <parameterMapping xmi:id="_ujoLPmRWEeaqevRYaj1eQw" parameterName="updateViewedDate" parameterType="Query" dataType="boolean" description="Whether to update the view date after successfully updating the file. (Default: true)"/>
+          <parameterMapping xmi:id="_ujoLP2RWEeaqevRYaj1eQw" parameterName="useContentAsIndexableText" parameterType="Query" dataType="boolean" description="Whether to use the content as indexable text. (Default: false)"/>
+          <parameterMapping xmi:id="_ujoLQGRWEeaqevRYaj1eQw" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_ujoLMGRWEeaqevRYaj1eQw"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_ujlH4WRWEeaqevRYaj1eQw" bindingName="RestService56"/>
+  </sca:service>
+  <sca:service xmi:id="_tZKPcmSTEeaqevRYaj1eQw" name="insertPermission" promote="ComponentinsertFilePermission/insertPermission">
+    <sca:interface.wsdl xmi:id="_tZK2g2STEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160817213008PLT#wsdl.interface(insertPermission)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_tZLdkGSTEeaqevRYaj1eQw" name="RestService123" path="/insertPermission" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="InsertPermission" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_tZMEoGSTEeaqevRYaj1eQw" operationName="post" httpMethod="POST" notes="Inserts a permission for a file." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_tZNSwWSTEeaqevRYaj1eQw">
+          <parameterMapping xmi:id="_tZNSwmSTEeaqevRYaj1eQw" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_tZNSw2STEeaqevRYaj1eQw" parameterName="emailMessage" parameterType="Query" dataType="string" description="A custom message to include in notification emails."/>
+          <parameterMapping xmi:id="_tZNSxGSTEeaqevRYaj1eQw" parameterName="sendNotificationEmails" parameterType="Query" dataType="boolean" description="Whether to send notification emails when sharing to users or groups. This parameter is ignored and an email is sent if the role is owner. (Default: true)"/>
+          <parameterMapping xmi:id="_tZNSxWSTEeaqevRYaj1eQw" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_tZNSwGSTEeaqevRYaj1eQw"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_tZMEoWSTEeaqevRYaj1eQw" bindingName="RestService123"/>
+  </sca:service>
+  <sca:service xmi:id="_OUEKQmSUEeaqevRYaj1eQw" name="updatePermission" promote="ComponentupdateFilePermission/updatePermission">
+    <sca:interface.wsdl xmi:id="_OUExUWSUEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160817213342PLT#wsdl.interface(updatePermission)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_OUFYYGSUEeaqevRYaj1eQw" name="RestService137" path="/updatePermission" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="UpdatePermission" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_OUF_cGSUEeaqevRYaj1eQw" operationName="put" httpMethod="PUT" notes="Updates a permission." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_OUHNkGSUEeaqevRYaj1eQw">
+          <parameterMapping xmi:id="_OUHNkWSUEeaqevRYaj1eQw" parameterName="fileId" parameterType="Query" dataType="string" required="true" description="The ID for the file."/>
+          <parameterMapping xmi:id="_OUHNkmSUEeaqevRYaj1eQw" parameterName="permissionId" parameterType="Query" dataType="string" required="true" description="The ID for the permission."/>
+          <parameterMapping xmi:id="_OUHNk2SUEeaqevRYaj1eQw" parameterName="removeExpiration" parameterType="Query" dataType="boolean" description="Whether to remove the expiration date. (Default: false)"/>
+          <parameterMapping xmi:id="_OUHNlGSUEeaqevRYaj1eQw" parameterName="transferOwnership" parameterType="Query" dataType="boolean" description="Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if the specified role is not 'owner'. (Default: false)"/>
+          <parameterMapping xmi:id="_OUHNlWSUEeaqevRYaj1eQw" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_OUGmgGSUEeaqevRYaj1eQw"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_OUF_cWSUEeaqevRYaj1eQw" bindingName="RestService137"/>
+  </sca:service>
+  <sca:service xmi:id="_alU1omSWEeaqevRYaj1eQw" name="insertChildren1" promote="ComponentinsertChildInParent/insertChildren">
+    <sca:interface.wsdl xmi:id="_alVcsGSWEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160817214935PLT#wsdl.interface(insertChildren)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_alWDwGSWEeaqevRYaj1eQw" name="RestService122" path="/insertChildren" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="InsertChildren" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_alWq0GSWEeaqevRYaj1eQw" operationName="post" httpMethod="POST" notes="Inserts a file into a folder." responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_ala8QWSWEeaqevRYaj1eQw">
+          <parameterMapping xmi:id="_ala8QmSWEeaqevRYaj1eQw" parameterName="folderId" parameterType="Query" dataType="string" required="true" description="The ID of the folder."/>
+          <parameterMapping xmi:id="_ala8Q2SWEeaqevRYaj1eQw" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_ala8QGSWEeaqevRYaj1eQw"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_alXR4GSWEeaqevRYaj1eQw" bindingName="RestService122"/>
+  </sca:service>
+  <sca:service xmi:id="_-nKTYGXOEeaf3ZZs6kMybA" name="insertFile" promote="ComponentuploadFile/insertFile">
+    <sca:interface.wsdl xmi:id="_-nXHsGXOEeaf3ZZs6kMybA" interface="http://xmlns.example.com/20160817163020PLT#wsdl.interface(insertFile1)" scaext:wsdlLocation="../Processes/googleapisuite/drive/file/uploadFile.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_-nfqkGXOEeaf3ZZs6kMybA" name="RestService" path="/insertFile" docBasePath="http://localhost:7777/GoogleDriveAPI.module" docResourcePath="InsertFile" basePath="/" connector="googleapisuite.module.genericConnector" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GoogleDriveAPI_1.0.0.json">
+      <operation xmi:id="_-nhfwGXOEeaf3ZZs6kMybA" operationName="post" httpMethod="POST" notes="Insert a new file." clientRequestType="multipart/form-data" responseStyle="element">
+        <parameters xmi:id="_-noNcWXOEeaf3ZZs6kMybA">
+          <parameterMapping xmi:id="_-noNcmXOEeaf3ZZs6kMybA" parameterName="uploadType" parameterType="Query" dataType="string" required="true" description="The type of upload request to the /upload URI. Acceptable values are:&#xA;media - Simple upload. Upload the media only, without any metadata.&#xA;multipart - Multipart upload. Upload both the media and its metadata, in a single request."/>
+          <parameterMapping xmi:id="_-noNc2XOEeaf3ZZs6kMybA" parameterName="OAuth" parameterType="Header" dataType="string" required="true" description="It can be obtained from OAuth- getAccessToken method."/>
+          <parameterMapping xmi:id="_-noNdGXOEeaf3ZZs6kMybA" parameterName="fileContentType" parameterType="Header" dataType="string" required="true" description="File ContentType"/>
+          <parameterMapping xmi:id="_-noNdWXOEeaf3ZZs6kMybA" parameterName="file" parameterType="formData" dataType="file" contentType="application/octet-stream" contentElement="parameters_4:content" required="true" description="File to upload"/>
+          <parameterMapping xmi:id="_-no0gGXOEeaf3ZZs6kMybA" parameterName="meta" parameterType="formData" dataType="string" description="meta-data"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_-noNcGXOEeaf3ZZs6kMybA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_-nhfwWXOEeaf3ZZs6kMybA" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_lDXakF4vEeagjOAUJJMcfw" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lDhLkF4vEeagjOAUJJMcfw" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lDhLkV4vEeagjOAUJJMcfw" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lDqVgF4vEeagjOAUJJMcfw" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lDqVgV4vEeagjOAUJJMcfw" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lD0GgF4vEeagjOAUJJMcfw" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_TjNNwGBkEea7SatQxD34DQ" name="ComponentlistFIles" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_TjNNwWBkEea7SatQxD34DQ" processName="googleapisuite.drive.file.listFiles"/>
+    <sca:service xmi:id="_d_Y4wGBkEea7SatQxD34DQ" name="listFiles">
+      <sca:interface.wsdl xmi:id="_d_Y4wWBkEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812134100PLT#wsdl.interface(listFiles)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_vkn0oGBlEea7SatQxD34DQ" name="ComponentcopyFile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_vkn0oWBlEea7SatQxD34DQ" processName="googleapisuite.drive.file.copyFile"/>
+    <sca:service xmi:id="_wSgOUGBlEea7SatQxD34DQ" name="copyFile">
+      <sca:interface.wsdl xmi:id="_wSgOUWBlEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135118PLT#wsdl.interface(copyFile)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_DdZ88GBmEea7SatQxD34DQ" name="ComponentdeleteFile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_DdZ88WBmEea7SatQxD34DQ" processName="googleapisuite.drive.file.deleteFile"/>
+    <sca:service xmi:id="_EK8_cGBmEea7SatQxD34DQ" name="deleteFile">
+      <sca:interface.wsdl xmi:id="_EK8_cWBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135331PLT#wsdl.interface(deleteFile)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Qmmn0GBmEea7SatQxD34DQ" name="ComponenttouchFile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Qmmn0WBmEea7SatQxD34DQ" processName="googleapisuite.drive.file.touchFile"/>
+    <sca:service xmi:id="_Rrkr0GBmEea7SatQxD34DQ" name="touchFile">
+      <sca:interface.wsdl xmi:id="_Rrkr0WBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135459PLT#wsdl.interface(touchFile)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_bzU-8GBmEea7SatQxD34DQ" name="ComponenttrashFile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_bzU-8WBmEea7SatQxD34DQ" processName="googleapisuite.drive.file.trashFile"/>
+    <sca:service xmi:id="_co58EGBmEea7SatQxD34DQ" name="trashFile">
+      <sca:interface.wsdl xmi:id="_co58EWBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135614PLT#wsdl.interface(trashFile)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_nOsPAGBmEea7SatQxD34DQ" name="ComponentuntrashFile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_nOsPAWBmEea7SatQxD34DQ" processName="googleapisuite.drive.file.untrashFile"/>
+    <sca:service xmi:id="_n7j8EGBmEea7SatQxD34DQ" name="untrashFile">
+      <sca:interface.wsdl xmi:id="_n7j8EWBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135731PLT#wsdl.interface(untrashFile)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_2joYsGBmEea7SatQxD34DQ" name="ComponentemptyTrash" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_2joYsWBmEea7SatQxD34DQ" processName="googleapisuite.drive.file.emptyTrash"/>
+    <sca:service xmi:id="_3cdeIGBmEea7SatQxD34DQ" name="emptyTrash">
+      <sca:interface.wsdl xmi:id="_3cdeIWBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812135914PLT#wsdl.interface(emptyTrash)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_9mHkAGBmEea7SatQxD34DQ" name="ComponentgenerateIds" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_9mHkAWBmEea7SatQxD34DQ" processName="googleapisuite.drive.file.generateIds"/>
+    <sca:service xmi:id="_-Xf9oGBmEea7SatQxD34DQ" name="generateIds">
+      <sca:interface.wsdl xmi:id="_-Xf9oWBmEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812140001PLT#wsdl.interface(generateIds)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_RTScwGBoEea7SatQxD34DQ" name="ComponentlistApps" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_RTScwWBoEea7SatQxD34DQ" processName="googleapisuite.drive.apps.listApps"/>
+    <sca:service xmi:id="_TIuUYGBoEea7SatQxD34DQ" name="listApps">
+      <sca:interface.wsdl xmi:id="_TIuUYWBoEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812140923PLT#wsdl.interface(listApps)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_iREzkGBoEea7SatQxD34DQ" name="ComponentgetApp" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_iREzkWBoEea7SatQxD34DQ" processName="googleapisuite.drive.apps.getApp"/>
+    <sca:service xmi:id="_i__IAGBoEea7SatQxD34DQ" name="getApp">
+      <sca:interface.wsdl xmi:id="_i__IAWBoEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812141117PLT#wsdl.interface(getApp)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_8NRP0GBoEea7SatQxD34DQ" name="ComponentlistChanges" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_8NRP0WBoEea7SatQxD34DQ" processName="googleapisuite.drive.changes.listChanges"/>
+    <sca:service xmi:id="_-A9bAGBoEea7SatQxD34DQ" name="listChanges">
+      <sca:interface.wsdl xmi:id="_-A-CEGBoEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812141411PLT#wsdl.interface(listChanges)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_NXSEwGBpEea7SatQxD34DQ" name="ComponentgetChange" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_NXSEwWBpEea7SatQxD34DQ" processName="googleapisuite.drive.changes.getChange"/>
+    <sca:service xmi:id="_OdA9wGBpEea7SatQxD34DQ" name="getChange">
+      <sca:interface.wsdl xmi:id="_OdA9wWBpEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812141606PLT#wsdl.interface(getChange)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_wxZM8GBpEea7SatQxD34DQ" name="ComponentlistChildren" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_wxZM8WBpEea7SatQxD34DQ" processName="googleapisuite.drive.children.listChildren"/>
+    <sca:service xmi:id="_yCFYwGBpEea7SatQxD34DQ" name="listChildren">
+      <sca:interface.wsdl xmi:id="_yCFYwWBpEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142004PLT#wsdl.interface(listChildren)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_BPmr0GBqEea7SatQxD34DQ" name="ComponentgetChild" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_BPmr0WBqEea7SatQxD34DQ" processName="googleapisuite.drive.children.getChild"/>
+    <sca:service xmi:id="_CHGUgGBqEea7SatQxD34DQ" name="getChild">
+      <sca:interface.wsdl xmi:id="_CHGUgWBqEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142154PLT#wsdl.interface(getChild)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_OIlJYGBqEea7SatQxD34DQ" name="ComponentdeleteChild" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_OIlJYWBqEea7SatQxD34DQ" processName="googleapisuite.drive.children.deleteChild"/>
+    <sca:service xmi:id="_PBK-QGBqEea7SatQxD34DQ" name="deleteChild">
+      <sca:interface.wsdl xmi:id="_PBK-QWBqEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142321PLT#wsdl.interface(deleteChild)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_pGycQGBqEea7SatQxD34DQ" name="ComponentlistParents" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_pGycQWBqEea7SatQxD34DQ" processName="googleapisuite.drive.parent.listParents"/>
+    <sca:service xmi:id="_p3SsIGBqEea7SatQxD34DQ" name="listParent">
+      <sca:interface.wsdl xmi:id="_p3SsIWBqEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142622PLT#wsdl.interface(listParent)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_IdkR4GBrEea7SatQxD34DQ" name="ComponentgetParent" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_IdkR4WBrEea7SatQxD34DQ" processName="googleapisuite.drive.parent.getParent"/>
+    <sca:service xmi:id="_JMNgkGBrEea7SatQxD34DQ" name="getParent">
+      <sca:interface.wsdl xmi:id="_JMNgkWBrEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812142952PLT#wsdl.interface(getParent)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_SltmkGBrEea7SatQxD34DQ" name="ComponentdeleteParent" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_SltmkWBrEea7SatQxD34DQ" processName="googleapisuite.drive.parent.deleteParent"/>
+    <sca:service xmi:id="_TeDj0GBrEea7SatQxD34DQ" name="deleteParent">
+      <sca:interface.wsdl xmi:id="_TeDj0WBrEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143100PLT#wsdl.interface(deleteParent)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_5l1MIGBrEea7SatQxD34DQ" name="ComponentlistRevisions" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_5l1MIWBrEea7SatQxD34DQ" processName="googleapisuite.drive.revisions.listRevisions"/>
+    <sca:service xmi:id="_8jpBEGBrEea7SatQxD34DQ" name="listRevisions">
+      <sca:interface.wsdl xmi:id="_8jpBEWBrEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143522PLT#wsdl.interface(listRevisions)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_IbDT8GBsEea7SatQxD34DQ" name="ComponentgetRevision" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_IbDT8WBsEea7SatQxD34DQ" processName="googleapisuite.drive.revisions.getRevision"/>
+    <sca:service xmi:id="_JWg2oGBsEea7SatQxD34DQ" name="getRevision">
+      <sca:interface.wsdl xmi:id="_JWg2oWBsEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143701PLT#wsdl.interface(getRevision)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_YoZsUGBsEea7SatQxD34DQ" name="ComponentdeleteRevision" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_YoZsUWBsEea7SatQxD34DQ" processName="googleapisuite.drive.revisions.deleteRevision"/>
+    <sca:service xmi:id="_Zhf3gGBsEea7SatQxD34DQ" name="deleteRevision">
+      <sca:interface.wsdl xmi:id="_Zhf3gWBsEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812143850PLT#wsdl.interface(deleteRevision)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_VsdqMGBtEea7SatQxD34DQ" name="ComponentlistPermissions" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_VsdqMWBtEea7SatQxD34DQ" processName="googleapisuite.drive.permissions.listPermissions"/>
+    <sca:service xmi:id="_Wv5dIGBtEea7SatQxD34DQ" name="listPermissions">
+      <sca:interface.wsdl xmi:id="_Wv5dIWBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144540PLT#wsdl.interface(listPermissions)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_goiWMGBtEea7SatQxD34DQ" name="ComponentgetPermission" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_goiWMWBtEea7SatQxD34DQ" processName="googleapisuite.drive.permissions.getPermission"/>
+    <sca:service xmi:id="_hP204GBtEea7SatQxD34DQ" name="getPermission">
+      <sca:interface.wsdl xmi:id="_hP204WBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144653PLT#wsdl.interface(getPermission)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_vAKjEGBtEea7SatQxD34DQ" name="ComponentgetIdForEmail" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_vAKjEWBtEea7SatQxD34DQ" processName="googleapisuite.drive.permissions.getIdForEmail"/>
+    <sca:service xmi:id="_vqrfsGBtEea7SatQxD34DQ" name="getIdForEmail">
+      <sca:interface.wsdl xmi:id="_vqrfsWBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144830PLT#wsdl.interface(getIdForEmail)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_5fmWYGBtEea7SatQxD34DQ" name="ComponentdeletePermission" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_5fmWYWBtEea7SatQxD34DQ" processName="googleapisuite.drive.permissions.deletePermission"/>
+    <sca:service xmi:id="_8PmY0GBtEea7SatQxD34DQ" name="deletePermission">
+      <sca:interface.wsdl xmi:id="_8PmY0WBtEea7SatQxD34DQ" interface="http://xmlns.example.com/20160812144940PLT#wsdl.interface(deletePermission)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_7QSacGB5Eea7SatQxD34DQ" name="ComponentlistComments" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7QSacWB5Eea7SatQxD34DQ" processName="googleapisuite.drive.comments.listComments"/>
+    <sca:service xmi:id="_9UrUEGB5Eea7SatQxD34DQ" name="listComments">
+      <sca:interface.wsdl xmi:id="_9UrUEWB5Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812161546PLT#wsdl.interface(listComments)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_dVPtkGB6Eea7SatQxD34DQ" name="ComponentdeleteComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_dVPtkWB6Eea7SatQxD34DQ" processName="googleapisuite.drive.comments.deleteComment"/>
+    <sca:service xmi:id="_eQWD4GB6Eea7SatQxD34DQ" name="deleteComment">
+      <sca:interface.wsdl xmi:id="_eQWD4WB6Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812161935PLT#wsdl.interface(deleteComment)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Xua9EGB8Eea7SatQxD34DQ" name="ComponentgetFileComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Xua9EWB8Eea7SatQxD34DQ" processName="googleapisuite.drive.comments.getFileComment"/>
+    <sca:service xmi:id="_ZSv2kGB8Eea7SatQxD34DQ" name="getFileComment">
+      <sca:interface.wsdl xmi:id="_ZSv2kWB8Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812163316PLT#wsdl.interface(getFileComment)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_zLxDAGB8Eea7SatQxD34DQ" name="ComponentlistReplies" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_zLxDAWB8Eea7SatQxD34DQ" processName="googleapisuite.drive.replies.listReplies"/>
+    <sca:service xmi:id="_0iciEGB8Eea7SatQxD34DQ" name="listReplies">
+      <sca:interface.wsdl xmi:id="_0iciEWB8Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812163620PLT#wsdl.interface(listReplies)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_FvT2sGB9Eea7SatQxD34DQ" name="ComponentgetReply" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_FvT2sWB9Eea7SatQxD34DQ" processName="googleapisuite.drive.replies.getReply"/>
+    <sca:service xmi:id="_HuMlQGB9Eea7SatQxD34DQ" name="getReply">
+      <sca:interface.wsdl xmi:id="_HuMlQWB9Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812163825PLT#wsdl.interface(getReply)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_UbL1QGB9Eea7SatQxD34DQ" name="ComponentdeleteReply" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_UbL1QWB9Eea7SatQxD34DQ" processName="googleapisuite.drive.replies.deleteReply"/>
+    <sca:service xmi:id="_Wdr4gGB9Eea7SatQxD34DQ" name="deleteReply">
+      <sca:interface.wsdl xmi:id="_Wdr4gWB9Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812164003PLT#wsdl.interface(deleteReply)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_5dS2AGB9Eea7SatQxD34DQ" name="ComponentlistProperties" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_5dS2AWB9Eea7SatQxD34DQ" processName="googleapisuite.drive.properties.listProperties"/>
+    <sca:service xmi:id="_6n0IYGB9Eea7SatQxD34DQ" name="listProperties">
+      <sca:interface.wsdl xmi:id="_6n0IYWB9Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812164412PLT#wsdl.interface(listProperties)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_iIKGIGB-Eea7SatQxD34DQ" name="ComponentgetProperty" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_iIKGIWB-Eea7SatQxD34DQ" processName="googleapisuite.drive.properties.getProperty"/>
+    <sca:service xmi:id="_jWzqkGB-Eea7SatQxD34DQ" name="getProperty">
+      <sca:interface.wsdl xmi:id="_jWzqkWB-Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812164845PLT#wsdl.interface(getProperty)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_78CT4GB-Eea7SatQxD34DQ" name="ComponentdeleteProperty" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_78CT4WB-Eea7SatQxD34DQ" processName="googleapisuite.drive.properties.deleteProperty"/>
+    <sca:service xmi:id="_9d9ZoGB-Eea7SatQxD34DQ" name="deleteProperty">
+      <sca:interface.wsdl xmi:id="_9d9ZoWB-Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812165138PLT#wsdl.interface(deleteProperty)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_0WAhMGB_Eea7SatQxD34DQ" name="ComponentgetFile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_0WAhMWB_Eea7SatQxD34DQ" processName="googleapisuite.drive.file.getFile"/>
+    <sca:service xmi:id="_1kg7sGB_Eea7SatQxD34DQ" name="getFile">
+      <sca:interface.wsdl xmi:id="_1kg7sWB_Eea7SatQxD34DQ" interface="http://xmlns.example.com/20160812165756PLT#wsdl.interface(getFile)" scaext:wsdlLocation="../Processes/googleapisuite/drive/file/getFile.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_AC72wGO_Eea2zvJAj9I-WQ" name="Componentabout" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_AC72wWO_Eea2zvJAj9I-WQ" processName="googleapisuite.drive.about.about"/>
+    <sca:service xmi:id="_AC72wmO_Eea2zvJAj9I-WQ" name="aboutDrive">
+      <sca:interface.wsdl xmi:id="_AC72w2O_Eea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816154951PLT#wsdl.interface(aboutDrive3)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Ngdy4GO_Eea2zvJAj9I-WQ" name="ComponentwatchChange" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Ngdy4WO_Eea2zvJAj9I-WQ" processName="googleapisuite.drive.changes.watchChange"/>
+    <sca:service xmi:id="_Ngm80GO_Eea2zvJAj9I-WQ" name="watchChanges">
+      <sca:interface.wsdl xmi:id="_Ngm80WO_Eea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816154301PLT#wsdl.interface(watchChanges1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_aulaAGO_Eea2zvJAj9I-WQ" name="ComponentstopDriveWatchChannel" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_aulaAWO_Eea2zvJAj9I-WQ" processName="googleapisuite.drive.channel.stopDriveWatchChannel"/>
+    <sca:service xmi:id="_il_bIGO_Eea2zvJAj9I-WQ" name="stopDriveChannel">
+      <sca:interface.wsdl xmi:id="_il_bIWO_Eea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816164554PLT#wsdl.interface(stopDriveChannel2)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_9IYp0GPBEea2zvJAj9I-WQ" name="ComponentupdateFileComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_9IYp0WPBEea2zvJAj9I-WQ" processName="googleapisuite.drive.comments.updateFileComment"/>
+    <sca:service xmi:id="_9IZ38GPBEea2zvJAj9I-WQ" name="updateComment">
+      <sca:interface.wsdl xmi:id="_9IZ38WPBEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160504PLT#wsdl.interface(updateComment1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_LZ95EGPCEea2zvJAj9I-WQ" name="ComponentpatchFileComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_LZ95EWPCEea2zvJAj9I-WQ" processName="googleapisuite.drive.comments.patchFileComment"/>
+    <sca:service xmi:id="_LZ-gIGPCEea2zvJAj9I-WQ" name="patchComment">
+      <sca:interface.wsdl xmi:id="_LZ-gIWPCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816155549PLT#wsdl.interface(patchComment1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_gzW4gGPCEea2zvJAj9I-WQ" name="ComponentinsertFileComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_gzW4gWPCEea2zvJAj9I-WQ" processName="googleapisuite.drive.comments.insertFileComment"/>
+    <sca:service xmi:id="_gzYGoGPCEea2zvJAj9I-WQ" name="insertComment">
+      <sca:interface.wsdl xmi:id="_gzYGoWPCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160347PLT#wsdl.interface(insertComment1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_wCf8MGPCEea2zvJAj9I-WQ" name="ComponentinsertFileParent" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_wCf8MWPCEea2zvJAj9I-WQ" processName="googleapisuite.drive.parent.insertFileParent"/>
+    <sca:service xmi:id="_wCgjQGPCEea2zvJAj9I-WQ" name="insertParent">
+      <sca:interface.wsdl xmi:id="_wCgjQWPCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816133858PLT#wsdl.interface(insertParent1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="__vrmwGPCEea2zvJAj9I-WQ" name="ComponentgetFileRealtime" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="__vrmwWPCEea2zvJAj9I-WQ" processName="googleapisuite.drive.realtime.getFileRealtime"/>
+    <sca:service xmi:id="__vs04GPCEea2zvJAj9I-WQ" name="getRealTime">
+      <sca:interface.wsdl xmi:id="__vs04WPCEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160739PLT#wsdl.interface(getRealTime3)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_O7AhcGPDEea2zvJAj9I-WQ" name="ComponentpatchFileRevision" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_O7AhcWPDEea2zvJAj9I-WQ" processName="googleapisuite.drive.revisions.patchFileRevision"/>
+    <sca:service xmi:id="_O7BIgGPDEea2zvJAj9I-WQ" name="patchRevisions">
+      <sca:interface.wsdl xmi:id="_O7BIgWPDEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816155404PLT#wsdl.interface(patchRevisions1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_31GgYGPDEea2zvJAj9I-WQ" name="ComponentupdateFileRevision" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_31GgYWPDEea2zvJAj9I-WQ" processName="googleapisuite.drive.revisions.updateFileRevision"/>
+    <sca:service xmi:id="_31HugGPDEea2zvJAj9I-WQ" name="updateRevision">
+      <sca:interface.wsdl xmi:id="_31HugWPDEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816150319PLT#wsdl.interface(updateRevision1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_1NwOMGPEEea2zvJAj9I-WQ" name="ComponentupdateReplyToComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_1NwOMWPEEea2zvJAj9I-WQ" processName="googleapisuite.drive.replies.updateReplyToComment"/>
+    <sca:service xmi:id="_1NxcUGPEEea2zvJAj9I-WQ" name="updateReply">
+      <sca:interface.wsdl xmi:id="_1NxcUWPEEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816150133PLT#wsdl.interface(updateReply1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_GgMmYGPFEea2zvJAj9I-WQ" name="ComponentpatchReplyToComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_GgMmYWPFEea2zvJAj9I-WQ" processName="googleapisuite.drive.replies.patchReplyToComment"/>
+    <sca:service xmi:id="_GgN0gGPFEea2zvJAj9I-WQ" name="patchReply">
+      <sca:interface.wsdl xmi:id="_GgN0gWPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816162315PLT#wsdl.interface(patchReply1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_TmixkGPFEea2zvJAj9I-WQ" name="ComponentinsertReplyToComment" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_TmixkWPFEea2zvJAj9I-WQ" processName="googleapisuite.drive.replies.insertReplyToComment"/>
+    <sca:service xmi:id="_Tmj_sGPFEea2zvJAj9I-WQ" name="insertReply">
+      <sca:interface.wsdl xmi:id="_Tmj_sWPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816150002PLT#wsdl.interface(insertReply1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_miwj8GPFEea2zvJAj9I-WQ" name="ComponentupdateFileProperty" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_miwj8WPFEea2zvJAj9I-WQ" processName="googleapisuite.drive.properties.updateFileProperty"/>
+    <sca:service xmi:id="_mixyEGPFEea2zvJAj9I-WQ" name="updateProperty">
+      <sca:interface.wsdl xmi:id="_miyZIGPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816145814PLT#wsdl.interface(updateProperty1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_18cqwGPFEea2zvJAj9I-WQ" name="ComponentpatchFileProperty" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_18cqwWPFEea2zvJAj9I-WQ" processName="googleapisuite.drive.properties.patchFileProperty"/>
+    <sca:service xmi:id="_18dR0GPFEea2zvJAj9I-WQ" name="patchProperty">
+      <sca:interface.wsdl xmi:id="_18dR0WPFEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816160154PLT#wsdl.interface(patchProperty1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_DU-LEGPGEea2zvJAj9I-WQ" name="ComponentinsertFileProperty" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_DU-LEWPGEea2zvJAj9I-WQ" processName="googleapisuite.drive.properties.insertFileProperty"/>
+    <sca:service xmi:id="_DU-yIGPGEea2zvJAj9I-WQ" name="insertProperty">
+      <sca:interface.wsdl xmi:id="_DU-yIWPGEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816145520PLT#wsdl.interface(insertProperty1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_x5y4MGPGEea2zvJAj9I-WQ" name="ComponentpatchFilePermission" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_x5y4MWPGEea2zvJAj9I-WQ" processName="googleapisuite.drive.permissions.patchFilePermission"/>
+    <sca:service xmi:id="_x5zfQGPGEea2zvJAj9I-WQ" name="patchPermissions">
+      <sca:interface.wsdl xmi:id="_x5zfQWPGEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816155201PLT#wsdl.interface(patchPermissions1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_H5seAGPHEea2zvJAj9I-WQ" name="ComponentwatchFileChange" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_H5seAWPHEea2zvJAj9I-WQ" processName="googleapisuite.drive.file.watchFileChange"/>
+    <sca:service xmi:id="_H5tFEGPHEea2zvJAj9I-WQ" name="watchFile">
+      <sca:interface.wsdl xmi:id="_H5tFEWPHEea2zvJAj9I-WQ" interface="http://xmlns.example.com/20160816154448PLT#wsdl.interface(watchFile1)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_ujaIwGRWEeaqevRYaj1eQw" name="ComponentfilePatch" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_ujaIwWRWEeaqevRYaj1eQw" processName="googleapisuite.drive.file.filePatch"/>
+    <sca:service xmi:id="_ujaIwmRWEeaqevRYaj1eQw" name="patchFile">
+      <sca:interface.wsdl xmi:id="_ujaIw2RWEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160816154635PLT#wsdl.interface(patchFile1)" scaext:wsdlLocation="../Processes/googleapisuite/drive/file/filePatch.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_rF4lQGSTEeaqevRYaj1eQw" name="ComponentinsertFilePermission" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_rF4lQWSTEeaqevRYaj1eQw" processName="googleapisuite.drive.permissions.insertFilePermission"/>
+    <sca:service xmi:id="_tZKPcGSTEeaqevRYaj1eQw" name="insertPermission">
+      <sca:interface.wsdl xmi:id="_tZKPcWSTEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160817213008PLT#wsdl.interface(insertPermission)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_K8KaUGSUEeaqevRYaj1eQw" name="ComponentupdateFilePermission" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_K8LBYGSUEeaqevRYaj1eQw" processName="googleapisuite.drive.permissions.updateFilePermission"/>
+    <sca:service xmi:id="_OUEKQGSUEeaqevRYaj1eQw" name="updatePermission">
+      <sca:interface.wsdl xmi:id="_OUEKQWSUEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160817213342PLT#wsdl.interface(updatePermission)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_Y3QKQGSWEeaqevRYaj1eQw" name="ComponentinsertChildInParent" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Y3QKQWSWEeaqevRYaj1eQw" processName="googleapisuite.drive.children.insertChildren"/>
+    <sca:service xmi:id="_alU1oGSWEeaqevRYaj1eQw" name="insertChildren">
+      <sca:interface.wsdl xmi:id="_alU1oWSWEeaqevRYaj1eQw" interface="http://xmlns.example.com/20160817214935PLT#wsdl.interface(insertChildren)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_-m_UQGXOEeaf3ZZs6kMybA" name="ComponentuploadFile" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_-m_UQWXOEeaf3ZZs6kMybA" processName="googleapisuite.drive.file.uploadFile"/>
+    <sca:service xmi:id="_-nEz0GXOEeaf3ZZs6kMybA" name="insertFile">
+      <sca:interface.wsdl xmi:id="_-nGB8GXOEeaf3ZZs6kMybA" interface="http://xmlns.example.com/20160817163020PLT#wsdl.interface(insertFile1)" scaext:wsdlLocation="../Processes/googleapisuite/drive/file/uploadFile.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

@@ -1,0 +1,402 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "SurveyMonkeyConnectorAPI",
+    "x-lastModified": "Aug 23, 2016 08:05AM PST"
+  },
+  "paths": {
+    "/userinfo": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/survey": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [],
+        "description": "Sends Back all the existing Survey's"
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "title",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Posting a New Survey"
+      }
+    },
+    "/contact": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [],
+        "description": "Get All Contacts"
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Details of the Contact, for example: \"{ \"first_name\": \"John\", \"last_name\": \"Doe\", \"email\": \"test@surveymonkey.com\" }\"",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Add Contact Details"
+      }
+    },
+    "/CreateContactIfNotExists": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Create the contact when it not exists, if it exist it will return it's ID",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/contactDetails/{id}": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Update Contact Details",
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Remove a Contact"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get Contact Details"
+      }
+    },
+    "/surveyDetails/{surveyID}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "surveyID",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ]
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "name": "surveyID"
+          }
+        ]
+      }
+    },
+    "/doCompleteSurvey": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "All The Details for the Survey, See sample message in the documentation",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Provide All Details to Send Out a survey",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/examples": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [],
+        "description": "Get Examples for All The Messages"
+      }
+    },
+    "/sendSurvey": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "MessageID",
+            "in": "query",
+            "description": "The Identifier of the Message",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "CollectorID",
+            "in": "query",
+            "description": "The ID of the collector",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OptionalSendDateTime",
+            "in": "query",
+            "description": "Optionally provide the date and time for the survey",
+            "required": false,
+            "type": "string",
+            "format": "date-time",
+            "default": ""
+          }
+        ]
+      }
+    },
+    "/pageAndQuestions": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "SurveyID",
+            "in": "query",
+            "description": "The Identifier of the Survey",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ]
+      }
+    },
+    "/collectorMessageAndReceipients": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "SurveyID",
+            "in": "query",
+            "description": "The Identifier of the Survey",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ]
+      }
+    }
+  }
+}

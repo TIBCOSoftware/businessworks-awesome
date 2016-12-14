@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/PurgeQueue" xmlns:tns11="http://www.sqsconnector.tibco.com/PurgeQueue" elementFormDefault="qualified">
+	
+	<complexType name="PurgeQueueRequestType">
+    	<sequence>
+    		<element name="queueName" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="purgeQueueRequest" type="tns11:PurgeQueueRequestType"></element>
+    
+    <complexType name="PurgeQueueResponseType">
+    	<sequence>
+    		<element name="responseMetadata" type="tns11:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="purgeQueueResponse" type="tns11:PurgeQueueResponseType"></element>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+</schema>

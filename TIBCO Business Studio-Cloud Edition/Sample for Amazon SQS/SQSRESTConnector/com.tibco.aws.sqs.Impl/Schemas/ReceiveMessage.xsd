@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns12="http://www.sqsconnector.tibco.com/ReceiveMessage" elementFormDefault="qualified" targetNamespace="http://www.sqsconnector.tibco.com/ReceiveMessage">
+	
+	<complexType name="ReceiveMessageRequestType">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="queueName" type="string"/>
+    		<element minOccurs="0" name="maxNumberOfMessages" type="int"/>
+    		<element minOccurs="0" name="visibilityTimeout" type="int"/>
+    		<element minOccurs="0" name="waitTimeSecond" type="int"/>
+    		<element maxOccurs="1" minOccurs="0" name="attributes" type="tns12:ReceiveMessageRequestAttributesType">
+    		</element>
+    		<!-- At this point, receiving and parsing messages with dynamic message attributes is not supported.
+    		<element name="MessageAttributes"
+    			type="tns:MessageAttributesType" minOccurs="0">
+    		</element>
+    		-->
+    	</sequence>
+    </complexType>
+    
+    <element name="receiveMessageRequest" type="tns12:ReceiveMessageRequestType"/>
+    
+    <complexType name="ReceiveMessageRequestAttributesType">
+    	<sequence>
+    		<element maxOccurs="unbounded" minOccurs="1" name="attribute">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="All"/>
+    					<enumeration value="ApproximateFirstReceiveTimestamp">
+    					</enumeration>
+    					<enumeration value="ApproximateReceiveCount">
+    					</enumeration>
+    					<enumeration value="SenderId"/>
+    					<enumeration value="SentTimestamp"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <element name="attributes" type="tns12:ReceiveMessageRequestAttributesType"/>
+    <!-- At this point, receiving and parsing messages with dynamic message attributes is not supported.
+    <complexType name="MessageAttributesType">
+    	<sequence>
+    		<element name="MessageAttributes" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="MessageAttributes" type="tns:MessageAttributesType"></element>
+    -->
+    
+    <complexType name="ReceiveMessageResponseType">
+    	<sequence>
+    		<element name="receiveMessageResult" type="tns12:ReceiveMessageResultType">
+    		</element>
+    		<element name="responseMetadata" type="tns12:ResponseMetadataType"/>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ReceiveMessageResponseAttributesType">
+    	<sequence>
+        	<element maxOccurs="1" minOccurs="0" name="ApproximateReceiveCount" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="SentTimestamp" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="SenderId" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="ApproximateFirstReceiveTimestamp" type="string"/>
+        </sequence>
+    </complexType>
+    
+    <complexType name="ReceiveMessageResultType">
+    	<sequence>
+    		<element maxOccurs="unbounded" minOccurs="0" name="messages">
+            	<complexType>
+                	<sequence>
+                  		<element maxOccurs="1" minOccurs="0" name="messageId" type="string"/>
+                  		<element maxOccurs="1" minOccurs="0" name="receiptHandle" type="string"/>
+                  		<element maxOccurs="1" minOccurs="0" name="body" type="string"/>
+                  		<element maxOccurs="1" minOccurs="0" name="attributes" type="tns12:ReceiveMessageResponseAttributesType"/>
+                  		<element maxOccurs="1" minOccurs="0" name="messageAttributes" nillable="true">
+                    		<complexType>
+                      			<sequence>
+                      				<!-- At this point, receiving and parsing messages with dynamic message attributes is not supported.
+                      				Just adding a dummy element to make sure that the response parses fine-->
+                      				<any maxOccurs="unbounded" minOccurs="0"/>
+                      			</sequence>
+                    		</complexType>
+                  		</element>
+                  		<element maxOccurs="1" minOccurs="0" name="md5OfMessageAttributes" type="string" nillable="true"/>
+                  		<element maxOccurs="1" minOccurs="0" name="md5OfBody" type="string"/>
+                	</sequence>
+              	</complexType>
+            </element>
+    	</sequence>
+    </complexType>
+    
+    <element name="receiveMessageResponse" type="tns12:ReceiveMessageResponseType"/>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"/>
+    	</sequence>
+    </complexType>
+    
+</schema>

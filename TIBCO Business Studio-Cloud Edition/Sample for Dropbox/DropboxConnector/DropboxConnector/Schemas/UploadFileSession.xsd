@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/UploadFileSession" xmlns:tns="http://www.example.org/UploadFileSession" elementFormDefault="qualified">
+<element name="RsHeader">
+		<complexType>
+			<sequence>
+				<element name="statusCode" type="string" />
+				<element name="statusDesc" type="string" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RsBody">
+		<complexType>
+			<sequence>
+				<element name="isSuccess" type="string" minOccurs="0" />
+				<element name="sessionId" type="string" minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Error">
+		<complexType>
+			<sequence>
+				<element name="ErrorCode" type="string" minOccurs="0" />
+				<element name="ErrorDescription" type="string" minOccurs="0" />
+				<element name="Resolution" type="string" minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Request1">
+		<complexType>
+			<sequence>
+				<element name="FileData" type="string" minOccurs="0" />
+				<element name="FilePath" type="string" minOccurs="0" />
+				<element name="SessionID" type="string" minOccurs="0" />
+				<element name="mode" type="string" minOccurs="0" />
+				<element name="autoRename" type="string" minOccurs="0" />
+				<element name="mute" type="string" minOccurs="0" />
+				<element name="Operation">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="START_SESSION" />
+							<enumeration value="APPEND" />
+							<enumeration value="COMMIT_SESSION" />
+						</restriction>
+					</simpleType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Response">
+		<complexType>
+			<sequence>
+				<element ref="tns:RsHeader" minOccurs='0' />
+				<element ref="tns:RsBody" minOccurs='0' />
+				<element ref="tns:Error" minOccurs='0' />
+			</sequence>
+		</complexType>
+	</element>
+</schema>

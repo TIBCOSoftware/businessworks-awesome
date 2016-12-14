@@ -1,0 +1,716 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/api/plivo/Call/MakeCall" : {
+      "post" : {
+        "description" : "Rest Service of Plivo MakeCall",
+        "operationId" : "post-api-plivo-Call-MakeCall",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/MakeCallRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a MakeCallResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/MakeCallResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/Call/HangupCall" : {
+      "post" : {
+        "description" : "Rest Service of Plivo HangupCall",
+        "operationId" : "post-api-plivo-Call-HangupCall",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/HangupCallRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a HangupCallResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/HangupCallResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/Call/TransferCall" : {
+      "post" : {
+        "description" : "Rest Service of Plivo TransferCall",
+        "operationId" : "post-api-plivo-Call-TransferCall",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/TransferCallRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a TransferCallResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/TransferCallResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/Call/GetAllCallDetails" : {
+      "post" : {
+        "description" : "Rest Service of Plivo GetAllCallDetails",
+        "operationId" : "post-api-plivo-Call-GetAllCallDetails",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/GetAllCallDetailsRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetAllCallDetailsResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetAllCallDetailsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/Call/GetLiveCallDetails" : {
+      "post" : {
+        "description" : "Rest Service of Plivo GetLiveCallDetails",
+        "operationId" : "post-api-plivo-Call-GetLiveCallDetails",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/GetCallDetailsRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetCallDetailsResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetCallDetailsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/Call/GetAllLiveCalls" : {
+      "post" : {
+        "description" : "Rest Service of Plivo GetAllLiveCalls",
+        "operationId" : "post-api-plivo-Call-GetAllLiveCalls",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/GetAllLiveCallDetailsRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetAllLiveCallDetailsResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetAllLiveCallDetailsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/plivo/Call/GetCallDetails" : {
+      "post" : {
+        "description" : "Rest Service of Plivo GetCallDetails",
+        "operationId" : "post-api-plivo-Call-GetCallDetails",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/GetCallDetailsRequest"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetCallDetailsResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetCallDetailsResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "GetAllCallDetailsResponse" : {
+      "type" : "object",
+      "required" : [ "FaultDetail", "PlivoGetAllCallDetailsResponse" ],
+      "properties" : {
+        "PlivoGetAllCallDetailsResponse" : {
+          "$ref" : "#/definitions/PlivoGetAllCallDetailsResponse"
+        },
+        "FaultDetail" : {
+          "$ref" : "#/definitions/FaultDetail"
+        }
+      }
+    },
+    "objects" : {
+      "type" : "object",
+      "required" : [ "answer_time", "parent_call_uuid", "to_number", "call_direction", "resource_uri", "end_time", "total_rate", "bill_duration", "billed_duration", "call_duration", "initiation_time", "total_amount", "from_number", "call_uuid" ],
+      "properties" : {
+        "answer_time" : {
+          "type" : "string"
+        },
+        "bill_duration" : {
+          "type" : "string"
+        },
+        "billed_duration" : {
+          "type" : "string"
+        },
+        "call_direction" : {
+          "type" : "string"
+        },
+        "call_duration" : {
+          "type" : "string"
+        },
+        "call_uuid" : {
+          "type" : "string"
+        },
+        "end_time" : {
+          "type" : "string"
+        },
+        "from_number" : {
+          "type" : "string"
+        },
+        "initiation_time" : {
+          "type" : "string"
+        },
+        "parent_call_uuid" : {
+          "type" : "string"
+        },
+        "resource_uri" : {
+          "type" : "string"
+        },
+        "to_number" : {
+          "type" : "string"
+        },
+        "total_amount" : {
+          "type" : "string"
+        },
+        "total_rate" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoGetAllCallDetailsResponse" : {
+      "type" : "object",
+      "required" : [ "api_id", "meta" ],
+      "properties" : {
+        "api_id" : {
+          "type" : "string"
+        },
+        "meta" : {
+          "$ref" : "#/definitions/meta"
+        },
+        "objects" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/objects",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "GetCallDetailsRequest" : {
+      "type" : "object",
+      "required" : [ "Authorization", "PlivoGetCallDetailsRequest" ],
+      "properties" : {
+        "Authorization" : {
+          "$ref" : "#/definitions/Authorization"
+        },
+        "PlivoGetCallDetailsRequest" : {
+          "$ref" : "#/definitions/PlivoGetCallDetailsRequest"
+        }
+      }
+    },
+    "PlivoGetAllLiveCallDetailsResponse" : {
+      "type" : "object",
+      "required" : [ "api_id" ],
+      "properties" : {
+        "api_id" : {
+          "type" : "string"
+        },
+        "calls" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Authorization" : {
+      "type" : "object",
+      "required" : [ "AuthID", "AuthToken" ],
+      "properties" : {
+        "AuthID" : {
+          "type" : "string"
+        },
+        "AuthToken" : {
+          "type" : "string"
+        }
+      }
+    },
+    "MakeCallResponse" : {
+      "type" : "object",
+      "required" : [ "PlivoMakeCallResponse", "FaultDetail" ],
+      "properties" : {
+        "PlivoMakeCallResponse" : {
+          "$ref" : "#/definitions/PlivoMakeCallResponse"
+        },
+        "FaultDetail" : {
+          "$ref" : "#/definitions/FaultDetail"
+        }
+      }
+    },
+    "MakeCallRequest" : {
+      "type" : "object",
+      "required" : [ "Authorization", "PlivoMakeCallRequest" ],
+      "properties" : {
+        "Authorization" : {
+          "$ref" : "#/definitions/Authorization"
+        },
+        "PlivoMakeCallRequest" : {
+          "$ref" : "#/definitions/PlivoMakeCallRequest"
+        }
+      }
+    },
+    "PlivoMakeCallRequest" : {
+      "type" : "object",
+      "required" : [ "from", "to", "answer_url" ],
+      "properties" : {
+        "from" : {
+          "type" : "string"
+        },
+        "to" : {
+          "type" : "string"
+        },
+        "answer_url" : {
+          "type" : "string"
+        },
+        "answer_method" : {
+          "type" : "string"
+        },
+        "ring_url" : {
+          "type" : "string"
+        },
+        "ring_method" : {
+          "type" : "string"
+        },
+        "hangup_url" : {
+          "type" : "string"
+        },
+        "hangup_method" : {
+          "type" : "string"
+        },
+        "fallback_url" : {
+          "type" : "string"
+        },
+        "fallback_method" : {
+          "type" : "string"
+        },
+        "caller_name" : {
+          "type" : "string"
+        },
+        "send_digits" : {
+          "type" : "string"
+        },
+        "send_on_preanswer" : {
+          "type" : "string"
+        },
+        "time_limit" : {
+          "type" : "string"
+        },
+        "hangup_on_ring" : {
+          "type" : "string"
+        },
+        "machine_detection" : {
+          "type" : "string"
+        },
+        "machine_detection_time" : {
+          "type" : "string"
+        },
+        "machine_detection_url" : {
+          "type" : "string"
+        },
+        "machine_detection_method" : {
+          "type" : "string"
+        },
+        "sip_headers" : {
+          "type" : "string"
+        },
+        "ring_timeout" : {
+          "type" : "string"
+        }
+      }
+    },
+    "HangupCallResponse" : {
+      "type" : "object",
+      "required" : [ "FaultDetail", "StatusCode" ],
+      "properties" : {
+        "StatusCode" : {
+          "type" : "string"
+        },
+        "FaultDetail" : {
+          "$ref" : "#/definitions/FaultDetail"
+        }
+      }
+    },
+    "HangupCallRequest" : {
+      "type" : "object",
+      "required" : [ "Authorization", "PlivoHangupCallRequest" ],
+      "properties" : {
+        "Authorization" : {
+          "$ref" : "#/definitions/Authorization"
+        },
+        "PlivoHangupCallRequest" : {
+          "$ref" : "#/definitions/PlivoHangupCallRequest"
+        }
+      }
+    },
+    "PlivoTransferCallResponse" : {
+      "type" : "object",
+      "required" : [ "api_id", "message" ],
+      "properties" : {
+        "api_id" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoHangupCallRequest" : {
+      "type" : "object",
+      "required" : [ "call_uuid" ],
+      "properties" : {
+        "call_uuid" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoGetCallDetailsResponse" : {
+      "type" : "object",
+      "required" : [ "answer_time", "parent_call_uuid", "to_number", "api_id", "call_direction", "resource_uri", "end_time", "total_rate", "bill_duration", "billed_duration", "call_duration", "initiation_time", "total_amount", "from_number", "call_uuid" ],
+      "properties" : {
+        "api_id" : {
+          "type" : "string"
+        },
+        "answer_time" : {
+          "type" : "string"
+        },
+        "bill_duration" : {
+          "type" : "string"
+        },
+        "billed_duration" : {
+          "type" : "string"
+        },
+        "call_direction" : {
+          "type" : "string"
+        },
+        "call_duration" : {
+          "type" : "string"
+        },
+        "call_uuid" : {
+          "type" : "string"
+        },
+        "end_time" : {
+          "type" : "string"
+        },
+        "from_number" : {
+          "type" : "string"
+        },
+        "initiation_time" : {
+          "type" : "string"
+        },
+        "parent_call_uuid" : {
+          "type" : "string"
+        },
+        "resource_uri" : {
+          "type" : "string"
+        },
+        "to_number" : {
+          "type" : "string"
+        },
+        "total_amount" : {
+          "type" : "string"
+        },
+        "total_rate" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoMakeCallResponse" : {
+      "type" : "object",
+      "required" : [ "api_id", "message" ],
+      "properties" : {
+        "api_id" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "request_uuid" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetCallDetailsResponse" : {
+      "type" : "object",
+      "required" : [ "PlivoGetCallDetailsResponse", "FaultDetail" ],
+      "properties" : {
+        "PlivoGetCallDetailsResponse" : {
+          "$ref" : "#/definitions/PlivoGetCallDetailsResponse"
+        },
+        "FaultDetail" : {
+          "$ref" : "#/definitions/FaultDetail"
+        }
+      }
+    },
+    "PlivoTransferCallRequest" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "legs" : {
+          "type" : "string"
+        },
+        "aleg_url" : {
+          "type" : "string"
+        },
+        "aleg_method" : {
+          "type" : "string"
+        },
+        "bleg_url" : {
+          "type" : "string"
+        },
+        "bleg_method" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PlivoGetCallDetailsRequest" : {
+      "type" : "object",
+      "required" : [ "call_uuid" ],
+      "properties" : {
+        "call_uuid" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetAllLiveCallDetailsResponse" : {
+      "type" : "object",
+      "required" : [ "FaultDetail", "PlivoGetAllLiveCallDetailsResponse" ],
+      "properties" : {
+        "PlivoGetAllLiveCallDetailsResponse" : {
+          "$ref" : "#/definitions/PlivoGetAllLiveCallDetailsResponse"
+        },
+        "FaultDetail" : {
+          "$ref" : "#/definitions/FaultDetail"
+        }
+      }
+    },
+    "PlivoGetAllCallDetailsRequest" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "subaccount" : {
+          "type" : "string"
+        },
+        "call_direction" : {
+          "type" : "string"
+        },
+        "from_number" : {
+          "type" : "string"
+        },
+        "to_number" : {
+          "type" : "string"
+        },
+        "bill_duration" : {
+          "type" : "string"
+        },
+        "bill_duration__gt" : {
+          "type" : "string"
+        },
+        "bill_duration__gte" : {
+          "type" : "string"
+        },
+        "bill_duration__lt" : {
+          "type" : "string"
+        },
+        "bill_duration__lte" : {
+          "type" : "string"
+        },
+        "end_time" : {
+          "type" : "string"
+        },
+        "end_time__gt" : {
+          "type" : "string"
+        },
+        "end_time__gte" : {
+          "type" : "string"
+        },
+        "end_time__lt" : {
+          "type" : "string"
+        },
+        "end_time__lte" : {
+          "type" : "string"
+        },
+        "limit" : {
+          "type" : "string"
+        },
+        "offset" : {
+          "type" : "string"
+        }
+      }
+    },
+    "TransferCallResponse" : {
+      "type" : "object",
+      "required" : [ "FaultDetail", "PlivoTransferCallResponse" ],
+      "properties" : {
+        "PlivoTransferCallResponse" : {
+          "$ref" : "#/definitions/PlivoTransferCallResponse"
+        },
+        "FaultDetail" : {
+          "$ref" : "#/definitions/FaultDetail"
+        }
+      }
+    },
+    "meta" : {
+      "type" : "object",
+      "required" : [ "next", "previous", "offset", "total_count", "limit" ],
+      "properties" : {
+        "previous" : {
+          "type" : "string"
+        },
+        "total_count" : {
+          "type" : "string"
+        },
+        "offset" : {
+          "type" : "string"
+        },
+        "limit" : {
+          "type" : "string"
+        },
+        "next" : {
+          "type" : "string"
+        }
+      }
+    },
+    "FaultDetail" : {
+      "type" : "object",
+      "required" : [ "Msg", "ActivityName", "StackTrace", "ProcessStack" ],
+      "properties" : {
+        "ActivityName" : {
+          "type" : "string"
+        },
+        "Data" : {
+          "type" : "string"
+        },
+        "Msg" : {
+          "type" : "string"
+        },
+        "MsgCode" : {
+          "type" : "string"
+        },
+        "ProcessStack" : {
+          "type" : "string"
+        },
+        "StackTrace" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetAllCallDetailsRequest" : {
+      "type" : "object",
+      "required" : [ "Authorization", "PlivoGetAllCallDetailsRequest" ],
+      "properties" : {
+        "Authorization" : {
+          "$ref" : "#/definitions/Authorization"
+        },
+        "PlivoGetAllCallDetailsRequest" : {
+          "$ref" : "#/definitions/PlivoGetAllCallDetailsRequest"
+        }
+      }
+    },
+    "GetAllLiveCallDetailsRequest" : {
+      "type" : "object",
+      "required" : [ "Authorization" ],
+      "properties" : {
+        "Authorization" : {
+          "$ref" : "#/definitions/Authorization"
+        }
+      }
+    },
+    "TransferCallRequest" : {
+      "type" : "object",
+      "required" : [ "Authorization", "PlivoTransferCallRequest", "call_uuid" ],
+      "properties" : {
+        "Authorization" : {
+          "$ref" : "#/definitions/Authorization"
+        },
+        "PlivoTransferCallRequest" : {
+          "$ref" : "#/definitions/PlivoTransferCallRequest"
+        },
+        "call_uuid" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/HTMLGetRankedConcepts/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/HTMLGetRankedConcepts/parameters">
+  <xs:element name="alchemy-html-HTMLGetRankedConceptsPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="apikey" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="html" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="url" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="outputMode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxRetrieve" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="jsonp" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="linkedData" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="showSourceText" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="sourceText" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="cquery" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="xpath" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="knowledgeGraph" type="xs:double"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="alchemy-html-HTMLGetRankedConceptsGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="apikey" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="html" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="outputMode" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="maxRetrieve" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="url" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="jsonp" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="linkedData" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="showSourceText" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="sourceText" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="cquery" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="xpath" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="knowledgeGraph" type="xs:integer"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

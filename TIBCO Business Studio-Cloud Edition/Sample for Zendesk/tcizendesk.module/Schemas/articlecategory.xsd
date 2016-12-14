@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/articlecategory" xmlns:tns="http://www.example.org/articlecategory" elementFormDefault="qualified">
+
+    <complexType name="articlecategory">
+    	<sequence>
+    		<element name="name" type="string"></element>
+    		<element name="description" type="string"></element>
+    		<element name="locale" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="articlecategoryupdate">
+    	<sequence>
+    		<element name="name" type="string"></element>
+    		<element name="description" type="string"></element>
+    		<element name="locale" type="string"></element>
+    		<element name="categoryId" type="int"></element>
+    		
+    	</sequence>
+    </complexType>
+
+	 <element name="ArticleCategoryUpdate" type="tns:articlecategory"></element>
+    <element name="ArticleCategory" type="tns:articlecategory"></element>
+    
+     <complexType name="SParticlecategory">
+    	<sequence>
+    		<element name="name" type="string"></element>
+    		<element name="description" type="string"></element>
+    		<element name="locale" type="string"></element>
+    		<element name="sessionId" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="SParticlecategory" type="tns:SParticlecategory"></element>
+    
+    <complexType name="SParticlecategoryupdate">
+    	<sequence>
+    		<element name="name" type="string"></element>
+    		<element name="description" type="string"></element>
+    		<element name="locale" type="string"></element>
+    		<element name="categoryId" type="int"></element>
+    		<element name="sessionId" type="string"></element>
+    	</sequence>
+    </complexType>
+
+	 <element name="SPArticleCategoryUpdate" type="tns:SParticlecategoryupdate"></element>
+	 
+	  <complexType name="articlecategoryget">
+    	<sequence>
+    		<element name="categoryId" type="int"></element>
+    		<element name="sessionId" type="string"></element>
+    	</sequence>
+    </complexType>
+    <element name="SParticlecategoryget" type="tns:articlecategoryget"></element>
+
+    <element name="SessionID" type="string"></element>
+</schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/ListDeadLetterSourceQueues" xmlns:tns9="http://www.sqsconnector.tibco.com/ListDeadLetterSourceQueues" elementFormDefault="qualified">
+	
+	<complexType name="ListDeadLetterSourceQueuesRequestType">
+    	<sequence>
+    		<element name="queueName" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="listDeadLetterSourceQueuesRequest" type="tns9:ListDeadLetterSourceQueuesRequestType"></element>
+    
+    <complexType name="ListDeadLetterSourceQueuesResponseType">
+    	<sequence>
+    		<element name="listDeadLetterSourceQueuesResult" maxOccurs="1" minOccurs="0"
+    			type="tns9:ListDeadLetterSourceQueuesResultType">
+    		</element>
+    		<element name="responseMetadata" type="tns9:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="listDeadLetterSourceQueuesResponse" type="tns9:ListDeadLetterSourceQueuesResponseType"></element>
+    
+    <complexType name="ListDeadLetterSourceQueuesResultType">
+    	<sequence>
+    		<element name="queueUrls" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    
+</schema>

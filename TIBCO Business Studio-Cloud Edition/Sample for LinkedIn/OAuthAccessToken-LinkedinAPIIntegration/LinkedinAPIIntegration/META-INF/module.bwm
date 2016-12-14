@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:property="http://ns.tibco.com/bw/property" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_cy0UcGalEea1J4pvS2SZow" targetNamespace="http://tns.tibco.com/bw/composite/LinkedinAPIIntegration" name="LinkedinAPIIntegration" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_7vmo8memEeaBeobTnJR2Zw" name="api-getauth" promote="ComponentGetAuthTokenLinkedin/api-getauth">
+    <sca:interface.wsdl xmi:id="_7vmo9memEeaBeobTnJR2Zw" interface="http://xmlns.example.com/20160821183810PLT#wsdl.interface(api-getauth2)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7vmo92emEeaBeobTnJR2Zw" name="RestService" path="/api/getauth" docBasePath="http://localhost:7777/LinkedinAPIIntegration" docResourcePath="Resource" basePath="/" connector="linkedinapiintegration.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/linkedinapiintegration.GetAuthTokenLinkedin-Resource.json">
+      <operation xmi:id="_7vmo-GemEeaBeobTnJR2Zw" operationName="get" nickname="get-api-getauth" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_7vmo-memEeaBeobTnJR2Zw"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_7vmo-WemEeaBeobTnJR2Zw" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_Olg_AmenEeaBeobTnJR2Zw" name="auth-linkedin" promote="ComponentLinkedinAuthToken/auth-linkedin">
+    <sca:interface.wsdl xmi:id="_Olg_BmenEeaBeobTnJR2Zw" interface="http://xmlns.example.com/20160821192329PLT#wsdl.interface(auth-linkedin)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Olg_B2enEeaBeobTnJR2Zw" name="RestService1" path="/auth/linkedin" docBasePath="http://localhost:7777/LinkedinAPIIntegration" docResourcePath="Resource1" basePath="/" connector="linkedinapiintegration.Resource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/linkedinapiintegration.LinkedinAuthToken-Resource1.json">
+      <operation xmi:id="_Olg_CGenEeaBeobTnJR2Zw" operationName="get" nickname="get-auth-linkedin" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_RYom4GenEeaBeobTnJR2Zw">
+          <parameterMapping xmi:id="_RYom4WenEeaBeobTnJR2Zw" parameterName="code" parameterType="Query"/>
+          <parameterMapping xmi:id="_R8CO4GenEeaBeobTnJR2Zw" parameterName="state" parameterType="Query"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Olg_CmenEeaBeobTnJR2Zw"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Olg_CWenEeaBeobTnJR2Zw" bindingName="RestService1"/>
+  </sca:service>
+  <sca:property xmi:id="_c8QkUGalEea1J4pvS2SZow" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_c8ZuQGalEea1J4pvS2SZow" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_c8ZuQWalEea1J4pvS2SZow" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_c8ZuQmalEea1J4pvS2SZow" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_c8ZuQ2alEea1J4pvS2SZow" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_c8lUcGalEea1J4pvS2SZow" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_KAUCQGamEea1J4pvS2SZow" name="/LinkedinAPIIntegration/GetAuthToken/ClientKey" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_2G3WIGamEea1J4pvS2SZow" name="/LinkedinAPIIntegration/GetAuthToken/AppName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_3KJ_IGamEea1J4pvS2SZow" name="/LinkedinAPIIntegration/GetAuthToken/ClientSecret" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_6hUvQGamEea1J4pvS2SZow" name="/LinkedinAPIIntegration/GetAuthToken/state" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="__MHqcGamEea1J4pvS2SZow" name="/LinkedinAPIIntegration/GetAuthToken/scope" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Qp36wGanEea1J4pvS2SZow" name="/LinkedinAPIIntegration/GetAuthToken/redirect_uri" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_H2AfIGasEea1J4pvS2SZow" name="/LinkedinAPIIntegration/Linkedin/Hostname" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_J_yPEGasEea1J4pvS2SZow" name="/LinkedinAPIIntegration/Linkedin/Port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_MEZyMGasEea1J4pvS2SZow" name="/LinkedinAPIIntegration/Linkedin/SSLdetails/Keystore" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_OcUEwGasEea1J4pvS2SZow" name="/LinkedinAPIIntegration/Linkedin/SSLdetails/Password" type="property:password" scaext:simpleValue="#!atmUjPtDLjoI4fx2ErNr6w==" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_ugq-8GelEeaBeobTnJR2Zw" name="ComponentGetAuthTokenLinkedin" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_ugq-8WelEeaBeobTnJR2Zw" processName="linkedinapiintegration.GetAuthTokenLinkedin"/>
+    <sca:service xmi:id="_7vmo8GemEeaBeobTnJR2Zw" name="api-getauth">
+      <sca:interface.wsdl xmi:id="_7vmo8WemEeaBeobTnJR2Zw" interface="http://xmlns.example.com/20160821183810PLT#wsdl.interface(api-getauth2)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_o9OIAGemEeaBeobTnJR2Zw" name="ComponentLinkedinAuthToken" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_o9OIAWemEeaBeobTnJR2Zw" processName="linkedinapiintegration.LinkedinAuthToken"/>
+    <sca:service xmi:id="_Olg_AGenEeaBeobTnJR2Zw" name="auth-linkedin">
+      <sca:interface.wsdl xmi:id="_Olg_AWenEeaBeobTnJR2Zw" interface="http://xmlns.example.com/20160821192329PLT#wsdl.interface(auth-linkedin)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

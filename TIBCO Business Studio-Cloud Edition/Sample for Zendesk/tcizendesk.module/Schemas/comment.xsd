@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/comment" xmlns:tns="http://www.example.org/comment" elementFormDefault="qualified">
+<complexType name="CommentInsert">
+    	<sequence>
+    		<element name="Type" minOccurs="0" type="string"/>
+    		<element name="body" type="string"/>
+    		<element name="html_body" minOccurs="0" type="string"/>
+    		<element name="public" minOccurs="0" type="boolean"/>
+    		<element name="author_id" minOccurs="0" type="int"/>   		
+    	</sequence>
+    </complexType>
+    <complexType name="Comment">
+    	<sequence>
+    		<element name="Type" minOccurs="0" type="string"/>
+    		<element name="body" minOccurs="0" type="string"/>
+    		<element name="html_body" minOccurs="0" type="string"/>
+    		<element name="public" minOccurs="0" type="boolean"/>
+    		<element name="author_id" minOccurs="0" type="int"/>
+    		<element name="created_at" minOccurs="0" type="dateTime"/>
+    	</sequence>
+    </complexType>
+
+    <element name="Comment" type="tns:Comment"/>
+
+    <element name="CommentInsert" type="tns:CommentInsert"/>
+
+    <complexType name="SPCommentInsert">
+    	<complexContent>
+    		<extension base="tns:CommentInsert">
+    			<sequence>
+    				<element name="sessionId" type="string"></element>
+    				<element name="ticketId" type="string"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="SPCommentInsert" type="tns:SPCommentInsert"></element>
+
+    <complexType name="spcommentget">
+    	<sequence>
+    		<element name="sessionId" type="string"></element>
+    		<element name="ticketId" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="SPCommentGet" type="tns:spcommentget"></element>
+</schema>

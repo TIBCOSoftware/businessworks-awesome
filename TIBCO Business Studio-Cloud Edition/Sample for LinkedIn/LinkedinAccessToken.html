@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LinkedinAccessToken</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        function Auth()
+        {
+            var divdata=document.getElementById('bigdiv');
+            divdata.innerHTML = divdata.innerHTML + '<br><br><h3>Redirecting...</h3>';
+            $.ajax({
+                url: "https://app.cloud.tibco.com:443/gr4hcgh7oqxi7yecu7frnwee7gdfljam/Resource/api/getauth"
+            }).then(function(data) {
+                        $('.greeting-id').append(data.RedirectURI);
+                  
+                        window.location = data.RedirectURI
+                    });
+                    }
+	</script>
+</head>
+
+<body>
+
+<div>
+    <div id='bigdiv' style="padding-top: 10px;font-size: 14px;padding-left: 50px"><h4>Please generate your private token to access the Linkedin application.</h4><br><br><input id="authbtnid" onclick="Auth()" type="button" value="Get token" style="height: 30px;width: 95px;font-family: Georgia"/><br></div>
+   
+</div>
+
+<br><br>
+
+<h6>**Recommended browser : chrome**</h6>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Com Tibco Shared Smsconnector Module
+Bundle-SymbolicName: com.tibco.bw.smsconnector.shared
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: TIBCO Software Inc.
+TIBCO-BW-ConfigProfile: META-INF/default.substvar
+TIBCO-BW-SharedModule: META-INF/module.bwm
+TIBCO-BW-Edition: bwcloud
+TIBCO-BW-JobSharedVariables: META-INF/module.jsv
+Require-Capability: com.tibco.bw.model; filter:="(name=bwext)",
+ com.tibco.bw.palette; filter:="(name=bw.generalactivities)",
+ com.tibco.bw.palette; filter:="(name=bw.restjson)",
+ com.tibco.bw.palette; filter:="(name=bw.xml)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.httpclient)"
+TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
+Provide-Capability: com.tibco.bw.module; name="com.tibco.bw.smsconnector.shared"; version:Version="1.0.0",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Account/CreateSubAccount.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Account/GetAccountDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Account/GetAllSubAccount.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Account/UpdateSubAccount.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Calling/GetAllCallDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Calling/GetCallDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Calling/MakeCall.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Messaging/GetMultipleSMSDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Messaging/GetSingleSMSDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Common/Messaging/SendSMS.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Exception.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/CreateSubAccount.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/DeleteSubAccount.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/GetAccountDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/GetAllSubAccounts.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/GetSubAccountDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/ModifyAccount.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Account/ModifySubAccount.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetAllCallDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetAllLiveCalls.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetCallDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/GetLiveCallDetails.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/HangupCall.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/MakeCall.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/Call/TransferCall.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/SMS/RetrieveAllSMS.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/SMS/RetrieveSMS.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Plivo/V1/Services/SMS/SendSMS.xsd",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/Account/CreateSubAccount",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/Account/RetrieveAccountDetails",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/Account/RetrieveAllAccountDetails",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/Account/UpdateSubAccount",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/Call/MakeCall",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/Call/RetrieveAllCallDetails",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/Call/RetrieveCallDetails",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/SMS/RetrieveAllSMS",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/SMS/RetriveSMS",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/Providers/Twilio/V1/Services/SMS/SendSMS",
+ com.tibco.bw.schemas; ns="http://www.tibco.com/xml/parser/example",
+ com.tibco.bw.processes; name="com.tibco.bw.plivo.messaging",
+ com.tibco.bw.processes; name="com.tibco.bw.plivo.proxy.messaging",
+ com.tibco.bw.processes; name="com.tibco.bw.router.messaging",
+ com.tibco.bw.processes; name="com.tibco.bw.twilio.accounts",
+ com.tibco.bw.processes; name="com.tibco.bw.twilio.messaging",
+ com.tibco.bw.processes; name="com.tibco.bw.twilio.proxy.messaging",
+ com.tibco.bw.resources; name="com.tibco.bw.resource.httpclient.plivo",
+ com.tibco.bw.resources; name="com.tibco.bw.resource.httpclient.twilio",
+ com.tibco.bw.processes; name="com.tibco.bw.plivo.calling",
+ com.tibco.bw.processes; name="com.tibco.bw.twilio.calling",
+ com.tibco.bw.processes; name="com.tibco.bw.plivo.accounts",
+ com.tibco.bw.processes; name="com.tibco.bw.plivo.proxy.calling",
+ com.tibco.bw.processes; name="com.tibco.bw.router.calling",
+ com.tibco.bw.processes; name="com.tibco.bw.plivo.proxy.account",
+ com.tibco.bw.processes; name="com.tibco.bw.router.account",
+ com.tibco.bw.processes; name="com.tibco.bw.twilio.proxy.calling",
+ com.tibco.bw.processes; name="com.tibco.bw.twilio.proxy.account",
+ com.tibco.bw.resources; name="com.tibco.bw.resource.httpclient"
+TIBCO-BW-Version: 2.0.0 V35 2016-05-20

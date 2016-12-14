@@ -1,0 +1,134 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Analyzes HTML with multiple AlchemyLanguage operations",
+    "description" : "Analyzes HTML with multiple AlchemyLanguage operations"
+  },
+  "host" : "localhost:8099",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/alchemy/HTMLGetCombinedData" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-alchemy-HTMLGetCombinedData",
+        "consumes" : [ "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "showSourceText",
+          "in" : "formData",
+          "description" : "",
+          "type" : "integer",
+          "format" : "int32",
+          "required" : false
+        }, {
+          "name" : "extract",
+          "in" : "formData",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "jsonp",
+          "in" : "formData",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "apikey",
+          "in" : "formData",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "html",
+          "in" : "formData",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "outputMode",
+          "in" : "formData",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "url",
+          "in" : "formData",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "get" : {
+        "description" : "",
+        "operationId" : "get-alchemy-HTMLGetCombinedData",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "showSourceText",
+          "in" : "query",
+          "description" : "",
+          "type" : "integer",
+          "format" : "int32",
+          "required" : false
+        }, {
+          "name" : "extract",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "jsonp",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "apikey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "html",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "outputMode",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "url",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}

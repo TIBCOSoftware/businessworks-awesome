@@ -1,0 +1,87 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Auhty TOTP RequestSMSCode.",
+    "description" : "Twilio Auhty TOTP RequestSMSCode."
+  },
+  "host" : "HTTPConnectorGrp:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/totp/requestsmscode" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-totp-requestsmscode",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/RequestSMSInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a RequestSMSOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/RequestSMSOutput"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "RequestSMSInput" : {
+      "type" : "object",
+      "required" : [ "APIKey", "AuthyId" ],
+      "properties" : {
+        "AuthyId" : {
+          "type" : "string"
+        },
+        "APIKey" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RequestSMSOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "success" : {
+          "type" : "boolean"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "cellphone" : {
+          "type" : "string"
+        },
+        "device" : {
+          "type" : "string"
+        },
+        "ignored" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

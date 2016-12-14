@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.example.org/schema/Company" xmlns:emp="http://www.example.org/schema/Company" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+        <xsd:complexType name="CompanyRecordType">
+            <xsd:sequence>
+               <xsd:element name="CompanyID" type="xsd:string"/>
+        	   <xsd:element name="AreaID" type="xsd:string" />
+               <xsd:element name="MasheryKey" type="xsd:string"  minOccurs="0"/>
+               <xsd:element name="Secret" type="xsd:string" />
+			   <xsd:element name="StripeKey" type="xsd:string"  minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:complexType>
+        <xsd:element name="CompanyRecords">
+        <xsd:complexType>
+        <xsd:sequence>
+               <xsd:element name="CompanyRecord" 
+                  type="emp:CompanyRecordType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="CompanyRecord" 
+                  type="emp:CompanyRecordType"/>
+</xsd:schema>

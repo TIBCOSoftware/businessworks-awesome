@@ -1,0 +1,66 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio PhoneNumber CallerId DeleteCallerId.",
+    "description" : "Twilio PhoneNumber CallerId DeleteCallerId."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/callerid/postdeletecallerid" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-callerid-postdeletecallerid",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/DeleteCallerIDInputSchema"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "DeleteCallerIDInputSchema" : {
+      "type" : "object",
+      "required" : [ "OutgoingCallerIdSid", "accountsid" ],
+      "properties" : {
+        "accountsid" : {
+          "type" : "string"
+        },
+        "OutgoingCallerIdSid" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

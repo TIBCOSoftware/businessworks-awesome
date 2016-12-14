@@ -1,0 +1,158 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.8",
+    "title": "Survey_Collector",
+    "x-lastModified": "Aug 26, 2016 06:43AM PST"
+  },
+  "paths": {
+    "/surveyCollector/{survey_id}/collectors": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Which page of resources to return. Defaults to 1",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of resources to return per page",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "description": "Field used to sort returned collector list e.g. [‘id’, 'date_modified’, 'type’, 'status’, 'name’]",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "sort_order",
+            "in": "query",
+            "description": "Sort order e.g. ['ASC’, 'DESC’]",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Nickname of collector to search against",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "Collectors must be created after this date.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "Collectors must be created before this date.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth-Key",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "survey_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ]
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth-Key",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "survey_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Web Link or Email Collector data for given survey.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  }
+}

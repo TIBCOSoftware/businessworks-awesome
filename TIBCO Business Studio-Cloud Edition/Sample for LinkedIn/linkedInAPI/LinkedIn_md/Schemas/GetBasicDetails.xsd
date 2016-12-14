@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/GetBasicDetails" xmlns:tns="http://www.example.org/GetBasicDetails" elementFormDefault="qualified">
+<element name="GetBasicDetailsElement">
+    <complexType>
+      <sequence>
+        <element type="string" name="firstName"/>
+        <element type="string" name="headline"/>
+        <element type="string" name="id"/>
+        <element type="string" name="lastName"/>
+        <element name="siteStandardProfileRequest">
+          <complexType>
+            <sequence>
+              <element type="string" name="url"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+
+
+
+
+
+    <element name="GetBasicDetailsInputElement" type="tns:GetBasicDetailsType"></element>
+
+    <complexType name="GetBasicDetailsType">
+    	<sequence>
+    		<element name="AccessToken" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1471331257883" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1471331257883">
+  <complexType name="PackageKey_Create_DetailsElementType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="apikey" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="secret" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="rate_limit_ceiling" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="rate_limit_exempt" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="qps_limit_ceiling" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="qps_limit_exempt" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="created" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="updated" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="uuid" type="string"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="limits">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="period" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="source" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="ceiling" type="integer"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="object_type" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="currency" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="freemiumQuota" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="paymentType" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="stripeSubscriptionId" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="unitCost" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="member">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="created" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="updated" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="username" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="email" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="display_name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="blog" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="im" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="imsvc" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="phone" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="company" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="address1" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="address2" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="locality" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="region" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="postal_code" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="country_code" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="first_name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="last_name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="registration_ipaddr" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uuid" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="area_status" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="external_id" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="object_type" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="StripeAccount" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="application">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="created" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="updated" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="username" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="description" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="type" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="commercial" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="ads" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="ads_system" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="usage_model" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="tags" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="notes" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="how_did_you_hear" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="preferred_protocol" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="preferred_output" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="external_id" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="is_packaged" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="oauth_redirect_uri" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uuid" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="object_type" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="package">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="description" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_developer_period" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_developer_near_quota" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_developer_over_quota" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_developer_over_throttle" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_admin_period" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_admin_near_quota" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_admin_over_quota" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_admin_over_throttle" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="notify_admin_emails" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="near_quota_threshold" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="created" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="updated" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="key_adapter" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="key_length" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="shared_secret_length" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uuid" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="is_using_shared_secret" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="object_type" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="plan">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="id" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="description" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="notes" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="rate_limit_ceiling" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="rate_limit_exempt" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="rate_limit_package_key_override_allowed" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="rate_limit_period" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="qps_limit_ceiling" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="qps_limit_exempt" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="qps_limit_package_key_override_allowed" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="package_key_max" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="package_key_moderation_threshold" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="response_filter_override_allowed" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="created" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="updated" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="is_public" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="is_moderated" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="status" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="uuid" type="string"/>
+            <element maxOccurs="unbounded" minOccurs="0" name="limits">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="1" minOccurs="0" name="period" type="string"/>
+                  <element maxOccurs="1" minOccurs="0" name="source" type="string"/>
+                  <element maxOccurs="1" minOccurs="0" name="ceiling" type="integer"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element maxOccurs="1" minOccurs="0" name="object_type" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="currency" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="freemiumQuota" type="integer"/>
+            <element maxOccurs="1" minOccurs="0" name="paymentType" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="unitCost" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <element name="PackageKey_Create_DetailsElement" type="tns:PackageKey_Create_DetailsElementType"/>
+</schema>

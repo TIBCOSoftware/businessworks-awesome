@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.connector.tibco.com/twilio/phonenumber/addcalleridschema" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.connector.tibco.com/twilio/phonenumber/addcalleridschema">
+
+    <element name="AddCallerIDInputSchema" type="tns:AddCallerID"></element>
+
+    <complexType name="AddCallerID">
+    	<sequence>
+    		<element name="accountsid" type="string"  maxOccurs="1" minOccurs="1"></element>
+    		<element name="PhoneNumber" type="string"  maxOccurs="1" minOccurs="1"></element>
+    		<element name="CallDelay" type="string"  maxOccurs="1" minOccurs="0"></element>
+    		<element name="Extension" type="string"  maxOccurs="1" minOccurs="0"></element>
+    		<element name="FriendlyName" type="string"  maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="AddCallerIDOutputSchema" type="tns:AddCallerIDOutput"></element>
+
+
+    <simpleType name="Response">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+    <element name="DeleteCallerIDInputSchema" type="tns:CallerID"></element>
+
+    <complexType name="CallerID">
+    	<sequence>
+    		<element name="accountsid" type="string"   maxOccurs="1" minOccurs="1"></element>
+    		<element name="OutgoingCallerIdSid" type="string"   maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="DeleteCallerIDOutputSchema" type="tns:Response"></element>
+
+    <element name="UpdateCallerIDInputSchema" type="tns:UpdateCallerID"></element>
+
+    <complexType name="UpdateCallerID">
+    	<sequence>
+    		<element name="accountsid" type="string"   maxOccurs="1" minOccurs="1"></element>
+    		<element name="OutgoingCallerIdSid" type="string"  maxOccurs="1" minOccurs="1"></element>
+    		<element name="FriendlyName" type="string"   maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="UpdateCallerIDOutputSchema" type="tns:CallIDOutput"></element>
+
+    <element name="ViewCallerIDInputSchema" type="tns:CallerID"></element>
+
+    <element name="ViewcallerIDOutputSchema" type="tns:CallIDOutput"></element>
+
+    <element name="ViewCallerIDListInputSchema" type="tns:ViewCallerIDList"></element>
+
+    <complexType name="ViewCallerIDList">
+    	<sequence>
+    		<element name="accountsid" type="string"   maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="FriendlyName" type="string"   maxOccurs="1" minOccurs="0"></element>
+    		<element name="Page" type="string"   maxOccurs="1" minOccurs="0"></element>
+    		<element name="PageSize" type="string"   maxOccurs="1" minOccurs="0"></element>
+    		<element name="PhoneNumber" type="string"   maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ViewCallerIDListOutputSchema" type="tns:ViewCallerIDListOutput"></element>
+
+    <complexType name="ViewCallerIDListOutput">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="first_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="end" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="previous_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="outgoing_caller_ids">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="phone_number" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page_size" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="start" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="next_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page" type="integer"  nillable="true"/>
+    </sequence>
+    </complexType>
+
+    <complexType name="CallIDOutput">
+     <sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="phone_number" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+          </sequence>
+    </complexType>
+
+    <complexType name="AddCallerIDOutput">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="phone_number" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="validation_code" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="call_sid" type="string"  nillable="true"/>
+    </sequence>
+    
+    </complexType>
+</schema>

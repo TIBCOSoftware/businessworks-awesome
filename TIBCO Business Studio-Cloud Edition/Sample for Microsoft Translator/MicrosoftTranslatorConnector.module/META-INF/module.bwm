@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_4lyc0GPLEeaWncZY8Qx1xA" targetNamespace="http://tns.tibco.com/bw/composite/MicrosoftTranslatorConnector.module" name="MicrosoftTranslatorConnector.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_lWL9sGR2EeaWncZY8Qx1xA" name="translate" promote="ComponentTranslateCloudInterface/translate">
+    <sca:interface.wsdl xmi:id="_lWdqgGR2EeaWncZY8Qx1xA" interface="http://xmlns.example.com/20160817143144PLT#wsdl.interface(translate)" scaext:wsdlLocation="../Processes/TCI-Interface/TranslateCloudInterface.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_lWuJMGR2EeaWncZY8Qx1xA" name="RestService" path="/translate" docBasePath="http://localhost:7777/MicrosoftTranslatorConnector.module" docResourcePath="Translate" basePath="/" connector="microsofttranslatorconnector.module.TranslateCloudInterface" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/MicrosoftTranslatorAPI_1.0.json">
+      <operation xmi:id="_lW6WcGR2EeaWncZY8Qx1xA" operationName="post" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_lX2KkWR2EeaWncZY8Qx1xA">
+          <parameterMapping xmi:id="_lX3YsGR2EeaWncZY8Qx1xA" parameterName="from" parameterType="Query" dataType="string" description="Language to Translate From"/>
+          <parameterMapping xmi:id="_lX3YsWR2EeaWncZY8Qx1xA" parameterName="to" parameterType="Query" dataType="string" required="true" description="language to translate to"/>
+        </parameters>
+        <responseStatus xmi:id="_lX1jgGR2EeaWncZY8Qx1xA" statusCode="500" reasonPhrase="Error" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_lX2KkGR2EeaWncZY8Qx1xA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_lW6WcWR2EeaWncZY8Qx1xA" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_5OL5kGPLEeaWncZY8Qx1xA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_5OYG0GPLEeaWncZY8Qx1xA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_5ObxMGPLEeaWncZY8Qx1xA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_5Oe0gGPLEeaWncZY8Qx1xA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_5Oie4GPLEeaWncZY8Qx1xA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_5OliMGPLEeaWncZY8Qx1xA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_U5u-IGPNEeaWncZY8Qx1xA" name="/Security/ClientSecret" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_vvSmsGROEeaWncZY8Qx1xA" name="/Security/Username" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_Hg3VAGPMEeaWncZY8Qx1xA" name="ComponentTestTranslation" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Hg3VAWPMEeaWncZY8Qx1xA" processName="Test.TestTranslation"/>
+  </sca:component>
+  <sca:component xmi:id="_jqAIsGR2EeaWncZY8Qx1xA" name="ComponentTranslateCloudInterface" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_jqAIsWR2EeaWncZY8Qx1xA" processName="TCI-Interface.TranslateCloudInterface"/>
+    <sca:service xmi:id="_lWA-kGR2EeaWncZY8Qx1xA" name="translate">
+      <sca:interface.wsdl xmi:id="_lWDa0GR2EeaWncZY8Qx1xA" interface="http://xmlns.example.com/20160817143144PLT#wsdl.interface(translate)" scaext:wsdlLocation="../Processes/TCI-Interface/TranslateCloudInterface.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

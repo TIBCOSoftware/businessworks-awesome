@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_oLHfIGrnEeaV4ItOKpVTGw" targetNamespace="http://tns.tibco.com/bw/composite/LinkedIn_md" name="LinkedIn_md" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_zEzxoGtMEeaAJ-oPdk9nnQ" name="GetBasicLinkedInDetailsService" promote="ComponentGetLinkedInBasicDetails/GetBasicLinkedInDetailsService">
+    <sca:interface.wsdl xmi:id="_zFZngGtMEeaAJ-oPdk9nnQ" interface="http://xmlns.example.com/20160825224704#wsdl.interface(GetBasicLinkedInDetailsService)" scaext:wsdlLocation="../Processes/linkedin_md/GetLinkedInBasicDetails.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_zGAEcGtMEeaAJ-oPdk9nnQ" name="RestService" path="/GetBasicLinkedInDetailsService" docBasePath="http://localhost:7777/LinkedIn_md" docResourcePath="Resource" basePath="/" connector="linkedin_md.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/linkedin_md.GetLinkedInBasicDetails-Resource.json">
+      <operation xmi:id="_zGJOYGtMEeaAJ-oPdk9nnQ" operationName="post" nickname="post-GetBasicLinkedInDetailsService" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_zGJOYWtMEeaAJ-oPdk9nnQ" operationName="get" nickname="get-GetBasicLinkedInDetailsService" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_b1vecGtWEeaxv7tqIFpoSQ">
+          <parameterMapping xmi:id="_b1vecWtWEeaxv7tqIFpoSQ" parameterName="AcessToken" parameterType="Query"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_zGcwYGtMEeaAJ-oPdk9nnQ"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_zGJOYmtMEeaAJ-oPdk9nnQ" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_n9My8GtrEeaxv7tqIFpoSQ" name="GetAdditionalLinkedInDetails" promote="ComponentGetLinkedInAdditinalDetails/GetAdditionalLinkedInDetails">
+    <sca:interface.wsdl xmi:id="_n-JOIGtrEeaxv7tqIFpoSQ" interface="http://xmlns.example.com/20160826125133#wsdl.interface(GetAdditionalLinkedInDetails)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_n-nvQGtrEeaxv7tqIFpoSQ" name="RestService1" path="/GetAdditionalLinkedInDetails" docBasePath="http://localhost:7777/LinkedIn_md" docResourcePath="Resource1" basePath="/" connector="linkedin_md.HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/linkedin_md.GetLinkedInAdditinalDetails-Resource1.json">
+      <operation xmi:id="_n-rZoGtrEeaxv7tqIFpoSQ" operationName="post" nickname="post-GetAdditionalLinkedInDetails" httpMethod="POST" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_n-rZoWtrEeaxv7tqIFpoSQ" operationName="get" nickname="get-GetAdditionalLinkedInDetails" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_ufJyIGttEeaxv7tqIFpoSQ">
+          <parameterMapping xmi:id="_ufKZMGttEeaxv7tqIFpoSQ" parameterName="AccessToken" parameterType="Query"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_n-1KoGtrEeaxv7tqIFpoSQ"/>
+      <clientFormat>json</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_n-sAsGtrEeaxv7tqIFpoSQ" bindingName="RestService1"/>
+  </sca:service>
+  <sca:property xmi:id="_op_McGrnEeaV4ItOKpVTGw" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_oqSHYGrnEeaV4ItOKpVTGw" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_oqlpYGrnEeaV4ItOKpVTGw" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_oquzUGrnEeaV4ItOKpVTGw" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_orCVUGrnEeaV4ItOKpVTGw" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_orLfQGrnEeaV4ItOKpVTGw" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_vqVpwGrnEeaV4ItOKpVTGw" name="ComponentGetLinkedInBasicDetails" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_vqVpwWrnEeaV4ItOKpVTGw" processName="linkedin_md.GetLinkedInBasicDetails"/>
+    <sca:service xmi:id="_zEXFsGtMEeaAJ-oPdk9nnQ" name="GetBasicLinkedInDetailsService">
+      <sca:interface.wsdl xmi:id="_zEqAoGtMEeaAJ-oPdk9nnQ" interface="http://xmlns.example.com/20160825224704#wsdl.interface(GetBasicLinkedInDetailsService)" scaext:wsdlLocation="../Processes/linkedin_md/GetLinkedInBasicDetails.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_t-P3wGtdEeaxv7tqIFpoSQ" name="ComponentGetLinkedInAdditinalDetails" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_t-P3wWtdEeaxv7tqIFpoSQ" processName="linkedin_md.GetLinkedInAdditinalDetails"/>
+    <sca:service xmi:id="_n8zKUGtrEeaxv7tqIFpoSQ" name="GetAdditionalLinkedInDetails">
+      <sca:interface.wsdl xmi:id="_n8-wgGtrEeaxv7tqIFpoSQ" interface="http://xmlns.example.com/20160826125133#wsdl.interface(GetAdditionalLinkedInDetails)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

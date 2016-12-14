@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/benchmarkSurveyService/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/benchmarkSurveyService/parameters">
+  <xs:element name="surveyGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="page_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="question_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="api_key" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="percentile_start" type="xs:integer"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="percentile_end" type="xs:integer"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surveyPutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="page_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="question_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surveyPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="page_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="question_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surveyDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="survey_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="page_id" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="question_id" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

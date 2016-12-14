@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/LinkedinGlassdoorInt" xmlns:tns="http://www.example.org/LinkedinGlassdoorInt" elementFormDefault="qualified" xmlns:Q1="http://www.example.org/Glassdoor">
+
+    <import namespace="http://www.example.org/Glassdoor"></import>
+    <element name="getbasidetailsout" type="tns:getbasidetailsout"></element>
+    
+    <complexType name="getbasidetailsout">
+    	<sequence>
+    		<element name="success" type="string"></element>
+    		<element name="status" type="string"></element>
+    		<element name="BasicProfile" type="tns:BasicProfile"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="BasicProfile">
+    	<sequence>
+    		<element name="firstname" type="string"></element>
+    		<element name="lastname" type="string"></element>
+    		<element name="headline" type="string"></element>
+    		<element name="jobdetails" type="Q1:Employers" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="BasicDetailsWithProbableJobProg"
+    	type="tns:BasicDetailsWithProbableJobProg">
+    </element>
+    
+    <complexType name="BasicDetailsWithProbableJobProg">
+    	<sequence>
+    		<element name="success" type="string"></element>
+    		<element name="status" type="string"></element>
+    		<element name="response" type="tns:response" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="response">
+    	<sequence>
+    		<element name="firstname" type="string"></element>
+    		<element name="lastname" type="string"></element>
+    		<element name="headline" type="string"></element>
+    		<element name="currentposition" type="string"></element>
+    		<element name="jobprog" type="Q1:JobProgression" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>

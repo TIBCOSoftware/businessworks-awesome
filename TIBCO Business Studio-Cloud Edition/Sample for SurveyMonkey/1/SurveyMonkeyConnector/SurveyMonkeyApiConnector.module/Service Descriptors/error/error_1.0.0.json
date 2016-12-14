@@ -1,0 +1,99 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "error",
+    "x-lastModified": "Aug 22, 2016 07:02AM PST"
+  },
+  "paths": {
+    "/errors": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of resources to return. Defaults to 1",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "1"
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of resources to return per page",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth-Key",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ]
+      }
+    },
+    "/errors/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth-Key",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ]
+      }
+    }
+  }
+}

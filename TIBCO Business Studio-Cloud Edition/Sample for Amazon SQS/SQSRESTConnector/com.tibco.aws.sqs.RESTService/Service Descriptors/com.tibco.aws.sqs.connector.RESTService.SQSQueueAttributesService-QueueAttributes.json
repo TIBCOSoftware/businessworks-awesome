@@ -1,0 +1,200 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "This EndPoint implements all Amazon SQS APIs specific to QueueAttributes Resource.",
+    "description" : "This EndPoint implements all Amazon SQS APIs specific to QueueAttributes Resource."
+  },
+  "host" : "localhost:9876",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/sqs/queue/attributes/{AWSAccessKey}/{AWSSecretKey}/{AWSSQSEndPoint}" : {
+      "post" : {
+        "description" : "GetQueueAttributes: Returns the values of all attribute names for the specified queue. If an an attribute/list of attributes is supplied in the request, then returns the values of only those attributes. Valid Values for AttributeName: All | Policy | VisibilityTimeout | MaximumMessageSize | MessageRetentionPeriod | ApproximateNumberOfMessages | ApproximateNumberOfMessagesNotVisible | CreatedTimestamp | LastModifiedTimestamp | QueueArn | ApproximateNumberOfMessagesDelayed | DelaySeconds | ReceiveMessageWaitTimeSeconds | RedrivePolicy",
+        "operationId" : "GetQueueAttributes",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/getQueueAttributesRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "AWSSecretKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSAccessKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSSQSEndPoint",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a getQueueAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/getQueueAttributesResponse"
+            }
+          }
+        }
+      },
+      "put" : {
+        "description" : "SetQueueAttributes: Modifies/Sets the values of supplied attribute names for the specified queue. The attributes must follow the following constraints: (Name: DelaySeconds | Valid Values: 0 to 900 | Default: 0) | (Name: MaximumMessageSize | Valid Values: 1024 to 262144 | Default: 262144) | (Name: MessageRetentionPeriod | Valid Values: 60 to 1209600 | Default: 345600) | (Name: Policy | Valid Values: Valid AWS Policy) | (Name: ReceiveMessageWaitTimeSeconds | Valid Values: 0 to 20 | Default: 0) | (Name: VisibilityTimeout | Valid Values: 0 to 43200 | Default: 30) | (Name: RedrivePolicy | Valid Values: Valid AWS Policy)",
+        "operationId" : "SetQueueAttributes",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/setQueueAttributesRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "AWSSecretKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSAccessKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSSQSEndPoint",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a setQueueAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/setQueueAttributesResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "setQueueAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "attributeNames" : {
+      "type" : "object",
+      "required" : [ "attributeName" ],
+      "properties" : {
+        "attributeName" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "getQueueAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata", "getQueueAttributesResult" ],
+      "properties" : {
+        "getQueueAttributesResult" : {
+          "$ref" : "#/definitions/getQueueAttributesResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "getQueueAttributesRequest" : {
+      "type" : "object",
+      "required" : [ "queueName" ],
+      "properties" : {
+        "queueName" : {
+          "type" : "string"
+        },
+        "attributeNames" : {
+          "$ref" : "#/definitions/attributeNames"
+        }
+      }
+    },
+    "setQueueAttributesRequest" : {
+      "type" : "object",
+      "required" : [ "queueName", "attributes" ],
+      "properties" : {
+        "queueName" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "$ref" : "#/definitions/attributes"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "properties" : {
+        "DelaySeconds" : {
+          "type" : "integer"
+        },
+        "MaximumMessageSize" : {
+          "type" : "integer"
+        },
+        "MessageRetentionPeriod" : {
+          "type" : "integer"
+        },
+        "Policy" : {
+          "type" : "string"
+        },
+        "ReceiveMessageWaitTimeSeconds" : {
+          "type" : "integer"
+        },
+        "RedrivePolicy" : {
+          "type" : "string"
+        },
+        "VisibilityTimeout" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "getQueueAttributesResult" : {
+      "type" : "object",
+      "properties" : {
+        "attributes" : {
+          "$ref" : "#/definitions/attributes"
+        }
+      }
+    }
+  }
+}

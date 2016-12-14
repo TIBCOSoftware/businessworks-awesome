@@ -1,0 +1,505 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GooglePlusAPI",
+    "x-lastModified": "Aug 17, 2016 23:18PM PST"
+  },
+  "paths": {
+    "/getProfile": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The ID of the person to get the profile for. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get a person's profile.",
+        "tags": [
+          "People"
+        ]
+      }
+    },
+    "/searchActivities": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Full-text search query string.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Specify the preferred language to search with.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of activities to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults. Acceptable values are 1 to 20, inclusive. (Default: 10)",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "Specifies how to order search results. \n\nAcceptable values are:\n\"best\": Sort activities by relevance to the user, most relevant first.\n\"recent\": Sort activities by published date, most recent first. (default)",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response. This token can be of any length.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Search public activities.",
+        "tags": [
+          "Activity"
+        ]
+      }
+    },
+    "/listCommentsForActivity": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "description": "The ID of the activity to get comments for.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of comments to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults. Acceptable values are 0 to 500, inclusive. (Default: 20)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "The order in which to sort the list of comments. \n\nAcceptable values are:\n\"ascending\": Sort oldest comments first. (default)\n\"descending\": Sort newest comments first.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "tags": [
+          "Comments"
+        ]
+      }
+    },
+    "/searchPeople": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Specify a query string for full text search of public text in all profiles.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Specify the preferred language to search with.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of people to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults. Acceptable values are 1 to 50, inclusive. (Default: 25)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response. This token can be of any length.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Search all public profiles.",
+        "tags": [
+          "People"
+        ]
+      }
+    },
+    "/listPeople": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The collection of people to list. \n\nAcceptable values are:\n\"connected\": The list of visible people in the authenticated user's circles who also use the requesting app. This list is limited to users who made their app activities visible to the authenticated user.\n\"visible\": The list of people who this user has added to one or more circles, limited to the circles visible to the requesting application.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Get the collection of people for the person identified. Use \"me\" to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of people to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults. Acceptable values are 1 to 100, inclusive. (Default: 100)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "The order to return people in. \n\nAcceptable values are:\n\"alphabetical\": Order the people by their display name.\n\"best\": Order people based on the relevence to the viewer.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "List all of the people in the specified collection.",
+        "tags": [
+          "People"
+        ]
+      }
+    },
+    "/listByActivity": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "description": "The ID of the activity to get the list of people for.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The collection of people to list. \n\nAcceptable values are:\n\"plusoners\": List all people who have +1'd this activity.\n\"resharers\": List all people who have reshared this activity.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of people to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults. Acceptable values are 1 to 100, inclusive. (Default: 20)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": false,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "List all of the people in the specified collection for a particular activity.",
+        "tags": [
+          "Activity"
+        ]
+      }
+    },
+    "/listActivities": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The collection of activities to list. \n\nAcceptable values are:\n\"public\": All public activities created by the specified user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "public"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The ID of the user to get activities for. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of activities to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults. Acceptable values are 1 to 100, inclusive. (Default: 20)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "List all of the activities in the specified collection for a particular user.",
+        "tags": [
+          "Activity"
+        ]
+      }
+    },
+    "/getActivity": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "description": "The ID of the activity to get.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": false,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get an activity.",
+        "tags": [
+          "Activity"
+        ]
+      }
+    },
+    "/getComment": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment to get.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get a comment.",
+        "tags": [
+          "Comments"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:parameters="http://xmlns.example.com//configs/conf/parameters" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_LfjtAGvAEeagbMRoVqVpkA" targetNamespace="http://tns.tibco.com/bw/composite/SplunkAPISuite.Configuration.module" name="SplunkAPISuite.Configuration.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_g63_EGvAEeagbMRoVqVpkA" name="configs-conf-file" promote="ComponentProcess/configs-conf-file">
+    <sca:interface.wsdl xmi:id="_g69eoGvAEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(configs-conf-file)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_g7EMUGvAEeagbMRoVqVpkA" name="RestService" path="/configs/conf-{file}" docBasePath="http://localhost:7777/SplunkAPISuite.Configuration.module" docResourcePath="/configs/conf" basePath="/" connector="splunkapisuite.configuration.module.conf" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.configuration.module.Process-configs-conf.json">
+      <operation xmi:id="_g7IdwGvAEeagbMRoVqVpkA" operationName="post" nickname="post-configs-conf-file" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_oqYzAGvBEeagbMRoVqVpkA" formElement="parameters:configs-conf-filePostForm">
+          <parameterMapping xmi:id="_pBKUQGvBEeagbMRoVqVpkA" parameterName="name" parameterType="formData" dataType="string" required="true"/>
+        </parameters>
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_g7JE0GvAEeagbMRoVqVpkA" operationName="get" nickname="get-configs-conf-file" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_g7-LQGvAEeagbMRoVqVpkA">
+        <parameterMapping xmi:id="_g7-yUGvAEeagbMRoVqVpkA" parameterName="file" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_g7JE0WvAEeagbMRoVqVpkA" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_HGkzMWvDEeagbMRoVqVpkA" name="services-configs-conf-file1" promote="ComponentProcess/services-configs-conf-file1">
+    <sca:interface.wsdl xmi:id="_HGkzNWvDEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(services-configs-conf-file1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_HGlaQGvDEeagbMRoVqVpkA" name="RestService1" path="/services/configs/conf-{file}/{stanza}" docBasePath="http://localhost:7777/SplunkAPISuite.Configuration.module" docResourcePath="/configs/conf" basePath="/" connector="splunkapisuite.configuration.module.conf" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.configuration.module.Process-configs-conf.json">
+      <operation xmi:id="_HGlaQWvDEeagbMRoVqVpkA" operationName="post" nickname="post-services-configs-conf-file" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_84DUQGvDEeagbMRoVqVpkA" formElement="parameters:services-configs-conf-file-stanzaPostForm"/>
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_HGlaQmvDEeagbMRoVqVpkA" operationName="get" nickname="get-services-configs-conf-file" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_HGlaQ2vDEeagbMRoVqVpkA" operationName="delete" nickname="delete-services-configs-conf-file" httpMethod="DELETE" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_HGn2gGvDEeagbMRoVqVpkA">
+        <parameterMapping xmi:id="_HGn2gWvDEeagbMRoVqVpkA" parameterName="file" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_HGn2gmvDEeagbMRoVqVpkA" parameterName="stanza" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_HGlaRGvDEeagbMRoVqVpkA" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_ntbwomvDEeagbMRoVqVpkA" name="properties" promote="ComponentProcess/properties">
+    <sca:interface.wsdl xmi:id="_ntbwpmvDEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ntc-wGvDEeagbMRoVqVpkA" name="RestService2" path="/properties" docBasePath="http://localhost:7777/SplunkAPISuite.Configuration.module" docResourcePath="/configs/conf" basePath="/" connector="splunkapisuite.configuration.module.conf" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.configuration.module.Process-configs-conf.json">
+      <operation xmi:id="_ntc-wWvDEeagbMRoVqVpkA" operationName="post" nickname="post-properties" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_0P258GvEEeagbMRoVqVpkA" formElement="parameters:propertiesPostForm">
+          <parameterMapping xmi:id="_53Lu0GvEEeagbMRoVqVpkA" parameterName="__conf" parameterType="formData" dataType="string" required="true"/>
+        </parameters>
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_ntc-wmvDEeagbMRoVqVpkA" operationName="get" nickname="get-properties" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_ntdl0GvDEeagbMRoVqVpkA"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_ntc-w2vDEeagbMRoVqVpkA" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_PSvRcmvFEeagbMRoVqVpkA" name="properties1" promote="ComponentProcess/properties1">
+    <sca:interface.wsdl xmi:id="_PSwfkGvFEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_PSwfkWvFEeagbMRoVqVpkA" name="RestService3" path="/properties/{file}" docBasePath="http://localhost:7777/SplunkAPISuite.Configuration.module" docResourcePath="/configs/conf" basePath="/" connector="splunkapisuite.configuration.module.conf" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.configuration.module.Process-configs-conf.json">
+      <operation xmi:id="_PSxGoGvFEeagbMRoVqVpkA" operationName="post" nickname="post-properties" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_ZjLmgGvFEeagbMRoVqVpkA" formElement="parameters:properties-filePostForm">
+          <parameterMapping xmi:id="_e5xQsGvFEeagbMRoVqVpkA" parameterName="__conf" parameterType="formData" dataType="string" required="true"/>
+        </parameters>
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_PSxGoWvFEeagbMRoVqVpkA" operationName="get" nickname="get-properties" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_PSxGo2vFEeagbMRoVqVpkA">
+        <parameterMapping xmi:id="_PSxGpGvFEeagbMRoVqVpkA" parameterName="file" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_PSxGomvFEeagbMRoVqVpkA" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_3yjvMGvFEeagbMRoVqVpkA" name="properties2" promote="ComponentProcess/properties2">
+    <sca:interface.wsdl xmi:id="_3yjvNGvFEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties2)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_3ykWQGvFEeagbMRoVqVpkA" name="RestService4" path="/properties/{file}/{stanza}" docBasePath="http://localhost:7777/SplunkAPISuite.Configuration.module" docResourcePath="/configs/conf" basePath="/" connector="splunkapisuite.configuration.module.conf" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.configuration.module.Process-configs-conf.json">
+      <operation xmi:id="_3ykWQWvFEeagbMRoVqVpkA" operationName="post" nickname="post-properties" httpMethod="POST" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_3ykWQmvFEeagbMRoVqVpkA" operationName="get" nickname="get-properties" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_3ykWRGvFEeagbMRoVqVpkA">
+        <parameterMapping xmi:id="_3ykWRWvFEeagbMRoVqVpkA" parameterName="file" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_3ykWRmvFEeagbMRoVqVpkA" parameterName="stanza" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_3ykWQ2vFEeagbMRoVqVpkA" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_X31CgmvGEeagbMRoVqVpkA" name="properties3" promote="ComponentProcess/properties3">
+    <sca:interface.wsdl xmi:id="_X32QoGvGEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties3)" scaext:wsdlLocation="../Processes/splunkapisuite/configuration/module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_X32QoWvGEeagbMRoVqVpkA" name="RestService5" path="/properties/{file}/{stanza}/{key}" docBasePath="http://localhost:7777/SplunkAPISuite.Configuration.module" docResourcePath="/configs/conf" basePath="/" connector="splunkapisuite.configuration.module.conf" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.configuration.module.Process-configs-conf.json">
+      <operation xmi:id="_X323sGvGEeagbMRoVqVpkA" operationName="get" nickname="get-properties" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_X323smvGEeagbMRoVqVpkA">
+        <parameterMapping xmi:id="_X323s2vGEeagbMRoVqVpkA" parameterName="file" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_X323tGvGEeagbMRoVqVpkA" parameterName="stanza" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_X323tWvGEeagbMRoVqVpkA" parameterName="key" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_X323sWvGEeagbMRoVqVpkA" bindingName="RestService5"/>
+  </sca:service>
+  <sca:property xmi:id="_L6_r0GvAEeagbMRoVqVpkA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_L7L5EGvAEeagbMRoVqVpkA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_L7QKgGvAEeagbMRoVqVpkA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_L7Ub8GvAEeagbMRoVqVpkA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_L7YtYGvAEeagbMRoVqVpkA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_L7cXwGvAEeagbMRoVqVpkA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_LrTC8GvAEeagbMRoVqVpkA" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_LrTC8WvAEeagbMRoVqVpkA" processName="splunkapisuite.configuration.module.Process"/>
+    <sca:service xmi:id="_g60UsGvAEeagbMRoVqVpkA" name="configs-conf-file">
+      <sca:interface.wsdl xmi:id="_g607wGvAEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(configs-conf-file)"/>
+    </sca:service>
+    <sca:service xmi:id="_HGkMIGvDEeagbMRoVqVpkA" name="services-configs-conf-file1">
+      <sca:interface.wsdl xmi:id="_HGkzMGvDEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(services-configs-conf-file1)"/>
+    </sca:service>
+    <sca:service xmi:id="_ntbwoGvDEeagbMRoVqVpkA" name="properties">
+      <sca:interface.wsdl xmi:id="_ntbwoWvDEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties)"/>
+    </sca:service>
+    <sca:service xmi:id="_PSvRcGvFEeagbMRoVqVpkA" name="properties1">
+      <sca:interface.wsdl xmi:id="_PSvRcWvFEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties1)"/>
+    </sca:service>
+    <sca:service xmi:id="_3yjIIGvFEeagbMRoVqVpkA" name="properties2">
+      <sca:interface.wsdl xmi:id="_3yjIIWvFEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties2)"/>
+    </sca:service>
+    <sca:service xmi:id="_X31CgGvGEeagbMRoVqVpkA" name="properties3">
+      <sca:interface.wsdl xmi:id="_X31CgWvGEeagbMRoVqVpkA" interface="http://xmlns.example.com/20160826120624PLT#wsdl.interface(properties3)" scaext:wsdlLocation="../Processes/splunkapisuite/configuration/module/Process.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

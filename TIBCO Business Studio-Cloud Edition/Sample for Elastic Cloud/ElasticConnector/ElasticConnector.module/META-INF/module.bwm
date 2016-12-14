@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:http="http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient" xmlns:property="http://ns.tibco.com/bw/property" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_lgFuYGYoEeakT99KSmK4gg" targetNamespace="http://tns.tibco.com/bw/composite/ElasticConnector.module" name="ElasticConnector.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_HmyXgmoGEeaJVdCgooDEZQ" name="elastic-api" promote="ComponentInvokeElasticsearchAPI/elastic-api">
+    <sca:interface.wsdl xmi:id="_HmyXhmoGEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_HmzloGoGEeaJVdCgooDEZQ" name="RestService" path="/elastic/api/{index}" docBasePath="http://localhost:7777/ElasticConnector.module" docResourcePath="Elastic" basePath="/" connector="elasticconnector.module.CallDocumentAPI" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Elastic Cloud Connector_1.0.json">
+      <operation xmi:id="_Hm0MsGoGEeaJVdCgooDEZQ" operationName="get" httpMethod="GET" notes="Get information about an elasticsearch index." responseStyle="element">
+        <responseStatus xmi:id="_Hm3QAGoGEeaJVdCgooDEZQ" statusCode="404" reasonPhrase="Index Not Found" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_Hm0MsWoGEeaJVdCgooDEZQ" operationName="delete" httpMethod="DELETE" notes="Delete elasticsearch index." responseStyle="element">
+        <responseStatus xmi:id="_Hm3QAWoGEeaJVdCgooDEZQ" statusCode="404" reasonPhrase="Index Not Found" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_Hm3QAmoGEeaJVdCgooDEZQ">
+        <parameterMapping xmi:id="_Hm3QA2oGEeaJVdCgooDEZQ" parameterName="index" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Hm0MsmoGEeaJVdCgooDEZQ" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_gZp-wmoHEeaJVdCgooDEZQ" name="elastic-api-_search" promote="ComponentInvokeElasticsearchAPI/elastic-api-_search">
+    <sca:interface.wsdl xmi:id="_gZql0GoHEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api-_search)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_gZsbAGoHEeaJVdCgooDEZQ" name="RestService1" path="/elastic/api/{index}/_search" docBasePath="http://localhost:7777/ElasticConnector.module" docResourcePath="Elastic" basePath="/" connector="elasticconnector.module.CallDocumentAPI" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Elastic Cloud Connector_1.0.json">
+      <operation xmi:id="_gZtCEGoHEeaJVdCgooDEZQ" operationName="post" httpMethod="POST" notes="Search documents from an elasticsearch index." responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_gZtpImoHEeaJVdCgooDEZQ" statusCode="400" reasonPhrase="Search Parse Exception" dataType="string"/>
+        <responseStatus xmi:id="_gZtpI2oHEeaJVdCgooDEZQ" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_gZtpIGoHEeaJVdCgooDEZQ" operationName="get" httpMethod="GET" notes="Get all documents from an index." responseStyle="element">
+        <responseStatus xmi:id="_gZtpJGoHEeaJVdCgooDEZQ" statusCode="404" reasonPhrase="Index Not Found" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_gZtpJWoHEeaJVdCgooDEZQ">
+        <parameterMapping xmi:id="_gZtpJmoHEeaJVdCgooDEZQ" parameterName="index" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_gZtpIWoHEeaJVdCgooDEZQ" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="__QfwEmoHEeaJVdCgooDEZQ" name="elastic-api1" promote="ComponentInvokeElasticsearchAPI/elastic-api1">
+    <sca:interface.wsdl xmi:id="__Qg-MGoHEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="__QizYGoHEeaJVdCgooDEZQ" name="RestService2" path="/elastic/api/{index}/{type}" docBasePath="http://localhost:7777/ElasticConnector.module" docResourcePath="Elastic" basePath="/" connector="elasticconnector.module.CallDocumentAPI" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Elastic Cloud Connector_1.0.json">
+      <operation xmi:id="__QkBgGoHEeaJVdCgooDEZQ" operationName="post" httpMethod="POST" notes="Index document. Document ID will be auto generated." responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="__QkBgmoHEeaJVdCgooDEZQ" statusCode="400" reasonPhrase="Mapping Parse Exception" dataType="string"/>
+        <responseStatus xmi:id="__QkBg2oHEeaJVdCgooDEZQ" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="__QkBhGoHEeaJVdCgooDEZQ">
+        <parameterMapping xmi:id="__QkBhWoHEeaJVdCgooDEZQ" parameterName="index" parameterType="Path" dataType="string" required="true" description="Elasticsearch Index Name. The index operation automatically creates an index if it has not been created before."/>
+        <parameterMapping xmi:id="__QkBhmoHEeaJVdCgooDEZQ" parameterName="type" parameterType="Path" dataType="string" required="true" description="Mapping Type. Creates a dynamic type mapping for the specific type if one has not yet been created."/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="__QkBgWoHEeaJVdCgooDEZQ" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_StmpAmoIEeaJVdCgooDEZQ" name="elastic-api2" promote="ComponentInvokeElasticsearchAPI/elastic-api2">
+    <sca:interface.wsdl xmi:id="_StmpBmoIEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api2)" scaext:wsdlLocation="../Processes/elasticconnector/module/InvokeElasticsearchAPI.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_StpsUGoIEeaJVdCgooDEZQ" name="RestService3" path="/elastic/api/{index}/{type}/{id}" docBasePath="http://localhost:7777/ElasticConnector.module" docResourcePath="Elastic" basePath="/" connector="elasticconnector.module.CallDocumentAPI" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/Elastic Cloud Connector_1.0.json">
+      <operation xmi:id="_Stq6cGoIEeaJVdCgooDEZQ" operationName="get" httpMethod="GET" notes="Search document by its ID" responseStyle="element">
+        <responseStatus xmi:id="_Stq6dGoIEeaJVdCgooDEZQ" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_Stq6cWoIEeaJVdCgooDEZQ" operationName="put" httpMethod="PUT" notes="Index or Update JSON document" responseStyle="element" requestStyle="element">
+        <responseStatus xmi:id="_Stq6dWoIEeaJVdCgooDEZQ" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_Stq6cmoIEeaJVdCgooDEZQ" operationName="delete" httpMethod="DELETE" notes="Delete document" responseStyle="element">
+        <responseStatus xmi:id="_Stq6dmoIEeaJVdCgooDEZQ" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <parameters xmi:id="_Stq6d2oIEeaJVdCgooDEZQ">
+        <parameterMapping xmi:id="_Stq6eGoIEeaJVdCgooDEZQ" parameterName="index" parameterType="Path" dataType="string" required="true" description="Elasticsearch Index Name. The index operation automatically creates an index if it has not been created before."/>
+        <parameterMapping xmi:id="_Stq6eWoIEeaJVdCgooDEZQ" parameterName="type" parameterType="Path" dataType="string" required="true" description="Mapping Type. Creates a dynamic type mapping for the specific type if one has not yet been created."/>
+        <parameterMapping xmi:id="_Stq6emoIEeaJVdCgooDEZQ" parameterName="id" parameterType="Path" dataType="string" required="true" description="Unique ID of JSON document"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Stq6c2oIEeaJVdCgooDEZQ" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_qkimsGq9Eeatp8xOoNNxtQ" name="unit-test-results" promote="ComponentUnitTest/unit-test-results">
+    <sca:interface.wsdl xmi:id="_qkimtGq9Eeatp8xOoNNxtQ" interface="http://xmlns.example.com/20160825145053PLT#wsdl.interface(unit-test-results1)" scaext:wsdlLocation="../Processes/elasticconnector/module/UnitTest.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_qkjNwGq9Eeatp8xOoNNxtQ" name="RestService4" path="/unit-test/results" docBasePath="http://localhost:7777/ElasticConnector.module" docResourcePath="Unit-test" basePath="/" connector="elasticconnector.module.CallDocumentAPI" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/GetUnitTestResults.json">
+      <operation xmi:id="_qkj00Gq9Eeatp8xOoNNxtQ" operationName="get" nickname="get-unit-test-results" httpMethod="GET" notes="" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_qkkb4Gq9Eeatp8xOoNNxtQ"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_qkj00Wq9Eeatp8xOoNNxtQ" bindingName="RestService4"/>
+  </sca:service>
+  <sca:property xmi:id="_ltppQGYoEeakT99KSmK4gg" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lt12gGYoEeakT99KSmK4gg" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_lt79IGYoEeakT99KSmK4gg" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_luCDwGYoEeakT99KSmK4gg" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_luHjUGYoEeakT99KSmK4gg" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_luNC4GYoEeakT99KSmK4gg" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_HrWSQGYzEeakT99KSmK4gg" name="httpPort" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_NrhE8GYzEeakT99KSmK4gg" name="clientHost" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Wqmf0GYzEeakT99KSmK4gg" name="clientPort" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Ztm90GYzEeakT99KSmK4gg" name="clientUsername" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_cRfP0GYzEeakT99KSmK4gg" name="clientPassword" type="property:password" scaext:simpleValue="#!us+BVaceD+6aJSznvAXHPg==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_gomaAGYzEeakT99KSmK4gg" name="keystoreURL" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_L9_9wGY0EeakT99KSmK4gg" name="httpClientResource" type="http:HttpClientConfiguration" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="__vMJIGoFEeaJVdCgooDEZQ" name="ComponentInvokeElasticsearchAPI" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="__vMJIWoFEeaJVdCgooDEZQ" processName="elasticconnector.module.InvokeElasticsearchAPI"/>
+    <sca:service xmi:id="_HmyXgGoGEeaJVdCgooDEZQ" name="elastic-api">
+      <sca:interface.wsdl xmi:id="_HmyXgWoGEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api)"/>
+    </sca:service>
+    <sca:service xmi:id="_gZp-wGoHEeaJVdCgooDEZQ" name="elastic-api-_search">
+      <sca:interface.wsdl xmi:id="_gZp-wWoHEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api-_search)"/>
+    </sca:service>
+    <sca:service xmi:id="__QfwEGoHEeaJVdCgooDEZQ" name="elastic-api1">
+      <sca:interface.wsdl xmi:id="__QfwEWoHEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api1)"/>
+    </sca:service>
+    <sca:service xmi:id="_StmpAGoIEeaJVdCgooDEZQ" name="elastic-api2">
+      <sca:interface.wsdl xmi:id="_StmpAWoIEeaJVdCgooDEZQ" interface="http://xmlns.example.com/20160824195106PLT#wsdl.interface(elastic-api2)" scaext:wsdlLocation="../Processes/elasticconnector/module/InvokeElasticsearchAPI.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_OOlxsGqlEeatp8xOoNNxtQ" name="ComponentUnitTest" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_OOlxsWqlEeatp8xOoNNxtQ" processName="elasticconnector.module.UnitTest"/>
+    <sca:service xmi:id="_qkh_oGq9Eeatp8xOoNNxtQ" name="unit-test-results">
+      <sca:interface.wsdl xmi:id="_qkh_oWq9Eeatp8xOoNNxtQ" interface="http://xmlns.example.com/20160825145053PLT#wsdl.interface(unit-test-results1)" scaext:wsdlLocation="../Processes/elasticconnector/module/UnitTest.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

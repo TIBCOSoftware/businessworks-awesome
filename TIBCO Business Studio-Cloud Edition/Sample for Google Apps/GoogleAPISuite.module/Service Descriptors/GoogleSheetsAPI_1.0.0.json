@@ -1,0 +1,408 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GoogleSheetsAPI",
+    "x-lastModified": "Aug 17, 2016 23:23PM PST"
+  },
+  "paths": {
+    "/batchUpdate": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "query",
+            "description": "The spreadsheet to apply the updates to.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Please refer below link for request structure:\n\nhttps://developers.google.com/sheets/reference/rest/v4/spreadsheets/request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Applies one or more updates to the spreadsheet.\n\nEach request is validated before being applied. If any request is not valid then the entire request will fail and nothing will be applied.\n\nSome requests have replies to give you some information about how they are applied. The replies will mirror the requests. For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2 empty replies, the actual reply, and another empty reply, in that order.\n\nDue to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect exactly your changes after this completes, however it is guaranteed that the updates in the request will be applied together atomically. Your changes may be altered with respect to collaborator changes. If there are no collaborators, the spreadsheet should reflect your changes.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Spreadsheets"
+        ]
+      }
+    },
+    "/createSpreadsheet": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The request body contains an instance of Spreadsheet.\nFor structure of Spreadsheet instance please refer:\nhttps://developers.google.com/sheets/reference/rest/v4/spreadsheets#Spreadsheet",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates a spreadsheet, returning the newly created spreadsheet.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Spreadsheets"
+        ]
+      }
+    },
+    "/getSpreadsheets": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "If successful, the response body contains an instance of Spreadsheet.\n\nhttps://developers.google.com/sheets/reference/rest/v4/spreadsheets/get"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "query",
+            "description": "The spreadsheet to request.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "ranges",
+            "in": "query",
+            "description": "The ranges to retrieve from the spreadsheet.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "includeGridData",
+            "in": "query",
+            "description": "True if grid data should be returned. This parameter is ignored if a field mask was set in the request.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID.\n\nBy default, data within grids will not be returned. You can include grid data one of two ways:\n\nSpecify a field mask listing your desired fields using the fields URL parameter in HTTP\nSet the includeGridData URL parameter to true. If a field mask is set, the includeGridData parameter is ignored\nFor large spreadsheets, it is recommended to retrieve only the specific fields of the spreadsheet that you want.",
+        "tags": [
+          "Spreadsheets"
+        ]
+      }
+    },
+    "/copyTo": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "Response schema: \nhttps://developers.google.com/sheets/reference/rest/v4/spreadsheets#SheetProperties"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "query",
+            "description": "The ID of the spreadsheet containing the sheet to copy.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "sheetId",
+            "in": "query",
+            "description": "The ID of the sheet to copy.",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The request body contains data with the following structure:\n\n\n{\n  \"destinationSpreadsheetId\": string,\n}\n\ndestinationSpreadsheetId\t- The ID of the spreadsheet to copy the sheet to.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Spreadsheets"
+        ]
+      }
+    },
+    "/batchUpdateValues": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "query",
+            "description": "The ID of the spreadsheet to update.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Request schema:\n\nhttps://developers.google.com/sheets/reference/rest/v4/spreadsheets.values/batchUpdate",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Values"
+        ]
+      }
+    },
+    "/appendValues": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "query",
+            "description": "The ID of the spreadsheet to update.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "range",
+            "in": "query",
+            "description": "The A1 notation of a range to search for a logical table of data. Values will be appended after the last row of the table.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "valueInputOption",
+            "in": "query",
+            "description": "INPUT_VALUE_OPTION_UNSPECIFIED\tDefault input value. This value must not be used.\nRAW\tThe values the user has entered will not be parsed and will be stored as-is.\nUSER_ENTERED\tThe values will be parsed as if the user typed them into the UI. Numbers will stay as numbers, but strings may be converted to numbers, dates, etc. following the same rules that are applied when entering text into a cell via the Google Sheets UI.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "insertDataOption",
+            "in": "query",
+            "description": "OVERWRITE\tThe new data overwrites existing data in the areas it is written. (Note: adding data to the end of the sheet will still insert new rows or columns so the data can be written.)\nINSERT_ROWS\tRows are inserted for the new data.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Please refer below link for request schema :\nhttps://developers.google.com/sheets/reference/rest/v4/spreadsheets.values#ValueRange",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Method: spreadsheets.values.append\n\nAppends values to a spreadsheet. The input range is used to search for existing data and find a \"table\" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the guide and sample code for specific details of how tables are detected and data is appended.\n\nThe caller must specify the spreadsheet ID, range, and a valueInputOption. The valueInputOption only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Values"
+        ]
+      }
+    },
+    "/batchGetValues": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "Response Schema:\nhttps://developers.google.com/sheets/reference/rest/v4/spreadsheets.values/batchGet"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "query",
+            "description": "The ID of the spreadsheet to retrieve data from.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "ranges",
+            "in": "query",
+            "description": "The A1 notation of the values to retrieve.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "majorDimension",
+            "in": "query",
+            "description": "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: A1=1,B1=2,A2=3,B2=4, then requesting range=A1:B2,majorDimension=ROWS will return [[1,2],[3,4]], whereas requesting range=A1:B2,majorDimension=COLUMNS will return [[1,3],[2,4]].",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "valueRenderOption",
+            "in": "query",
+            "description": "How values should be represented in the output.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "dateTimeRenderOption",
+            "in": "query",
+            "description": "How dates, times, and durations should be represented in the output. This is ignored if valueRenderOption is FORMATTED_VALUE",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges.",
+        "tags": [
+          "Values"
+        ]
+      }
+    }
+  }
+}

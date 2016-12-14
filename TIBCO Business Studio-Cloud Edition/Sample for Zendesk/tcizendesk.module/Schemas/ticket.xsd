@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/ticket" elementFormDefault="qualified" targetNamespace="http://www.example.org/ticket">
+<complexType name="putticket">
+    	<sequence>
+    		<element name="sessionid" type="string"/>
+    		<element name="Description" type="string"/>
+    		<element name="Comment" type="string"/>
+    	</sequence>
+    </complexType>
+    <complexType name="mytest">
+    	<sequence>
+    		<element name="SubmitterId" type="long"/>
+    		<element name="AssigneeId" type="long"/>
+    		<element name="GroupId" type="long"/>
+    		<element maxOccurs="unbounded" name="CollaboratorIds" type="string"/> 
+      		
+    	</sequence>
+    </complexType>
+<complexType name="postticket">
+
+    	<sequence>
+    		<element name="sessionid" type="string"/>
+    		<element name="description" type="string"/>
+    		<element name="comment" type="string"/>
+    		<element name="prority">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="HIGH"/>
+    					<enumeration value="URGENT"/>
+    					<enumeration value="NORMAL"/>
+    					<enumeration value="LOW"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="status">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="NEW"/>
+    					<enumeration value="OPEN"/>
+    					<enumeration value="PENDING"/>
+    					<enumeration value="HOLD"/>
+    					<enumeration value="SOLVED"/>
+    					<enumeration value="CLOSED"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+    <complexType name="zendeskticketupdate">
+    	<sequence>
+    	    <element minOccurs="0" name="url" type="string"/>
+    		<element minOccurs="0" name="external_id" type="string"/>
+    		<element minOccurs="0" name="type">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="problem"/>
+    					<enumeration value="incident"/>
+    					<enumeration value="question"/>
+    					<enumeration value="task"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element minOccurs="0" name="subject" type="string"/>
+    		<element minOccurs="0" name="priority">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="urgent"/>
+    					<enumeration value="high"/>
+    					<enumeration value="normal"/>
+    					<enumeration value="low"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element minOccurs="0" name="status">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="new"/>
+    					<enumeration value="open"/>
+    					<enumeration value="pending"/>
+    					<enumeration value="hold"/>
+    					<enumeration value="solved"/>
+    					<enumeration value="closed"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element minOccurs="0" name="description" type="string"/>
+    		<element minOccurs="0" name="recipient" type="string"/>
+    		<element name="requester_id" type="long"/>
+    		<element minOccurs="0" name="submitter_id" type="long"/>
+    		<element minOccurs="0" name="assignee_id" type="long"/>
+    		<element minOccurs="0" name="organization_id" type="int"/>
+    		<element minOccurs="0" name="group_id" type="long"/>
+    		<element minOccurs="0" name="collaborator_ids" type="string">
+    		</element>
+    		<element minOccurs="0" name="problem_id" type="int"/>
+    		
+    		<element minOccurs="0" name="due_at" type="dateTime"/>
+    		<element minOccurs="0" name="is_public" type="boolean"/>
+    		<element name="comment" type="string"/>
+    	</sequence>
+    </complexType>
+	
+    <complexType name="zendeskticket">
+    	<sequence>
+    		
+    		<element minOccurs="0" name="url" type="string"/>
+    		<element minOccurs="0" name="external_id" type="string"/>
+    		<element minOccurs="0" name="type">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="problem"/>
+    					<enumeration value="incident"/>
+    					<enumeration value="question"/>
+    					<enumeration value="task"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element minOccurs="0" name="subject" type="string"/>
+    		<element minOccurs="0" name="description" type="string"/>
+    		<element minOccurs="0" name="priority">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="urgent"/>
+    					<enumeration value="high"/>
+    					<enumeration value="normal"/>
+    					<enumeration value="low"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element minOccurs="0" name="status">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="new"/>
+    					<enumeration value="open"/>
+    					<enumeration value="pending"/>
+    					<enumeration value="hold"/>
+    					<enumeration value="solved"/>
+    					<enumeration value="closed"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element minOccurs="0" name="recipient" type="string"/>
+    		<element minOccurs="0" name="requester_id" type="int"/>
+    		<element minOccurs="0" name="submitter_id" type="long"/>
+    		<element minOccurs="0" name="assignee_id" type="long"/>
+    		<element minOccurs="0" name="organization_id" type="int"/>
+    		<element minOccurs="0" name="group_id" type="long"/>
+    		<element minOccurs="0" name="collaborator_ids" type="string">
+    		</element>
+    		<element minOccurs="0" name="problem_id" type="int"/>
+    		<element minOccurs="0" name="has_incidents" type="boolean">
+    		</element>
+    		<element minOccurs="0" name="due_at" type="dateTime"/>
+    		<element minOccurs="0" name="created_at" type="dateTime"/>
+    		<element minOccurs="0" name="updated_at" type="dateTime"/>
+    		<element minOccurs="0" name="is_public" type="boolean"/>
+    		<element name="comment" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <element name="ZenTicket" type="tns:zendeskticket"/>
+
+
+    <complexType name="zendeskticketsub">
+    	<sequence>
+    		<element name="subject" type="string"/>
+    		<element name="description" type="string"/>
+    		<element name="comment" type="string"/>
+        </sequence>
+    </complexType>
+
+    <element name="ZenTicketSub" type="tns:zendeskticketsub"/>
+
+    <element name="ZenTicketUpdate" type="tns:zendeskticketupdate"/>
+    <complexType name="spzendeskticketsub">
+    	<complexContent>
+    		<extension base="tns:zendeskticketsub">
+    			<sequence>
+    				<element name="sessionId" type="string"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+ <complexType name="zendeskticketstatus">
+    	<sequence>
+    		<element name="status">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="new"/>
+    					<enumeration value="open"/>
+    					<enumeration value="pending"/>
+    					<enumeration value="hold"/>
+    					<enumeration value="solved"/>
+    					<enumeration value="closed"/>
+    					<minLength value="1"/>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <element name="SPZenTicketCreate" type="tns:spzendeskticketsub"/>
+    <element name="output" type="string"/>
+
+    <complexType name="spzendeskticketupdate">
+    	<complexContent>
+    		<extension base="tns:zendeskticketupdate">
+    			<sequence>
+    				<element name="sessionId" type="string"/>
+    				<element name="ticketId" type="string"/>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="SPZenTicketUpdate" type="tns:spzendeskticketupdate"/>
+
+    <complexType name="spzendeskticket">
+    	<sequence>
+    		<element name="sessionId" type="string"/>
+    		<element name="ticketId" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <element name="SPZenDeskTicket" type="tns:spzendeskticket"/>
+         
+    <complexType name="ticketchangeattr">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="Id" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="AssigneeId" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="GroupId" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="HasIncidents" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="BrandId" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="Url" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Subject" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Description" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Status" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="RequesterId" type="long"/>
+      <element maxOccurs="1" minOccurs="0" name="OrganizationId" type="long"/>
+      <element maxOccurs="1" minOccurs="0" name="CreatedAt" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="UpdatedAt" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Priority" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="Type" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="ticketElement" type="tns:ticketchangeattr"/>
+    
+
+    <element name="MyTest" type="tns:mytest"/>
+
+    <complexType name="zendeskticketchangeattr">
+    	<sequence>
+    		<element name="sessionId" type="string"/>
+    		<element name="attchange" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <element name="ZenDeskTicketChangeAttr" type="tns:zendeskticketchangeattr"/>
+
+
+    <element name="TickeyType" type="string"/>
+
+    <element name="TicketStatus" type="string"/>
+
+    <element name="TicketPriority" type="string"/>
+
+   
+
+    <complexType name="CommonAttr">
+    	<sequence>
+    		<element name="attribute" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="SPCommonAtrr" type="tns:SPCommonAtrr"></element>
+
+    <complexType name="SPCommonAtrr">
+    	<complexContent>
+    		<extension base="tns:CommonAttr">
+    			<sequence>
+    				<element name="SessionId" type="string"></element>
+    				<element name="tciketId" type="string"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+</schema>

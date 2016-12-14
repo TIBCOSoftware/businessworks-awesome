@@ -1,0 +1,423 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8888",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/createstripesubs" : {
+      "put" : {
+        "description" : "",
+        "operationId" : "put-createstripesubs",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/root"
+          },
+          "required" : true,
+          "allowMultiple" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "authorizations" : { },
+  "definitions" : {
+    "package" : {
+      "type" : "object",
+      "required" : [ "is_using_shared_secret", "notify_admin_emails", "object_type", "created", "notify_developer_period", "description", "notify_developer_over_quota", "key_adapter", "notify_admin_near_quota", "notify_admin_over_quota", "near_quota_threshold", "notify_admin_over_throttle", "notify_admin_period", "notify_developer_near_quota", "notify_developer_over_throttle", "key_length", "name", "id", "updated", "shared_secret_length", "status" ],
+      "properties" : {
+        "created" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "is_using_shared_secret" : {
+          "type" : "string"
+        },
+        "key_adapter" : {
+          "type" : "string"
+        },
+        "key_length" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "near_quota_threshold" : {
+          "type" : "string"
+        },
+        "notify_admin_emails" : {
+          "type" : "string"
+        },
+        "notify_admin_near_quota" : {
+          "type" : "string"
+        },
+        "notify_admin_over_quota" : {
+          "type" : "string"
+        },
+        "notify_admin_over_throttle" : {
+          "type" : "string"
+        },
+        "notify_admin_period" : {
+          "type" : "string"
+        },
+        "notify_developer_near_quota" : {
+          "type" : "string"
+        },
+        "notify_developer_over_quota" : {
+          "type" : "string"
+        },
+        "notify_developer_over_throttle" : {
+          "type" : "string"
+        },
+        "notify_developer_period" : {
+          "type" : "string"
+        },
+        "object_type" : {
+          "type" : "string"
+        },
+        "shared_secret_length" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "updated" : {
+          "type" : "string"
+        }
+      }
+    },
+    "application" : {
+      "type" : "object",
+      "required" : [ "commercial", "is_packaged", "notes", "how_did_you_hear", "object_type", "created", "description", "external_id", "preferred_output", "type", "uri", "tags", "ads", "oauth_redirect_uri", "group_id", "preferred_protocol", "name", "developer_group_handle", "id", "usage_model", "ads_system", "updated", "status", "username" ],
+      "properties" : {
+        "ads" : {
+          "type" : "string"
+        },
+        "ads_system" : {
+          "type" : "string"
+        },
+        "commercial" : {
+          "type" : "string"
+        },
+        "created" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "developer_group_handle" : {
+          "type" : "string"
+        },
+        "external_id" : {
+          "type" : "string"
+        },
+        "group_id" : {
+          "type" : "string"
+        },
+        "how_did_you_hear" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "is_packaged" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "notes" : {
+          "type" : "string"
+        },
+        "oauth_redirect_uri" : {
+          "type" : "string"
+        },
+        "object_type" : {
+          "type" : "string"
+        },
+        "preferred_output" : {
+          "type" : "string"
+        },
+        "preferred_protocol" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "tags" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "updated" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "usage_model" : {
+          "type" : "string"
+        },
+        "username" : {
+          "type" : "string"
+        }
+      }
+    },
+    "root" : {
+      "type" : "object",
+      "required" : [ "package", "apikey", "object_type", "created", "rate_limit_ceiling", "rate_limit_exempt", "secret", "qps_limit_ceiling", "application", "member", "qps_limit_exempt", "id", "plan", "updated", "limits", "status" ],
+      "properties" : {
+        "apikey" : {
+          "type" : "string"
+        },
+        "application" : {
+          "$ref" : "#/definitions/application"
+        },
+        "created" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "limits" : {
+          "$ref" : "#/definitions/limits"
+        },
+        "member" : {
+          "$ref" : "#/definitions/member"
+        },
+        "object_type" : {
+          "type" : "string"
+        },
+        "package" : {
+          "$ref" : "#/definitions/package"
+        },
+        "plan" : {
+          "$ref" : "#/definitions/plan"
+        },
+        "qps_limit_ceiling" : {
+          "type" : "string"
+        },
+        "qps_limit_exempt" : {
+          "type" : "string"
+        },
+        "rate_limit_ceiling" : {
+          "type" : "string"
+        },
+        "rate_limit_exempt" : {
+          "type" : "string"
+        },
+        "secret" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "updated" : {
+          "type" : "string"
+        }
+      }
+    },
+    "member" : {
+      "type" : "object",
+      "required" : [ "im", "address2", "object_type", "address1", "created", "imsvc", "locality", "last_name", "external_id", "registration_ipaddr", "blog", "display_name", "uri", "area_status", "country_code", "phone", "company", "postal_code", "region", "first_name", "updated", "email", "username" ],
+      "properties" : {
+        "address1" : {
+          "type" : "string"
+        },
+        "address2" : {
+          "type" : "string"
+        },
+        "area_status" : {
+          "type" : "string"
+        },
+        "blog" : {
+          "type" : "string"
+        },
+        "company" : {
+          "type" : "string"
+        },
+        "country_code" : {
+          "type" : "string"
+        },
+        "created" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "external_id" : {
+          "type" : "string"
+        },
+        "first_name" : {
+          "type" : "string"
+        },
+        "im" : {
+          "type" : "string"
+        },
+        "imsvc" : {
+          "type" : "string"
+        },
+        "last_name" : {
+          "type" : "string"
+        },
+        "locality" : {
+          "type" : "string"
+        },
+        "object_type" : {
+          "type" : "string"
+        },
+        "phone" : {
+          "type" : "string"
+        },
+        "postal_code" : {
+          "type" : "string"
+        },
+        "region" : {
+          "type" : "string"
+        },
+        "registration_ipaddr" : {
+          "type" : "string"
+        },
+        "updated" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "username" : {
+          "type" : "string"
+        }
+      }
+    },
+    "plan" : {
+      "type" : "object",
+      "required" : [ "notes", "rate_limit_period", "order_moderation_threshold", "object_type", "created", "rate_limit_ceiling", "rate_limit_key_override_allowed", "response_filter_override_allowed", "description", "rate_limit_exempt", "qps_limit_key_override_allowed", "qps_limit_order_override_allowed", "is_moderated", "rate_limit_order_override_allowed", "qps_limit_ceiling", "is_public", "name", "qps_limit_exempt", "id", "order_max", "updated", "limits", "status" ],
+      "properties" : {
+        "created" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "is_moderated" : {
+          "type" : "string"
+        },
+        "is_public" : {
+          "type" : "string"
+        },
+        "limits" : {
+          "$ref" : "#/definitions/limits"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "notes" : {
+          "type" : "string"
+        },
+        "object_type" : {
+          "type" : "string"
+        },
+        "order_max" : {
+          "type" : "string"
+        },
+        "order_moderation_threshold" : {
+          "type" : "string"
+        },
+        "qps_limit_ceiling" : {
+          "type" : "string"
+        },
+        "qps_limit_exempt" : {
+          "type" : "string"
+        },
+        "qps_limit_key_override_allowed" : {
+          "type" : "string"
+        },
+        "qps_limit_order_override_allowed" : {
+          "type" : "string"
+        },
+        "rate_limit_ceiling" : {
+          "type" : "string"
+        },
+        "rate_limit_exempt" : {
+          "type" : "string"
+        },
+        "rate_limit_key_override_allowed" : {
+          "type" : "string"
+        },
+        "rate_limit_order_override_allowed" : {
+          "type" : "string"
+        },
+        "rate_limit_period" : {
+          "type" : "string"
+        },
+        "response_filter_override_allowed" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "updated" : {
+          "type" : "string"
+        }
+      }
+    },
+    "limits" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "element" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/element",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "element" : {
+      "type" : "object",
+      "required" : [ "ceiling", "period", "source" ],
+      "properties" : {
+        "ceiling" : {
+          "type" : "string"
+        },
+        "period" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1471598442999" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1471598442999">
+  <complexType name="fileOutputSchemaElementType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="kind" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="etag" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="selfLink" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="webContentLink" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="alternateLink" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="iconLink" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="title" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="mimeType" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="labels">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="starred" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="hidden" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="trashed" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="restricted" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="viewed" type="boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="createdDate" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="modifiedDate" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="modifiedByMeDate" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="lastViewedByMeDate" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="markedViewedByMeDate" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="version" type="string"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="parents">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="kind" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="selfLink" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="parentLink" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="isRoot" type="boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="downloadUrl" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="userPermission">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="kind" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="etag" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="selfLink" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="role" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="type" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="originalFilename" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="fileExtension" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="md5Checksum" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="fileSize" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="quotaBytesUsed" type="string"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="ownerNames" type="string"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="owners">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="kind" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="displayName" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="isAuthenticatedUser" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="permissionId" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="emailAddress" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="lastModifyingUserName" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="lastModifyingUser">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="kind" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="displayName" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="isAuthenticatedUser" type="boolean"/>
+            <element maxOccurs="1" minOccurs="0" name="permissionId" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="emailAddress" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="editable" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="copyable" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="writersCanShare" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="shared" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="explicitlyTrashed" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="appDataContents" type="boolean"/>
+      <element maxOccurs="1" minOccurs="0" name="headRevisionId" type="string"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="spaces" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="fileOutputSchemaElement" type="tns:fileOutputSchemaElementType"/>
+</schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/MoveCopyFile"
+	xmlns:tns="http://www.example.org/MoveCopyFile" elementFormDefault="qualified">
+	<element name="Response">
+		<complexType>
+			<sequence>
+				<element ref="tns:RsHeader" minOccurs='0' />
+				<element ref="tns:RsBody" minOccurs='0' />
+				<element ref="tns:Error" minOccurs='0' />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Request">
+		<complexType>
+			<sequence>
+				<element ref="tns:RqBody" minOccurs='0' />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RsHeader">
+		<complexType>
+			<sequence>
+				<element name="statusCode" type="string" />
+				<element name="statusDesc" type="string" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RsBody">
+		<complexType>
+			<sequence>
+				<element name="isSuccess" type="string" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RqBody">
+		<complexType>
+			<sequence>
+				<element name="FromFilePath" type="string" />
+				<element name="ToFilePath" type="string" />
+				<element name="Operation">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="COPY" />
+							<enumeration value="MOVE" />
+						</restriction>
+					</simpleType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Error">
+		<complexType>
+			<sequence>
+				<element name="ErrorCode" type="string" minOccurs="0" />
+				<element name="ErrorDescription" type="string" minOccurs="0" />
+				<element name="Resolution" type="string" minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>

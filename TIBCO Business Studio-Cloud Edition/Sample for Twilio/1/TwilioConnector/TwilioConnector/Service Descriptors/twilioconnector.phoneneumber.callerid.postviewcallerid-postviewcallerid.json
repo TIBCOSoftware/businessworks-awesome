@@ -1,0 +1,93 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio PhoneNumber CallerId ViewCallerId.",
+    "description" : "Twilio PhoneNumber CallerId ViewCallerId."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/callerid/postviewcallerid" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-callerid-postviewcallerid",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ViewCallerIDInputSchema"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ViewcallerIDOutputSchema to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ViewcallerIDOutputSchema"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ViewCallerIDInputSchema" : {
+      "type" : "object",
+      "required" : [ "OutgoingCallerIdSid", "accountsid" ],
+      "properties" : {
+        "accountsid" : {
+          "type" : "string"
+        },
+        "OutgoingCallerIdSid" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ViewcallerIDOutputSchema" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "sid" : {
+          "type" : "string"
+        },
+        "account_sid" : {
+          "type" : "string"
+        },
+        "friendly_name" : {
+          "type" : "string"
+        },
+        "phone_number" : {
+          "type" : "string"
+        },
+        "date_created" : {
+          "type" : "string"
+        },
+        "date_updated" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

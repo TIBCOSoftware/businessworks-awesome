@@ -1,0 +1,300 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Amazon SNS Subscription operations",
+    "description" : "Amazon SNS Subscription operations"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/subscription" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-subscription",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/SubscribeRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a SubscribeResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/SubscribeResponse"
+            }
+          }
+        }
+      },
+      "get" : {
+        "description" : "Returns a list of the requester's subscriptions",
+        "operationId" : "get-subscriptions",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "NextToken",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "TopicArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ListSubscriptionsResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ListSubscriptionsResponse"
+            }
+          }
+        }
+      },
+      "put" : {
+        "description" : "",
+        "operationId" : "put-subscription",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ConfirmSubscriptionRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ConfirmSubscriptionResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ConfirmSubscriptionResponse"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "",
+        "operationId" : "delete-subscription",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "SubscriptionArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a UnsubscribeResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/UnsubscribeResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ConfirmSubscriptionRequest" : {
+      "type" : "object",
+      "required" : [ "TopicArn", "Token" ],
+      "properties" : {
+        "AuthenticateOnUnsubscribe" : {
+          "type" : "string"
+        },
+        "Token" : {
+          "type" : "string"
+        },
+        "TopicArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ConfirmSubscriptionResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata", "confirmSubscriptionResult" ],
+      "properties" : {
+        "confirmSubscriptionResult" : {
+          "$ref" : "#/definitions/confirmSubscriptionResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "ListSubscriptionsResponse" : {
+      "type" : "object",
+      "required" : [ "listSubscriptionsResult" ],
+      "properties" : {
+        "listSubscriptionsResult" : {
+          "$ref" : "#/definitions/listSubscriptionsResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "subscribeResult" : {
+      "type" : "object",
+      "required" : [ "subscriptionArn" ],
+      "properties" : {
+        "subscriptionArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "subscriptions" : {
+      "type" : "object",
+      "required" : [ "owner", "protocol", "endpoint", "subscriptionArn", "topicArn" ],
+      "properties" : {
+        "subscriptionArn" : {
+          "type" : "string"
+        },
+        "owner" : {
+          "type" : "string"
+        },
+        "protocol" : {
+          "type" : "string"
+        },
+        "endpoint" : {
+          "type" : "string"
+        },
+        "topicArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SubscribeRequest" : {
+      "type" : "object",
+      "required" : [ "Endpoint", "TopicArn", "Protocol" ],
+      "properties" : {
+        "Endpoint" : {
+          "type" : "string"
+        },
+        "Protocol" : {
+          "type" : "string"
+        },
+        "TopicArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SubscribeResponse" : {
+      "type" : "object",
+      "required" : [ "subscribeResult", "responseMetadata" ],
+      "properties" : {
+        "subscribeResult" : {
+          "$ref" : "#/definitions/subscribeResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UnsubscribeResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "confirmSubscriptionResult" : {
+      "type" : "object",
+      "required" : [ "subscriptionArn" ],
+      "properties" : {
+        "subscriptionArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "listSubscriptionsResult" : {
+      "type" : "object",
+      "required" : [ "nextToken" ],
+      "properties" : {
+        "subscriptions" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/subscriptions",
+            "uniqueItems" : false
+          }
+        },
+        "nextToken" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

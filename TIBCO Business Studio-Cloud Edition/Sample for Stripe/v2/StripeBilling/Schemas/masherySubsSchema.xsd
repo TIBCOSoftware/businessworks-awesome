@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:extns="http://www.example.org/schema/Company" xmlns:tns="http://www.example.org/masherySubsListSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/masherySubsListSchema">
+    <import namespace="http://www.example.org/schema/Company"/>
+    <element name="request">
+    <complexType>
+      <sequence>
+                    <element name="apiSign" type="string"/>
+                    <element name="apikey" type="string"/>
+                    <element name="unitCost" type="double"/>
+                    <element name="currency" type="string"/>
+                    <element name="member">
+                      <complexType>
+                        <sequence>
+                          <element name="username" type="string"/>
+                          <element name="external_id" type="string"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                    <element maxOccurs="unbounded" minOccurs="0" name="keys">
+                      <complexType>
+                        <sequence>
+                          <element name="service_key" type="string"/>
+                          <element name="apikey" type="string"/>
+                        </sequence>
+                      </complexType>
+                    </element>
+                <element name="CompanyRecord" type="extns:CompanyRecordType"/>
+            </sequence>
+    </complexType>
+  </element>
+</schema>

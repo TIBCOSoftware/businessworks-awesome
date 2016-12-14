@@ -1,0 +1,112 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "AMAZON SNS Message operations",
+    "description" : "AMAZON SNS Message operations"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/topic/publish" : {
+      "post" : {
+        "description" : "Sends a message to all of a topic's subscribed endpoints",
+        "operationId" : "post-topic-publish",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/PublishRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a PublishResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/PublishResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "PublishResponse" : {
+      "type" : "object",
+      "required" : [ "publishResult", "responseMetadata" ],
+      "properties" : {
+        "publishResult" : {
+          "$ref" : "#/definitions/publishResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "publishResult" : {
+      "type" : "object",
+      "required" : [ "messageId" ],
+      "properties" : {
+        "messageId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PublishRequest" : {
+      "type" : "object",
+      "required" : [ "Message" ],
+      "properties" : {
+        "Message" : {
+          "type" : "string"
+        },
+        "MessageAttributes" : {
+          "type" : "string"
+        },
+        "MessageStructure" : {
+          "type" : "string"
+        },
+        "PhoneNumber" : {
+          "type" : "string"
+        },
+        "Subject" : {
+          "type" : "string"
+        },
+        "TargetArn" : {
+          "type" : "string"
+        },
+        "TopicArn" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

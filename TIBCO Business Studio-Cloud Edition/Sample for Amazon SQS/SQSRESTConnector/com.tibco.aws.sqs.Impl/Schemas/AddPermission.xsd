@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/AddPermission" xmlns:tns1="http://www.sqsconnector.tibco.com/AddPermission" elementFormDefault="qualified">
+    
+	<complexType name="AddPermissionRequestType">
+    	<sequence>
+    		<element name="queueName" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="label" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="aWSAccountIds" type="tns1:AWSAccountIdsType" minOccurs="1"></element>
+    		<element name="actions" type="tns1:ActionsType" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+	<element name="addPermissionRequest" type="tns1:AddPermissionRequestType"></element>
+    
+    <complexType name="AWSAccountIdsType">
+    	<sequence>
+    		<element name="aWSAccountId" type="string" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="aWSAccountIds" type="tns1:AWSAccountIdsType"></element>
+
+    <complexType name="ActionsType">
+    	<sequence>
+    		<element name="action" maxOccurs="unbounded" minOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value='*'></enumeration>
+    					<enumeration value="SendMessage"></enumeration>
+    					<enumeration value="ReceiveMessage"></enumeration>
+    					<enumeration value="DeleteMessage"></enumeration>
+    					<enumeration value="ChangeMessageVisibility"></enumeration>
+    					<enumeration value="GetQueueAttributes"></enumeration>
+    					<enumeration value="GetQueueUrl"></enumeration>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <element name="actions" type="tns1:ActionsType"></element>
+    
+     <complexType name="AddPermissionResponseType">
+    	<sequence>
+    		<element name="responseMetadata" type="tns1:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="addPermissionResponse" type="tns1:AddPermissionResponseType"></element>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+</schema>

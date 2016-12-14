@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:parameters="http://xmlns.example.com/Api/parameters" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_NRH80GRjEea94e7jJVLaFA" targetNamespace="http://tns.tibco.com/bw/composite/SlackConnector" name="SlackConnector" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_jTxUoGRjEea94e7jJVLaFA" name="api-channels-create" promote="ComponentProcess/api-channels-create">
+    <sca:interface.wsdl xmi:id="_jUUuQGRjEea94e7jJVLaFA" interface="http://xmlns.example.com/20160817154318PLT#wsdl.interface(api-channels-create)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_jUefQGRjEea94e7jJVLaFA" name="RestService" path="/api/channels.create" docBasePath="http://localhost:7777/SlackConnector" docResourcePath="Api" basePath="/" connector="slackconnector.Process" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SlackConnector_1.0.json">
+      <operation xmi:id="_jUjXwGRjEea94e7jJVLaFA" operationName="post" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_jWyzcGRjEea94e7jJVLaFA" formElement="parameters:api-channels.createPostForm">
+          <parameterMapping xmi:id="_jWyzcWRjEea94e7jJVLaFA" parameterName="token" parameterType="formData" dataType="string" required="true" description="Create Channel"/>
+          <parameterMapping xmi:id="_jWzagGRjEea94e7jJVLaFA" parameterName="name" parameterType="formData" dataType="string" required="true" description="Name of the channel"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_jWyMYGRjEea94e7jJVLaFA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_jUjXwWRjEea94e7jJVLaFA" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_5L66YGRoEea94e7jJVLaFA" name="api-channels-invite" promote="ComponentProcess/api-channels-invite">
+    <sca:interface.wsdl xmi:id="_5L7hcmRoEea94e7jJVLaFA" interface="http://xmlns.example.com/20160817154318PLT#wsdl.interface(api-channels-invite1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_5L_y4GRoEea94e7jJVLaFA" name="RestService1" path="/api/channels.invite" docBasePath="http://localhost:7777/SlackConnector" docResourcePath="Api" basePath="/" connector="slackconnector.Process" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SlackConnector_1.0.json">
+      <operation xmi:id="_5MBBAGRoEea94e7jJVLaFA" operationName="post" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_5MBoEWRoEea94e7jJVLaFA">
+          <parameterMapping xmi:id="_5MBoEmRoEea94e7jJVLaFA" parameterName="token" parameterType="formData" dataType="string" required="true" description="token"/>
+          <parameterMapping xmi:id="_5MBoE2RoEea94e7jJVLaFA" parameterName="channel" parameterType="formData" dataType="string" required="true" description=""/>
+          <parameterMapping xmi:id="_5MBoFGRoEea94e7jJVLaFA" parameterName="user" parameterType="formData" dataType="string" description=""/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_5MBoEGRoEea94e7jJVLaFA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_5MBBAWRoEea94e7jJVLaFA" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_dRASMmRpEea94e7jJVLaFA" name="api-chat-postMessage" promote="ComponentProcess/api-chat-postMessage">
+    <sca:interface.wsdl xmi:id="_dRA5QmRpEea94e7jJVLaFA" interface="http://xmlns.example.com/20160817154318PLT#wsdl.interface(api-chat-postMessage)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_dRCHYGRpEea94e7jJVLaFA" name="RestService2" path="/api/chat.postMessage" docBasePath="http://localhost:7777/SlackConnector" docResourcePath="Api" basePath="/" connector="slackconnector.Process" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/SlackConnector_1.0.json">
+      <operation xmi:id="_dRCucGRpEea94e7jJVLaFA" operationName="post" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_dREjoWRpEea94e7jJVLaFA" formElement="parameters:api-chat.postMessagePostForm">
+          <parameterMapping xmi:id="_dREjomRpEea94e7jJVLaFA" parameterName="token" parameterType="formData" dataType="string" description=""/>
+          <parameterMapping xmi:id="_dRFKsGRpEea94e7jJVLaFA" parameterName="channel" parameterType="formData" dataType="string" description=""/>
+          <parameterMapping xmi:id="_dRFKsWRpEea94e7jJVLaFA" parameterName="text" parameterType="formData" dataType="string" description=""/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_dREjoGRpEea94e7jJVLaFA"/>
+      <clientFormat>JSON</clientFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_dRCucWRpEea94e7jJVLaFA" bindingName="RestService2"/>
+  </sca:service>
+  <sca:property xmi:id="_PGe78GRjEea94e7jJVLaFA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PG6ZwGRjEea94e7jJVLaFA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PG_5UGRjEea94e7jJVLaFA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PHH1IGRjEea94e7jJVLaFA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PHMtoGRjEea94e7jJVLaFA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_PHSNMGRjEea94e7jJVLaFA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_OWZi0GRjEea94e7jJVLaFA" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_OWaw8GRjEea94e7jJVLaFA" processName="slackconnector.Process"/>
+    <sca:service xmi:id="_jTrOAGRjEea94e7jJVLaFA" name="api-channels-create">
+      <sca:interface.wsdl xmi:id="_jTscIGRjEea94e7jJVLaFA" interface="http://xmlns.example.com/20160817154318PLT#wsdl.interface(api-channels-create)"/>
+    </sca:service>
+    <sca:service xmi:id="_5L6TUGRoEea94e7jJVLaFA" name="api-channels-invite">
+      <sca:interface.wsdl xmi:id="_5L6TUWRoEea94e7jJVLaFA" interface="http://xmlns.example.com/20160817154318PLT#wsdl.interface(api-channels-invite1)"/>
+    </sca:service>
+    <sca:service xmi:id="_dRASMGRpEea94e7jJVLaFA" name="api-chat-postMessage">
+      <sca:interface.wsdl xmi:id="_dRASMWRpEea94e7jJVLaFA" interface="http://xmlns.example.com/20160817154318PLT#wsdl.interface(api-chat-postMessage)"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

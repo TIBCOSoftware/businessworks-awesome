@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:parameters="http://xmlns.example.com/apps/appinstall/parameters" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_kvnvMGsUEea1uNIce-jjXA" targetNamespace="http://tns.tibco.com/bw/composite/SplunkAPISuite.apps.module" name="SplunkAPISuite.apps.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_C5umQGspEeabaJqmrfdPrg" name="apps-apptemplates" promote="ComponentProcess/apps-apptemplates">
+    <sca:interface.wsdl xmi:id="_C6BhMGspEeabaJqmrfdPrg" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-apptemplates)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_C6TOAGspEeabaJqmrfdPrg" name="RestService" path="/apps/apptemplates" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_C6UcIGspEeabaJqmrfdPrg" operationName="get" nickname="get-apps-apptemplates" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_C6gCUGspEeabaJqmrfdPrg"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_C6UcIWspEeabaJqmrfdPrg" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_mQi38msrEeabaJqmrfdPrg" name="apps-apptemplates1" promote="ComponentProcess/apps-apptemplates1">
+    <sca:interface.wsdl xmi:id="_mQjfAGsrEeabaJqmrfdPrg" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-apptemplates1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_mQqMsGsrEeabaJqmrfdPrg" name="RestService1" path="/apps/apptemplates/{name}" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_mQqzwGsrEeabaJqmrfdPrg" operationName="get" nickname="get-apps-apptemplates" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_mQra0GsrEeabaJqmrfdPrg">
+        <parameterMapping xmi:id="_mQra0WsrEeabaJqmrfdPrg" parameterName="name" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_mQqzwWsrEeabaJqmrfdPrg" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="_YlsmomstEeabaJqmrfdPrg" name="apps-local" promote="ComponentProcess/apps-local">
+    <sca:interface.wsdl xmi:id="_YltNsGstEeabaJqmrfdPrg" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_YltNsWstEeabaJqmrfdPrg" name="RestService3" path="/apps/local" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_Ylt0wGstEeabaJqmrfdPrg" operationName="get" nickname="get-apps-local" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_Rl8soGs1EeaWx-qpKCFHuQ" operationName="post" nickname="post-apps-local" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="__YQXsGs1EeaWx-qpKCFHuQ" formElement="parameters:apps-localPostForm">
+          <parameterMapping xmi:id="_BnNikGs2EeaWx-qpKCFHuQ" parameterName="auth" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_CUDacGs2EeaWx-qpKCFHuQ" parameterName="author" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_C92lYGs2EeaWx-qpKCFHuQ" parameterName="configured" parameterType="formData" dataType="boolean"/>
+          <parameterMapping xmi:id="_EfCEQGs2EeaWx-qpKCFHuQ" parameterName="description" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_FV6o8Gs2EeaWx-qpKCFHuQ" parameterName="explicit_appname" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_HOO1cGs2EeaWx-qpKCFHuQ" parameterName="filename" parameterType="formData" dataType="boolean"/>
+          <parameterMapping xmi:id="_H4ghgGs2EeaWx-qpKCFHuQ" parameterName="label" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_Id2DMGs2EeaWx-qpKCFHuQ" parameterName="name" parameterType="formData" dataType="string" required="true"/>
+          <parameterMapping xmi:id="_Jic60Gs2EeaWx-qpKCFHuQ" parameterName="session" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_KHeTcGs2EeaWx-qpKCFHuQ" parameterName="template" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_L47C8Gs2EeaWx-qpKCFHuQ" parameterName="update" parameterType="formData" dataType="boolean"/>
+          <parameterMapping xmi:id="_Nn0NsGs2EeaWx-qpKCFHuQ" parameterName="version" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_OwQccGs2EeaWx-qpKCFHuQ" parameterName="visible" parameterType="formData" dataType="boolean"/>
+        </parameters>
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Ylub0GstEeabaJqmrfdPrg"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Ylt0wWstEeabaJqmrfdPrg" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_8TWHIGszEeaWx-qpKCFHuQ" name="apps-appinstall" promote="ComponentProcess/apps-appinstall">
+    <sca:interface.wsdl xmi:id="_8TsFYGszEeaWx-qpKCFHuQ" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-appinstall2)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_8T-ZQGszEeaWx-qpKCFHuQ" name="RestService2" path="/apps/appinstall" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_8T_AUGszEeaWx-qpKCFHuQ" operationName="post" nickname="post-apps-appinstall" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_NaaVwGs0EeaWx-qpKCFHuQ" formElement="parameters:apps-appinstallPostForm">
+          <parameterMapping xmi:id="_NzT98Gs0EeaWx-qpKCFHuQ" parameterName="name" parameterType="formData" dataType="string" required="true"/>
+          <parameterMapping xmi:id="_PJyosGs0EeaWx-qpKCFHuQ" parameterName="update" parameterType="formData" dataType="boolean"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_8UEf4GszEeaWx-qpKCFHuQ"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_8T_AUWszEeaWx-qpKCFHuQ" bindingName="RestService2"/>
+  </sca:service>
+  <sca:service xmi:id="_kAaXoGtHEeaDuo35JcKLwA" name="apps-local1" promote="ComponentProcess/apps-local1">
+    <sca:interface.wsdl xmi:id="_kA_mcGtHEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local1)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_kBJ-gGtHEeaDuo35JcKLwA" name="RestService4" path="/apps/local/{name}" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_kBKlkGtHEeaDuo35JcKLwA" operationName="post" nickname="post-apps-local" httpMethod="POST" clientRequestType="application/x-www-form-urlencoded" responseStyle="element">
+        <parameters xmi:id="_auj8UGtIEeaDuo35JcKLwA" formElement="parameters:apps-local-namePostForm">
+          <parameterMapping xmi:id="_cL3AwGtIEeaDuo35JcKLwA" parameterName="author" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_dS3sIGtIEeaDuo35JcKLwA" parameterName="check_for_updates" parameterType="formData" dataType="boolean"/>
+          <parameterMapping xmi:id="_e3ReIGtIEeaDuo35JcKLwA" parameterName="configured" parameterType="formData" dataType="boolean"/>
+          <parameterMapping xmi:id="_gKh1wGtIEeaDuo35JcKLwA" parameterName="description" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_hESIQGtIEeaDuo35JcKLwA" parameterName="label" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_iLAfwGtIEeaDuo35JcKLwA" parameterName="version" parameterType="formData" dataType="string"/>
+          <parameterMapping xmi:id="_i-_hcGtIEeaDuo35JcKLwA" parameterName="visible" parameterType="formData" dataType="boolean"/>
+        </parameters>
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>FORM</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_kBKlkWtHEeaDuo35JcKLwA" operationName="get" nickname="get-apps-local" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_kBKlkmtHEeaDuo35JcKLwA" operationName="delete" nickname="delete-apps-local" httpMethod="DELETE" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_kBU9oGtHEeaDuo35JcKLwA">
+        <parameterMapping xmi:id="_kBU9oWtHEeaDuo35JcKLwA" parameterName="name" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_kBLMoGtHEeaDuo35JcKLwA" bindingName="RestService4"/>
+  </sca:service>
+  <sca:service xmi:id="_qvufkWtYEeaDuo35JcKLwA" name="apps-local-package" promote="ComponentProcess/apps-local-package">
+    <sca:interface.wsdl xmi:id="_qvvGoGtYEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local-package)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_qvvGoWtYEeaDuo35JcKLwA" name="RestService5" path="/apps/local/{name}/package" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_qvvtsGtYEeaDuo35JcKLwA" operationName="get" nickname="get-apps-local-package" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_qvyJ8GtYEeaDuo35JcKLwA">
+        <parameterMapping xmi:id="_qvyJ8WtYEeaDuo35JcKLwA" parameterName="name" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_qvvtsWtYEeaDuo35JcKLwA" bindingName="RestService5"/>
+  </sca:service>
+  <sca:service xmi:id="_tPbmwmtZEeaDuo35JcKLwA" name="apps-local-setup" promote="ComponentProcess/apps-local-setup">
+    <sca:interface.wsdl xmi:id="_tPcN0mtZEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local-setup)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_tPc04GtZEeaDuo35JcKLwA" name="RestService6" path="/apps/local/{name}/setup" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_tPc04WtZEeaDuo35JcKLwA" operationName="get" nickname="get-apps-local-setup" httpMethod="GET" responseStyle="element">
+        <clientFormat>xml</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_tPdb8GtZEeaDuo35JcKLwA">
+        <parameterMapping xmi:id="_tPdb8WtZEeaDuo35JcKLwA" parameterName="name" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_tPc04mtZEeaDuo35JcKLwA" bindingName="RestService6"/>
+  </sca:service>
+  <sca:service xmi:id="_UPyAYmtbEeaDuo35JcKLwA" name="apps-local-update" promote="ComponentProcess/apps-local-update">
+    <sca:interface.wsdl xmi:id="_UPyAZmtbEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local-update1)" scaext:wsdlLocation="../Processes/splunkapisuite/apps.module/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_UPyncGtbEeaDuo35JcKLwA" name="RestService7" path="/apps/local/{name}/update" docBasePath="http://localhost:7777/SplunkAPISuite.apps.module" docResourcePath="apps/appinstall" basePath="/" connector="splunkapisuite.module.Application" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/splunkapisuite.apps.module.Process-apps-appinstall.json">
+      <operation xmi:id="_UPyncWtbEeaDuo35JcKLwA" operationName="get" nickname="get-apps-local-update" httpMethod="GET" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_UP1DsGtbEeaDuo35JcKLwA">
+        <parameterMapping xmi:id="_UP1DsWtbEeaDuo35JcKLwA" parameterName="name" parameterType="Path" required="true"/>
+      </parameters>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_UPzOgGtbEeaDuo35JcKLwA" bindingName="RestService7"/>
+  </sca:service>
+  <sca:property xmi:id="_mjv_QGsUEea1uNIce-jjXA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mj0QsGsUEea1uNIce-jjXA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mj4iIGsUEea1uNIce-jjXA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mkAd8GsUEea1uNIce-jjXA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mkJn4GsUEea1uNIce-jjXA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mkN5UGsUEea1uNIce-jjXA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9kiZUGsfEea1uNIce-jjXA" name="APIEndpoint" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_l0oPcGsUEea1uNIce-jjXA" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_l0qEoGsUEea1uNIce-jjXA" processName="splunkapisuite.apps.module.Process"/>
+    <sca:service xmi:id="_C5jnIGspEeabaJqmrfdPrg" name="apps-apptemplates">
+      <sca:interface.wsdl xmi:id="_C5pGsGspEeabaJqmrfdPrg" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-apptemplates)"/>
+    </sca:service>
+    <sca:service xmi:id="_mQi38GsrEeabaJqmrfdPrg" name="apps-apptemplates1">
+      <sca:interface.wsdl xmi:id="_mQi38WsrEeabaJqmrfdPrg" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-apptemplates1)"/>
+    </sca:service>
+    <sca:service xmi:id="_YlsmoGstEeabaJqmrfdPrg" name="apps-local">
+      <sca:interface.wsdl xmi:id="_YlsmoWstEeabaJqmrfdPrg" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local)"/>
+    </sca:service>
+    <sca:service xmi:id="_8TGPgGszEeaWx-qpKCFHuQ" name="apps-appinstall">
+      <sca:interface.wsdl xmi:id="_8TM9MGszEeaWx-qpKCFHuQ" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-appinstall2)"/>
+    </sca:service>
+    <sca:service xmi:id="_kALHEGtHEeaDuo35JcKLwA" name="apps-local1">
+      <sca:interface.wsdl xmi:id="_kAU4EGtHEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local1)"/>
+    </sca:service>
+    <sca:service xmi:id="_qvt4gGtYEeaDuo35JcKLwA" name="apps-local-package">
+      <sca:interface.wsdl xmi:id="_qvufkGtYEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local-package)"/>
+    </sca:service>
+    <sca:service xmi:id="_tPbmwGtZEeaDuo35JcKLwA" name="apps-local-setup">
+      <sca:interface.wsdl xmi:id="_tPbmwWtZEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local-setup)"/>
+    </sca:service>
+    <sca:service xmi:id="_UPyAYGtbEeaDuo35JcKLwA" name="apps-local-update">
+      <sca:interface.wsdl xmi:id="_UPyAYWtbEeaDuo35JcKLwA" interface="http://xmlns.example.com/20160825153803PLT#wsdl.interface(apps-local-update1)" scaext:wsdlLocation="../Processes/splunkapisuite/apps.module/Process.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/Connector/surveyResponses/getListOfExpandedResponsesByCollectorIdImpl"
+	 targetNamespace="http://www.tibco.com/schemas/surveyMonkey/SharedResources/Schemas/Connector/surveyResponses/getListOfExpandedResponsesByCollectorIdImpl"
+	 elementFormDefault="unqualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="apiKey" type="xs:string"/>
+				<xs:element name="oAuthKey" type="xs:string"/>
+				<xs:element name="collectorId" type="xs:string"/>
+				<xs:element name="page" type="xs:integer" minOccurs="0"/>
+				<xs:element name="collector_ids" type="xs:string" minOccurs="0"/>
+				<xs:element name="perPage" type="xs:integer" minOccurs="0"/>
+				<xs:element name="startCreatedAt" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="endCreatedAt" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="startModifiedAt" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="endModifiedAt" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="status" minOccurs="0">
+					<xs:simpleType>
+						    <xs:restriction base="xs:string">
+						      	<xs:enumeration value="completed"/>
+						      	<xs:enumeration value="partial"/>
+						      	<xs:enumeration value="overquota"/>
+						      	<xs:enumeration value="disqualified"/>
+						    </xs:restriction>
+				 	</xs:simpleType>
+				</xs:element>
+				<xs:element name="email" type="xs:string" minOccurs="0"/>
+				<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+				<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+				<xs:element name="ip" type="xs:string" minOccurs="0"/>
+				<xs:element name="custom" type="xs:string" minOccurs="0"/>
+				<xs:element name="totalTimeMax" type="xs:integer" minOccurs="0"/>
+				<xs:element name="totalTimeMin" type="xs:integer" minOccurs="0"/>
+				<xs:element name="totalTimeUnits" minOccurs="0">
+					<xs:simpleType>
+						    <xs:restriction base="xs:string">
+						      	<xs:enumeration value="hour"/>
+						      	<xs:enumeration value="minute"/>
+						      	<xs:enumeration value="second"/>
+						    </xs:restriction>
+				 	</xs:simpleType>
+				</xs:element>
+				<xs:element name="sortOrder" minOccurs="0">
+					<xs:simpleType>
+						    <xs:restriction base="xs:string">
+						      	<xs:enumeration value="DESC"/>
+						      	<xs:enumeration value="ASC"/>
+						    </xs:restriction>
+				 	</xs:simpleType>
+				</xs:element>
+				<xs:element name="sortBy" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="code" type="xs:string"/>
+							<xs:element name="msg" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="messageBody">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="asciiContent" type="xs:string" minOccurs="0"/>
+							<xs:element name="binaryContent" type="xs:base64Binary" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

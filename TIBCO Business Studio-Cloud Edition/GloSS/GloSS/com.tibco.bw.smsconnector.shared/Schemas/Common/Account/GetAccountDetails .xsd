@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.tibco.com/Common/Account/GetAccountDetails.xsd" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/Common/Account/GetAccountDetails.xsd">
+	<element name="GetAccountDetailsRequest">
+    	<complexType>
+    		<sequence>
+    			<element ref="tns:Authorization"></element>
+    			<element ref="tns:Provider"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="GetAccountDetailsResponse">
+    	<complexType>
+            <choice>
+            	<element ref="tns:AccountDetailsResponse"></element>
+                <element ref="tns:FaultDetail"></element>
+            </choice>
+    	</complexType>
+    </element>
+    
+    <element name="Authorization">
+    	<complexType>
+    		<sequence>
+    			<element name="AuthID" type="string"></element>
+    			<element name="AuthToken" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+
+    
+    <element name="FaultDetail">
+		<complexType>
+        <sequence>
+            <element block="extension restriction substitution" form="unqualified" name="ActivityName" type="string" />
+            <element block="extension restriction substitution" form="unqualified" minOccurs="0" name="Data" type="string" />
+            <element block="extension restriction substitution" form="unqualified" name="Msg" type="string" />
+            <element block="extension restriction substitution" form="unqualified" minOccurs="0" name="MsgCode" type="string" />
+            <element block="extension restriction substitution" form="unqualified" name="ProcessStack" type="string" />
+            <element block="extension restriction substitution" form="unqualified" name="StackTrace" type="string" />
+        </sequence>
+    </complexType>
+	</element>
+
+    <element name="Provider">
+    	<complexType>
+    		<sequence>
+    			<element name="ProviderName">
+    				<simpleType>
+    					<restriction base="string">
+    						<enumeration value="twilio"></enumeration>
+    						<enumeration value="plivo"></enumeration>
+    					</restriction>
+    				</simpleType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="AccountDetailsRequest">
+    	<complexType>
+    		<sequence>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="AccountDetailsResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="auth_id" type="string"></element>
+    			<element name="name" type="string"></element>
+    			<element name="account_type" type="string"></element>
+    			<element name="resource_uri" type="string"></element>
+    			<element name="DynamicResponse"
+    				type="tns:DynamicResponse" minOccurs="0" maxOccurs="1">
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+     
+
+<complexType name="DynamicParameter">
+		<sequence>
+			
+						<element maxOccurs="unbounded" minOccurs="0" name="Parameter">
+							<complexType>
+								<sequence>
+									<element name="Key" type="string"/>
+									<element name="Value" type="string"/>
+								</sequence>
+							</complexType>
+						</element>
+					
+		</sequence>
+	</complexType>
+	
+	<complexType name="DynamicResponse">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Response">
+						<complexType>
+								<sequence>
+									<element name="Key" type="string"/>
+									<element name="Value" type="string"/>
+										
+								</sequence>
+							</complexType>
+						</element>
+		</sequence>
+	</complexType>
+</schema>

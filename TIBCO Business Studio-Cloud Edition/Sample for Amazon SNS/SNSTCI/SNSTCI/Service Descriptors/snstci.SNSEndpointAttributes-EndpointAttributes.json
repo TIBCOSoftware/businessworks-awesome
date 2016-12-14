@@ -1,0 +1,180 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/endpoint/attributes" : {
+      "get" : {
+        "description" : "Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM and APNS",
+        "operationId" : "get-endpoint-attributes",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "EndPointArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetEndpointAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetEndpointAttributesResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "description" : "Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM and APNS",
+        "operationId" : "put-endpoint-attributes",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/SetEndpointAttributesRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a SetEndpointAttributesResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/SetEndpointAttributesResponse"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "entry" : {
+      "type" : "object",
+      "required" : [ "value", "key" ],
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetEndpointAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "getEndpointAttributesResult", "responseMetadata" ],
+      "properties" : {
+        "getEndpointAttributesResult" : {
+          "$ref" : "#/definitions/getEndpointAttributesResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "SetEndpointAttributesRequest" : {
+      "type" : "object",
+      "required" : [ "Attributes", "EndpointArn" ],
+      "properties" : {
+        "Attributes" : {
+          "$ref" : "#/definitions/Attributes"
+        },
+        "EndpointArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "getEndpointAttributesResult" : {
+      "type" : "object",
+      "required" : [ "attributes" ],
+      "properties" : {
+        "attributes" : {
+          "$ref" : "#/definitions/attributes"
+        }
+      }
+    },
+    "Attributes" : {
+      "type" : "object",
+      "properties" : {
+        "CustomUserData" : {
+          "type" : "string"
+        },
+        "Enabled" : {
+          "type" : "string"
+        },
+        "Token" : {
+          "type" : "string"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "properties" : {
+        "entry" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/entry",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SetEndpointAttributesResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    }
+  }
+}

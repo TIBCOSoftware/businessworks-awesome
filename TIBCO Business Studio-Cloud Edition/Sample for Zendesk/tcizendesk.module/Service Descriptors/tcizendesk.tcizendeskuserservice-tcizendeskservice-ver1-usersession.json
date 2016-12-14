@@ -1,0 +1,104 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Zen Desk User Login Session Management. ",
+    "description" : "Zen Desk User Login Session Management. "
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/tcizendeskservice/ver1/usersession/login/" : {
+      "post" : {
+        "description" : "For User Login. Password will be taken if both password & access token are provided. It will return a unique session id for further identification. Please note that this ID is required to invoke all other APIs. In case of failed login attempt, the api will return \"Invalid Credentials\" message.",
+        "operationId" : "post-tcizendeskservice-ver1-usersession-login",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/login"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/usersession/isActive/{sessionId}" : {
+      "get" : {
+        "description" : "To find out if the User session is active.Will return true(active) or false(inactive).",
+        "operationId" : "get-tcizendeskservice-ver1-usersession-isActive",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/tcizendeskservice/ver1/usersession/logout/{sessionId}" : {
+      "delete" : {
+        "description" : "To logout user. Current user session will be deleted. The api call will return \"success\" string after deleting the user session. if the user does not exists, 'User session not found' message will be reported",
+        "operationId" : "delete-tcizendeskservice-ver1-usersession-logout",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "sessionId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "login" : {
+      "type" : "object",
+      "required" : [ "password", "domain", "userid", "token" ],
+      "properties" : {
+        "domain" : {
+          "type" : "string"
+        },
+        "userid" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "token" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

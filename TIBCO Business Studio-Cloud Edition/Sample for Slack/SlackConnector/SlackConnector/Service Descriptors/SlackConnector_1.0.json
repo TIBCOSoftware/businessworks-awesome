@@ -1,0 +1,165 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "SlackConnector",
+    "x-lastModified": "Aug 17, 2016 03:06AM PST"
+  },
+  "paths": {
+    "/api/channels.create": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "Create Channel",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "xoxp-68371729008-68371729088-68389020512-02cbaf394b"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name of the channel",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "eCommerce1"
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+    },
+    "/api/channels.invite": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "xoxp-68371729008-68371729088-68389020512-02cbaf394b"
+          },
+          {
+            "name": "channel",
+            "in": "formData",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "C2243PUGG"
+          },
+          {
+            "name": "user",
+            "in": "formData",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "U20BJLL9J"
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+    },
+    "/api/channels.info": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "xoxp-68371729008-68371729088-68389020512-02cbaf394b"
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "C2243PUGG"
+          }
+        ]
+      }
+    },
+    "/api/chat.postMessage": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "xoxp-68371729008-68371729088-68389020512-02cbaf394b"
+          },
+          {
+            "name": "channel",
+            "in": "formData",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "C2243PUGG"
+          },
+          {
+            "name": "text",
+            "in": "formData",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "Hello !!!!!"
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+    }
+  }
+}

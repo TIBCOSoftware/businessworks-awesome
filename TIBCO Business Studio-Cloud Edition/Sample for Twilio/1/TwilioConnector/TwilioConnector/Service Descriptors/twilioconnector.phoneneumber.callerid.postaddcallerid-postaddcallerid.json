@@ -1,0 +1,96 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio PhoneNumber CallerId AddCallerId.",
+    "description" : "Twilio PhoneNumber CallerId AddCallerId."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/callerid/postaddcallerid" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-callerid-postaddcallerid",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/AddCallerIDInputSchema"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a AddCallerIDOutputSchema to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/AddCallerIDOutputSchema"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AddCallerIDInputSchema" : {
+      "type" : "object",
+      "required" : [ "PhoneNumber", "accountsid" ],
+      "properties" : {
+        "accountsid" : {
+          "type" : "string"
+        },
+        "PhoneNumber" : {
+          "type" : "string"
+        },
+        "CallDelay" : {
+          "type" : "string"
+        },
+        "Extension" : {
+          "type" : "string"
+        },
+        "FriendlyName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AddCallerIDOutputSchema" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "account_sid" : {
+          "type" : "string"
+        },
+        "phone_number" : {
+          "type" : "string"
+        },
+        "friendly_name" : {
+          "type" : "string"
+        },
+        "validation_code" : {
+          "type" : "string"
+        },
+        "call_sid" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

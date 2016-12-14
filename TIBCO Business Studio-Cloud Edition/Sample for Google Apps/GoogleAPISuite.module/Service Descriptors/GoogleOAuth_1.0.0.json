@@ -1,0 +1,140 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GoogleOAuth",
+    "x-lastModified": "Aug 18, 2016 00:21AM PST"
+  },
+  "paths": {
+    "/getVerificationCode": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "description": "Get Client_Id from google developer console.\nRefer: https://developers.google.com/identity/sign-in/web/devconsole-project",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Lists the OAuth 2.0 scopes that you might need to request to access Google APIs, depending on the level of access you need. \nRefer : https://developers.google.com/identity/protocols/googlescopes",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ]
+      }
+    },
+    "/refreshOAuthToken": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "formData",
+            "description": "get client_id from developer console\nRefer: https://developers.google.com/identity/sign-in/web/devconsole-project",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "client_secret",
+            "in": "formData",
+            "description": "get client_secret from developer token\nRefer: https://developers.google.com/identity/sign-in/web/devconsole-project",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "refresh_token",
+            "in": "formData",
+            "description": "Refresh token received along with OAuth\nReceived in output of - /getAccessToken",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "grant_type",
+            "in": "formData",
+            "description": "Default: refresh_token",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "refresh_token"
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+    },
+    "/getAccessToken": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "formData",
+            "description": "get client_Id from developer console\nRefer: https://developers.google.com/identity/sign-in/web/devconsole-project",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "client_secret",
+            "in": "formData",
+            "description": "get client_secret from developer console\nRefer: https://developers.google.com/identity/sign-in/web/devconsole-project",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "code",
+            "in": "formData",
+            "description": "Device Code received along with verification code\nReceived in output of - /getVerificationCode",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "grant_type",
+            "in": "formData",
+            "description": "set grant_type",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://www.example.com/namespaces/tns/1471681073362" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.com/namespaces/tns/1471681073362">
+  <xsd:element name="Element">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="1" name="RedirectURI" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Output" type="tns:Output"></xsd:element>
+
+  <xsd:complexType name="Output">
+  	<xsd:sequence>
+  		<xsd:element name="success" type="xsd:string"></xsd:element>
+  		<xsd:element name="status" type="xsd:string"></xsd:element>
+  		<xsd:element name="Token" type="tns:Token" maxOccurs="1" minOccurs="0"></xsd:element>
+  	</xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="Token">
+  	<xsd:sequence>
+  		<xsd:element name="LinkedinAccessToken" type="xsd:string"></xsd:element>
+  		<xsd:element name="Message" type="xsd:string"></xsd:element>
+  	</xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

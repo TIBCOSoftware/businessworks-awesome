@@ -1,0 +1,134 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8081",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/api/glassdoor-linkedin/getbasicdetails" : {
+      "get" : {
+        "description" : "",
+        "operationId" : "get-api-glassdoor-linkedin-getbasicdetails",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "authtoken",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a getbasidetailsout to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/getbasidetailsout"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "BasicProfile" : {
+      "type" : "object",
+      "required" : [ "firstname", "headline", "lastname" ],
+      "properties" : {
+        "firstname" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "headline" : {
+          "type" : "string"
+        },
+        "jobdetails" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/jobdetails",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "jobdetails" : {
+      "type" : "object",
+      "required" : [ "website", "OverallRatings", "name", "industry", "id", "workLifeBalanceRating", "numofratings", "exactmatch", "Location" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "website" : {
+          "type" : "string"
+        },
+        "exactmatch" : {
+          "type" : "string"
+        },
+        "industry" : {
+          "type" : "string"
+        },
+        "numofratings" : {
+          "type" : "string"
+        },
+        "OverallRatings" : {
+          "type" : "string"
+        },
+        "workLifeBalanceRating" : {
+          "type" : "string"
+        },
+        "Location" : {
+          "type" : "string"
+        },
+        "featuredreview" : {
+          "$ref" : "#/definitions/featuredreview"
+        },
+        "ceoName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "getbasidetailsout" : {
+      "type" : "object",
+      "required" : [ "success", "status" ],
+      "properties" : {
+        "success" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "BasicProfile" : {
+          "$ref" : "#/definitions/BasicProfile"
+        }
+      }
+    },
+    "featuredreview" : {
+      "type" : "object",
+      "required" : [ "pros", "reviewdateTime", "id", "cons" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "pros" : {
+          "type" : "string"
+        },
+        "cons" : {
+          "type" : "string"
+        },
+        "reviewdateTime" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

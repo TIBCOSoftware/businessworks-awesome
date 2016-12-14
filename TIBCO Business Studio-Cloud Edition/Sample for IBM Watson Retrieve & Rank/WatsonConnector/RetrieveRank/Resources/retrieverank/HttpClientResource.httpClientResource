@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient" xmlns:id="http://www.tibco.com/ws/2013/11/identity" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:sca_ext="http://www.tibco.com/ns/sca/201311" xmlns:sslclient="http://xsd.tns.tibco.com/bw/sharedresource/trinity/models/sslclient" xmlns:subject="http://xsd.tns.tibco.com/bw/sharedresource/trinity/models/identity/subject" xmi:id="_eymjYGeAEeaRrNiwHE4iuQ" name="retrieverank.HttpClientResource" type="http:HttpClientConfiguration">
+  <identitySet xmi:id="_AvZZAGeBEeaRrNiwHE4iuQ" appliesTo="namedResource" name="HttpClientIdentitySet" provides="confidentiality">
+    <sca_ext:intentMap xmi:id="_AvaAEGeBEeaRrNiwHE4iuQ" provides="sca_ext:confidentiality">
+      <sca_ext:qualifier xmi:id="_AvaAEWeBEeaRrNiwHE4iuQ" name="transport">
+        <id:IdentityReference xmi:id="_Avb1QGeBEeaRrNiwHE4iuQ" URI="retrieverank.IdentityProvider" type="subject:SubjectConfiguration"/>
+        <id:IdentityReference xmi:id="_Bi3dUGeBEeaRrNiwHE4iuQ" URI="retrieverank.SSLClientResource" type="sslclient:SSLClientConfiguration"/>
+      </sca_ext:qualifier>
+    </sca_ext:intentMap>
+  </identitySet>
+  <jndi:configuration xsi:type="http:HttpClientConfiguration" xmi:id="_eyqNwGeAEeaRrNiwHE4iuQ" httpClientVersion="httpcomponents" retryCount="3" idleConnectionTimeout="3000">
+    <tcpDetails xmi:id="_eyufMGeAEeaRrNiwHE4iuQ">
+      <substitutionBindings xmi:id="_8bVi0GeAEeaRrNiwHE4iuQ" template="host" propName="clientHost"/>
+      <substitutionBindings xmi:id="_929zUGeAEeaRrNiwHE4iuQ" template="port" propName="clientPort"/>
+    </tcpDetails>
+  </jndi:configuration>
+</jndi:namedResource>

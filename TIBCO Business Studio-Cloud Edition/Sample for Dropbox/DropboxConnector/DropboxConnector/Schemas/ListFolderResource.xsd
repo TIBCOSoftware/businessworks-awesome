@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1471946501541" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1471946501541">
+  <complexType name="ListFolderElementType">
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="entries">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="tag" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="name" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="path_lower" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="path_display" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="cursor" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="has_more" type="boolean"/>
+    </sequence>
+  </complexType>
+  <element name="ListFolderRsElement" type="tns:ListFolderElementType"/>
+  
+ <complexType name="ListFolderElement">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="path" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="ListFolderRqElement" type="tns:ListFolderElement"/>
+
+
+
+</schema>

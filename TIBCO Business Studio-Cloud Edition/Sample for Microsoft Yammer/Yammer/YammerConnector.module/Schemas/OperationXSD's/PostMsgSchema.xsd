@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  	<xs:element name="PostMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="JSON"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+  <xs:element name="JSON">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="threaded_extended" minOccurs="0"/>
+        <xs:element name="messages">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="id" minOccurs="0"/>
+              <xs:element type="xs:int" name="sender_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="replied_to_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="created_at" minOccurs="0"/>
+              <xs:element type="xs:short" name="network_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="message_type" minOccurs="0"/>
+              <xs:element type="xs:string" name="sender_type" minOccurs="0"/>
+              <xs:element type="xs:string" name="url" minOccurs="0"/>
+              <xs:element type="xs:string" name="web_url" minOccurs="0"/>
+              <xs:element type="xs:int" name="group_id" minOccurs="0"/>
+              <xs:element name="body">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="parsed" minOccurs="0"/>
+                    <xs:element type="xs:string" name="plain" minOccurs="0"/>
+                    <xs:element type="xs:string" name="rich" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:int" name="thread_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="client_type" minOccurs="0"/>
+              <xs:element type="xs:string" name="client_url" minOccurs="0"/>
+              <xs:element type="xs:string" name="system_message" minOccurs="0"/>
+              <xs:element type="xs:string" name="direct_message" minOccurs="0"/>
+              <xs:element type="xs:string" name="chat_client_sequence" minOccurs="0"/>
+              <xs:element type="xs:string" name="language" minOccurs="0"/>
+              <xs:element type="xs:string" name="notified_user_ids" minOccurs="0"/>
+              <xs:element type="xs:string" name="privacy" minOccurs="0"/>
+              <xs:element type="xs:string" name="attachments" minOccurs="0"/>
+              <xs:element name="liked_by">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="count" minOccurs="0"/>
+                    <xs:element type="xs:string" name="names" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="additional_data" minOccurs="0"/>
+              <xs:element type="xs:string" name="content_excerpt" minOccurs="0"/>
+              <xs:element type="xs:int" name="group_created_id" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="references" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:all>
+              <xs:element type="xs:string" name="type" minOccurs="0"/>
+              <xs:element type="xs:int" name="id" minOccurs="0"/>
+              <xs:element type="xs:string" name="name" minOccurs="0"/>
+              <xs:element type="xs:string" name="state" minOccurs="0"/>
+              <xs:element type="xs:string" name="full_name" minOccurs="0"/>
+              <xs:element type="xs:string" name="job_title" minOccurs="0"/>
+              <xs:element type="xs:short" name="network_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="mugshot_url" minOccurs="0"/>
+              <xs:element type="xs:string" name="mugshot_url_template" minOccurs="0"/>
+              <xs:element type="xs:string" name="url" minOccurs="0"/>
+              <xs:element type="xs:string" name="web_url" minOccurs="0"/>
+              <xs:element type="xs:string" name="activated_at" minOccurs="0"/>
+              <xs:element type="xs:string" name="auto_activated" minOccurs="0"/>
+              <xs:element name="stats" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="following" minOccurs="0"/>
+                    <xs:element type="xs:byte" name="followers" minOccurs="0"/>
+                    <xs:element type="xs:byte" name="updates" minOccurs="0"/>
+                    <xs:element type="xs:string" name="first_reply_id" minOccurs="0"/>
+                    <xs:element type="xs:string" name="first_reply_at" minOccurs="0"/>
+                    <xs:element type="xs:int" name="latest_reply_id" minOccurs="0"/>
+                    <xs:element type="xs:string" name="latest_reply_at" minOccurs="0"/>
+                    <xs:element type="xs:byte" name="shares" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="email" minOccurs="0"/>
+              <xs:element type="xs:int" name="thread_starter_id" minOccurs="0"/>
+              <xs:element type="xs:int" name="group_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="topics" minOccurs="0"/>
+              <xs:element type="xs:string" name="privacy" minOccurs="0"/>
+              <xs:element type="xs:string" name="direct_message" minOccurs="0"/>
+              <xs:element type="xs:string" name="has_attachments" minOccurs="0"/>
+              <xs:element type="xs:string" name="invited_user_ids" minOccurs="0"/>
+              <xs:element type="xs:string" name="read_only" minOccurs="0"/>
+              <xs:element type="xs:string" name="description" minOccurs="0"/>
+              <xs:element type="xs:string" name="mugshot_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="show_in_directory" minOccurs="0"/>
+              <xs:element type="xs:string" name="created_at" minOccurs="0"/>
+              <xs:element type="xs:byte" name="members" minOccurs="0"/>
+              <xs:element type="xs:string" name="color" minOccurs="0"/>
+              <xs:element type="xs:string" name="external" minOccurs="0"/>
+              <xs:element type="xs:string" name="moderated" minOccurs="0"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="external_references" minOccurs="0"/>
+        <xs:element name="meta">
+          <xs:complexType>
+            <xs:all>
+              <xs:element type="xs:string" name="older_available" minOccurs="0"/>
+              <xs:element type="xs:byte" name="requested_poll_interval" minOccurs="0"/>
+              <xs:element type="xs:string" name="last_seen_message_id" minOccurs="0"/>
+              <xs:element type="xs:int" name="current_user_id" minOccurs="0"/>
+              <xs:element type="xs:string" name="followed_references" minOccurs="0"/>
+              <xs:element type="xs:string" name="ymodules" minOccurs="0"/>
+               <xs:element name="newest_message_details" minOccurs="0">
+              	<xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="id" minOccurs="0"/>
+                    <xs:element type="xs:string" name="thread_id" minOccurs="0"/>
+                    <xs:element type="xs:string" name="thread_starter" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+                </xs:element>
+              <xs:element type="xs:string" name="feed_name" minOccurs="0"/>
+              <xs:element type="xs:string" name="feed_desc" minOccurs="0"/>
+              <xs:element type="xs:string" name="direct_from_body" minOccurs="0"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

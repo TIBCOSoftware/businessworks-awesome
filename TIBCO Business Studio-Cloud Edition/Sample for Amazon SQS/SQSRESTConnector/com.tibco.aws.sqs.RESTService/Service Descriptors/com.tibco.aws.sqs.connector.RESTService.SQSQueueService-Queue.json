@@ -1,0 +1,240 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "This EndPoint implements all Amazon SQS APIs specific to Queue Resource.",
+    "description" : "This EndPoint implements all Amazon SQS APIs specific to Queue Resource."
+  },
+  "host" : "localhost:9876",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/sqs/queue/{AWSAccessKey}/{AWSSecretKey}/{AWSSQSEndPoint}" : {
+      "post" : {
+        "description" : "CreateQueue: Creates a new queue, or returns the URL of an existing one. When you request CreateQueue, you provide a name for the queue. To successfully create a new queue, you must provide a name that is unique within the scope of your own queues. The attributes must follow the following constraints: (Name: DelaySeconds | Valid Values: 0 to 900 | Default: 0) | (Name: MaximumMessageSize | Valid Values: 1024 to 262144 | Default: 262144) | (Name: MessageRetentionPeriod | Valid Values: 60 to 1209600 | Default: 345600) | (Name: Policy | Valid Values: Valid AWS Policy) | (Name: ReceiveMessageWaitTimeSeconds | Valid Values: 0 to 20 | Default: 0) | (Name: VisibilityTimeout | Valid Values: 0 to 43200 | Default: 30) | (Name: RedrivePolicy | Valid Values: Valid AWS Policy)",
+        "operationId" : "CreateQueue",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/createQueueRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "AWSSecretKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSAccessKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSSQSEndPoint",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a createQueueResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/createQueueResponse"
+            }
+          }
+        }
+      },
+      "get" : {
+        "description" : "GetQueueUrl: Returns the URL of an existing queue. This action provides a simple way to retrieve the URL of an Amazon SQS queue. To access a queue that belongs to another AWS account, use the QueueOwnerAWSAccountId parameter to specify the account ID of the queue's owner. The queue's owner must grant you permission to access the queue.",
+        "operationId" : "GetQueueUrl",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "AWSSecretKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "QueueOwnerAWSAccountId",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "AWSAccessKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSSQSEndPoint",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "QueueName",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a getQueueUrlResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/getQueueUrlResponse"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "DeleteQueue: Deletes the queue with the specified name, regardless of whether the queue is empty. If the specified queue does not exist, Amazon SQS returns a successful response. When you delete a queue, the deletion process takes up to 60 seconds. Requests you send involving that queue during the 60 seconds might succeed.",
+        "operationId" : "DeleteQueue",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "AWSSecretKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSAccessKey",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AWSSQSEndPoint",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "QueueName",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a deleteQueueResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/deleteQueueResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "createQueueResult" : {
+      "type" : "object",
+      "required" : [ "queueUrl" ],
+      "properties" : {
+        "queueUrl" : {
+          "type" : "string"
+        }
+      }
+    },
+    "createQueueRequest" : {
+      "type" : "object",
+      "required" : [ "queueName" ],
+      "properties" : {
+        "queueName" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "$ref" : "#/definitions/attributes"
+        }
+      }
+    },
+    "createQueueResponse" : {
+      "type" : "object",
+      "required" : [ "createQueueResult", "responseMetadata" ],
+      "properties" : {
+        "createQueueResult" : {
+          "$ref" : "#/definitions/createQueueResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "deleteQueueResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "getQueueUrlResult" : {
+      "type" : "object",
+      "required" : [ "queueUrl" ],
+      "properties" : {
+        "queueUrl" : {
+          "type" : "string"
+        }
+      }
+    },
+    "getQueueUrlResponse" : {
+      "type" : "object",
+      "required" : [ "getQueueUrlResult", "responseMetadata" ],
+      "properties" : {
+        "getQueueUrlResult" : {
+          "$ref" : "#/definitions/getQueueUrlResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "properties" : {
+        "DelaySeconds" : {
+          "type" : "integer"
+        },
+        "MaximumMessageSize" : {
+          "type" : "integer"
+        },
+        "MessageRetentionPeriod" : {
+          "type" : "integer"
+        },
+        "Policy" : {
+          "type" : "string"
+        },
+        "ReceiveMessageWaitTimeSeconds" : {
+          "type" : "integer"
+        },
+        "RedrivePolicy" : {
+          "type" : "string"
+        },
+        "VisibilityTimeout" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

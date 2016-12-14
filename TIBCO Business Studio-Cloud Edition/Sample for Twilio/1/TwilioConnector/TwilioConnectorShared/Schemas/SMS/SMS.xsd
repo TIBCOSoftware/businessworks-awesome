@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.connector.tibco.com/twilio/sms" elementFormDefault="qualified" targetNamespace="http://www.connector.tibco.com/twilio/sms">
+
+    <element name="SendSMSInput" type="tns:SendSMSRequest"/>
+
+
+    <complexType name="SendSMSRequest">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="AccountSid" type="string" />
+    		<element maxOccurs="1" minOccurs="1" name="To" type="string" />
+    		<element maxOccurs="1" minOccurs="1" name="From" type="string" />
+    		<element name="Choice" type="tns:ChoiceType"/>
+    		<element maxOccurs="1" minOccurs="0" name="StatusCallBack" type="string" />
+    	</sequence>
+    </complexType>
+
+    <complexType name="ChoiceType">
+    	<choice>
+    		<element name="Body" type="string" />
+    		<element name="MediaURL" type="string" />
+    	</choice>
+    </complexType>
+
+    <element name="SendSMSOutput" type="tns:SendSMSResponse"/>
+
+    <complexType name="SendSMSResponse">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="sid" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_created" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_updated" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_sent" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="account_sid" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="to" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="from" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="messaging_service_sid" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="body" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="status" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="num_segments" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="num_media" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="direction" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="api_version" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="price" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="price_unit" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="error_code" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="error_message" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="uri" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="subresource_uris">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="media" type="string" nillable="true"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    </complexType>
+
+    <element name="GetMessagesInput" type="tns:GetMessagesRequest"/>
+
+    <element name="GetMessagesOutput" type="tns:GetMessageResponse"/>
+
+    <complexType name="GetMessagesRequest">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="AccountSID" type="string" />
+    		<element maxOccurs="1" minOccurs="1" name="MessageSID" type="string" />
+    	</sequence>
+    </complexType>
+
+  <complexType name="GetMessageResponse">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="sid" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_created" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_updated" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_sent" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="account_sid" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="to" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="from" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="messaging_service_sid" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="body" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="status" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="num_segments" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="num_media" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="direction" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="api_version" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="price" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="price_unit" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="error_code" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="error_message" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="uri" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="subresource_uris">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="media" type="string" nillable="true"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+
+    <element name="GetMessageListInput" type="tns:GetMessageListRequest"/>
+
+    <complexType name="GetMessageListRequest">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="AccountSid" type="string" >
+    		</element>
+    		<element maxOccurs="1" minOccurs="0" name="From" type="string" >
+    		</element>
+    		<element maxOccurs="1" minOccurs="0" name="To" type="string" />
+    		<element maxOccurs="1" minOccurs="0" name="DateSent" type="dateTime"  />
+    	</sequence>
+    </complexType>
+    
+    <element name="GetMessageListOutput" type="tns:GetMessageListResponse"/>
+
+<complexType name="GetMessageListResponse">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="first_page_uri" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="end" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="previous_page_uri" type="string" nillable="true"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="messages">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_sent" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="to" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="from" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="messaging_service_sid" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="body" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="status" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="num_segments" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="num_media" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="direction" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="api_version" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="price" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="price_unit" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="error_code" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="error_message" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string" nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="subresource_uris">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="1" minOccurs="0" name="media" type="string" nillable="true"/>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="uri" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page_size" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="start" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="next_page_uri" type="string" nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page" type="integer"  nillable="true"/>
+    </sequence>
+  </complexType>
+    <complexType name="SendSMSOutputArray">
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="SendSMSOutput" type="tns:SendSMSResponse"/>
+    </sequence>
+  </complexType>
+    <element name="SendSMSOutputArray" type="tns:SendSMSOutputArray"/>
+</schema>

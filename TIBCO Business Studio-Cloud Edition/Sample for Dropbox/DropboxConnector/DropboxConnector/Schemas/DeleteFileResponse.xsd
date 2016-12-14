@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/DeleteFileResponse" elementFormDefault="qualified" targetNamespace="http://www.example.org/DeleteFileResponse">
+
+<element name="Rquest">
+		<complexType>
+			<sequence>
+				<element minOccurs="0" ref="tns:RqBody"/>			
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RsHeader">
+		<complexType>
+			<sequence>
+				<element name="statusCode" type="string"/>
+				<element name="statusDesc" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RsBody">
+		<complexType>
+			<sequence>
+				<element name="Sucess" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RqBody">
+		<complexType>
+			<sequence>
+					<element name="FilePath" type="string"/>
+					</sequence>
+		</complexType>
+	</element>
+	<element name="Error">
+		<complexType>
+			<sequence>
+				<element minOccurs="0" name="ErrorCode" type="string"/>
+				<element minOccurs="0" name="ErrorDescription" type="string"/>
+				<element minOccurs="0" name="Resolution" type="string"/>				
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Response">
+		<complexType>
+			<sequence>
+				<element minOccurs="0" ref="tns:RsHeader"/>
+				<element minOccurs="0" ref="tns:RsBody"/>
+				<element minOccurs="0" ref="tns:Error"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

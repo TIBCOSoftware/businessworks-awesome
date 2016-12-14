@@ -1,0 +1,165 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Accounts UpdateAccount.",
+    "description" : "Twilio Accounts UpdateAccount."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/accounts/postupdateaccount" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-accounts-postupdateaccount",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/UpdateAccountInputSchema"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a UpdateAccountOutputSchema to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/UpdateAccountOutputSchema"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "subresource_uris" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "applications" : {
+          "type" : "string"
+        },
+        "authorized_connect_apps" : {
+          "type" : "string"
+        },
+        "available_phone_numbers" : {
+          "type" : "string"
+        },
+        "calls" : {
+          "type" : "string"
+        },
+        "conferences" : {
+          "type" : "string"
+        },
+        "connect_apps" : {
+          "type" : "string"
+        },
+        "incoming_phone_numbers" : {
+          "type" : "string"
+        },
+        "media" : {
+          "type" : "string"
+        },
+        "messages" : {
+          "type" : "string"
+        },
+        "notifications" : {
+          "type" : "string"
+        },
+        "outgoing_caller_ids" : {
+          "type" : "string"
+        },
+        "queues" : {
+          "type" : "string"
+        },
+        "recordings" : {
+          "type" : "string"
+        },
+        "sandbox" : {
+          "type" : "string"
+        },
+        "sip" : {
+          "type" : "string"
+        },
+        "sms_messages" : {
+          "type" : "string"
+        },
+        "transcriptions" : {
+          "type" : "string"
+        },
+        "usage" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UpdateAccountInputSchema" : {
+      "type" : "object",
+      "required" : [ "accountsid" ],
+      "properties" : {
+        "accountsid" : {
+          "type" : "string"
+        },
+        "FriendlyName" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UpdateAccountOutputSchema" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "sid" : {
+          "type" : "string"
+        },
+        "owner_account_sid" : {
+          "type" : "string"
+        },
+        "friendly_name" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "date_created" : {
+          "type" : "string"
+        },
+        "date_updated" : {
+          "type" : "string"
+        },
+        "auth_token" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "subresource_uris" : {
+          "$ref" : "#/definitions/subresource_uris"
+        }
+      }
+    }
+  }
+}

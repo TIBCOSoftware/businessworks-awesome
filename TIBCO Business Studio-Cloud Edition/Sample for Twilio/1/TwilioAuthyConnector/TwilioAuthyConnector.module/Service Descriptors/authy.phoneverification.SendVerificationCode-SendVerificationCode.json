@@ -1,0 +1,102 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Auhty PhoneVerification SendVerificationCode.",
+    "description" : "Twilio Auhty PhoneVerification SendVerificationCode."
+  },
+  "host" : "HTTPConnectorGrp:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/phoneverification/sendverificationcode" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-phoneverification-sendverificationcode",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/SendVerificationCodeInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a SendVerificationCodeOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/SendVerificationCodeOutput"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "SendVerificationCodeInput" : {
+      "type" : "object",
+      "required" : [ "APIKey", "PhoneNumber", "CountryCode", "locale", "Via" ],
+      "properties" : {
+        "CountryCode" : {
+          "type" : "string"
+        },
+        "PhoneNumber" : {
+          "type" : "string"
+        },
+        "Via" : {
+          "type" : "string"
+        },
+        "locale" : {
+          "type" : "string"
+        },
+        "CustomMessage" : {
+          "type" : "string"
+        },
+        "APIKey" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SendVerificationCodeOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "carrier" : {
+          "type" : "string"
+        },
+        "is_cellphone" : {
+          "type" : "boolean"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "seconds_to_expire" : {
+          "type" : "integer"
+        },
+        "uuid" : {
+          "type" : "string"
+        },
+        "success" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}

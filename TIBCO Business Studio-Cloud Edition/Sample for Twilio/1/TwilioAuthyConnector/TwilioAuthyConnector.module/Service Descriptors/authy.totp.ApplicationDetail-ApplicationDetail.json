@@ -1,0 +1,99 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Auhty TOTP AppicationDetail.",
+    "description" : "Twilio Auhty TOTP AppicationDetail."
+  },
+  "host" : "HTTPConnectorGrp:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/totp/applicationdetail" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-totp-applicationdetail",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ApplicationDetailInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a AppicationDetailOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/AppicationDetailOutput"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "app" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "plan" : {
+          "type" : "string"
+        },
+        "sms_enabled" : {
+          "type" : "boolean"
+        },
+        "app_id" : {
+          "type" : "integer"
+        },
+        "onetouch_enabled" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "ApplicationDetailInput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "APIKey" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AppicationDetailOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "app" : {
+          "$ref" : "#/definitions/app"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "success" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}

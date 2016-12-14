@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient" xmlns:id="http://www.tibco.com/ws/2013/11/identity" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:sca_ext="http://www.tibco.com/ns/sca/201311" xmlns:sslclient="http://xsd.tns.tibco.com/bw/sharedresource/trinity/models/sslclient" xmi:id="_jUGd4WaqEea80rKh-dmwUA" name="api_linkedin_md.GetBasicUserProfileDetails" type="http:HttpClientConfiguration">
+  <identitySet xmi:id="_TlK3IGa7Eea80rKh-dmwUA" appliesTo="namedResource" name="HttpClientIdentitySet" provides="confidentiality">
+    <sca_ext:intentMap xmi:id="_TlK3IWa7Eea80rKh-dmwUA" provides="sca_ext:confidentiality">
+      <sca_ext:qualifier xmi:id="_TlK3Ima7Eea80rKh-dmwUA" name="transport">
+        <id:IdentityReference xmi:id="_TlK3I2a7Eea80rKh-dmwUA" URI="api_linkedin_md.SSLClientResource" type="sslclient:SSLClientConfiguration"/>
+      </sca_ext:qualifier>
+    </sca_ext:intentMap>
+  </identitySet>
+  <jndi:configuration xsi:type="http:HttpClientConfiguration" xmi:id="_jUGd4maqEea80rKh-dmwUA" httpClientVersion="httpcomponents" retryCount="3" idleConnectionTimeout="3000">
+    <tcpDetails xmi:id="_jUGd42aqEea80rKh-dmwUA">
+      <substitutionBindings xmi:id="_kXw6UGaqEea80rKh-dmwUA" template="host" propName="/Connections/LinkedInConnections/Host"/>
+      <substitutionBindings xmi:id="_l_S40GaqEea80rKh-dmwUA" template="port" propName="/Connections/LinkedInConnections/Port"/>
+    </tcpDetails>
+  </jndi:configuration>
+</jndi:namedResource>

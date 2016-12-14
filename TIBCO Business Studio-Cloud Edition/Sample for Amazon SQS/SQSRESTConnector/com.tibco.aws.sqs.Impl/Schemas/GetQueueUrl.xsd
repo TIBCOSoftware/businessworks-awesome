@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/GetQueueUrl" xmlns:tns7="http://www.sqsconnector.tibco.com/GetQueueUrl" elementFormDefault="qualified">
+	
+	<complexType name="GetQueueUrlRequestType">
+    	<sequence>
+    		<element name="queueName" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="queueOwnerAWSAccountId" type="string" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="getQueueUrlRequest" type="tns7:GetQueueUrlRequestType"></element>
+    
+    <complexType name="GetQueueUrlResponseType">
+    	<sequence>
+    		<element name="getQueueUrlResult"
+    			type="tns7:GetQueueUrlResultType">
+    		</element>
+    		<element name="responseMetadata" type="tns7:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="getQueueUrlResponse" type="tns7:GetQueueUrlResponseType"></element>
+    
+    <complexType name="GetQueueUrlResultType">
+    	<sequence>
+    		<element name="queueUrl" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+</schema>

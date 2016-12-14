@@ -1,0 +1,158 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.2",
+    "title": "NATSAPI",
+    "x-lastModified": "Aug 22, 2016 17:35PM PST",
+    "description": "The REST API for a NATS server (nats.io)"
+  },
+  "paths": {
+    "/api/v1/ping": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Server error",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "503": {
+            "description": "NATS server is unavailable",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "A NATS server url",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/messages": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "The subject to publish the request message to",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The NATS server url",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "reply_timeout_ms",
+            "in": "query",
+            "description": "How long to wait for a response message (in msec)",
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": null
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "msg",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "The subject of interest for a subscriber",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The NATS server url",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "queue_group",
+            "in": "query",
+            "description": "The name of the queue group",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "timeout_ms",
+            "in": "query",
+            "description": "The timeout value (in milliseconds) for the subscriber",
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "default": null
+          }
+        ]
+      }
+    }
+  }
+}

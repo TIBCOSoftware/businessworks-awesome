@@ -1,0 +1,538 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "IBM Watson Retrieve and Rank Service",
+    "x-lastModified": "Aug 20, 2016 23:50PM PST"
+  },
+  "paths": {
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [],
+        "description": "List Solr clusters.\nRetrieves the list of Solr clusters for the service instance."
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "\"cluster_size\": Size of the cluster to create. Ranges from 1 to 7.\n\"cluster_name\": Name of the cluster",
+            "schema": {
+              "$ref": "#/definitions/createSolrCluster"
+            }
+          }
+        ],
+        "description": "Create Solr cluster. \nProvisions a Solr cluster asynchronously. When the operation is successful, the status of the cluster is set to NOT_AVAILABLE. The status must be READY before you can use the cluster.",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Returns status and other information about a solr cluster."
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Delete Solr cluster.\nStops and deletes a Solr Cluster asynchronously."
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/config/{config_name}": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "config_name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "formData",
+            "description": "",
+            "required": true,
+            "type": "file",
+            "format": "binary",
+            "default": ""
+          }
+        ],
+        "description": "Uploads a zip file containing the configuration files for your Solr collection. The zip file must include schema.xml, solrconfig.xml, and other files you need for your configuration.",
+        "consumes": [
+          "multipart/form-data"
+        ]
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "config_name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Delete configuration. \nDeletes the configuration for a cluster."
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/config": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "List Solr configurations. \nRetrieves all configurations for a cluster."
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/collections": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/createSolrCollection"
+            }
+          }
+        ],
+        "description": "Create Solr collection",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/collections/{collection_name}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "collection_name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Delete Solr collection"
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/solr/{collection_name}/update": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "collection_name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON Data",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Index documents. \nAdds content to a Solr index so you can search it.",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/solr/{collection_name}/select": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "collection_name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "\"query\": (Required) The query. Uses Solr standard query syntax.  I \"fields\": fields to be returned in the output.",
+            "schema": {
+              "$ref": "#/definitions/solrSearchQuery"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/rankers": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [],
+        "description": "List rankers. \nRetrieves the list of rankers for the service instance."
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "\"file_url\" : URL for file that contains training data. E.g. https://s3.amazonaws.com/tci-watson-connector/trainingdata.txt",
+            "schema": {
+              "$ref": "#/definitions/createRanker"
+            }
+          }
+        ],
+        "description": "Create ranker.\nSends data to create and train a ranker and returns information about the new ranker. When the operation is successful, the status of the ranker is set to Training. The status must be Available before you can use the ranker.",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/rankers/{ranker_id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "ranker_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Get information about a ranker"
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "ranker_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Delete ranker."
+      }
+    },
+    "/watsonplatform/retrieve-and-rank/api/v1/solr_clusters/{solr_cluster_id}/solr/{collection_name}/fcselect": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "solr_cluster_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "collection_name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/rankedSearchQuery"
+            }
+          }
+        ],
+        "description": "Return reranked results for your query. \nThe request is similar to the Search Solr standard query parser method, but includes the ranker_id and, in the default configuration, fcselect replaces the select request handler.",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "createSolrCluster": {
+      "type": "object",
+      "required": [
+        "cluster_size",
+        "cluster_name"
+      ],
+      "properties": {
+        "cluster_size": {
+          "type": "string"
+        },
+        "cluster_name": {
+          "type": "string"
+        }
+      }
+    },
+    "createSolrCollection": {
+      "type": "object",
+      "required": [
+        "name",
+        "config_name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "config_name": {
+          "type": "string"
+        }
+      }
+    },
+    "solrSearchQuery": {
+      "type": "object",
+      "required": [
+        "query"
+      ],
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string"
+        }
+      }
+    },
+    "rankedSearchQuery": {
+      "type": "object",
+      "required": [
+        "query",
+        "ranker_id"
+      ],
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "ranker_id": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string"
+        }
+      }
+    },
+    "createRanker": {
+      "type": "object",
+      "required": [
+        "ranker_name",
+        "file_url"
+      ],
+      "properties": {
+        "ranker_name": {
+          "type": "string"
+        },
+        "file_url": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

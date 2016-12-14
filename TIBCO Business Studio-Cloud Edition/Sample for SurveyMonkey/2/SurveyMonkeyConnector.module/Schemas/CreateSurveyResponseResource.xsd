@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1471333816670" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1471333816670">
+  <complexType name="CreateSurveyResponseElementType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="response_count" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="page_count" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="buttons_text">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="done_button" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="prev_button" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="exit_button" type="string"/>
+            <element maxOccurs="1" minOccurs="0" name="next_button" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="custom_variables">
+        <complexType>
+          <sequence>
+           <element maxOccurs="1" minOccurs="0" name="dummy" type="string"/>
+          </sequence> 
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="id" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="question_count" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="category" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="preview" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="language" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="date_modified" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="title" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="analyze_url" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="summary_url" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="href" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="date_created" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="collect_url" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="edit_url" type="string"/>
+    </sequence>
+  </complexType>
+  <element name="CreateSurveyResponseElement" type="tns:CreateSurveyResponseElementType"/>
+</schema>

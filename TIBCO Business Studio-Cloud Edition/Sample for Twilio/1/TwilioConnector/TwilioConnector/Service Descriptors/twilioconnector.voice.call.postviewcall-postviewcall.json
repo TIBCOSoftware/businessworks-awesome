@@ -1,0 +1,159 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Twilio Voice Call ViewCall.",
+    "description" : "Twilio Voice Call ViewCall."
+  },
+  "host" : "localhost:8282",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/voice/call/postviewcall" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-voice-call-postviewcall",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ViewCallInput"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ViewCallOutput to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ViewCallOutput"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "subresource_uris" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "notifications" : {
+          "type" : "string"
+        },
+        "recordings" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ViewCallOutput" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "sid" : {
+          "type" : "string"
+        },
+        "date_created" : {
+          "type" : "string"
+        },
+        "date_updated" : {
+          "type" : "string"
+        },
+        "parent_call_sid" : {
+          "type" : "string"
+        },
+        "account_sid" : {
+          "type" : "string"
+        },
+        "to" : {
+          "type" : "string"
+        },
+        "to_formatted" : {
+          "type" : "string"
+        },
+        "from" : {
+          "type" : "string"
+        },
+        "from_formatted" : {
+          "type" : "string"
+        },
+        "phone_number_sid" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "start_time" : {
+          "type" : "string"
+        },
+        "end_time" : {
+          "type" : "string"
+        },
+        "duration" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "string"
+        },
+        "price_unit" : {
+          "type" : "string"
+        },
+        "direction" : {
+          "type" : "string"
+        },
+        "answered_by" : {
+          "type" : "string"
+        },
+        "annotation" : {
+          "type" : "string"
+        },
+        "api_version" : {
+          "type" : "string"
+        },
+        "forwarded_from" : {
+          "type" : "string"
+        },
+        "group_sid" : {
+          "type" : "string"
+        },
+        "caller_name" : {
+          "type" : "string"
+        },
+        "uri" : {
+          "type" : "string"
+        },
+        "subresource_uris" : {
+          "$ref" : "#/definitions/subresource_uris"
+        }
+      }
+    },
+    "ViewCallInput" : {
+      "type" : "object",
+      "required" : [ "CallSid", "AccountSid" ],
+      "properties" : {
+        "AccountSid" : {
+          "type" : "string"
+        },
+        "CallSid" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

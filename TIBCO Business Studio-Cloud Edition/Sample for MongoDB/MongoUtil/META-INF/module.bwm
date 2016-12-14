@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_kFClIGYGEeaZuJscmAm-1w" targetNamespace="http://tns.tibco.com/bw/composite/MongoUtil" name="MongoUtil" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_S-oEgGYLEeaZuJscmAm-1w" name="mongo-db-collection" promote="ComponentProcess/mongo-db-collection">
+    <sca:interface.wsdl xmi:id="_S-wnYGYLEeaZuJscmAm-1w" interface="http://xmlns.example.com/20160819194506PLT#wsdl.interface(mongo-db-collection)" scaext:wsdlLocation="../Processes/mongoutil/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_S-38IGYLEeaZuJscmAm-1w" name="RestService" path="/mongo/db/collection/{CollectionName}" docBasePath="http://localhost:7777/MongoUtil" docResourcePath="Mongo" basePath="/" connector="mongoutil.Process" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/MongoUtility.application_1.0.json">
+      <operation xmi:id="_S-6YYGYLEeaZuJscmAm-1w" operationName="post" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_S_SL0mYLEeaZuJscmAm-1w">
+          <parameterMapping xmi:id="_S_SL02YLEeaZuJscmAm-1w" parameterName="DatabaseName" parameterType="Header" dataType="string" required="true"/>
+          <parameterMapping xmi:id="_S_SL1GYLEeaZuJscmAm-1w" parameterName="UserName" parameterType="Header" dataType="string" required="true"/>
+          <parameterMapping xmi:id="_S_Sy4GYLEeaZuJscmAm-1w" parameterName="operation" parameterType="Query" dataType="string" required="true"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_S-6YYWYLEeaZuJscmAm-1w" operationName="get" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_S_Sy4WYLEeaZuJscmAm-1w">
+          <parameterMapping xmi:id="_S_Sy4mYLEeaZuJscmAm-1w" parameterName="DatabaseName" parameterType="Header" dataType="string" required="true"/>
+          <parameterMapping xmi:id="_S_Sy42YLEeaZuJscmAm-1w" parameterName="UserName" parameterType="Header" dataType="string" required="true"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+      </operation>
+      <operation xmi:id="_S-6YYmYLEeaZuJscmAm-1w" operationName="put" httpMethod="PUT" responseStyle="element" requestStyle="element">
+        <parameters xmi:id="_S_Sy5GYLEeaZuJscmAm-1w">
+          <parameterMapping xmi:id="_S_Sy5WYLEeaZuJscmAm-1w" parameterName="DatabaseName" parameterType="Header" dataType="string" required="true"/>
+          <parameterMapping xmi:id="_S_Sy5mYLEeaZuJscmAm-1w" parameterName="UserName" parameterType="Header" dataType="string" required="true"/>
+        </parameters>
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_S_SL0GYLEeaZuJscmAm-1w">
+        <parameterMapping xmi:id="_S_SL0WYLEeaZuJscmAm-1w" parameterName="CollectionName" parameterType="Path" dataType="string" required="true"/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+      <clientRequestFormat>json</clientRequestFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_S-6_cGYLEeaZuJscmAm-1w" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_kOk7oGYGEeaZuJscmAm-1w" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_kOuFkGYGEeaZuJscmAm-1w" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_kOuFkWYGEeaZuJscmAm-1w" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_kOuFkmYGEeaZuJscmAm-1w" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_kOuFk2YGEeaZuJscmAm-1w" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_kO32kGYGEeaZuJscmAm-1w" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_OWpJkGYHEeaZuJscmAm-1w" name="/MongoConnection/hostname" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_VBTqwGYHEeaZuJscmAm-1w" name="/MongoConnection/Port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_VMMFEGYHEeaZuJscmAm-1w" name="/MongoConnection/UserName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_VOZrkGYHEeaZuJscmAm-1w" name="/MongoConnection/Password" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_ZyvZcGYHEeaZuJscmAm-1w" name="/MongoConnection/DatabaseName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_yF_h8GYHEeaZuJscmAm-1w" name="/MongoConnection/keystore" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_yP99UGYHEeaZuJscmAm-1w" name="/MongoConnection/keystorepassword" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_kJ86UGYGEeaZuJscmAm-1w" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_kJ86UWYGEeaZuJscmAm-1w" processName="mongoutil.Process"/>
+    <sca:service xmi:id="_S-h94GYLEeaZuJscmAm-1w" name="mongo-db-collection">
+      <sca:interface.wsdl xmi:id="_S-jMAGYLEeaZuJscmAm-1w" interface="http://xmlns.example.com/20160819194506PLT#wsdl.interface(mongo-db-collection)" scaext:wsdlLocation="../Processes/mongoutil/Process.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_mkV5IGYGEeaZuJscmAm-1w" name="ComponentActivator" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_mkV5IWYGEeaZuJscmAm-1w" processName="mongoutil.Activator"/>
+  </sca:component>
+</sca:composite>

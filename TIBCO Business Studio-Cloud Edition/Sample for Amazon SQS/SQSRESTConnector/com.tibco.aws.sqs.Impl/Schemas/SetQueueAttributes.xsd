@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sqsconnector.tibco.com/SetQueueAttributes" xmlns:tns15="http://www.sqsconnector.tibco.com/SetQueueAttributes" elementFormDefault="qualified">
+	
+	<complexType name="SetQueueAttributesRequestType">
+    	<sequence>
+    		<element name="queueName" type="string"></element>
+    		<element name="attributes" type="tns15:SetQueueAttributesRequestAttributeType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="setQueueAttributesRequest" type="tns15:SetQueueAttributesRequestType"></element>
+    
+    <complexType name="SetQueueAttributesRequestAttributeType">
+    	<sequence>
+    		<element name="DelaySeconds" minOccurs="0">
+    			<simpleType>
+    				<restriction base="int">
+    					<minInclusive value="0"></minInclusive>
+    					<maxInclusive value="900"></maxInclusive>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="MaximumMessageSize" minOccurs="0"
+    			maxOccurs="1">
+    			<simpleType>
+    				<restriction base="int">
+    					<minInclusive value="1024"></minInclusive>
+    					<maxInclusive value="262144"></maxInclusive>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="MessageRetentionPeriod" minOccurs="0"
+    			maxOccurs="1">
+    			<simpleType>
+    				<restriction base="int">
+    					<minInclusive value="60"></minInclusive>
+    					<maxInclusive value="1209600"></maxInclusive>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="Policy" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="ReceiveMessageWaitTimeSeconds" minOccurs="0"
+    			maxOccurs="1">
+    			<simpleType>
+    				<restriction base="int">
+    					<minInclusive value="0"></minInclusive>
+    					<maxInclusive value="20"></maxInclusive>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="RedrivePolicy" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="VisibilityTimeout" minOccurs="0"
+    			maxOccurs="1">
+    			<simpleType>
+    				<restriction base="int">
+    					<minInclusive value="0"></minInclusive>
+    					<maxInclusive value="43200"></maxInclusive>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <element name="attributes" type="tns15:SetQueueAttributesRequestAttributeType"></element>
+    
+    <complexType name="SetQueueAttributesResponseType">
+    	<sequence>
+    		<element name="responseMetadata" type="tns15:ResponseMetadataType"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="setQueueAttributesResponse" type="tns15:SetQueueAttributesResponseType"></element>
+    
+    <complexType name="ResponseMetadataType">
+    	<sequence>
+    		<element name="requestId" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

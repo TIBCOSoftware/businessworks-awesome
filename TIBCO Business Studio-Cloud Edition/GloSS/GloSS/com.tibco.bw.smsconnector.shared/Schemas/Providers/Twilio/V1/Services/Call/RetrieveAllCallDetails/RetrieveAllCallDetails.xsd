@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/Providers/Twilio/V1/Services/Call/RetrieveAllCallDetails" elementFormDefault="qualified" targetNamespace="http://www.tibco.com/Providers/Twilio/V1/Services/Call/RetrieveAllCallDetails">
+
+	<element name="RetrieveAllCallDetailsRequest">
+		<complexType>
+			<sequence>
+				<element name="Authorization" type="tns:Authorization">
+				</element>
+				<element minOccurs="0" name="To" type="string"/>
+				<element minOccurs="0" name="From" type="string"/>
+				<element minOccurs="0" name="Status" type="string"/>
+				<element minOccurs="0" name="Direction" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="RetrieveAllCallDetailsResponse">
+		<complexType>
+            <choice>
+
+				<element ref="tns:Calls" />
+				<element ref="tns:FaultDetail"></element>
+			</choice>
+		</complexType>
+	</element>
+	<element name="Calls">
+		<complexType>
+			<sequence>
+			<element name="PageNo" type="int"/>
+				<element name="PageSize" type="int"/>
+				<element minOccurs="0" name="FirstPage" type="string"/>
+
+				<element minOccurs="0" name="NextPage" type="string"/>
+				<element minOccurs="0" name="PreviousPage" type="string"/>
+				<element maxOccurs="unbounded" minOccurs="0" ref="tns:Call"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Call">
+		<complexType>
+			<all>
+				<element name="Sid" type="string"/>
+				<element name="DateCreated" type="string"/>
+				<element name="DateUpdated" type="string"/>
+				<element name="ParentCallSid" type="string"/>
+				<element name="AccountSid" type="string"/>
+				<element name="To" type="string"/>
+				<element name="From" type="string"/>
+				<element name="FromFormatted" type="string"/>
+				<element name="PhoneNumberSid " type="string"/>
+				<element name="Status" type="string"/>
+				<element name="StartTime" type="string"/>
+				<element name="EndTime" type="string"/>
+				<element name="Duration" type="string"/>
+				<element name="Price" type="string"/>
+				<element name="PriceUnit" type="string"/>
+				<element name="Direction" type="string"/>
+				<element name="AnsweredBy " type="string"/>
+				<element name="Annotation " type="string"/>
+				<element name="ApiVersion" type="string"/>
+				<element name="ForwardedFrom " type="string"/>
+				<element name="GroupSid " type="string"/>
+				<element name="CallerName " type="string"/>
+				<element name="Uri" type="string"/>
+				<element ref="tns:SubresourceUris"/>
+			</all>
+		</complexType>
+	</element>
+
+	<element name="SubresourceUris">
+		<complexType>
+			<sequence>
+				<element name="Notifications" type="string"/>
+				<element name="Recordings" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="Authorization">
+		<sequence>
+			<element name="AccountID" type="string"/>
+			<element name="AuthenticationToken" type="string"/>
+		</sequence>
+	</complexType>
+	<element name="FaultDetail">
+		<complexType >
+        <sequence>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ActivityName" type="string"/>
+            <element block="extension restriction substitution"
+            	form="unqualified" minOccurs="0" name="Data" type="string" />
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="Msg" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" minOccurs="0" name="MsgCode" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="ProcessStack" type="string"/>
+            <element
+                block="extension restriction substitution"
+                form="unqualified" name="StackTrace" type="string"/>
+        </sequence>
+    </complexType>
+	</element>
+</schema>

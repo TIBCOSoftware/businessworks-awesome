@@ -1,0 +1,265 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Amazon SQS Platform Endpoint Operations",
+    "description" : "Amazon SQS Platform Endpoint Operations"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/endpoint" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-endpoint",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/CreatePlatformEndpointRequest"
+          },
+          "required" : true
+        }, {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a CreatePlatformEndpointResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/CreatePlatformEndpointResponse"
+            }
+          }
+        }
+      },
+      "get" : {
+        "description" : "Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM and APNS. The results for ListEndpointsByPlatformApplication are paginated and return a limited list of endpoints, up to 100",
+        "operationId" : "get-endpoints",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : " NextToken",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "PlatformApplicationArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a ListEndpointsByPlatformApplicationResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/ListEndpointsByPlatformApplicationResponse"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "",
+        "operationId" : "delete-endpoint",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "SecretKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "AccessKey",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "EndpointArn",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a DeleteEndpointResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/DeleteEndpointResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "DeleteEndpointResponse" : {
+      "type" : "object",
+      "required" : [ "responseMetadata" ],
+      "properties" : {
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "entry" : {
+      "type" : "object",
+      "required" : [ "value", "key" ],
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "endpoints" : {
+      "type" : "object",
+      "required" : [ "member" ],
+      "properties" : {
+        "member" : {
+          "$ref" : "#/definitions/member"
+        }
+      }
+    },
+    "CreatePlatformEndpointRequest" : {
+      "type" : "object",
+      "required" : [ "Token", "PlatformApplicationArn" ],
+      "properties" : {
+        "Attributes" : {
+          "$ref" : "#/definitions/Attributes"
+        },
+        "CustomUserData" : {
+          "type" : "string"
+        },
+        "PlatformApplicationArn" : {
+          "type" : "string"
+        },
+        "Token" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Attributes" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "CustomUserData" : {
+          "type" : "string"
+        },
+        "Enabled" : {
+          "type" : "string"
+        },
+        "Token" : {
+          "type" : "string"
+        }
+      }
+    },
+    "member" : {
+      "type" : "object",
+      "required" : [ "attributes", "EndpointArn" ],
+      "properties" : {
+        "EndpointArn" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "$ref" : "#/definitions/attributes"
+        }
+      }
+    },
+    "createPlatformEndpointResult" : {
+      "type" : "object",
+      "required" : [ "endpointArn" ],
+      "properties" : {
+        "endpointArn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "listEndpointsByPlatformApplicationResult" : {
+      "type" : "object",
+      "required" : [ "endpoints" ],
+      "properties" : {
+        "endpoints" : {
+          "$ref" : "#/definitions/endpoints"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "entry" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/entry",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "responseMetadata" : {
+      "type" : "object",
+      "required" : [ "requestId" ],
+      "properties" : {
+        "requestId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CreatePlatformEndpointResponse" : {
+      "type" : "object",
+      "required" : [ "createPlatformEndpointResult", "responseMetadata" ],
+      "properties" : {
+        "createPlatformEndpointResult" : {
+          "$ref" : "#/definitions/createPlatformEndpointResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    },
+    "ListEndpointsByPlatformApplicationResponse" : {
+      "type" : "object",
+      "required" : [ "listEndpointsByPlatformApplicationResult", "responseMetadata" ],
+      "properties" : {
+        "listEndpointsByPlatformApplicationResult" : {
+          "$ref" : "#/definitions/listEndpointsByPlatformApplicationResult"
+        },
+        "responseMetadata" : {
+          "$ref" : "#/definitions/responseMetadata"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3165 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GoogleDriveAPI",
+    "x-lastModified": "Aug 17, 2016 08:54AM PST"
+  },
+  "paths": {
+    "/listFiles": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "string..."
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "corpus",
+            "in": "query",
+            "description": "The body of items (files/documents) to which the query applies. \n\nAcceptable values are:\n\"DEFAULT\": The items that the user has accessed.\n\"DOMAIN\": Items shared to the user's domain.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "Maximum number of files to return. Acceptable values are 0 to 1000, inclusive. (Default: 100)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "Page token for files.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "projection",
+            "in": "query",
+            "description": "This parameter is deprecated and has no function. \n\nAcceptable values are:\n\"BASIC\": Deprecated\n\"FULL\": Deprecated",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query string for searching files.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "spaces",
+            "in": "query",
+            "description": "A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists the user's files.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/getFile": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file in question.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "acknowledgeAbuse",
+            "in": "query",
+            "description": "Whether the user is acknowledging the risk of downloading known malware or other abusive files. (Default: false)",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "revisionId",
+            "in": "query",
+            "description": "Specifies the Revision ID that should be downloaded. Ignored unless alt=media is specified.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "projection",
+            "in": "query",
+            "description": "This parameter is deprecated and has no function. \n\nAcceptable values are:\n\"BASIC\": Deprecated\n\"FULL\": Deprecated",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "updateViewedDate",
+            "in": "query",
+            "description": "Deprecated: Use files.update with modifiedDateBehavior=noChange, updateViewedDate=true and an empty request body. (Default: false)",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a file's metadata by ID.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/deleteFile": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file to delete.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/generateIds": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "Maximum number of IDs to return. Acceptable values are 1 to 1000, inclusive. (Default: 10)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "space",
+            "in": "query",
+            "description": "The space in which the IDs can be used to create new files. Supported values are 'drive' and 'appDataFolder'.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Generates a set of file IDs which can be provided in insert requests.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/trashFile": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file to trash.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Moves a file to the trash. The currently authenticated user must own the file.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/emptyTrash": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Permanently deletes all of the user's trashed files.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/touchFile": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file to update.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Set the file's updated time to the current server time.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/untrashFile": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file to untrash.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Restores a file from the trash.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/copyFile": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file to copy.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "convert",
+            "in": "query",
+            "description": "Whether to convert this file to the corresponding Google Docs format. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "ocr",
+            "in": "query",
+            "description": "Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "ocrLanguage",
+            "in": "query",
+            "description": "If ocr is true, hints at the language to use. Valid values are BCP 47 codes.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "pinned",
+            "in": "query",
+            "description": "Whether to pin the head revision of the new copy. A file can have a maximum of 200 pinned revisions. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "timedTextLanguage",
+            "in": "query",
+            "description": "The language of the timed text.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "timedTextTrackName",
+            "in": "query",
+            "description": "The timed text track name.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "visibility",
+            "in": "query",
+            "description": "The visibility of the new file. This parameter is only relevant when the source is not a native Google Doc and convert=false. \n\nAcceptable values are:\n\"DEFAULT\": The visibility of the new file is determined by the user's default visibility/sharing policies. (default)\n\"PRIVATE\": The new file will be visible to only the owner.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Creates a copy of the specified file.",
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/listChanges": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "description": "Whether to include deleted items. (Default: true)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "includeSubscribed",
+            "in": "query",
+            "description": "Whether to include public files the user has opened and shared files. When set to false, the list only includes owned files plus any shared or public files the user has explicitly added to a folder they own. (Default: true)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "Maximum number of changes to return. Acceptable values are 0 to 1000, inclusive. (Default: 100)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "Page token for changes.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "spaces",
+            "in": "query",
+            "description": "A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "startChangeId",
+            "in": "query",
+            "description": "Change ID to start listing changes from.",
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists the changes for a user.",
+        "tags": [
+          "Changes"
+        ]
+      }
+    },
+    "/getChange": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "changeId",
+            "in": "query",
+            "description": "The ID of the change.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a specific change.",
+        "tags": [
+          "Changes"
+        ]
+      }
+    },
+    "/listApps": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "appFilterExtensions",
+            "in": "query",
+            "description": "A comma-separated list of file extensions for open with filtering. All apps within the given app query scope which can open any of the given file extensions will be included in the response. If appFilterMimeTypes are provided as well, the result is a union of the two resulting app lists.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "appFilterMimeTypes",
+            "in": "query",
+            "description": "A comma-separated list of MIME types for open with filtering. All apps within the given app query scope which can open any of the given MIME types will be included in the response. If appFilterExtensions are provided as well, the result is a union of the two resulting app lists.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "languageCode",
+            "in": "query",
+            "description": "A language or locale code, as defined by BCP 47, with some extensions from the Unicode LDML format.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists a user's installed apps.",
+        "tags": [
+          "Apps"
+        ]
+      }
+    },
+    "/getApp": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "The ID of the app.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a specific app.",
+        "tags": [
+          "Apps"
+        ]
+      }
+    },
+    "/listChildren": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "query",
+            "description": "The ID of the folder. To list all files in the root folder, use the alias root as the value for folderId.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "Maximum number of children to return. Acceptable values are 0 to 1000, inclusive. (Default: 100)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "Page token for children.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query string for searching children. See Searching for files for more information about supported fields and operations.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists a folder's children. To list all children of the root folder, use the alias root for the folderId value.",
+        "tags": [
+          "Children"
+        ]
+      }
+    },
+    "/getChild": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "childId",
+            "in": "query",
+            "description": "The ID of the child.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "folderId",
+            "in": "query",
+            "description": "The ID of the folder.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a specific child reference.",
+        "tags": [
+          "Children"
+        ]
+      }
+    },
+    "/deleteChild": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "query",
+            "description": "The ID of the folder.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "childId",
+            "in": "query",
+            "description": "The ID of the child.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Removes a child from a folder.",
+        "tags": [
+          "Children"
+        ]
+      }
+    },
+    "/listParent": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists a file's parents.",
+        "tags": [
+          "Parent"
+        ]
+      }
+    },
+    "/getParent": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "The ID of the parent.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a specific parent reference.",
+        "tags": [
+          "Parent"
+        ]
+      }
+    },
+    "/deleteParent": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "The ID of the parent.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Removes a parent from a file.",
+        "tags": [
+          "Parent"
+        ]
+      }
+    },
+    "/listPermissions": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists a file's permissions.",
+        "tags": [
+          "Permissions"
+        ]
+      }
+    },
+    "/getPermission": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "permissionId",
+            "in": "query",
+            "description": "The ID for the permission.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a permission by ID.",
+        "tags": [
+          "Permissions"
+        ]
+      }
+    },
+    "/deletePermission": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "permissionId",
+            "in": "query",
+            "description": "The ID for the permission.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes a permission from a file.",
+        "tags": [
+          "Permissions"
+        ]
+      }
+    },
+    "/listRevisions": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists a file's revisions.",
+        "tags": [
+          "Revisions"
+        ]
+      }
+    },
+    "/getRevision": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "revisionId",
+            "in": "query",
+            "description": "The ID of the revision.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a specific revision.",
+        "tags": [
+          "Revisions"
+        ]
+      }
+    },
+    "/deleteRevision": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "revisionId",
+            "in": "query",
+            "description": "The ID of the revision.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Removes a revision.",
+        "tags": [
+          "Revisions"
+        ]
+      }
+    },
+    "/listComments": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "description": "If set, all comments and replies, including deleted comments and replies (with content stripped) will be returned. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of discussions to include in the response, used for paging. Acceptable values are 0 to 100, inclusive. (Default: 20)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "updatedMin",
+            "in": "query",
+            "description": "Only discussions that were updated after this timestamp will be returned. Formatted as an RFC 3339 timestamp.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists a file's comments.",
+        "tags": [
+          "Comments"
+        ]
+      }
+    },
+    "/deleteComment": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes a comment.",
+        "tags": [
+          "Comments"
+        ]
+      }
+    },
+    "/listReplies": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "description": "If set, all replies, including deleted replies (with content stripped) will be returned. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "The maximum number of replies to include in the response, used for paging. Acceptable values are 0 to 100, inclusive. (Default: 20)",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "The continuation token, used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists all of the replies to a comment.",
+        "tags": [
+          "Replies"
+        ]
+      }
+    },
+    "/getReply": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "replyId",
+            "in": "query",
+            "description": "The ID of the reply.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "description": "If set, this will succeed when retrieving a deleted reply. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a reply.",
+        "tags": [
+          "Replies"
+        ]
+      }
+    },
+    "/deleteReply": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "replyId",
+            "in": "query",
+            "description": "The ID of the reply.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes a reply.",
+        "tags": [
+          "Replies"
+        ]
+      }
+    },
+    "/listProperties": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists a file's properties.",
+        "tags": [
+          "Properties"
+        ]
+      }
+    },
+    "/getProperty": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "propertyKey",
+            "in": "query",
+            "description": "The key of the property.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "visibility",
+            "in": "query",
+            "description": "The visibility of the property.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a property by its key.",
+        "tags": [
+          "Properties"
+        ]
+      }
+    },
+    "/deleteProperty": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "propertyKey",
+            "in": "query",
+            "description": "The key of the property.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "visibility",
+            "in": "query",
+            "description": "The visibility of the property.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes a property.",
+        "tags": [
+          "Properties"
+        ]
+      }
+    },
+    "/getIdForEmail": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "The email address for which to return a permission ID",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Returns the permission ID for an email address.",
+        "tags": [
+          "Permissions"
+        ]
+      }
+    },
+    "/getFileComment": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "includeDeleted",
+            "in": "query",
+            "description": "If set, this will succeed when retrieving a deleted comment, and will include any deleted replies. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a comment by ID.",
+        "tags": [
+          "Comments"
+        ]
+      }
+    },
+    "/insertChildren": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "query",
+            "description": "The ID of the folder.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "id Mandatory\n{\n  \"kind\": \"drive#childReference\",\n  \"id\": string,\n  \"selfLink\": string,\n  \"childLink\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Inserts a file into a folder.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Children"
+        ]
+      }
+    },
+    "/insertParent": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "The ID of the parent.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Adds a parent folder for a file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "tags": [
+          "Parent"
+        ]
+      }
+    },
+    "/insertPermission": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "emailMessage",
+            "in": "query",
+            "description": "A custom message to include in notification emails.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "sendNotificationEmails",
+            "in": "query",
+            "description": "Whether to send notification emails when sharing to users or groups. This parameter is ignored and an email is sent if the role is owner. (Default: true)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"drive#permission\",\n  \"etag\": etag,\n  \"id\": string,\n  \"selfLink\": string,\n  \"name\": string,\n  \"emailAddress\": string,\n  \"domain\": string,\n  \"role\": string(Mandatory),\n  \"additionalRoles\": [\n    string\n  ],\n  \"type\": string(Mandatory),\n  \"value\": string,\n  \"authKey\": string,\n  \"withLink\": boolean,\n  \"photoLink\": string,\n  \"expirationDate\": datetime\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Inserts a permission for a file.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Permissions"
+        ]
+      }
+    },
+    "/updatePermission": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "permissionId",
+            "in": "query",
+            "description": "The ID for the permission.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "removeExpiration",
+            "in": "query",
+            "description": "Whether to remove the expiration date. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "transferOwnership",
+            "in": "query",
+            "description": "Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if the specified role is not 'owner'. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "\"kind\": \"drive#permission\",\n  \"etag\": etag,\n  \"id\": string,\n  \"selfLink\": string,\n  \"name\": string,\n  \"emailAddress\": string,\n  \"domain\": string,\n  \"role\": string,\n  \"additionalRoles\": [\n    string\n  ],\n  \"type\": string ,\n  \"value\": string,\n  \"authKey\": string,\n  \"withLink\": boolean,\n  \"photoLink\": string,\n  \"expirationDate\": datetime\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates a permission.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Permissions"
+        ]
+      }
+    },
+    "/updateRevision": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "revisionId",
+            "in": "query",
+            "description": "The ID for the revision.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer : \nhttps://developers.google.com/drive/v2/reference/revisions#resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates a revision.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Revisions"
+        ]
+      }
+    },
+    "/insertComment": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "For Comment format, refer: https://developers.google.com/drive/v2/reference/comments#resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates a new comment on the given file",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Comments"
+        ]
+      }
+    },
+    "/updateComment": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer : https://developers.google.com/drive/v2/reference/comments#resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates an existing comment.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Comments"
+        ]
+      }
+    },
+    "/insertReply": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer: https://developers.google.com/drive/v2/reference/replies#resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates a new reply to the given comment.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Replies"
+        ]
+      }
+    },
+    "/updateReply": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "replyId",
+            "in": "query",
+            "description": "The ID of the reply.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer: https://developers.google.com/drive/v2/reference/replies#resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates an existing reply",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Replies"
+        ]
+      }
+    },
+    "/insertProperty": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"drive#property\",\n  \"etag\": etag,\n  \"selfLink\": string,\n  \"key\": string,\n  \"visibility\": string,\n  \"value\": string\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer: https://developers.google.com/drive/v2/reference/properties#resource\n{\n  \"kind\": \"drive#property\",\n  \"etag\": etag,\n  \"selfLink\": string,\n  \"key\": string,\n  \"visibility\": string,\n  \"value\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Adds a property to a file, or updates it if it already exists.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Properties"
+        ]
+      }
+    },
+    "/updateProperty": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"kind\": \"drive#property\",\n  \"etag\": etag,\n  \"selfLink\": string,\n  \"key\": string,\n  \"visibility\": string,\n  \"value\": string\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "propertyKey",
+            "in": "query",
+            "description": "The key of the property.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "visibility",
+            "in": "query",
+            "description": "The visibility of the property.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer: https://developers.google.com/drive/v2/reference/properties#resource\n{\n  \"kind\": \"drive#property\",\n  \"etag\": etag,\n  \"selfLink\": string,\n  \"key\": string,\n  \"visibility\": string,\n  \"value\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates a property, or adds it if it doesn't exist.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Properties"
+        ]
+      }
+    },
+    "/watchFile": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file to watch.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "revisionId",
+            "in": "query",
+            "description": "Specifies the Revision ID that should be downloaded. Ignored unless alt=media is specified.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": string,\n  \"expiration\": long,\n  \"token\": string,\n  \"type\": string,\n  \"address\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Start watching for changes to a file.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "File"
+        ]
+      }
+    },
+    "/patchFile": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file to update.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "addParents",
+            "in": "query",
+            "description": "Comma-separated list of parent IDs to add.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "convert",
+            "in": "query",
+            "description": "This parameter is deprecated and has no function. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "modifiedDateBehavior",
+            "in": "query",
+            "description": "Determines the behavior in which modifiedDate is updated. This overrides setModifiedDate. \n\nAcceptable values are:\n\"fromBody\": Set modifiedDate to the value provided in the body of the request. No change if no value was provided.\n\"fromBodyIfNeeded\": Set modifiedDate to the value provided in the body of the request depending on other contents of the update.\n\"fromBodyOrNow\": Set modifiedDate to the value provided in the body of the request, or to the current time if no value was provided.\n\"noChange\": Maintain the previous value of modifiedDate.\n\"now\": Set modifiedDate to the current time.\n\"nowIfNeeded\": Set modifiedDate to the current time depending on contents of the update.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "newRevision",
+            "in": "query",
+            "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained, see the Drive Help Center. (Default: true)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "ocr",
+            "in": "query",
+            "description": "Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "ocrLanguage",
+            "in": "query",
+            "description": "If ocr is true, hints at the language to use. Valid values are BCP 47 codes.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "pinned",
+            "in": "query",
+            "description": "Whether to pin the new revision. A file can have a maximum of 200 pinned revisions. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "removeParents",
+            "in": "query",
+            "description": "Comma-separated list of parent IDs to remove.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "setModifiedDate",
+            "in": "query",
+            "description": "Whether to set the modified date with the supplied modified date. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "timedTextLanguage",
+            "in": "query",
+            "description": "The language of the timed text.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "timedTextTrackName",
+            "in": "query",
+            "description": "The timed text track name.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "updateViewedDate",
+            "in": "query",
+            "description": "Whether to update the view date after successfully updating the file. (Default: true)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "useContentAsIndexableText",
+            "in": "query",
+            "description": "Whether to use the content as indexable text. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer: https://developers.google.com/drive/v2/reference/files#resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "File"
+        ],
+        "description": "Updates file metadata. This method supports patch semantics",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/aboutDrive": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "includeSubscribed",
+            "in": "query",
+            "description": "When calculating the number of remaining change IDs, whether to include public files the user has opened and shared files. When set to false, this counts only change IDs for owned files and any shared or public files that the user has explicitly added to a folder they own. (Default: true)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "maxChangeIdCount",
+            "in": "query",
+            "description": "Maximum number of remaining change IDs to count",
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          },
+          {
+            "name": "startChangeId",
+            "in": "query",
+            "description": "Change ID to start counting from when calculating number of remaining change IDs",
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Gets the information about the current user along with Drive API settings",
+        "tags": [
+          "About"
+        ]
+      }
+    },
+    "/watchChanges": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "spaces",
+            "in": "query",
+            "description": "A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": string,\n  \"token\": string,\n  \"expiration\": long,\n  \"type\": string,\n  \"address\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Watch for all changes to a user's Drive.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Changes"
+        ]
+      }
+    },
+    "/patchPermissions": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "permissionId",
+            "in": "query",
+            "description": "The ID for the permission.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "removeExpiration",
+            "in": "query",
+            "description": "Whether to remove the expiration date. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "transferOwnership",
+            "in": "query",
+            "description": "Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if the specified role is not 'owner'. (Default: false)",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "\"etag\": etag,\n  \"id\": string,\n  \"selfLink\": string,\n  \"name\": string,\n  \"emailAddress\": string,\n  \"domain\": string,\n  \"role\": string,\n  \"additionalRoles\": [\n    string\n  ],\n  \"type\": string,\n  \"value\": string,\n  \"authKey\": string,\n  \"withLink\": boolean,\n  \"photoLink\": string,\n  \"expirationDate\": datetime\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates a permission using patch semantics.",
+        "tags": [
+          "Permissions"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/patchRevisions": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID for the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "revisionId",
+            "in": "query",
+            "description": "The ID for the revision.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"drive#revision\",\n  \"etag\": etag,\n  \"id\": string,\n  \"selfLink\": string,\n  \"mimeType\": string,\n  \"modifiedDate\": datetime,\n  \"pinned\": boolean,\n  \"published\": boolean,\n  \"publishedLink\": string,\n  \"publishAuto\": boolean,\n  \"publishedOutsideDomain\": boolean,\n  \"downloadUrl\": string,\n  \"exportLinks\": {\n    (key): string\n  },\n  \"lastModifyingUserName\": string,\n  \"lastModifyingUser\": {\n    \"kind\": \"drive#user\",\n    \"displayName\": string,\n    \"picture\": {\n      \"url\": string\n    },\n    \"isAuthenticatedUser\": boolean,\n    \"permissionId\": string,\n    \"emailAddress\": string\n  },\n  \"originalFilename\": string,\n  \"md5Checksum\": string,\n  \"fileSize\": long\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates a revision. This method supports patch semantics.",
+        "tags": [
+          "Revisions"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/patchComment": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Refer: https://developers.google.com/drive/v2/reference/comments#resource",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates an existing comment. This method supports patch semantics.",
+        "tags": [
+          "Comments"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/patchReply": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "query",
+            "description": "The ID of the comment.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "replyId",
+            "in": "query",
+            "description": "The ID of the reply.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"drive#commentReply\",\n  \"replyId\": string,\n  \"createdDate\": datetime,\n  \"modifiedDate\": datetime,\n  \"author\": {\n    \"kind\": \"drive#user\",\n    \"displayName\": string,\n    \"picture\": {\n      \"url\": string\n    },\n    \"isAuthenticatedUser\": boolean,\n    \"permissionId\": string,\n    \"emailAddress\": string\n  },\n  \"htmlContent\": string,\n  \"content\": string,\n  \"deleted\": boolean,\n  \"verb\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates an existing reply. This method supports patch semantics.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Replies"
+        ]
+      }
+    },
+    "/patchProperty": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "propertyKey",
+            "in": "query",
+            "description": "The key of the property.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "visibility",
+            "in": "query",
+            "description": "The visibility of the property.",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"kind\": \"drive#property\",\n  \"etag\": etag,\n  \"selfLink\": string,\n  \"key\": string,\n  \"visibility\": string,\n  \"value\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates a property, or adds it if it doesn't exist. This method supports patch semantics.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Properties"
+        ]
+      }
+    },
+    "/getRealTime": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "description": "The ID of the file that the Realtime API data model is associated with.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "revision",
+            "in": "query",
+            "description": "The revision of the Realtime API data model to export. Revisions start at 1 (the initial empty data model) and are incremented with each change. If this parameter is excluded, the most recent data model will be returned.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Exports the contents of the Realtime API data model associated with this file as JSON.",
+        "tags": [
+          "Realtime"
+        ]
+      }
+    },
+    "/stopDriveChannel": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": string,\n  \"resourceId\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Stop watching for changes to a resource.",
+        "tags": [
+          "Channel"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/insertFile": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "uploadType",
+            "in": "query",
+            "description": "The type of upload request to the /upload URI. Acceptable values are:\nmedia - Simple upload. Upload the media only, without any metadata.\nmultipart - Multipart upload. Upload both the media and its metadata, in a single request.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "fileContentType",
+            "in": "header",
+            "description": "File ContentType",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File to upload",
+            "required": true,
+            "type": "file",
+            "format": "binary",
+            "default": ""
+          },
+          {
+            "name": "meta",
+            "in": "formData",
+            "description": "meta-data",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          }
+        ],
+        "description": "Insert a new file.",
+        "tags": [
+          "File"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ]
+      }
+    }
+  }
+}

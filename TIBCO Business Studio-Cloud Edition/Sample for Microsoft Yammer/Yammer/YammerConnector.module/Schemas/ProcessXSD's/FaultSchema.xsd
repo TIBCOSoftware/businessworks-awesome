@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns="http://www.example.org/FaultSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/FaultSchema">
+	<xs:element name="Fault">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="FaultCode" type="xs:string"/>
+				<xs:element minOccurs="0" name="FaultMessage" type="xs:string"/>
+				<xs:element minOccurs="0" name="FaultDetails" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    <xs:complexType name="FaultType">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>

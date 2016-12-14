@@ -1,0 +1,63 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/companyresgistration" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-companyresgistration",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/CompanyRecord"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "409" : {
+            "description" : "Conflict",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "CompanyRecord" : {
+      "type" : "object",
+      "required" : [ "Secret", "CompanyID", "AreaID" ],
+      "properties" : {
+        "CompanyID" : {
+          "type" : "string"
+        },
+        "AreaID" : {
+          "type" : "string"
+        },
+        "MasheryKey" : {
+          "type" : "string"
+        },
+        "Secret" : {
+          "type" : "string"
+        },
+        "StripeKey" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

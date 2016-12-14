@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.connector.tibco.com/twilio/voice/queues" elementFormDefault="qualified" targetNamespace="http://www.connector.tibco.com/twilio/voice/queues">
+
+    <element name="CreateQueueInput" type="tns:CreateQueueRequest"/>
+
+    <element name="CreateQueueOutput" type="tns:CreateQueueResponse"/>
+
+    <element name="ViewQueueInput" type="tns:ViewQueueRequest"/>
+
+    <element name="ViewQueueListInput" type="tns:ViewQueueListRequest"/>
+
+    <element name="ViewQueueListOutput" type="tns:ViewQueueListResponse"/>
+
+    <element name="ViewQueueOutput" type="tns:ViewQueueResponse"/>
+
+    <complexType name="CreateQueueRequest">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="AccountSid" type="string"  />
+    		<element maxOccurs="1" minOccurs="1" name="FriendlyName" type="string"  />
+    		<element maxOccurs="1" minOccurs="0" name="MaxSize" type="string"  />
+    	</sequence>
+    </complexType>
+
+    <complexType name="CreateQueueResponse">
+    	<sequence>
+      <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="current_size" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="average_wait_time" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="max_size" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+    </sequence>
+    </complexType>
+
+    <complexType name="ViewQueueRequest">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="AccountSid" type="string"  />
+    		<element maxOccurs="1" minOccurs="1" name="QueueSid" type="string"  />
+    	</sequence>
+    </complexType>
+
+    <complexType name="ViewQueueResponse">
+    	<sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="current_size" type="integer"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="average_wait_time" type="integer"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="max_size" type="integer"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+          </sequence>
+    </complexType>
+
+    <complexType name="ViewQueueListRequest">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="AccountSid" type="string"  >
+    		</element>
+    		<element maxOccurs="1" minOccurs="0" name="PageSize" type="string"  />
+    		<element maxOccurs="1" minOccurs="0" name="Page" type="string"  />
+    	</sequence>
+    </complexType>
+
+    <complexType name="ViewQueueListResponse">
+    	<sequence>
+      <element maxOccurs="1" minOccurs="0" name="first_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="end" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="previous_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="queues">
+        <complexType>
+          <sequence>
+            <element maxOccurs="1" minOccurs="0" name="sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="account_sid" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="friendly_name" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="current_size" type="integer"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="average_wait_time" type="integer"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="max_size" type="integer"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_created" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="date_updated" type="string"  nillable="true"/>
+            <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page_size" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="start" type="integer"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="next_page_uri" type="string"  nillable="true"/>
+      <element maxOccurs="1" minOccurs="0" name="page" type="integer"  nillable="true"/>
+    </sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/CardDetails" xmlns:tns="http://www.example.org/CardDetails" elementFormDefault="qualified">
+
+    <complexType name="CardDetails">
+    	<sequence>
+    		<element name="CustomerName" type="string"></element>
+    		<element name="Card.Number" type="string"></element>
+    		<element name="Card.expMth" type="string"></element>
+    		<element name="Card.expYear" type="string"></element>
+    		<element name="Card.CVC" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="CreditCardDetails" type="tns:CardDetails"></element>
+</schema>

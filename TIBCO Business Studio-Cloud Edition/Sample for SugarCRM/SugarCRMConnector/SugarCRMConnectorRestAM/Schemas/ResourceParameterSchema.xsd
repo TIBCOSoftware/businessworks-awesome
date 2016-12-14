@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/Resource/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/Resource/parameters">
+  <xs:element name="oauth2-tokenPostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="username" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="password" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="client_id" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="client_secret" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="platform" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="grant_type" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="oauth2-tokenPostForm">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="AccountsGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="access_token" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="accid" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="AccountsDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="access_token" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="accid" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

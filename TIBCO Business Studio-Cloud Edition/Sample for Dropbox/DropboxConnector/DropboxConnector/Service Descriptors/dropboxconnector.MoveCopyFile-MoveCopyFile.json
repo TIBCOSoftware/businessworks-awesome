@@ -1,0 +1,117 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8587",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/movecopyfile" : {
+      "put" : {
+        "description" : "",
+        "operationId" : "put-movecopyfile",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Request"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Response to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Response"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Response" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "RsHeader" : {
+          "$ref" : "#/definitions/RsHeader"
+        },
+        "RsBody" : {
+          "$ref" : "#/definitions/RsBody"
+        },
+        "Error" : {
+          "$ref" : "#/definitions/Error"
+        }
+      }
+    },
+    "RsBody" : {
+      "type" : "object",
+      "required" : [ "isSuccess" ],
+      "properties" : {
+        "isSuccess" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RqBody" : {
+      "type" : "object",
+      "required" : [ "ToFilePath", "Operation", "FromFilePath" ],
+      "properties" : {
+        "FromFilePath" : {
+          "type" : "string"
+        },
+        "ToFilePath" : {
+          "type" : "string"
+        },
+        "Operation" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Request" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "RqBody" : {
+          "$ref" : "#/definitions/RqBody"
+        }
+      }
+    },
+    "RsHeader" : {
+      "type" : "object",
+      "required" : [ "statusDesc", "statusCode" ],
+      "properties" : {
+        "statusCode" : {
+          "type" : "string"
+        },
+        "statusDesc" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Error" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "ErrorCode" : {
+          "type" : "string"
+        },
+        "ErrorDescription" : {
+          "type" : "string"
+        },
+        "Resolution" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

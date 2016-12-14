@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://www.example.com/namespaces/tns/1470812976920" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.com/namespaces/tns/1470812976920">
+  <xsd:element name="request">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="1" name="origin" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="1" name="destination" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="mode" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="waypoints" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="language" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="region" type="xsd:string"/>
+                <xsd:element name="key" type="xsd:string"/>
+            </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="response">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="1" name="jsonResponse" type="xsd:string"/>
+       
+            </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

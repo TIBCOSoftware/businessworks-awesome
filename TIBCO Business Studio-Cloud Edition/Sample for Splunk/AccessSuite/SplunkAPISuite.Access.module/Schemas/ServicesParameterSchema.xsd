@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:source="bw.rest" xmlns:tns="http://xmlns.example.com/Services/parameters" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.example.com/Services/parameters">
+  <xs:element name="services-admin-SAML-groupsPostForm">
+    <xs:complexType>
+      <xs:sequence>
+       
+                <xs:element maxOccurs="1" minOccurs="0" name="name" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="roles" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-admin-SAML-user-role-mapPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="name" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="roles" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-auth-loginPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="cookie" type="xs:boolean"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="password" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="username" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-authorization-rolesPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="capabilities" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="cumulativeRTSrchJobsQuota" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="cumulativeSrchJobsQuota" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="defaultApp" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_roles" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rtSrchJobsQuota" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="srchDiskQuota" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="srchFilter" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="srchIndexesAllowed" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="srchIndexesDefault" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="srchJobsQuota" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="srchTimeWin" type="xs:integer"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-authorization-roles-nameGetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-authorization-roles-namePutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-authorization-roles-namePostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-authorization-roles-nameDeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-authorization-roles-namePostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="capabilities" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="cumulativeRTSrchJobsQuota" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="cumulativeSrchJobsQuota" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="defaultApp" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_capabilities" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_roles" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_rtSrchJobsQuota" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_srchDiskQuota" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_srchFilter" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_srchIndexesAllowed" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_srchIndexesDefault" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_srchJobsQuota" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="imported_srchTimeWin" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="rtSrchJobsQuota" type="xs:integer"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="srchDiskQuota" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-storage-passwordsPostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="password" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="realm" type="xs:string"/>
+            </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+   
+    <xs:element name="services-storage-passwords-name1GetParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-storage-passwords-name1PutParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-storage-passwords-name1PostParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-storage-passwords-name1DeleteParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    <xs:element name="services-storage-passwords-namePostForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="password" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

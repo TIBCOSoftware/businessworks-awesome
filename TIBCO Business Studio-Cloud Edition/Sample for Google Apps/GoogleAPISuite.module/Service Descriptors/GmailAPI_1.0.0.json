@@ -1,0 +1,1354 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "GmailAPI",
+    "x-lastModified": "Aug 17, 2016 22:45PM PST"
+  },
+  "paths": {
+    "/getMessage": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"threadId\": string,\n  \"labelIds\": [\n    string\n  ],\n  \"snippet\": string,\n  \"historyId\": unsigned long,\n  \"internalDate\": long,\n  \"payload\": {\n    \"partId\": string,\n    \"mimeType\": string,\n    \"filename\": string,\n    \"headers\": [\n      {\n        \"name\": string,\n        \"value\": string\n      }\n    ],\n    \"body\": users.messages.attachments Resource,\n    \"parts\": [\n      (MessagePart)\n    ]\n  },\n  \"sizeEstimate\": integer,\n  \"raw\": bytes\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the message to retrieve.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "The format to return the message in. \n\nAcceptable values are:\n\"full\": Returns the full email message data with body content parsed in the payload field; the raw field is not used. (default)\n\"metadata\": Returns only email message ID, labels, and email headers.\n\"minimal\": Returns only email message ID and labels; does not return the email headers, body, or payload.\n\"raw\": Returns the full email message data with body content in the raw field as a base64url encoded string; the payload field is not used.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "metadataHeaders",
+            "in": "query",
+            "description": "When given and format is METADATA, only include headers specified.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Requires authorization\nGets the specified message",
+        "tags": [
+          "Message"
+        ]
+      }
+    },
+    "/deleteMessage": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the message to delete.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer messages.trash instead.",
+        "tags": [
+          "Message"
+        ]
+      }
+    },
+    "/modifyMessage": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"threadId\": string,\n  \"labelIds\": [\n    string\n  ],\n  \"snippet\": string,\n  \"historyId\": unsigned long,\n  \"internalDate\": long,\n  \"payload\": {\n    \"partId\": string,\n    \"mimeType\": string,\n    \"filename\": string,\n    \"headers\": [\n      {\n        \"name\": string,\n        \"value\": string\n      }\n    ],\n    \"body\": users.messages.attachments Resource,\n    \"parts\": [\n      (MessagePart)\n    ]\n  },\n  \"sizeEstimate\": integer,\n  \"raw\": bytes\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the message to modify.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userid",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"addLabelIds\": [\n    string\n  ],\n  \"removeLabelIds\": [\n    string\n  ]\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Modifies the labels on the specified message.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Message"
+        ]
+      }
+    },
+    "/sendMessage": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"threadId\": string,\n  \"labelIds\": [\n    string\n  ],\n  \"snippet\": string,\n  \"historyId\": unsigned long,\n  \"internalDate\": long,\n  \"payload\": {\n    \"partId\": string,\n    \"mimeType\": string,\n    \"filename\": string,\n    \"headers\": [\n      {\n        \"name\": string,\n        \"value\": string\n      }\n    ],\n    \"body\": users.messages.attachments Resource,\n    \"parts\": [\n      (MessagePart)\n    ]\n  },\n  \"sizeEstimate\": integer,\n  \"raw\": bytes\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "uploadType",
+            "in": "query",
+            "description": "The type of upload request to the /upload URI. Acceptable values are:\nmedia - Simple upload. Upload the media only, without any metadata.\nmultipart - Multipart upload. Upload both the media and its metadata, in a single request.\nresumable - Resumable upload. Upload the file in a resumable fashion, using a series of at least two requests where the first request includes the metadata.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": string,\n  \"threadId\": string,\n  \"labelIds\": [\n    string\n  ],\n  \"snippet\": string,\n  \"historyId\": unsigned long,\n  \"internalDate\": long,\n  \"payload\": {\n    \"partId\": string,\n    \"mimeType\": string,\n    \"filename\": string,\n    \"headers\": [\n      {\n        \"name\": string,\n        \"value\": string\n      }\n    ],\n    \"body\": users.messages.attachments Resource,\n    \"parts\": [\n      (MessagePart)\n    ]\n  },\n  \"sizeEstimate\": integer,\n  \"raw\": bytes\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Sends the specified message to the recipients in the To, Cc, and Bcc headers",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Message"
+        ]
+      }
+    },
+    "/trashMessage": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the message to Trash.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Do not supply a request body with this method.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Moves the specified message to the trash.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Message"
+        ]
+      }
+    },
+    "/untrashMessage": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the message to remove from Trash.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userid",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": false,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Do not supply a request body with this method.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Removes the specified message from the trash.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Message"
+        ]
+      }
+    },
+    "/createDraft": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "uploadType",
+            "in": "query",
+            "description": "The type of upload request to the /upload URI. Acceptable values are:\nmedia - Simple upload. Upload the media only, without any metadata.\nmultipart - Multipart upload. Upload both the media and its metadata, in a single request.\nresumable - Resumable upload. Upload the file in a resumable fashion, using a series of at least two requests where the first request includes the metadata.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": string,\n  \"message\": users.messages Resource\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Do not supply a request body with this method.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Draft"
+        ]
+      }
+    },
+    "/deleteDraft": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the draft to delete.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Immediately and permanently deletes the specified draft. Does not simply trash it.",
+        "tags": [
+          "Draft"
+        ]
+      }
+    },
+    "/getDraft": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"message\": users.messages Resource\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the draft to retrieve.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "he format to return the draft in. \n\nAcceptable values are:\n\"full\": Returns the full email message data with body content parsed in the payload field; the raw field is not used. (default)\n\"metadata\": Returns only email message ID, labels, and email headers.\n\"minimal\": Returns only email message ID and labels; does not return the email headers, body, or payload.\n\"raw\": Returns the full email message data with body content in the raw field as a base64url encoded string; the payload field is not used.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets the specified draft.",
+        "tags": [
+          "Draft"
+        ]
+      }
+    },
+    "/listDrafts": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"drafts\": [\n    users.drafts Resource\n  ],\n  \"nextPageToken\": string,\n  \"resultSizeEstimate\": unsigned integer\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "includeSpamTrash",
+            "in": "query",
+            "description": "Include drafts from SPAM and TRASH in the results.",
+            "required": false,
+            "type": "boolean",
+            "format": "",
+            "default": false
+          },
+          {
+            "name": "maxResults",
+            "in": "query",
+            "description": "Maximum number of drafts to return.",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "description": "Page token to retrieve a specific page of results in the list.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example, \"from:someuser@example.com rfc822msgid: is:unread\".",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists the drafts in the user's mailbox.",
+        "tags": [
+          "Draft"
+        ]
+      }
+    },
+    "/createFilter": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"criteria\": {\n    \"from\": string,\n    \"to\": string,\n    \"subject\": string,\n    \"query\": string,\n    \"negatedQuery\": string,\n    \"hasAttachment\": boolean,\n    \"excludeChats\": boolean,\n    \"size\": integer,\n    \"sizeComparison\": string\n  },\n  \"action\": {\n    \"addLabelIds\": [\n      string\n    ],\n    \"removeLabelIds\": [\n      string\n    ],\n    \"forward\": string\n  }\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"id\": string,\n  \"criteria\": {\n    \"from\": string,\n    \"to\": string,\n    \"subject\": string,\n    \"query\": string,\n    \"negatedQuery\": string,\n    \"hasAttachment\": boolean,\n    \"excludeChats\": boolean,\n    \"size\": integer,\n    \"sizeComparison\": string\n  },\n  \"action\": {\n    \"addLabelIds\": [\n      string\n    ],\n    \"removeLabelIds\": [\n      string\n    ],\n    \"forward\": string\n  }\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates a filter.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Filter"
+        ]
+      }
+    },
+    "/deleteFilter": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the filter to be deleted.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Deletes a filter.",
+        "tags": [
+          "Filter"
+        ]
+      }
+    },
+    "/getFilter": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"criteria\": {\n    \"from\": string,\n    \"to\": string,\n    \"subject\": string,\n    \"query\": string,\n    \"negatedQuery\": string,\n    \"hasAttachment\": boolean,\n    \"excludeChats\": boolean,\n    \"size\": integer,\n    \"sizeComparison\": string\n  },\n  \"action\": {\n    \"addLabelIds\": [\n      string\n    ],\n    \"removeLabelIds\": [\n      string\n    ],\n    \"forward\": string\n  }\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the filter to be fetched.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets a filter.",
+        "tags": [
+          "Filter"
+        ]
+      }
+    },
+    "/listFilter": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "If successful, this method returns a response body with the following structure:\n\n{\n  \"filter\": [\n    users.settings.filters Resource\n  ]\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists the message filters of a Gmail user",
+        "tags": [
+          "Filter"
+        ]
+      }
+    },
+    "/getImap": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"enabled\": boolean,\n  \"autoExpunge\": boolean,\n  \"expungeBehavior\": string,\n  \"maxFolderSize\": integer\n}\n"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets IMAP settings.",
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/getPop": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"accessWindow\": string,\n  \"disposition\": string\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets POP settings.",
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/getVacation": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"enableAutoReply\": boolean,\n  \"responseSubject\": string,\n  \"responseBodyPlainText\": string,\n  \"responseBodyHtml\": string,\n  \"restrictToContacts\": boolean,\n  \"restrictToDomain\": boolean,\n  \"startTime\": long,\n  \"endTime\": long\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets vacation responder settings",
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/createLabel": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"name\": string,\n  \"messageListVisibility\": string,\n  \"labelListVisibility\": string,\n  \"type\": string,\n  \"messagesTotal\": integer,\n  \"messagesUnread\": integer,\n  \"threadsTotal\": integer,\n  \"threadsUnread\": integer\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Labels are used to categorize messages and threads within the user's mailbox.\n\n{\n  \"id\": string,\n  \"name\": string,\n  \"messageListVisibility\": string,\n  \"labelListVisibility\": string,\n  \"type\": string,\n  \"messagesTotal\": integer,\n  \"messagesUnread\": integer,\n  \"threadsTotal\": integer,\n  \"threadsUnread\": integer\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates a new label.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Labels"
+        ]
+      }
+    },
+    "/deleteLabel": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the label to delete.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.",
+        "tags": [
+          "Labels"
+        ]
+      }
+    },
+    "/listLabels": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"labels\": [\n    users.labels Resource\n  ]\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Lists all labels in the user's mailbox.",
+        "tags": [
+          "Labels"
+        ]
+      }
+    },
+    "/getLabel": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"id\": string,\n  \"name\": string,\n  \"messageListVisibility\": string,\n  \"labelListVisibility\": string,\n  \"type\": string,\n  \"messagesTotal\": integer,\n  \"messagesUnread\": integer,\n  \"threadsTotal\": integer,\n  \"threadsUnread\": integer\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the label to retrieve.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets the specified label.",
+        "tags": [
+          "Labels"
+        ]
+      }
+    },
+    "/getUserProfile": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"emailAddress\": string,\n  \"messagesTotal\": integer,\n  \"threadsTotal\": integer,\n  \"historyId\": unsigned long\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Gets the current user's Gmail profile.",
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/getAutoForwarding": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"enabled\": boolean,\n  \"emailAddress\": string,\n  \"disposition\": string\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "tags": [
+          "Settings"
+        ],
+        "description": "Gets the auto-forwarding setting for the specified account"
+      }
+    },
+    "/updateAutoForwarding": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"enabled\": boolean,\n  \"emailAddress\": string,\n  \"disposition\": string\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"enabled\": boolean,\n  \"emailAddress\": string,\n  \"disposition\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/updateImap": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"enabled\": boolean,\n  \"autoExpunge\": boolean,\n  \"expungeBehavior\": string,\n  \"maxFolderSize\": integer\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"enabled\": boolean,\n  \"autoExpunge\": boolean,\n  \"expungeBehavior\": string,\n  \"maxFolderSize\": integer\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates IMAP settings.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/updatePop": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "application/json": "{\n  \"accessWindow\": string,\n  \"disposition\": string\n}"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "{\n  \"accessWindow\": string,\n  \"disposition\": string\n}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Updates POP settings.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Settings"
+        ]
+      }
+    },
+    "/stopPushNotifications": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": ""
+          },
+          {
+            "name": "OAuth",
+            "in": "header",
+            "description": "It can be obtained from OAuth- getAccessToken method.",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "description": "Stop receiving push notifications for the given user mailbox.",
+        "tags": [
+          "Settings"
+        ]
+      }
+    }
+  }
+}
