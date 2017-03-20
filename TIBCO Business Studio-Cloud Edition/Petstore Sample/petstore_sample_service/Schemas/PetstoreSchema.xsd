@@ -1,0 +1,49 @@
+<xs:schema attributeFormDefault="qualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/PetStore" xmlns:tns="http://www.example.org/PetStore">
+	<xs:element name="Pet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="category">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:byte" name="id" />
+							<xs:element type="xs:string" name="name" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element type="xs:long" name="id" />
+				<xs:element type="xs:string" name="name" />
+				<xs:element name="photoUrls">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="photoUrl" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element type="xs:string" name="status" />
+				<xs:element name="tags">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="tag" maxOccurs="unbounded"
+								minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:byte" name="id" />
+										<xs:element type="xs:string" name="name" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pets">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Pet" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_MK0tgAjZEea89aOcspQz0w" targetNamespace="http://tns.tibco.com/bw/composite/petstore_sample_service" name="petstore_sample_service" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_rzXBgAjZEea89aOcspQz0w" name="pet" promote="ComponentProcess/pet">
+    <sca:interface.wsdl xmi:id="_rzXBhAjZEea89aOcspQz0w" interface="http://xmlns.example.com/20160422152600PLT#wsdl.interface(pet)"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_rzgLcAjZEea89aOcspQz0w" name="RestService" path="/pet/{petId}" docBasePath="http://localhost:7777/petstore_sample_service" docResourcePath="Pet" basePath="/" connector="petstore_sample_service.pet" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/TIBCO Cloud PetStore Sample_1.0.json">
+      <operation xmi:id="_rzgLcQjZEea89aOcspQz0w" operationName="post" nickname="post-pet" httpMethod="POST" notes="" responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_rzgLcgjZEea89aOcspQz0w" operationName="get" nickname="get-pet" httpMethod="GET" notes="" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_rzgLcwjZEea89aOcspQz0w" operationName="put" nickname="put-pet" httpMethod="PUT" notes="" responseStyle="element" requestStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_rzgLdAjZEea89aOcspQz0w" operationName="delete" nickname="delete-pet" httpMethod="DELETE" notes="" responseStyle="element">
+        <clientFormat>JSON</clientFormat>
+        <clientRequestFormat>JSON</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_rz83YAjZEea89aOcspQz0w">
+        <parameterMapping xmi:id="_rz83YQjZEea89aOcspQz0w" parameterName="petId" parameterType="Path" dataType="string" required="true" description=""/>
+      </parameters>
+      <clientFormat>json</clientFormat>
+      <clientRequestFormat>json</clientRequestFormat>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_rzgLdQjZEea89aOcspQz0w" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_MbwsgAjZEea89aOcspQz0w" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Mb52cAjZEea89aOcspQz0w" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Mb52cQjZEea89aOcspQz0w" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_McDncAjZEea89aOcspQz0w" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_McDncQjZEea89aOcspQz0w" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_McDncgjZEea89aOcspQz0w" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_z-a-cAjZEea89aOcspQz0w" name="PORT" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_MUaHUAjZEea89aOcspQz0w" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_MUaHUQjZEea89aOcspQz0w" processName="petstore_sample_service.Pet"/>
+    <sca:service xmi:id="_rzNQgAjZEea89aOcspQz0w" name="pet">
+      <sca:interface.wsdl xmi:id="_rzNQgQjZEea89aOcspQz0w" interface="http://xmlns.example.com/20160422152600PLT#wsdl.interface(pet)"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_QtSzIAjZEea89aOcspQz0w" name="ComponentActivator" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_QtSzIQjZEea89aOcspQz0w" processName="petstore_sample_service.Activator"/>
+  </sca:component>
+</sca:composite>

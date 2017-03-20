@@ -1,0 +1,196 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "TIBCO Cloud Integration PetStore Sample",
+    "description" : "TIBCO Cloud Integration PetStore Sample"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/pet/{petId}" : {
+      "post" : {
+        "description" : "",
+        "operationId" : "post-pet",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Pet"
+          },
+          "required" : true
+          
+        }, {
+          "name" : "petId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+          
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Pet to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Pet"
+            }
+          }
+        }
+      },
+      "get" : {
+        "description" : "",
+        "operationId" : "get-pet",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "petId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+          
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Pet to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Pet"
+            }
+          }
+        }
+      },
+      "put" : {
+        "description" : "",
+        "operationId" : "put-pet",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/Pet"
+          },
+          "required" : true
+          
+        }, {
+          "name" : "petId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+          
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Pet to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Pet"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "",
+        "operationId" : "delete-pet",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "petId",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+          
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  
+  "definitions" : {
+    "photoUrls" : {
+      "type" : "object",
+      "required" : [ "photoUrl" ],
+      "properties" : {
+        "photoUrl" : {
+          "type" : "string"
+        }
+      }
+    },
+    "tag" : {
+      "type" : "object",
+      "required" : [ "name", "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "category" : {
+      "type" : "object",
+      "required" : [ "name", "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Pet" : {
+      "type" : "object",
+      "required" : [ "photoUrls", "name", "id", "category", "status", "tags" ],
+      "properties" : {
+        "category" : {
+          "$ref" : "#/definitions/category"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "photoUrls" : {
+          "$ref" : "#/definitions/photoUrls"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "tags" : {
+          "$ref" : "#/definitions/tags"
+        }
+      }
+    },
+    "tags" : {
+      "type" : "object",
+      "required" : [ ],
+      "properties" : {
+        "tag" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/tag",
+            "uniqueItems" : false
+          }
+        }
+      }
+    }
+  }
+}
