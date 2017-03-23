@@ -29,7 +29,7 @@ To debug this application in TIBCO Business Studio - Cloud Edition follow the be
 
 ### Run using TIBCO Cloud Integration
 To deploy the application to TIBCO Cloud Integration and test it from there follow the below steps:
-* Right-click on the project **tibco.tci.samples.salesforcemarketo.application** and select the option **Push to Cloud...**
+* Right-click on the project **petstore_sample_service_application** and select the option **Push to Cloud...**
 * Open a browser and go to `http://cloud.tibco.com` and click **sign in**
 * As soon as the application is started (shown by the **green** light in front of the application name) click on **Endpoint > VIEW API**
 * Open the **GET** operation and provide values for _PetID_ (e.g. `1`) and click **Try it out!**
