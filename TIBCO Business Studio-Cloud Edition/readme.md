@@ -43,7 +43,7 @@ Well we've got quite a few!
 * Petstore Sample
 
 ## Installation and Deployment
-To use one of the connectors in your project download or clone this repository onto your local machine and import the project into an existing TIBCO Business Studio - Cloud Edition workspace. Before running the application make sure to configure everything properly. There are two options to run this application. You can either debug this application using TIBCO Business Studio - Cloud Edition or deploy this application to the TIBCO Cloud Integration runtime.
+To use one of the connectors in your project download the zipfile or clone this repository onto your local machine and import the project into an existing TIBCO Business Studio - Cloud Edition workspace. Before running the application make sure to configure everything properly. There are two options to run this application. You can either debug this application using TIBCO Business Studio - Cloud Edition or deploy this application to the TIBCO Cloud Integration runtime.
 
 ## Questions?
 Feel free to open a Github issue or ask a question on the [TIBCO Community](https://community.tibco.com)
