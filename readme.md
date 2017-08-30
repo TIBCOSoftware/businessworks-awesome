@@ -58,6 +58,13 @@ If you have feedback, don't hesitate to talk to us!
 * Ask questions on the [TIBCO Community](https://community.tibco.com/answers/product/344006)
 * Send us a note at `tci@tibco.com`
 
+## Other TIBCO Cloud Integration repos
+You might also want to visit our other repos
+* [tci-awesome](https://github.com/TIBCOSoftware/tci-awesome), a curated set of awesome projects built on TIBCO Cloud Integration
+* [tci-webintegrator](https://github.com/TIBCOSoftware/tci-webintegrator), the SDK to build cool extensions for our Web Integrator
+* [Visual Studio Code extension for Node.js](https://github.com/TIBCOSoftware/vscode-extension-tci)
+* [Command Line Interface for Node.js](https://github.com/TIBCOSoftware/tibcli-node)
+
 ## Contributors
 [Leon Stigter](https://github.com/retgits)
 
