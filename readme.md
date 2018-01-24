@@ -16,7 +16,7 @@ TIBCO created the TIBCO BusinessWorks integration platform to put the power back
 * [Sample for Microsoft Translator](https://github.com/TIBCOSoftware/bw-sample-for-microsoft-translator)
 * [Sample for Microsoft Yammer](https://github.com/TIBCOSoftware/bw-sample-for-microsoft-yammer)
 * [Sample for MongoDB](https://github.com/TIBCOSoftware/bw-sample-for-mongodb)
-* [Sample for Nats.io](hhttps://github.com/TIBCOSoftware/bw-sample-for-natsio)
+* [Sample for Nats.io](https://github.com/TIBCOSoftware/bw-sample-for-natsio)
 * [Sample for Slack](https://github.com/TIBCOSoftware/bw-sample-for-slack)
 * [Sample for Splunk](https://github.com/TIBCOSoftware/bw-sample-for-splunk)
 * [Sample for Stripe](https://github.com/TIBCOSoftware/bw-sample-for-stripe)
@@ -30,9 +30,8 @@ TIBCO created the TIBCO BusinessWorks integration platform to put the power back
 * [Sample for Netsuite](https://github.com/TIBCOSoftware/bw-sample-for-netsuite)
 * [Sample for SOAP Currency Converter](https://github.com/TIBCOSoftware/bw-sample-for-soap-currency-converter)
 * [Sample for Salesforce](https://github.com/TIBCOSoftware/bw-sample-for-salesforce)
-* [Sample for Salesforce to Marketo](https://github.com/TIBCOSoftware/tci-studio-samples/tree/master/TIBCO%20Business%20Studio-Cloud%20Edition/Sample%20for%20Salesforce%20to%20Marketo)
+* [Sample for Salesforce to Marketo](https://github.com/TIBCOSoftware/bw-sample-for-salesforce-to-marketo)
 * [Sample for Marketo](https://github.com/TIBCOSoftware/bw-sample-for-salesforce-to-marketo)
-* [Petstore Sample](hhttps://github.com/TIBCOSoftware/bw-sample-for-marketo)
 
 ## Questions or feedback?
 Feel free to open a Github issue or ask a question on the [TIBCO Community](https://community.tibco.com)
