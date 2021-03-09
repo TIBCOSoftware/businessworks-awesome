@@ -2,6 +2,7 @@
 
 ## Stay Agile. Stay Open to What’s Next.
 TIBCO created the TIBCO BusinessWorks integration platform to put the power back in your hands. To seamlessly connect all the applications and data sources that keep your business running day in and day out! We decided to capture all the cool projects, samples, tools and frameworks that you can use with BusinessWorks in one awesome list
+Note: Authentication values such as tokens and usernames/passwords are dummy values and will need to be updated for the sample to deploy properly
 
 ## Connectors
 * [Sample for Amazon SNS](https://github.com/TIBCOSoftware/bw-sample-for-amazon-sns)
